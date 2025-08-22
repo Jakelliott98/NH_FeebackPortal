@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Home/Home.jsx'
 import Reports from './Reports/Reports.jsx'
 import PhysioHomepage from './Physio/Physio.jsx'
-import HealthAssessments from './HA\'s/HealthAssessments.jsx'
+import HealthAssessments from './Health Assessments/HealthAssessments.jsx'
 import Comments from './Comments/Comments.jsx'
 
 const router = createBrowserRouter([
