@@ -9,7 +9,7 @@
     border-right: 1px solid #d9d9d9; 
 }
 
-.navbarOption {
+.navbarOption, .activeNav{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,12 +22,18 @@
 }
 
 .navbarIcon {
-    padding: 5px;
+    padding: 7px;
     border: solid 1px #d9d9d9;
     border-radius: 5px;
+    color: var(--black-colour);
 }
 
-.activeBar {
+.activeNav {
     background-color: #E6F5EE;
     box-shadow: 0 2px 2px #d9d9d9;
+}
+
+.activeNav .navbarIcon {
+    color: var(--primary-colour);
+    border: 2px solid #9F9D9D;
 }
