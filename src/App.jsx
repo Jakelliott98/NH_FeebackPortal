@@ -7,12 +7,11 @@ function App() {
 
   return (
     <div className='portalLayout'>
-      <div className='upperDiv'>
+      <div className='sidebarDiv'>
         <div className='imageContainer'><img className='nuffieldLogo' src={logo}/></div>  
-        <div></div>
+        <DropdownNav />
       </div>
       <div className='contentDiv'>
-        <DropdownNav />
         <Outlet />
       </div>
     </ div>

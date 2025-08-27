@@ -1,28 +1,25 @@
 
 .portalLayout {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100vh;
 }
 
-.upperDiv {
-    min-height: 60px;
-    background-color: #fdfffc;  
-    border-bottom: 1px solid #d9d9d9; 
-    display: flex;
-    flex-direction: row;
+.sidebarDiv {
+    padding: 20px 0;
+    height: 100%;
+    background-color: #F3F5F9;
 }
 
 .contentDiv {
-    display: flex;
-    flex-direction: row;
     flex: 1;
+    padding: 20px;
+    background-color: #F3F5F9;
 }
 
 .imageContainer {
     width: 200px;
     padding: 0 40px;
-    border-right: 1px solid #d9d9d9; 
 }
 
 .nuffieldLogo {
@@ -34,5 +31,7 @@
 .home {
     flex: 1;
     padding: 15px 40px;
-    background-color: #f3f5f9;
+    background-color: #FFF;
+    border-radius: 5px;
+    height: 90vh;
 }

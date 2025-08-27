@@ -14,9 +14,7 @@ export function DropdownNav () {
     return (
         <nav className='navbarDropdown'>
             <NavLink className={({isActive}) => {return isActive ? 'activeNav' : 'navbarOption'}} activeClassName='activeBar' to='Home'><FontAwesomeIcon className='navbarIcon' icon="fa-solid fa-house" />Home</NavLink>
-            <NavLink className={({isActive}) => {return isActive ? 'activeNav' : 'navbarOption'}} to='Reports'><FontAwesomeIcon className='navbarIcon' icon="fa-solid fa-box-archive" />Reports</NavLink>
-            <NavLink className={({isActive}) => {return isActive ? 'activeNav' : 'navbarOption'}} to='Physio'><FontAwesomeIcon className='navbarIcon' icon="fa-solid fa-user-injured" />Physio</NavLink>
-            <NavLink className={({isActive}) => {return isActive ? 'activeNav' : 'navbarOption'}} to='HealthAssessments'><FontAwesomeIcon className='navbarIcon' icon="fa-solid fa-stethoscope" />HA's</NavLink>
+            <NavLink className={({isActive}) => {return isActive ? 'activeNav' : 'navbarOption'}} to='FeedbackReports'><FontAwesomeIcon className='navbarIcon' icon="fa-solid fa-box-archive" />Feedback Reports</NavLink>
             <NavLink className={({isActive}) => {return isActive ? 'activeNav' : 'navbarOption'}} to='Comments'><FontAwesomeIcon className='navbarIcon' icon="fa-solid fa-comment" />Comments</NavLink>
         </nav>
     )

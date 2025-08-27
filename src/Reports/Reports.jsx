@@ -1,7 +1,7 @@
-function Reports () {
+function FeedbackReports () {
     return (
         <p>Reports</p>
     )
 }
 
-export default Reports;
+export default FeedbackReports;
