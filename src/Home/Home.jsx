@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import FilterDropdown from '../Components/DropdownFilter'
+import {AssessmentDropdown, FilterDropdown} from '../Components/DropdownFilter'
 library.add(fas, far, fab)
 
 function Home () {
@@ -13,6 +13,7 @@ function Home () {
             <div className='headerDiv'>
                 <h1>Home</h1>
                 <FilterDropdown />
+                <AssessmentDropdown />
             </div>
             {/*
             <div className="dataSnapshotDiv">

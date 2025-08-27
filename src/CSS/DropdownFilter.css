@@ -15,8 +15,9 @@
     justify-content: space-between;
     background-color: var(--white-colour);
     cursor: pointer;
-    width: 12vw;
+    max-width: 20vw;
     padding: 0 10px;
+    gap: 20px;
 }
 
 .titleIconDiv {
