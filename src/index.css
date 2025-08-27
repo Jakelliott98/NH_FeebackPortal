@@ -16,24 +16,6 @@
   font-family: 'poppins';
 }
 
-/* Extras */
-
-.dropdownCard {
-  width: 170px; /*REMOVE*/
-  border: solid 1px transparent;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background-color: var(--white-colour);
-}
-
-.dropdownIcon {
-  color: var(--primary-colour);
-}
-
 /**/
 
 .dataSnapshotDiv {
@@ -86,12 +68,4 @@
 .headerDiv {
   display: flex;
   flex-direction: row;
-}
-
-.snapshotDataIcon {
-
-}
-
-.snapshotChange {
-
 }

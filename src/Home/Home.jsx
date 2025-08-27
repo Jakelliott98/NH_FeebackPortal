@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import FilterDropdown from '../Components/DropdownFilter'
 library.add(fas, far, fab)
 
 function Home () {
@@ -11,8 +12,9 @@ function Home () {
         <div className="home">
             <div className='headerDiv'>
                 <h1>Home</h1>
-                <DurationDropdown />
+                <FilterDropdown />
             </div>
+            {/*
             <div className="dataSnapshotDiv">
                 <DataSnapshotCard title={'Reponses'} data={'124'} change={'2%'}/>
                 <DataSnapshotCard title={'Average'} data={'65%'} change={'14%'}/>
@@ -28,6 +30,7 @@ function Home () {
                     <p>01 January 2026</p>
                 </div>
             </div>
+            */}
         </div>
     )
 }
@@ -41,16 +44,6 @@ function DataSnapshotCard ({title, data, change}) {
                 <FontAwesomeIcon className='snapshotDataIcon' icon="fa-solid fa-arrow-trend-up" />
                 <p className='snapshotChange'>{change}</p>
             </div>
-        </div>
-    )
-}
-
-function DurationDropdown () {
-    return (
-        <div className='dropdownCard'>
-            <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-calendar" />
-            <p>Last 7 days</p>
-            <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-caret-down" />
         </div>
     )
 }
