@@ -34,6 +34,7 @@
   padding: 15px;
   gap: 4px;
   background-color: var(--secondary-background);
+  cursor: pointer;
 }
 
 .snapshotTitle {
@@ -53,11 +54,21 @@
   background-color: #E6F5EE;
   border: 1px solid transparent;
   border-radius: 5px;
-  color: var(--primary-colour);
   width: fit-content;
   padding: 0 4px;
 }
 
+.positive {
+  color: var(--primary-colour);
+}
+
+.negative {
+  color: red;
+}
+
+
+
+/**/ 
 .graphDiv {
   margin-top: 15px;
   width: 100%;

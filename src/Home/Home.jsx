@@ -1,13 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-/* import all the icons in Free Solid, Free Regular, and Brands styles */
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
 import {AssessmentDropdown, FilterDropdown} from '../Components/DropdownFilter'
-library.add(fas, far, fab)
+
+import DataSnapshot from '../Components/DataSnapshot'
+import { negativeResponses, positiveResponses, returnAverage, returnComments, totalResponses } from '../DataCalculations/dataCalculations';
 
 function Home () {
+
+    let averageRating = returnAverage();
+    let responseNumber = totalResponses;
+    let positiveResponse = positiveResponses();
+    let negativeReposonse = negativeResponses();
+    let comments = returnComments();
+
     return (
         <div className="home">
             <div className='headerDiv'>
@@ -15,13 +18,13 @@ function Home () {
                 <FilterDropdown />
                 <AssessmentDropdown />
             </div>
-            {/*
             <div className="dataSnapshotDiv">
-                <DataSnapshotCard title={'Reponses'} data={'124'} change={'2%'}/>
-                <DataSnapshotCard title={'Average'} data={'65%'} change={'14%'}/>
-                <DataSnapshotCard title={'Positive'} data={'76%'} change={'25%'}/>
-                <DataSnapshotCard title={'Negative'} data={'32%'} change={'3%'}/>
+                <DataSnapshot title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
+                <DataSnapshot title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
+                <DataSnapshot title={'Positive'} data={positiveResponse} change={'25%'} trend={'positive'}/>
+                <DataSnapshot title={'Negative'} data={negativeReposonse} change={'3%'} trend={'negative'}/>
             </div>
+            {/*
             <div className="graphDiv">
                 
             </div>
@@ -36,18 +39,7 @@ function Home () {
     )
 }
 
-function DataSnapshotCard ({title, data, change}) {
-    return (
-        <div className='snapshotCard'>
-            <p className='snapshotTitle'>{title}</p>
-            <p className='snapshotData'>{data}</p>
-            <div className='snapshotDataCard'>
-                <FontAwesomeIcon className='snapshotDataIcon' icon="fa-solid fa-arrow-trend-up" />
-                <p className='snapshotChange'>{change}</p>
-            </div>
-        </div>
-    )
-}
+
 
 export default Home;
 
