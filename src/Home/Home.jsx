@@ -1,14 +1,15 @@
 import rawdataReturned from '../DataCalculations/rawData';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import DataCard from './DataCard';
-import HomeHeader from './HomeHeader';
-import CommentCard from './CommentCard';
+import PageHeader from './HomeHeader';
+import CommentCard from '../Components/CommentCard';
+import filterContext from '../Context/filterContext';
+import resultsContext from '../Context/resultsContext';
 
 function Home () {
 
-    let [results, setResults] = useState(rawdataReturned)
-    let [duration, setDuration] = useState('Week');
-    let [assessmentType, setAssessmentType] = useState("All Assessments");
+    const {assessmentType } = useContext(filterContext)
+    const {results, setResults} = useContext(resultsContext)
 
     useEffect(() => {
         function filterResults () {
@@ -24,8 +25,8 @@ function Home () {
     
     return (
         <div className="home">
-            <HomeHeader title={'Home'} duration={duration} setDuration={setDuration} setAssessmentType={setAssessmentType} assessmentType={assessmentType}/>
-            <DataCard results={results}/>
+            <PageHeader title={'Home'}/>
+            <DataCard />
             <div className="commentsDiv">
                 <CommentCard client={results[1]}/>
                 <CommentCard client={results[2]}/>
@@ -35,24 +36,3 @@ function Home () {
 }
 
 export default Home;
-
-/*
-
-    Home Component
-        Header
-            Title
-            Duration
-        DataSnapshot
-            4 x Component snapshots
-                Title
-                Data
-                Data Difference
-        Graph
-        Comments
-            2 x Components Comments
-                Comment
-                Data
-
-
-
-*/

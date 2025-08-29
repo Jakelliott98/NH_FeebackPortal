@@ -76,13 +76,6 @@
   background-color: var(--white-colour);
 }
 
-.headerDiv {
-  display: flex;
-  flex-direction: row;
-}
-
-
-
 /* Comments Section*/
 
 .commentsDiv {

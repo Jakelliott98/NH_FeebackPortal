@@ -1,12 +1,15 @@
 import DataSnapshot from '../Components/DataSnapshot'
 import { sortDataTrend } from '../DataCalculations/dataCalculations';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import DataGraph from './Graph';
+import resultsContext from '../Context/resultsContext';
 
-function DataCard ({results}) {
+function DataCard () {
+
+    const {results} = useContext(resultsContext)
 
     let responseNumber = results.length;
-    let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results)
+    let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results) //Make the initial call for this function in the main file therefore consistent through the webapp
     const [selectedChart, setSelectedChart] = useState('averageChart')
 
     return (

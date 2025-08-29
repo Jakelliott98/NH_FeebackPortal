@@ -1,6 +1,8 @@
 function CommentCard ({client}) {
+
     let isPositive = client.averageScore > 2.5 ? true : false;
     let positiveClass = isPositive ? 'positiveComment' : 'negativeComment';
+    
     return (
         <div className={positiveClass}>
             <p className="commentText">"{client.comments}"</p>

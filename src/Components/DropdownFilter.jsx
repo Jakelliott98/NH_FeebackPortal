@@ -5,15 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import '../CSS/DropdownFilter.css'
+import filterContext from '../Context/filterContext' 
 
 // NEED TO ADD THE CLOSING LOGIC (ONCLICK ELSEWHERE)
 // MERGE THE 2 COMPONENTS INTO 1?
 
 let durationArray = ['Week', 'Month', '6 Months', 'Year']
 
-function FilterDropdown ({duration, onChange}) {
+function FilterDropdown () {
+
+    const {duration, setDuration} = useContext(filterContext)
 
     let array = durationArray;
     const [filterOpen, setFilterOpen] = useState(false)
@@ -27,7 +30,7 @@ function FilterDropdown ({duration, onChange}) {
                 key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                    onChange(`${item}`)
+                    setDuration(`${item}`)
                     setFilterOpen(false)}}>{item}</ul>)
             })}
         </div>
@@ -49,10 +52,12 @@ function FilterDropdown ({duration, onChange}) {
     )
 }
 
-function AssessmentDropdown ({ assessmentType ,onChange }) {
+function AssessmentDropdown () {
  
     let array = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
     const [filterOpen, setFilterOpen] = useState(false)
+    const {assessmentType, setAssessmentType} = useContext(filterContext)
+
     
     let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
 
@@ -63,7 +68,7 @@ function AssessmentDropdown ({ assessmentType ,onChange }) {
                 key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                    onChange(`${item}`)
+                    setAssessmentType(`${item}`)
                     setFilterOpen(false)}}>{item}</ul>)
             })}
         </div>
@@ -83,5 +88,46 @@ function AssessmentDropdown ({ assessmentType ,onChange }) {
     
 }
 
+function PositiveNegativeFilter () {
+    const [filterOpen, setFilterOpen] = useState(false)
 
-export  {FilterDropdown, AssessmentDropdown};
+    let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
+
+    let dropdownList = (
+        <div className='dropdownOptionComponent'>
+            <ul 
+                key='positive'
+                className='dropdownOption' 
+                onClick={() => {
+                setFilterOpen(false)}}
+            >
+            Positive
+            </ul>
+            <ul 
+                key='positive'
+                className='dropdownOption' 
+                onClick={() => {
+                setFilterOpen(false)}}
+            >
+            Negative
+            </ul>
+        </div>
+    )
+
+    return (
+        <div className='filterComponent'>
+            <div className='filterTitleCard' onClick={() => {setFilterOpen(prev => !prev)}}>
+                <div className='titleIconDiv'>
+                    <p>Positive / Negative</p>
+                </div>
+                <FontAwesomeIcon className='dropdownIcon' icon={icon} />
+            </div >
+            <div className={filterOpen ? '' : 'hide'}>
+            {filterOpen ? dropdownList : null}
+            </div>
+         </ div>
+    )
+}
+
+
+export  {FilterDropdown, AssessmentDropdown, PositiveNegativeFilter};

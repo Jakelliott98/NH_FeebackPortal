@@ -1,13 +1,25 @@
-import {AssessmentDropdown, FilterDropdown} from '../Components/DropdownFilter'
+import {AssessmentDropdown, FilterDropdown, PositiveNegativeFilter} from '../Components/DropdownFilter'
+import '../Components/PageHeader/PageHeader.css'
 
-function HomeHeader ({title, duration, setAssessmentType, setDuration, assessmentType}) {
+function PageHeader ({title}) {
     return (
     <div className='headerDiv'>
-        <h1>{title}</h1>
-        <FilterDropdown onChange={setDuration} duration={duration}/>
-        <AssessmentDropdown assessmentType={assessmentType} onChange={setAssessmentType} />
+        <h1 className='pageTitle'>{title}</h1>
+        <FilterOptions title={title} />
     </div>
     )
 }
 
-export default HomeHeader;
+function FilterOptions ({title}) {
+
+
+    return (
+    <div className='filterContainer'>
+        <FilterDropdown />
+        <AssessmentDropdown />
+        {title === 'Comments' ? <PositiveNegativeFilter /> : null}
+    </div>
+    )
+}
+
+export default PageHeader;
