@@ -24,11 +24,11 @@ function Home () {
     
     return (
         <div className="home">
-            <HomeHeader duration={duration} setDuration={setDuration} setAssessmentType={setAssessmentType} assessmentType={assessmentType}/>
+            <HomeHeader title={'Home'} duration={duration} setDuration={setDuration} setAssessmentType={setAssessmentType} assessmentType={assessmentType}/>
             <DataCard results={results}/>
             <div className="commentsDiv">
-                <CommentCard client={results[5]}/>
-                <CommentCard client={results[24]}/>
+                <CommentCard client={results[1]}/>
+                <CommentCard client={results[2]}/>
             </div>
         </div>
     )

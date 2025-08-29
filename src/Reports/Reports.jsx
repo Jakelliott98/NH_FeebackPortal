@@ -1,6 +1,13 @@
+import HomeHeader from "../Home/HomeHeader";
+
 function FeedbackReports () {
     return (
-        <p>Reports</p>
+        <>
+            <HomeHeader title={'Feedback Reports'}/>
+            <p>Each Questions Average Score Table Graph</p>
+            <p>Line Chart showing Avg score over time month by month</p>
+            
+        </>
     )
 }
 
