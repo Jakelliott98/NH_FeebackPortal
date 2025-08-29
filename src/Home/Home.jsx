@@ -2,6 +2,7 @@ import rawdataReturned from '../DataCalculations/rawData';
 import { useEffect, useState } from 'react';
 import DataCard from './DataCard';
 import HomeHeader from './HomeHeader';
+import CommentCard from './CommentCard';
 
 function Home () {
 
@@ -26,10 +27,8 @@ function Home () {
             <HomeHeader duration={duration} setDuration={setDuration} setAssessmentType={setAssessmentType} assessmentType={assessmentType}/>
             <DataCard results={results}/>
             <div className="commentsDiv">
-                <div>
-                    <p>"{results[12].comments}"</p>
-                    <p>{results[12].timestamp}</p>
-                </div>
+                <CommentCard client={results[5]}/>
+                <CommentCard client={results[24]}/>
             </div>
         </div>
     )

@@ -80,3 +80,46 @@
   display: flex;
   flex-direction: row;
 }
+
+
+
+/* Comments Section*/
+
+.commentsDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+
+
+.positiveComment, .negativeComment {
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+}
+
+.commentText {
+  font-style: italic;
+}
+
+.commentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.commentClinician, .commentTime {
+  font-size: 14px;
+}
+
+.positiveComment {
+  background-color: lightgreen;
+}
+
+.negativeComment { 
+  background-color: lightcoral;
+}

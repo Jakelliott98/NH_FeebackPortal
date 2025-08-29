@@ -9,10 +9,6 @@ function DataCard ({results}) {
     let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results)
     const [selectedChart, setSelectedChart] = useState('averageChart')
 
-
-
-
-
     return (
         <div>
             <div className="dataSnapshotDiv">
