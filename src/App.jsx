@@ -9,14 +9,15 @@ import rawdataReturned from './DataCalculations/rawData'
 
 function App() {
 
-    let [duration, setDuration] = useState('Week');
+    let [duration, setDuration] = useState('Month');
     let [assessmentType, setAssessmentType] = useState("All Assessments");
+    let [response, setResponse] = useState('All')
     let [results, setResults] = useState(rawdataReturned)
 
 
   return (
     <resultsContext.Provider value={{results, setResults}} >
-    <filterContext.Provider value={{duration, setDuration, assessmentType, setAssessmentType}}>
+    <filterContext.Provider value={{duration, setDuration, assessmentType, setAssessmentType, response, setResponse}}>
       <div className='portalLayout'>
         <div className='sidebarDiv'>
           <div className='imageContainer'><img className='nuffieldLogo' src={logo}/></div>  

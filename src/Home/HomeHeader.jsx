@@ -1,5 +1,7 @@
+import { useContext } from 'react'
 import {AssessmentDropdown, FilterDropdown, PositiveNegativeFilter} from '../Components/DropdownFilter'
 import '../Components/PageHeader/PageHeader.css'
+import filterContext from '../Context/filterContext'
 
 function PageHeader ({title}) {
     return (
@@ -12,12 +14,18 @@ function PageHeader ({title}) {
 
 function FilterOptions ({title}) {
 
+    const {setDuration, setAssessmentType, setResponse} = useContext(filterContext)
 
     return (
     <div className='filterContainer'>
         <FilterDropdown />
         <AssessmentDropdown />
         {title === 'Comments' ? <PositiveNegativeFilter /> : null}
+        <button onClick={() => {
+            setAssessmentType('All Assessments')
+            setDuration('Month')
+            setResponse('All')
+        }}>Reset</button>
     </div>
     )
 }

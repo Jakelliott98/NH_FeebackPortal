@@ -89,28 +89,27 @@ function AssessmentDropdown () {
 }
 
 function PositiveNegativeFilter () {
-    const [filterOpen, setFilterOpen] = useState(false)
 
+    const { setResponse } = useContext(filterContext)
+    
+    const [filterOpen, setFilterOpen] = useState(false)
+    let array = ['All', 'Positive', 'Negative'];
     let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
 
     let dropdownList = (
         <div className='dropdownOptionComponent'>
-            <ul 
-                key='positive'
+            {array.map((item) => {
+            return (<ul 
+                key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                setFilterOpen(false)}}
-            >
-            Positive
-            </ul>
-            <ul 
-                key='positive'
-                className='dropdownOption' 
-                onClick={() => {
-                setFilterOpen(false)}}
-            >
-            Negative
-            </ul>
+                    setFilterOpen(false)
+                    setResponse(item)
+                }}
+                >
+                {item}
+                </ul>)
+            })}
         </div>
     )
 

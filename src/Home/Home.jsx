@@ -12,7 +12,7 @@ function Home () {
     const {results, setResults} = useContext(resultsContext)
 
     useEffect(() => {
-        function filterResults () {
+        function filterAssessments () {
             if (assessmentType === 'All Assessments') {
                 setResults(rawdataReturned)
             } else {
@@ -20,8 +20,9 @@ function Home () {
                 setResults(newData)
             }
         }
-        filterResults()
+        filterAssessments()
     }, [assessmentType])
+
     
     return (
         <div className="home">
