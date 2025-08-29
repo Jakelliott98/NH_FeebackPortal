@@ -1,9 +1,7 @@
-import {AssessmentDropdown, FilterDropdown} from '../Components/DropdownFilter'
-
-import DataSnapshot from '../Components/DataSnapshot'
-import { sortDataTrend } from '../DataCalculations/dataCalculations';
 import rawdataReturned from '../DataCalculations/rawData';
 import { useEffect, useState } from 'react';
+import DataCard from './DataCard';
+import HomeHeader from './HomeHeader';
 
 function Home () {
 
@@ -23,43 +21,21 @@ function Home () {
         filterResults()
     }, [assessmentType])
     
-
-    let responseNumber = results.length;
-    let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results)
-    
-
     return (
         <div className="home">
-            <div className='headerDiv'>
-                <h1>Home</h1>
-                <FilterDropdown onChange={setDuration} duration={duration}/>
-                <AssessmentDropdown assessmentType={assessmentType} onChange={setAssessmentType} />
-            </div>
-            <div className="dataSnapshotDiv">
-                <DataSnapshot title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
-                <DataSnapshot title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
-                <DataSnapshot title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
-                <DataSnapshot title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
-            </div>
-            {/*
-            <div className="graphDiv">
-                
-            </div>
+            <HomeHeader duration={duration} setDuration={setDuration} setAssessmentType={setAssessmentType} assessmentType={assessmentType}/>
+            <DataCard results={results}/>
             <div className="commentsDiv">
                 <div>
-                    <p>Comment would go in here...</p>
-                    <p>01 January 2026</p>
+                    <p>"{results[12].comments}"</p>
+                    <p>{results[12].timestamp}</p>
                 </div>
             </div>
-            */}
         </div>
     )
 }
 
-
-
 export default Home;
-
 
 /*
 
