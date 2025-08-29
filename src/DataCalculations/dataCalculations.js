@@ -1,27 +1,22 @@
 
-import rawdataReturned from "./rawData";
 
-let totalResponses = rawdataReturned.length;
+function sortDataTrend (data) {
 
-function returnAverage () {
-    let totalScore = rawdataReturned
-        .map((item) => {return item.averageScore})
-        .reduce((a, b) => a + b, 0);
-    return ((totalScore / (totalResponses * 5)) * 100).toFixed(0)
+    return {
+        averageRating: returnAverage(data),
+        positiveData: data.filter(item => item.averageScore > 2.5),
+        negativeData: data.filter(item => item.averageScore < 2.5),
+        positivePercentage: ((data.filter(item => item.averageScore > 2.5).length / data.length) * 100).toFixed(0),
+        negativePercentage: ((data.filter(item => item.averageScore < 2.5).length / data.length) * 100).toFixed(0), 
+        // Clinicians will also be collected from this point
+    }
 }
 
-function positiveResponses () {
-    let positiveResponse = rawdataReturned.filter(item => item.averageScore > 2.5).length
-    return (positiveResponse / rawdataReturned.length) * 100;
+function returnAverage (data) {
+    let totalScore = data
+    .map((item) => {return item.averageScore})
+    .reduce((a, b) => a + b, 0);
+    return ((totalScore / (data.length * 5)) * 100).toFixed(0)
 }
 
-function negativeResponses () {
-    let positiveResponse = rawdataReturned.filter(item => item.averageScore < 2.5).length
-    return ((positiveResponse / rawdataReturned.length) * 100).toFixed(0)
-}
-
-function returnComments () {
-    return rawdataReturned.map(item => item.comments)
-}
-
-export { returnAverage, totalResponses, positiveResponses, negativeResponses, returnComments }
+export { sortDataTrend }

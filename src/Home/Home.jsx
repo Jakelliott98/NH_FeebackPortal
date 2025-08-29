@@ -1,28 +1,45 @@
 import {AssessmentDropdown, FilterDropdown} from '../Components/DropdownFilter'
 
 import DataSnapshot from '../Components/DataSnapshot'
-import { negativeResponses, positiveResponses, returnAverage, returnComments, totalResponses } from '../DataCalculations/dataCalculations';
+import { sortDataTrend } from '../DataCalculations/dataCalculations';
+import rawdataReturned from '../DataCalculations/rawData';
+import { useEffect, useState } from 'react';
 
 function Home () {
 
-    let averageRating = returnAverage();
-    let responseNumber = totalResponses;
-    let positiveResponse = positiveResponses();
-    let negativeReposonse = negativeResponses();
-    let comments = returnComments();
+    let [results, setResults] = useState(rawdataReturned)
+    let [duration, setDuration] = useState('Week');
+    let [assessmentType, setAssessmentType] = useState("All Assessments");
+
+    useEffect(() => {
+        function filterResults () {
+            if (assessmentType === 'All Assessments') {
+                setResults(rawdataReturned)
+            } else {
+                let newData = rawdataReturned.filter((item) => {return item.assessmentType === assessmentType})
+                setResults(newData)
+            }
+        }
+        filterResults()
+    }, [assessmentType])
+    
+
+    let responseNumber = results.length;
+    let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results)
+    
 
     return (
         <div className="home">
             <div className='headerDiv'>
                 <h1>Home</h1>
-                <FilterDropdown />
-                <AssessmentDropdown />
+                <FilterDropdown onChange={setDuration} duration={duration}/>
+                <AssessmentDropdown assessmentType={assessmentType} onChange={setAssessmentType} />
             </div>
             <div className="dataSnapshotDiv">
                 <DataSnapshot title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
                 <DataSnapshot title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
-                <DataSnapshot title={'Positive'} data={positiveResponse} change={'25%'} trend={'positive'}/>
-                <DataSnapshot title={'Negative'} data={negativeReposonse} change={'3%'} trend={'negative'}/>
+                <DataSnapshot title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
+                <DataSnapshot title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
             </div>
             {/*
             <div className="graphDiv">

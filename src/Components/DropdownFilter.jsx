@@ -12,12 +12,10 @@ import '../CSS/DropdownFilter.css'
 // MERGE THE 2 COMPONENTS INTO 1?
 
 let durationArray = ['Week', 'Month', '6 Months', 'Year']
-let HealthAssessments = ['All Assessments', 'Health Assessments', 'Physiotherapy']
 
-function FilterDropdown () {
+function FilterDropdown ({duration, onChange}) {
 
     let array = durationArray;
-    const [activeFilter, setActiveFilter] = useState('7 Days')
     const [filterOpen, setFilterOpen] = useState(false)
 
     let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
@@ -29,7 +27,7 @@ function FilterDropdown () {
                 key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                    setActiveFilter(`${item}`)
+                    onChange(`${item}`)
                     setFilterOpen(false)}}>{item}</ul>)
             })}
         </div>
@@ -40,7 +38,7 @@ function FilterDropdown () {
             <div className='filterTitleCard' onClick={() => {setFilterOpen(prev => !prev)}}>
                 <div className='titleIconDiv'>
                 <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-calendar"/>
-                <p>{activeFilter}</p>
+                <p>{duration}</p>
                 </div>
                 <FontAwesomeIcon className='dropdownIcon' icon={icon} />
             </div >
@@ -51,10 +49,9 @@ function FilterDropdown () {
     )
 }
 
-function AssessmentDropdown () {
+function AssessmentDropdown ({ assessmentType ,onChange }) {
  
-    let array = ['All Assessments', 'Health Assessments', 'Physiotherapy'];
-    const [activeFilter, setActiveFilter] = useState('All Assessments')
+    let array = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
     const [filterOpen, setFilterOpen] = useState(false)
     
     let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
@@ -66,7 +63,7 @@ function AssessmentDropdown () {
                 key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                    setActiveFilter(`${item}`)
+                    onChange(`${item}`)
                     setFilterOpen(false)}}>{item}</ul>)
             })}
         </div>
@@ -75,7 +72,7 @@ function AssessmentDropdown () {
     return (
         <div className='filterComponent'>
             <div className='filterTitleCard' onClick={() => {setFilterOpen(prev => !prev)}}>
-                <p>{activeFilter}</p>
+                <p>{assessmentType}</p>
                 <FontAwesomeIcon className='dropdownIcon' icon={icon} />
             </div >
             <div className={filterOpen ? '' : 'hide'}>
