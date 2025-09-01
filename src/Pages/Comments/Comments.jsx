@@ -1,9 +1,7 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import CommentCard from '../../Components/CommentCard';
 import PageHeader from '../PageComponents/PageHeader';
 import resultsContext from '../../Context/resultsContext';
-import filterContext from '../../Context/filterContext';
-import rawdataReturned from '../../DataCalculations/rawData';
 
 function Comments () {
 

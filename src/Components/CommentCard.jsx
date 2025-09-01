@@ -1,3 +1,5 @@
+import returnDateFormat from "../DataCalculations/dateConverted";
+
 function CommentCard ({client}) {
 
     let isPositive = client.averageScore > 2.5 ? true : false;
@@ -7,7 +9,7 @@ function CommentCard ({client}) {
         <div className={positiveClass}>
             <p className="commentText">"{client.comments}"</p>
             <div className='commentInfo'>
-            <p className='commentTime'>{client.timestamp}</p>
+            <p className='commentTime'>{returnDateFormat(client.timestamp)}</p>
             <p className='commentClinician' >{client.clinician}</p>
             </div>
         </div>
