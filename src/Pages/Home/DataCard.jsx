@@ -8,8 +8,8 @@ function DataCard () {
 
     const {results} = useContext(resultsContext)
 
-    let responseNumber = results.length;
-    let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results) //Make the initial call for this function in the main file therefore consistent through the webapp
+    let responseNumber = results.results.length;
+    let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(results.results) //Make the initial call for this function in the main file therefore consistent through the webapp
     const [selectedChart, setSelectedChart] = useState('averageChart')
 
     return (
@@ -20,7 +20,7 @@ function DataCard () {
                 <DataSnapshot onClick={() => {setSelectedChart('postiveResponsesChart')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
                 <DataSnapshot onClick={() => {setSelectedChart('negativeResponsesChart')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
             </div>
-            <DataGraph results={results} selectedChart={selectedChart}/>
+            <DataGraph results={results.results} selectedChart={selectedChart}/>
         </div>
     )
 }

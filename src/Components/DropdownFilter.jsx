@@ -8,6 +8,7 @@ library.add(fas, far, fab)
 import { useContext, useState } from "react"
 import '../CSS/DropdownFilter.css'
 import filterContext from '../Context/filterContext'
+import resultsContext from '../Context/resultsContext'
 
 // NEED TO ADD THE CLOSING LOGIC (ONCLICK ELSEWHERE)
 // MERGE THE 2 COMPONENTS INTO 1?
@@ -16,7 +17,7 @@ let durationArray = ['Week', 'Month', '6 Months', 'Year']
 
 function FilterDropdown () {
 
-    const {duration, setDuration} = useContext(filterContext)
+    const { results, filterByDuration } = useContext(resultsContext)
 
     let array = durationArray;
     const [filterOpen, setFilterOpen] = useState(false)
@@ -30,8 +31,11 @@ function FilterDropdown () {
                 key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                    setDuration(`${item}`)
-                    setFilterOpen(false)}}>{item}</ul>)
+                    filterByDuration(item)
+                    setFilterOpen(false)
+                }}>
+                {item}
+                </ul>)
             })}
         </div>
     )
@@ -41,7 +45,7 @@ function FilterDropdown () {
             <div className='filterTitleCard' onClick={() => {setFilterOpen(prev => !prev)}}>
                 <div className='titleIconDiv'>
                 <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-calendar"/>
-                <p>{duration}</p>
+                <p>{results.durationFilter}</p>
                 </div>
                 <FontAwesomeIcon className='dropdownIcon' icon={icon} />
             </div >
@@ -56,8 +60,8 @@ function AssessmentDropdown () {
  
     let array = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
     const [filterOpen, setFilterOpen] = useState(false)
-    const {assessmentType, setAssessmentType} = useContext(filterContext)
-
+    const { filterByAssessment, results } = useContext(resultsContext);
+    
     
     let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
 
@@ -68,7 +72,7 @@ function AssessmentDropdown () {
                 key={item}
                 className='dropdownOption' 
                 onClick={() => {
-                    setAssessmentType(`${item}`)
+                    filterByAssessment(`${item}`)
                     setFilterOpen(false)}}>{item}</ul>)
             })}
         </div>
@@ -77,7 +81,7 @@ function AssessmentDropdown () {
     return (
         <div className='filterComponent'>
             <div className='filterTitleCard' onClick={() => {setFilterOpen(prev => !prev)}}>
-                <p>{assessmentType}</p>
+                <p>{results.assessmentFilter}</p>
                 <FontAwesomeIcon className='dropdownIcon' icon={icon} />
             </div >
             <div className={filterOpen ? '' : 'hide'}>
@@ -90,7 +94,8 @@ function AssessmentDropdown () {
 
 function PositiveNegativeFilter () {
 
-    const { setResponse } = useContext(filterContext)
+    const { filterByResponse } = useContext(resultsContext);
+
     
     const [filterOpen, setFilterOpen] = useState(false)
     let array = ['All', 'Positive', 'Negative'];
@@ -104,7 +109,7 @@ function PositiveNegativeFilter () {
                 className='dropdownOption' 
                 onClick={() => {
                     setFilterOpen(false)
-                    setResponse(item)
+                    filterByResponse(item)
                 }}
                 >
                 {item}
