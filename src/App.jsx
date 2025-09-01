@@ -5,6 +5,7 @@ import logo from './SVG/NuffieldLogo.png'
 import resultsContext from './Context/resultsContext'
 import ResultsObject from './ResultsReducer'
 import { useMemo } from 'react'
+import './CSS/DataCards.css'
 
 function App() {
 

@@ -1,0 +1,45 @@
+.dataSnapshotDiv {
+  margin-top: 15px; /*REMOVE*/
+  background-color: var(--background-colour);
+  padding: 10px 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.snapshotCard {
+  width: 200px; /*REMOVE*/
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 4px;
+  background-color: #F5F5F5;
+  cursor: pointer;
+}
+
+.activeDataSnap {
+  background-color: #363a3f;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.snapshotTitle {
+  font-size: 14px;
+  color: #9F9D9D; 
+}
+
+.snapshotData {
+  font-size: 24px;
+}
+
+.snapshotDataCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  background-color: #E6F5EE;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 0 4px;
+}
