@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
-import CommentCard from '../Components/CommentCard';
-import HomeHeader from "../Home/HomeHeader";
-import resultsContext from '../Context/resultsContext';
-import filterContext from '../Context/filterContext';
-import rawdataReturned from '../DataCalculations/rawData';
+import CommentCard from '../../Components/CommentCard';
+import PageHeader from '../PageComponents/PageHeader';
+import resultsContext from '../../Context/resultsContext';
+import filterContext from '../../Context/filterContext';
+import rawdataReturned from '../../DataCalculations/rawData';
 
 function Comments () {
 
@@ -29,7 +29,7 @@ function Comments () {
 
     return (
         <>
-            <HomeHeader title={'Comments'}/>
+            <PageHeader title={'Comments'}/>
             {
                 results.map((item) => {return (
                     <CommentCard key={item.id} client={item}/>

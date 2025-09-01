@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
-import { negativeResponse, positiveResponse, monthlyResponse } from '../DataCalculations/graphData';
+import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
 
 function DataGraph ({results, selectedChart}) {
 

@@ -7,7 +7,7 @@ library.add(fas, far, fab)
 
 import { useContext, useState } from "react"
 import '../CSS/DropdownFilter.css'
-import filterContext from '../Context/filterContext' 
+import filterContext from '../Context/filterContext'
 
 // NEED TO ADD THE CLOSING LOGIC (ONCLICK ELSEWHERE)
 // MERGE THE 2 COMPONENTS INTO 1?

@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './Home/Home.jsx'
-import FeedbackReports from './Reports/Reports.jsx'
-import Comments from './Comments/Comments.jsx'
+import Home from './Pages/Home/Home.jsx'
+import FeedbackReports from './Pages/Reports/Reports.jsx'
+import Comments from './Pages/Comments/Comments.jsx'
 
 const router = createBrowserRouter([
   {

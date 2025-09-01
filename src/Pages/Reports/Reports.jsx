@@ -1,4 +1,4 @@
-import HomeHeader from "../Home/HomeHeader";
+import HomeHeader from "../PageComponents/PageHeader";
 
 function FeedbackReports () {
     return (

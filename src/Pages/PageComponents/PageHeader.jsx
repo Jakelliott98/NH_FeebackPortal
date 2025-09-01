@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import {AssessmentDropdown, FilterDropdown, PositiveNegativeFilter} from '../Components/DropdownFilter'
-import '../Components/PageHeader/PageHeader.css'
-import filterContext from '../Context/filterContext'
+import {AssessmentDropdown, FilterDropdown, PositiveNegativeFilter} from '../../Components/DropdownFilter'
+import '../../Components/PageHeader/PageHeader.css'
+import filterContext from '../../Context/filterContext'
 
 function PageHeader ({title}) {
     return (

@@ -1,10 +1,10 @@
-import rawdataReturned from '../DataCalculations/rawData';
+import rawdataReturned from '../../DataCalculations/rawData';
 import { useContext, useEffect } from 'react';
 import DataCard from './DataCard';
-import PageHeader from './HomeHeader';
-import CommentCard from '../Components/CommentCard';
-import filterContext from '../Context/filterContext';
-import resultsContext from '../Context/resultsContext';
+import PageHeader from '../PageComponents/PageHeader';
+import CommentCard from '../../Components/CommentCard';
+import filterContext from '../../Context/filterContext';
+import resultsContext from '../../Context/resultsContext';
 
 function Home () {
 

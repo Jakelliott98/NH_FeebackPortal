@@ -1,8 +1,8 @@
-import DataSnapshot from '../Components/DataSnapshot'
-import { sortDataTrend } from '../DataCalculations/dataCalculations';
+import DataSnapshot from '../../Components/DataSnapshot'
+import { sortDataTrend } from '../../DataCalculations/dataCalculations';
 import { useContext, useState } from 'react';
 import DataGraph from './Graph';
-import resultsContext from '../Context/resultsContext';
+import resultsContext from '../../Context/resultsContext';
 
 function DataCard () {
 
