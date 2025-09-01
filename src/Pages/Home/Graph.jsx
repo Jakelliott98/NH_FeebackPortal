@@ -3,9 +3,8 @@ import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataC
 
 function DataGraph ({results, selectedChart}) {
 
-    const averageChart = (
+    const responseChart = (
         <>
-        <p>Average Responses</p>        
         <LineChart width={600} height={300} data={results}>
             <Tooltip />
             <YAxis />            
@@ -14,9 +13,8 @@ function DataGraph ({results, selectedChart}) {
         </>
     );
 
-    const ResponseChart = (
+    const averageChart = (
         <>
-        <p>Number of Responses</p>        
         <LineChart width={600} height={300} data={monthlyResponse}>
             <XAxis dataKey="month" />
             <Tooltip />
@@ -28,7 +26,6 @@ function DataGraph ({results, selectedChart}) {
 
     const postiveResponsesChart = (
         <>
-        <p>Positive Responses</p>        
         <LineChart width={600} height={300} data={positiveResponse}>
             <XAxis dataKey="month" />
             <Tooltip />
@@ -40,7 +37,6 @@ function DataGraph ({results, selectedChart}) {
 
     const negativeResponsesChart = (
         <>
-        <p>Negative Responses</p>
         <LineChart width={600} height={300} data={negativeResponse}>
             <XAxis dataKey="month" />
             <Tooltip />
@@ -52,10 +48,10 @@ function DataGraph ({results, selectedChart}) {
 
     function selectChart () {
     switch (selectedChart) {
-        case 'averageChart': return averageChart;
-        case 'ResponseChart': return ResponseChart;
-        case 'postiveResponsesChart': return postiveResponsesChart;
-        case 'negativeResponsesChart': return negativeResponsesChart;
+        case 'Average': return averageChart;
+        case 'Reponses': return responseChart;
+        case 'Positive': return postiveResponsesChart;
+        case 'Negative': return negativeResponsesChart;
         default: return averageChart;
     }
 }

@@ -6,19 +6,19 @@ import resultsContext from '../../Context/resultsContext';
 
 function DataCard () {
 
-    const {results, filteredResults} = useContext(resultsContext)
+    const { filteredResults } = useContext(resultsContext)
 
     let responseNumber = filteredResults.length;
     let { averageRating, positivePercentage, negativePercentage } = sortDataTrend(filteredResults) //Make the initial call for this function in the main file therefore consistent through the webapp
-    const [selectedChart, setSelectedChart] = useState('averageChart')
+    const [selectedChart, setSelectedChart] = useState('Average')
 
     return (
         <div>
             <div className="dataSnapshotDiv">
-                <DataSnapshot onClick={() => {setSelectedChart('averageChart')}} title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
-                <DataSnapshot onClick={() => {setSelectedChart('ResponseChart')}} title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
-                <DataSnapshot onClick={() => {setSelectedChart('postiveResponsesChart')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
-                <DataSnapshot onClick={() => {setSelectedChart('negativeResponsesChart')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
+                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Reponses')}} title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
+                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Average')}} title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
+                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Positive')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
+                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Negative')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
             </div>
             <DataGraph results={filteredResults} selectedChart={selectedChart}/>
         </div>

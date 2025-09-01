@@ -6,13 +6,14 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
-function DataSnapshot ({title, data, change, trend, onClick}) {
+function DataSnapshot ({title, data, change, trend, onClick, selectedChart}) {
 
     let dataTrend = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
     let trendClass = `snapshotDataCard ${trend} `
+    let activeClass = selectedChart === title ? 'activeDataSnap' : '';
 
     return (
-        <div className='snapshotCard' onClick={onClick}>
+        <div className={`${activeClass} snapshotCard` } onClick={onClick}>
             <p className='snapshotTitle'>{title}</p>
             <p className='snapshotData'>{data}</p>
             <div className={trendClass}>
