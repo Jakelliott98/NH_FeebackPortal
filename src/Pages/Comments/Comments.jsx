@@ -7,13 +7,13 @@ import rawdataReturned from '../../DataCalculations/rawData';
 
 function Comments () {
 
-    const { results } = useContext(resultsContext)
+    const { filteredResults } = useContext(resultsContext)
 
     return (
         <>
             <PageHeader title={'Comments'}/>
             {
-                results.results.map((item) => {return (
+                filteredResults.map((item) => {return (
                     <CommentCard key={item.id} client={item}/>
                 )})
             }
