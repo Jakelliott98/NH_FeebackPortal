@@ -68,3 +68,15 @@
 .starIcon {
     color: #F8DE7E;
 }
+
+.CommentFilters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commentDropdowns {
+  display: flex;
+  flex-direction: row;
+  gap: var(--500-spacing);
+}

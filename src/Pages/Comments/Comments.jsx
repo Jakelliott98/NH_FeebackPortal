@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import CommentCard from '../../Components/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
+import { ClinicianDropdown, SatisfactionRating, SortBy } from '../../Components/DropdownFilter';
 
 function Comments () {
 
@@ -9,10 +10,12 @@ function Comments () {
 
     return (
         <div className='commentLayout'>
-            <div>
-                <button>Sort By</button>
-                <button>Satisfaction Rating</button>
-                <button>All Doctors</button>
+            <div className='CommentFilters'>
+                <SortBy />
+                <div className='commentDropdowns'>
+                <SatisfactionRating />
+                <ClinicianDropdown />
+                </div>
             </div>
             <div className='commentContainer'>
             {
