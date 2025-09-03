@@ -10,7 +10,6 @@ function Home () {
     
     return (
         <div className="home">
-            <PageHeader title={'Home'}/>
             <DataCard />
             <div className="commentsDiv">
                 <CommentCard client={filteredResults[1]}/>

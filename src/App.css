@@ -1,15 +1,3 @@
-:root {
-  --primary-colour: #00a200;
-  --content-background-colour: #e0e0e0;
-  --constrast-background-colour: #fff;
-  --light-text-colour: #fff;
-  --dark-text-colour: #0c0908;
-  --negative-colour: #ff3b30;
-  --positive-colour: #00a200;
-  --positive-background-colour: #e6f9e6;
-  --negative-background-colour: #ffe6e6;
-}
-
 .portalLayout {
     display: flex;
     flex-direction: row;
@@ -17,7 +5,7 @@
 }
 
 .sidebarDiv {
-    padding: 20px 10px;
+    padding: var(--500-spacing) var(--250-spacing);
     height: 100%;
     background-color: var(--primary-colour);
 }
@@ -26,16 +14,21 @@
     flex: 1;
     height: 100%;
     background-color: var(--content-background-colour);
-    padding: 20px 20px;
 }
 
 .imageContainer {
     width: 200px;
-    padding: 0 30px;
+    padding: 0 var(--750-spacing);
 }
 
 .nuffieldLogo {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.contentArea {
+    background-color: var(--content-background-colour);
+    padding: var(--250-spacing) var(--500-spacing);
+
 }

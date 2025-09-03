@@ -10,6 +10,19 @@
   --positive-colour: #00a200;
   --positive-background-colour: #e6f9e6;
   --negative-background-colour: #ffe6e6;
+
+  --125-spacing: 5px;
+  --250-spacing: 10px;
+  --375-spacing: 15px;
+  --500-spacing: 20px;
+  --750-spacing: 30px;
+  --1000-spacing: 40px;
+
+  --fs-small: 14px;
+  --fs-medium: 16px;
+  --fs-large: 20px;
+  --fs-xLarge: 25px;
+
 }
 
 * {
@@ -31,7 +44,6 @@
 
 /**/ 
 .graphDiv {
-  margin-top: 15px;
   width: 100%;
   height: 350px;
   background-color: var(--constrast-background-colour);
@@ -48,16 +60,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: var(--500-spacing);
   background-color: var(--constrast-background-colour);
 }
 
 .positiveComment, .negativeComment {
-  padding: 15px;
-  border-radius: 5px;
+  padding: var(--500-spacing);
+  border-radius: var(--125-spacing);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: var(--125-spacing);
 
 }
 
@@ -72,7 +84,7 @@
 }
 
 .commentClinician, .commentTime {
-  font-size: 14px;
+  font-size: var(--fs-small);
 }
 
 .positiveComment {

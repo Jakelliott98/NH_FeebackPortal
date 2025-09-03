@@ -8,9 +8,20 @@
   --positive-colour: #00a200;
   --positive-background-colour: #e6f9e6;
   --negative-background-colour: #ffe6e6;
+
+  --125-spacing: 5px;
+  --250-spacing: 10px;
+  --375-spacing: 15px;
+  --500-spacing: 20px;
+  --750-spacing: 30px;
+  --1000-spacing: 40px;
+
+  --fs-small: 14px;
+  --fs-medium: 16px;
+  --fs-large: 20px;
+  --fs-xLarge: 25px;
+
 }
-
-
 
 .filterComponent {
     position: relative;
@@ -21,7 +32,7 @@
 .filterTitleCard {
     flex: 1;
     border: solid 1px var(--primary-colour);
-    border-radius: 5px;
+    border-radius: var(--125-spacing);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -29,14 +40,15 @@
     background-color: var(--constrast-background-colour);
     cursor: pointer;
     max-width: 20vw;
-    padding: 0 10px;
-    gap: 20px;
+    padding: 0 var(--250-spacing);
+    gap: var(--500-spacing);
+    font-size: var(--fs-small);
 }
 
 .titleIconDiv {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: var(--125-spacing);
     align-items: center;
 }
 
@@ -50,21 +62,21 @@
 }
 
 .dropdownOptionComponent {
-    margin-top: 10px;
+    margin-top: var(--250-spacing);
     position: absolute;
     z-index: 2;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--250-spacing);
     background-color: white;
-    padding: 20px 0;
-    border-radius: 5px;
+    padding: var(--500-spacing) 0;
+    border-radius: var(--125-spacing);
     border: solid 1px var(--primary-colour);
     width: 100%;
 }
 
 .dropdownOption {
-    padding: 10px 20px;
+    padding: var(--250-spacing) var(--500-spacing);
     cursor: pointer;
 }
 

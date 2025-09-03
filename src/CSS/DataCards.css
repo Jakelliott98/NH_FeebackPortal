@@ -1,33 +1,19 @@
-:root {
-  --primary-colour: #00a200;
-  --content-background-colour: #e0e0e0;
-  --constrast-background-colour: #fff;
-  --light-text-colour: #fff;
-  --dark-text-colour: #0c0908;
-  --negative-colour: #ff3b30;
-  --positive-colour: #00a200;
-  --positive-background-colour: #e6f9e6;
-  --negative-background-colour: #ffe6e6;
-}
-
 .dataSnapshotDiv {
-  margin-top: 15px; /*REMOVE*/
   background-color: var(--content-background-colour);
-  padding: 10px 35px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .snapshotCard {
   width: 200px; /*REMOVE*/
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  gap: 4px;
+  padding: var(--375-spacing);
+  gap: var(--125-spacing);
   background-color: var(--constrast-background-colour);
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--125-spacing);
 }
 
 .activeDataSnap {
@@ -36,22 +22,22 @@
 }
 
 .snapshotTitle {
-  font-size: 14px;
+  font-size: var(--fs-small);
   color: var(--dark-text-colour); 
 }
 
 .snapshotData {
-  font-size: 24px;
+  font-size: var(--fs-xLarge);
 }
 
 .snapshotDataCard {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  gap: var(--125-spacing);
   background-color: var(--positive-background-colour);
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: var(--125-spacing);
   width: fit-content;
-  padding: 0 4px;
+  padding: 0 var(--125-spacing);
 }

@@ -6,6 +6,7 @@ import resultsContext from './Context/resultsContext'
 import ResultsObject from './ResultsReducer'
 import { useMemo } from 'react'
 import './CSS/DataCards.css'
+import PageHeader from './Pages/PageComponents/PageHeader'
 
 function App() {
 
@@ -26,7 +27,10 @@ function App() {
           <DropdownNav />
         </div>
         <div className='contentDiv'>
+          <PageHeader title={'Home'}/>
+          <div className='contentArea'>
           <Outlet />
+          </div>
         </div>
       </ div>
     </resultsContext.Provider>

@@ -3,11 +3,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
+    background-color: var(--constrast-background-colour);
+    padding: var(--250-spacing) var(--500-spacing);
 }
 
 .filterContainer {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: var(--125-spacing);
 }
