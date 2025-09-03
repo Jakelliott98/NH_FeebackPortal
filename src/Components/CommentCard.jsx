@@ -16,7 +16,7 @@ function CommentCard ({client}) {
         <div className={positiveClass}>
             <p className="commentText">"{client.comments}"</p>
             <div className='commentInfo'>
-                <p className='commentsRating'>Rating: <RatingStars /></p>
+                <p className='commentsRating'>Rating: <RatingStars averageRating={client.averageScore}/></p>
                 <p>{client.assessmentType}</p>
                 <p className='commentClinician' >{client.clinician}</p>
                 <p className='commentTime'>{returnDateFormat(client.timestamp)}</p>
@@ -28,14 +28,38 @@ function CommentCard ({client}) {
 export default CommentCard;
 
 
-function RatingStars () {
+function RatingStars ({averageRating}) {
+
+    let stars = decideStars(averageRating)
+
+    function decideStars (rating) {
+        let array = [false, false, false, false, false];
+        let roundedRating = Math.round(rating)
+
+        for (let i = 0; i < 4; i++) {
+            if (i < roundedRating) {
+                array[i] = true;
+            } else if (i > roundedRating) {
+                array[i] = false;
+            }
+        }  
+        console.log('Score: ' + rating + 'Rounded: ' + roundedRating
+        )
+        console.log(array)
+        return array ; 
+        }
+
+
+    let solidStar = 'fa-star fa-solid';
+    let regularStar = 'fa-regular fa-star';
+
     return (
         <>
-        <FontAwesomeIcon icon="fa-solid fa-star" className='starIcon'/>
-        <FontAwesomeIcon icon="fa-solid fa-star" className='starIcon'/>
-        <FontAwesomeIcon icon="fa-solid fa-star" className='starIcon'/>
-        <FontAwesomeIcon icon="fa-regular fa-star" className=''/>
-        <FontAwesomeIcon icon="fa-regular fa-star" className=''/>
+            <FontAwesomeIcon icon={stars[0] ? solidStar : regularStar} className={stars[0] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[1] ? solidStar : regularStar} className={stars[1] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[2] ? solidStar : regularStar} className={stars[2] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[3] ? solidStar : regularStar} className={stars[3] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[4] ? solidStar : regularStar} className={stars[4] ? 'starIcon' : ''}/>
         </>
     )
 }
