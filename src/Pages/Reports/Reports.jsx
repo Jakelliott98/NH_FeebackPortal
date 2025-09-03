@@ -1,9 +1,6 @@
-import HomeHeader from "../PageComponents/PageHeader";
-
 function FeedbackReports () {
     return (
         <>
-            <HomeHeader title={'Feedback Reports'}/>
             <p>Each Questions Average Score Table Graph</p>
             <p>Line Chart showing Avg score over time month by month</p>
             
