@@ -3,8 +3,9 @@ import CommentCard from '../../Components/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
 import { GenericFilterDropdown } from '../../Components/DropdownFilter';
+import { returnDrList } from '../../DataCalculations/helperFunctions';
+import { useMemo } from 'react';
 
-const drArray = ['Peter', 'Adam', 'Thomas', 'Claire', 'Suzie']
 let sortByOptions = ['Rating', 'Doctor', 'Date', 'Satisfaction']
 
 // Hold a state of the dr name etc.
@@ -17,13 +18,17 @@ function Comments () {
     const sortBy = 'Sort By';
     const ratingsTitle = 'Satisfaction Rating';
 
+    let DoctorList =  useMemo(() => {
+        return returnDrList(filteredResults)
+    }, [filteredResults])
+
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
                 <GenericFilterDropdown resultFilter={sortBy} arrayData={sortByOptions} />
                 <div className='commentDropdowns'>
-                <GenericFilterDropdown resultFilter={ratingsTitle} arrayData={drArray}/>
-                <GenericFilterDropdown resultFilter={turnToState} arrayData={drArray} />
+                <GenericFilterDropdown resultFilter={ratingsTitle} arrayData={DoctorList}/>
+                <GenericFilterDropdown resultFilter={turnToState} arrayData={DoctorList} />
                 </div>
             </div>
             <div className='commentContainer'>

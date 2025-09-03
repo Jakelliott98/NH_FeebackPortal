@@ -7,6 +7,7 @@ import ResultsObject from './ResultsReducer'
 import { useMemo } from 'react'
 import './CSS/DataCards.css'
 import PageHeader from './Pages/PageComponents/PageHeader'
+import { checkAssessmentType, checkResponseType } from './DataCalculations/helperFunctions'
 
 function App() {
 
@@ -38,28 +39,3 @@ function App() {
 }
 
 export default App;
-
-
-function checkAssessmentType (results, assessmentFilter) {
-  if (assessmentFilter !== 'All Assessments') {
-        return results.filter(item => item.assessmentType == assessmentFilter)
-  } else {
-    return results;
-  }
-}
-
-function checkResponseType (results, responseFilter) {
-  if (responseFilter !== 'All') {
-    if (responseFilter == 'Positive') {
-      return results.filter(item => item.averageScore > 2.5)
-    } else if (responseFilter == 'Negative') {
-      return results.filter(item => item.averageScore < 2.5)
-    }
-  } else {
-    return results;
-  }
-}
-
-function checkResultDates () {
-
-}
