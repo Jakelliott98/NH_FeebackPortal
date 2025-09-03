@@ -25,8 +25,8 @@ function FilterOptions ({title}) {
 
     return (
     <div className='filterContainer'>
-        <GenericFilterDropdown resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationArray} />
-        <GenericFilterDropdown resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentarray} />
+        <GenericFilterDropdown dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationArray} />
+        <GenericFilterDropdown dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentarray} />
         {title === 'Comments' ? positiveNegative : null}
         <button onClick={() => {
             resetFilter()

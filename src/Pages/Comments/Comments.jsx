@@ -26,10 +26,10 @@ function Comments () {
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
-                <GenericFilterDropdown resultFilter={sortBy} arrayData={sortByOptions} filterbyFunction={setSortBy}/>
+                <GenericFilterDropdown dataSet={true} resultFilter={sortBy} arrayData={sortByOptions} filterbyFunction={setSortBy}/>
                 <div className='commentDropdowns'>
-                <GenericFilterDropdown resultFilter={ratingsTitle} arrayData={DoctorList}/>
-                <GenericFilterDropdown resultFilter={turnToState} arrayData={DoctorList} />
+                <GenericFilterDropdown dataSet={''} resultFilter={ratingsTitle} arrayData={DoctorList}/>
+                <GenericFilterDropdown dataSet={true} resultFilter={turnToState} arrayData={DoctorList} />
                 </div>
             </div>
             <div className='commentContainer'>

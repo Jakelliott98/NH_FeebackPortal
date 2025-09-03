@@ -7,7 +7,7 @@ library.add(fas, far, fab)
 import { useState } from "react"
 import '../CSS/DropdownFilter.css'
 
-function GenericFilterDropdown ({resultFilter, filterbyFunction, arrayData}) {
+function GenericFilterDropdown ({resultFilter, filterbyFunction, arrayData, dataSet}) {
 
     const [filterOpen, setFilterOpen] = useState(false);
     let icon = filterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
@@ -17,7 +17,7 @@ function GenericFilterDropdown ({resultFilter, filterbyFunction, arrayData}) {
         setFilterOpen(false)
     }
 
-    let dropdownList = <DropdownListDisplay array={arrayData} onClick={settingFilter}/>
+    let dropdownList = dataSet ? <DropdownListDisplay array={arrayData} onClick={settingFilter}/> : <RatingDisplay />;
 
     return (
         <div className='filterComponent'>
@@ -49,6 +49,35 @@ function DropdownListDisplay ({array, onClick}) {
                 {item}
                 </ul>)
             })}
+        </div>
+    )
+}
+
+function RatingDisplay () {
+    const [stars, setStars] = useState([true, true, true, false, false])
+
+    let solidStar = 'fa-star fa-solid';
+    let regularStar = 'fa-regular fa-star';
+
+    function rateTheStars (rating) {
+        let newArr = [false, false, false, false, false]
+        for (let i = 0; i < 5; i++) {
+            if (i <= rating) {
+                newArr[i] = true;
+            } else {
+                newArr[i] = false;
+            }
+        }
+        setStars(newArr)
+    }
+
+    return (
+        <div className='dropdownOptionComponent'>
+            <FontAwesomeIcon icon={stars[0] ? solidStar : regularStar} className={stars[0] ? 'starIcon' : ''} onClick={() => {rateTheStars(0)}}/>
+            <FontAwesomeIcon icon={stars[1] ? solidStar : regularStar} className={stars[1] ? 'starIcon' : ''} onClick={() => {rateTheStars(1)}}/>
+            <FontAwesomeIcon icon={stars[2] ? solidStar : regularStar} className={stars[2] ? 'starIcon' : ''} onClick={() => {rateTheStars(2)}}/>
+            <FontAwesomeIcon icon={stars[3] ? solidStar : regularStar} className={stars[3] ? 'starIcon' : ''} onClick={() => {rateTheStars(3)}}/>
+            <FontAwesomeIcon icon={stars[4] ? solidStar : regularStar} className={stars[4] ? 'starIcon' : ''} onClick={() => {rateTheStars(4)}}/>
         </div>
     )
 }
