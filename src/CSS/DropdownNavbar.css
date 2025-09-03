@@ -1,3 +1,16 @@
+:root {
+  --primary-colour: #00a200;
+  --content-background-colour: #e0e0e0;
+  --constrast-background-colour: #fff;
+  --light-text-colour: #fff;
+  --dark-text-colour: #0c0908;
+  --negative-colour: #ff3b30;
+  --positive-colour: #00a200;
+  --positive-background-colour: #e6f9e6;
+  --negative-background-colour: #ffe6e6;
+}
+
+
 .navbarDropdown {
     display: flex;
     flex-direction: column;
@@ -15,23 +28,22 @@
     padding: 2px;
     border-radius: 5px;
     width: 100%;
-    color: #7D7E8C;
+    color: var(--light-text-colour);
     text-decoration: none;
     font-size: 14px;
 }
 
 .navbarIcon {
     padding: 7px;
-    color: #7D7E8C;
+    color: var(--light-text-colour);
 }
 
 .activeNav {
-    background-color: #00A200;
+    background-color: var(--constrast-background-colour);
     box-shadow: 0 2px 2px #d9d9d9;
-    color: black;
+    color: var(--dark-text-colour);
 }
 
 .activeNav .navbarIcon {
-    background-color: #00A200;
-    color: black;
+    color: var(--dark-text-colour);
 }

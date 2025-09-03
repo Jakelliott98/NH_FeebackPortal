@@ -1,6 +1,18 @@
+:root {
+  --primary-colour: #00a200;
+  --content-background-colour: #e0e0e0;
+  --constrast-background-colour: #fff;
+  --light-text-colour: #fff;
+  --dark-text-colour: #0c0908;
+  --negative-colour: #ff3b30;
+  --positive-colour: #00a200;
+  --positive-background-colour: #e6f9e6;
+  --negative-background-colour: #ffe6e6;
+}
+
 .dataSnapshotDiv {
   margin-top: 15px; /*REMOVE*/
-  background-color: var(--background-colour);
+  background-color: var(--content-background-colour);
   padding: 10px 35px;
   display: flex;
   flex-direction: row;
@@ -13,19 +25,19 @@
   flex-direction: column;
   padding: 15px;
   gap: 4px;
-  background-color: #F5F5F5;
+  background-color: var(--constrast-background-colour);
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .activeDataSnap {
-  background-color: #363a3f;
-  border-radius: 5px;
-  color: #fff;
+  background-color: var(--primary-colour);
+  color: var(--light-text-colour);
 }
 
 .snapshotTitle {
   font-size: 14px;
-  color: #9F9D9D; 
+  color: var(--dark-text-colour); 
 }
 
 .snapshotData {
@@ -37,7 +49,7 @@
   flex-direction: row;
   align-items: center;
   gap: 4px;
-  background-color: #E6F5EE;
+  background-color: var(--positive-background-colour);
   border: 1px solid transparent;
   border-radius: 5px;
   width: fit-content;
