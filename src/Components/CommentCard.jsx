@@ -43,9 +43,6 @@ function RatingStars ({averageRating}) {
                 array[i] = false;
             }
         }  
-        console.log('Score: ' + rating + 'Rounded: ' + roundedRating
-        )
-        console.log(array)
         return array ; 
         }
 

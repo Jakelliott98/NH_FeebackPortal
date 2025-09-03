@@ -17,7 +17,7 @@ function GenericFilterDropdown ({resultFilter, filterbyFunction, arrayData, data
         setFilterOpen(false)
     }
 
-    let dropdownList = dataSet ? <DropdownListDisplay array={arrayData} onClick={settingFilter}/> : <RatingDisplay />;
+    let dropdownList = dataSet ? <DropdownListDisplay array={arrayData} onClick={settingFilter}/> : <RatingDisplay filterbyFunction={filterbyFunction}/>;
 
     return (
         <div className='filterComponent'>
@@ -53,7 +53,7 @@ function DropdownListDisplay ({array, onClick}) {
     )
 }
 
-function RatingDisplay () {
+function RatingDisplay ({filterbyFunction}) {
     const [stars, setStars] = useState([true, true, true, false, false])
 
     let solidStar = 'fa-star fa-solid';
@@ -68,6 +68,7 @@ function RatingDisplay () {
                 newArr[i] = false;
             }
         }
+        filterbyFunction(rating + 1)
         setStars(newArr)
     }
 

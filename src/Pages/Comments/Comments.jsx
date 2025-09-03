@@ -21,14 +21,20 @@ function Comments () {
     }, [filteredResults])
 
     const [sortBy, setSortBy] = useState('Sort By');
+    const [rating, setRating] = useState('')
     let organisedList = returnOrderedList(sortBy, filteredResults)
-    
+    let ratingList = filteredResults.filter((item) => {
+        let roundedNumber = Math.round(item.averageScore)
+        return roundedNumber == rating;
+    })
+    console.log(rating)
+
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
                 <GenericFilterDropdown dataSet={true} resultFilter={sortBy} arrayData={sortByOptions} filterbyFunction={setSortBy}/>
                 <div className='commentDropdowns'>
-                <GenericFilterDropdown dataSet={''} resultFilter={ratingsTitle} arrayData={DoctorList}/>
+                <GenericFilterDropdown dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating}/>
                 <GenericFilterDropdown dataSet={true} resultFilter={turnToState} arrayData={DoctorList} />
                 </div>
             </div>
