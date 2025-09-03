@@ -1,0 +1,70 @@
+.commentLayout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--500-spacing);
+}
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--250-spacing);
+}
+
+.commentsDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--500-spacing);
+  background-color: var(--constrast-background-colour);
+  border-radius: var(--125-spacing);
+}
+
+.positiveComment, .negativeComment {
+  padding: var(--500-spacing);
+  border-radius: var(--125-spacing);
+  display: flex;
+  flex-direction: column;
+  gap: var(--125-spacing);
+
+}
+
+.commentText {
+  font-style: italic;
+  font-size: var(--fs-small);
+}
+
+.commentsRating {
+    justify-self: baseline;
+}
+
+.commentInfo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  font-size: var(--fs-small);
+  color: grey;
+}
+
+.commentTime {
+    justify-self: end;
+}
+
+.positiveComment, .negativeComment {
+    display: flex;
+    flex-direction: column;
+    gap: var(--500-spacing);
+}
+
+.positiveComment {
+  background-color: var(--positive-background-colour);
+}
+
+.negativeComment { 
+  background-color: var(--negative-background-colour);
+}
+
+.starIcon {
+    color: #F8DE7E;
+}

@@ -41,7 +41,6 @@
 }
 
 
-
 /**/ 
 .graphDiv {
   width: 100%;
@@ -52,47 +51,4 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-}
-
-/* Comments Section*/
-
-.commentsDiv {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  padding: var(--500-spacing);
-  background-color: var(--constrast-background-colour);
-  border-radius: var(--125-spacing);
-}
-
-.positiveComment, .negativeComment {
-  padding: var(--500-spacing);
-  border-radius: var(--125-spacing);
-  display: flex;
-  flex-direction: column;
-  gap: var(--125-spacing);
-
-}
-
-.commentText {
-  font-style: italic;
-}
-
-.commentInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.commentClinician, .commentTime {
-  font-size: var(--fs-small);
-}
-
-.positiveComment {
-  background-color: var(--positive-background-colour);
-}
-
-.negativeComment { 
-  background-color: var(--negative-background-colour);
 }
