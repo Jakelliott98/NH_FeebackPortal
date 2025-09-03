@@ -20,7 +20,9 @@ function DataCard () {
                 <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Positive')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
                 <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Negative')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
             </div>
+            <div className='graphContainer'>
             <DataGraph results={filteredResults} selectedChart={selectedChart}/>
+            </div>
         </div>
     )
 }

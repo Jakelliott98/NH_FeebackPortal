@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: var(--500-spacing) 0;
 }
 
 .snapshotCard {
@@ -40,4 +41,8 @@
   border-radius: var(--125-spacing);
   width: fit-content;
   padding: 0 var(--125-spacing);
+}
+
+.graphContainer {
+  padding: var(--500-spacing) 0;
 }

@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--constrast-background-colour);
-    padding: var(--250-spacing) var(--500-spacing);
+    padding: var(--250-spacing) var(--1000-spacing);
 }
 
 .filterContainer {

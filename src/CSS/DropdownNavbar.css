@@ -1,29 +1,3 @@
-:root {
-  --primary-colour: #00a200;
-  --content-background-colour: #e0e0e0;
-  --constrast-background-colour: #fff;
-  --light-text-colour: #fff;
-  --dark-text-colour: #0c0908;
-  --negative-colour: #ff3b30;
-  --positive-colour: #00a200;
-  --positive-background-colour: #e6f9e6;
-  --negative-background-colour: #ffe6e6;
-
-  --125-spacing: 5px;
-  --250-spacing: 10px;
-  --375-spacing: 15px;
-  --500-spacing: 20px;
-  --750-spacing: 30px;
-  --1000-spacing: 40px;
-
-  --fs-small: 14px;
-  --fs-medium: 16px;
-  --fs-large: 20px;
-  --fs-xLarge: 25px;
-
-}
-
-
 .navbarDropdown {
     display: flex;
     flex-direction: column;
