@@ -5,14 +5,14 @@ import resultsContext from '../../Context/resultsContext';
 
 function Homepage () {
 
-    const { filteredResults } = useContext(resultsContext)
+    const { filteredFeedback } = useContext(resultsContext)
     
     return (
         <div className="home">
             <DataContainer />
             <div className="commentsDiv">
-                <CommentCard client={filteredResults[1]}/>
-                <CommentCard client={filteredResults[2]}/>
+                <CommentCard client={filteredFeedback[1]}/>
+                <CommentCard client={filteredFeedback[2]}/>
             </div>
         </div>
     )

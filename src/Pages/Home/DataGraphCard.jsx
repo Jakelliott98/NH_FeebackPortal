@@ -47,14 +47,16 @@ function DataGraphCard ({results, selectedChart}) {
     )
 
     function selectChart () {
-    switch (selectedChart) {
-        case 'Average': return averageChart;
-        case 'Reponses': return responseChart;
-        case 'Positive': return postiveResponsesChart;
-        case 'Negative': return negativeResponsesChart;
-        default: return averageChart;
-    }
-}
+
+        switch (selectedChart) {
+
+            case 'Average': return averageChart;
+            case 'Reponses': return responseChart;
+            case 'Positive': return postiveResponsesChart;
+            case 'Negative': return negativeResponsesChart;
+            default: return averageChart;
+
+    }}
 
     return (
             <div className='graphDiv'>

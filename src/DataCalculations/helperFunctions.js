@@ -1,17 +1,9 @@
-function returnDrList (results) {
-  const list = new Set(results.map(item => item.clinician))
-  return Array.from(list);
-}
 
-function checkAssessmentType (results, assessmentFilter) {
-  if (assessmentFilter !== 'All Assessments') {
-        return results.filter(item => item.assessmentType == assessmentFilter)
-  } else {
-    return results;
-  }
-}
+const getCliniciansWithFeedback = (results) => { return Array.from(new Set(results.map(item => item.clinician)))}
 
-function checkResponseType (results, responseFilter) {
+const filterByAssessmentType = (results, assessmentFilter) => {return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessmentType == assessmentFilter)}
+
+function filterByResponseType (results, responseFilter) {
   if (responseFilter !== 'All') {
     if (responseFilter == 'Positive') {
       return results.filter(item => item.averageScore > 2.5)
@@ -23,7 +15,7 @@ function checkResponseType (results, responseFilter) {
   }
 }
 
-function returnOrderedList (sortBy, results) {
+function getSortedFeedback (sortBy, results) {
 
   switch (sortBy) {
 
@@ -58,4 +50,4 @@ function returnOrderedList (sortBy, results) {
   }
 }
 
-export { returnOrderedList, returnDrList, checkAssessmentType, checkResponseType }
+export { getSortedFeedback, getCliniciansWithFeedback, filterByAssessmentType, filterByResponseType }

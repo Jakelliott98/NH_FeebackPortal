@@ -1,4 +1,4 @@
-import returnDateFormat from "../DataCalculations/dateConverted";
+import returnDateFormat from "../DataCalculations/formatDate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
@@ -30,31 +30,31 @@ export default CommentCard;
 
 function RatingStars ({ averageRating }) {
 
-    let stars = decideStars(averageRating)
+    let ratingScore = getRatingArray(averageRating)
 
-    function decideStars (rating) {
+    function getRatingArray (rating) { //Change naming here
 
-        let array = [false, false, false, false, false];
+        let ratingsArray = [false, false, false, false, false];
 
         for (let i = 0; i < 4; i++) {
             if (i < Math.round(rating)) {
-                array[i] = true;
+                ratingsArray[i] = true;
             } else if (i > Math.round(rating)) {
-                array[i] = false;
+                ratingsArray[i] = false;
             }
         }  
 
-        return array ; 
+        return ratingsArray ; 
         
     }
 
     return (
         <>
-            <FontAwesomeIcon icon={stars[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[0] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[1] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[2] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[3] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[4] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={ratingScore[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[0] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={ratingScore[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[1] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={ratingScore[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[2] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={ratingScore[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[3] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={ratingScore[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[4] ? 'starIcon' : ''}/>
         </>
     )
 }

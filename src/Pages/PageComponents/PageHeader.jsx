@@ -3,35 +3,37 @@ import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter'
 import '../../CSS/PageHeader.css'
 import resultsContext from '../../Context/resultsContext'
 
-let durationArray = ['Week', 'Month', '6 Months', 'Year']
-let assessmentarray = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
-let responseArray = ['All', 'Positive', 'Negative'];
+let durationOptions = ['Week', 'Month', '6 Months', 'Year']
+let assessmentOptions = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
+let satisfactionOptions = ['All', 'Positive', 'Negative'];
 
 
 function PageHeader ({title}) {
+
     return (
-    <div className='headerDiv'>
-        <h1 className='pageTitle'>{title}</h1>
-        <FilterOptions title={title} />
-    </div>
+        <div className='headerDiv'>
+            <h1 className='pageTitle'>{title}</h1>
+            <DropdownFiltersComponent title={title} />
+        </div>
     )
+
 }
 
-function FilterOptions ({title}) {
+function DropdownFiltersComponent ({title}) {
 
     const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
 
-    let positiveNegative = <DropdownFilter resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={responseArray} />
+    let satisfactionDropdownFilter = <DropdownFilter resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} />
 
     return (
-    <div className='filterContainer'>
-        <DropdownFilter dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationArray} />
-        <DropdownFilter dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentarray} />
-        {title === 'Comments' ? positiveNegative : null}
-        <button onClick={() => {
-            resetFilter()
-        }}>Reset</button>
-    </div>
+        <div className='filterContainer'>
+            <DropdownFilter dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationOptions} />
+            <DropdownFilter dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentOptions} />
+            {title === 'Comments' ? satisfactionDropdownFilter : null}
+            <button onClick={() => {resetFilter()}}>
+                Reset
+            </button>
+        </div>
     )
 }
 

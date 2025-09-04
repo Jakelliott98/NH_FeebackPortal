@@ -3,44 +3,45 @@ import CommentCard from '../../Components/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
 import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter';
-import { returnDrList, returnOrderedList } from '../../DataCalculations/helperFunctions';
+import { getCliniciansWithFeedback, getSortedFeedback } from '../../DataCalculations/helperFunctions';
 
 let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Recent', 'Oldest First']
 
-// Hold a state of the dr name etc.
-// Add a function for filtereing the results by the dr.
-
 function CommentsPage () {
 
-    const { filteredResults } = useContext(resultsContext)
+    const { filteredFeedback } = useContext(resultsContext)
     const turnToState = 'All Doctors';
     const ratingsTitle = 'Satisfaction Rating';
 
-    let DoctorList =  useMemo(() => {
-        return returnDrList(filteredResults)
-    }, [filteredResults])
+    // Remove any responses whithout a comment
+    let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
 
-    const [sortBy, setSortBy] = useState('Sort By');
+    // Collect the Dr's who have had a response for the Clinician dropdown filter
+    let cliniciansWithFeedback =  useMemo(() => {
+        return getCliniciansWithFeedback(filteredFeedback)
+    }, [filteredFeedback])
+
+    const [sortOption, setSortOption] = useState('Sort By')
     const [rating, setRating] = useState('')
-    let organisedList = returnOrderedList(sortBy, filteredResults)
-    let ratingList = filteredResults.filter((item) => {
-        let roundedNumber = Math.round(item.averageScore)
-        return roundedNumber == rating;
-    })
-    console.log(rating)
+
+    // List returning the data in a sorted manner (First state is regular list)
+    let sortedFeedback = getSortedFeedback(sortOption, feedbacksWithComment)
+
+    // List of results filtered by anything below the set Rating filter
+    let sortedFeedbackByRating = filteredFeedback.filter(item => Math.round(item.averageScore) == rating)
 
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
-                <DropdownFilter dataSet={true} resultFilter={sortBy} arrayData={sortByOptions} filterbyFunction={setSortBy}/>
+                <DropdownFilter dataSet={true} resultFilter={sortOption} arrayData={sortByOptions} filterbyFunction={setSortOption}/>
                 <div className='commentDropdowns'>
-                <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating}/>
-                <DropdownFilter dataSet={true} resultFilter={turnToState} arrayData={DoctorList} />
+                    <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating}/>
+                    <DropdownFilter dataSet={true} resultFilter={turnToState} arrayData={cliniciansWithFeedback} />
                 </div>
             </div>
             <div className='commentContainer'>
             {
-                organisedList.map((item) => {return (
+                sortedFeedback.map((item) => {return (
                     <CommentCard key={item.id} client={item}/>
                 )})
             }

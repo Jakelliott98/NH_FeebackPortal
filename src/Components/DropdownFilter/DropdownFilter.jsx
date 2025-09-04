@@ -11,14 +11,13 @@ import { DropdownListCard, RatingFilterCard } from './DropdownFilterComponents'
 function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet}) {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
-    let filterArrowIcon = isFilterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down";
     
-    function settingFilter (item) {
+    function handleFilterClick (item) {
         filterbyFunction(item)
         setIsFilterOpen(false)
     }
 
-    let dropdownList = dataSet ? <DropdownListCard array={arrayData} onClick={settingFilter}/> : <RatingFilterCard filterbyFunction={filterbyFunction}/>;
+    let dropdownList = dataSet ? <DropdownListCard array={arrayData} onClick={handleFilterClick}/> : <RatingFilterCard filterbyFunction={filterbyFunction}/>;
 
     return (
         <div className='filterComponent'>
@@ -27,7 +26,7 @@ function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet}) {
                     <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-calendar"/>
                     <p>{resultFilter}</p>
                 </div>
-                <FontAwesomeIcon className='dropdownIcon' icon={filterArrowIcon} />
+                <FontAwesomeIcon className='dropdownIcon' icon={isFilterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down"} />
             </div >
             <div className={isFilterOpen ? '' : 'hide'}>
                 {isFilterOpen ? dropdownList : null}

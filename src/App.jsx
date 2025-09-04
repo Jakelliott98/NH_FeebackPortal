@@ -1,27 +1,29 @@
 import './App.css'
 import { DropdownNav } from './Navbar/DropdownNavbar'
 import { Outlet } from 'react-router-dom'
-import logo from './SVG/NuffieldLogo.png'
+import logo from './SVG/NuffieldLogoWhite.png'
 import resultsContext from './Context/resultsContext'
 import ResultsObject from './ResultsReducer'
 import { useMemo } from 'react'
 import './CSS/DataCards.css'
 import PageHeader from './Pages/PageComponents/PageHeader'
-import { checkAssessmentType, checkResponseType } from './DataCalculations/helperFunctions'
+import { filterByAssessmentType, filterByResponseType } from './DataCalculations/helperFunctions'
 
 function App() {
 
     const { results, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
 
-    const filteredResults = useMemo(() => {
-      let newResults = results.results;
-      newResults= checkResponseType(newResults, results.responseFilter)
-      newResults = checkAssessmentType(newResults, results.assessmentFilter)
-      return newResults;
+    const filteredFeedback = useMemo(() => { //filteredFeedback
+
+      let filteredResults = results.results; //startingFeedback
+      filteredResults= filterByResponseType(filteredResults, results.responseFilter)
+      filteredResults = filterByAssessmentType(filteredResults, results.assessmentFilter)
+      return filteredResults;
+      
     }, [results])
 
   return (
-    <resultsContext.Provider value={{filteredResults, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+    <resultsContext.Provider value={{filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portalLayout'>
         <div className='sidebarDiv'>
           <div className='imageContainer'><img className='nuffieldLogo' src={logo}/></div>  
@@ -30,7 +32,7 @@ function App() {
         <div className='contentDiv'>
           <PageHeader title={'Home'}/>
           <div className='contentArea'>
-          <Outlet />
+            <Outlet />
           </div>
         </div>
       </ div>

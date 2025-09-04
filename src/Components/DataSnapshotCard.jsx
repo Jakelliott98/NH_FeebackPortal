@@ -8,7 +8,7 @@ library.add(fas, far, fab)
 
 function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart}) {
 
-    let dataTrend = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
+    let trendIcon = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
     let trendClass = `snapshotDataCard ${trend} `
     let activeClass = selectedChart === title ? 'activeDataSnap' : '';
 
@@ -17,7 +17,7 @@ function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart})
             <p className='snapshotTitle'>{title}</p>
             <p className='snapshotData'>{data}</p>
             <div className={trendClass}>
-                <FontAwesomeIcon className='snapshotDataIcon' icon={dataTrend} />
+                <FontAwesomeIcon className='snapshotDataIcon' icon={trendIcon} />
                 <p className='snapshotChange'>{change}</p>
             </div>
         </div>
