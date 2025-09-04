@@ -42,7 +42,7 @@ function CommentsPage () {
             <div className='commentContainer'>
             {
                 sortedFeedback.map((item) => {return (
-                    <CommentCard key={item.id} client={item}/>
+                    <CommentCard key={item.id} client={item} anonymous={false}/>
                 )})
             }
             </div>

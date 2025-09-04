@@ -11,8 +11,8 @@ function Homepage () {
         <div className="home">
             <DataContainer />
             <div className="commentsDiv">
-                <CommentCard client={filteredFeedback[1]}/>
-                <CommentCard client={filteredFeedback[2]}/>
+                <CommentCard client={filteredFeedback[1]} anonymous={true}/>
+                <CommentCard client={filteredFeedback[2]} anonymous={true}/>
             </div>
         </div>
     )

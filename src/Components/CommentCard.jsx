@@ -7,17 +7,17 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
-function CommentCard ({ client }) {
+function CommentCard ({ client, anonymous }) {
     
     const { comments, averageScore, assessmentType, clinician, timestamp } = client;
 
     return (
         <div className={averageScore > 2.5 ? 'positiveComment' : 'negativeComment'}>
             <p className="commentText">"{comments}"</p>
-            <div className='commentInfo'>
+            <div className={anonymous ? 'commentInfoThree' : 'commentInfo'}>
                 <p className='commentsRating'>Rating: <RatingStars averageRating={averageScore}/></p>
                 <p>{assessmentType}</p>
-                <p className='commentClinician' >{clinician}</p>
+                { anonymous ? null : <p className='commentClinician' >{clinician}</p>}
                 <p className='commentTime'>{returnDateFormat(timestamp)}</p>
             </div>
         </div>
@@ -26,7 +26,6 @@ function CommentCard ({ client }) {
 }
 
 export default CommentCard;
-
 
 function RatingStars ({ averageRating }) {
 

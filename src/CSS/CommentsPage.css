@@ -80,3 +80,12 @@
   flex-direction: row;
   gap: var(--500-spacing);
 }
+
+.commentInfoThree {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  font-size: var(--fs-small);
+  color: grey;
+}
