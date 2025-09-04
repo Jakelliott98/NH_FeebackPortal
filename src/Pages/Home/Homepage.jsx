@@ -1,16 +1,15 @@
 import { useContext } from 'react';
-import DataCard from './DataCard';
-import PageHeader from '../PageComponents/PageHeader';
+import DataContainer from './DataCard';
 import CommentCard from '../../Components/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 
-function Home () {
+function Homepage () {
 
     const { filteredResults } = useContext(resultsContext)
     
     return (
         <div className="home">
-            <DataCard />
+            <DataContainer />
             <div className="commentsDiv">
                 <CommentCard client={filteredResults[1]}/>
                 <CommentCard client={filteredResults[2]}/>
@@ -19,4 +18,4 @@ function Home () {
     )
 }
 
-export default Home;
+export default Homepage;

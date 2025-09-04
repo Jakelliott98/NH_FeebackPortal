@@ -7,56 +7,54 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
-function CommentCard ({client}) {
-
-    let isPositive = client.averageScore > 2.5 ? true : false;
-    let positiveClass = isPositive ? 'positiveComment' : 'negativeComment';
+function CommentCard ({ client }) {
     
+    const { comments, averageScore, assessmentType, clinician, timestamp } = client;
+
     return (
-        <div className={positiveClass}>
-            <p className="commentText">"{client.comments}"</p>
+        <div className={averageScore > 2.5 ? 'positiveComment' : 'negativeComment'}>
+            <p className="commentText">"{comments}"</p>
             <div className='commentInfo'>
-                <p className='commentsRating'>Rating: <RatingStars averageRating={client.averageScore}/></p>
-                <p>{client.assessmentType}</p>
-                <p className='commentClinician' >{client.clinician}</p>
-                <p className='commentTime'>{returnDateFormat(client.timestamp)}</p>
+                <p className='commentsRating'>Rating: <RatingStars averageRating={averageScore}/></p>
+                <p>{assessmentType}</p>
+                <p className='commentClinician' >{clinician}</p>
+                <p className='commentTime'>{returnDateFormat(timestamp)}</p>
             </div>
         </div>
     )
+    
 }
 
 export default CommentCard;
 
 
-function RatingStars ({averageRating}) {
+function RatingStars ({ averageRating }) {
 
     let stars = decideStars(averageRating)
 
     function decideStars (rating) {
+
         let array = [false, false, false, false, false];
-        let roundedRating = Math.round(rating)
 
         for (let i = 0; i < 4; i++) {
-            if (i < roundedRating) {
+            if (i < Math.round(rating)) {
                 array[i] = true;
-            } else if (i > roundedRating) {
+            } else if (i > Math.round(rating)) {
                 array[i] = false;
             }
         }  
+
         return array ; 
-        }
-
-
-    let solidStar = 'fa-star fa-solid';
-    let regularStar = 'fa-regular fa-star';
+        
+    }
 
     return (
         <>
-            <FontAwesomeIcon icon={stars[0] ? solidStar : regularStar} className={stars[0] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[1] ? solidStar : regularStar} className={stars[1] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[2] ? solidStar : regularStar} className={stars[2] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[3] ? solidStar : regularStar} className={stars[3] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={stars[4] ? solidStar : regularStar} className={stars[4] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[0] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[1] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[2] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[3] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon={stars[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={stars[4] ? 'starIcon' : ''}/>
         </>
     )
 }

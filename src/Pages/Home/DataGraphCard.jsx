@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
 
-function DataGraph ({results, selectedChart}) {
+function DataGraphCard ({results, selectedChart}) {
 
     const responseChart = (
         <>
@@ -63,4 +63,4 @@ function DataGraph ({results, selectedChart}) {
     )
 }
 
-export default DataGraph;
+export default DataGraphCard;

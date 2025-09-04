@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './Pages/Home/Home.jsx'
-import FeedbackReports from './Pages/Reports/Reports.jsx'
-import Comments from './Pages/Comments/Comments.jsx'
+import Homepage from './Pages/Home/Homepage.jsx'
+import FeedbackReportPage from './Pages/Reports/FeedbackReportPage.jsx'
+import CommentsPage from './Pages/Comments/CommentsPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -14,15 +14,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'Home',
-        element: <Home />
+        element: <Homepage />
       },
       {
         path: 'FeedbackReports',
-        element: <FeedbackReports />
+        element: <FeedbackReportPage />
       },
       {
         path: 'Comments',
-        element: <Comments />
+        element: <CommentsPage />
       }
     ]
   }

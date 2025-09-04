@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import {GenericFilterDropdown} from '../../Components/DropdownFilter'
-import '../../Components/PageHeader/PageHeader.css'
+import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter'
+import '../../CSS/PageHeader.css'
 import resultsContext from '../../Context/resultsContext'
 
 let durationArray = ['Week', 'Month', '6 Months', 'Year']
@@ -21,12 +21,12 @@ function FilterOptions ({title}) {
 
     const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
 
-    let positiveNegative = <GenericFilterDropdown resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={responseArray} />
+    let positiveNegative = <DropdownFilter resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={responseArray} />
 
     return (
     <div className='filterContainer'>
-        <GenericFilterDropdown dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationArray} />
-        <GenericFilterDropdown dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentarray} />
+        <DropdownFilter dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationArray} />
+        <DropdownFilter dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentarray} />
         {title === 'Comments' ? positiveNegative : null}
         <button onClick={() => {
             resetFilter()

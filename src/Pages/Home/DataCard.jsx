@@ -1,10 +1,10 @@
-import DataSnapshot from '../../Components/DataSnapshot'
+import DataSnapshotCard from '../../Components/DataSnapshotCard'
 import { sortDataTrend } from '../../DataCalculations/dataCalculations';
 import { useContext, useState } from 'react';
-import DataGraph from './Graph';
+import DataGraphCard from './DataGraphCard';
 import resultsContext from '../../Context/resultsContext';
 
-function DataCard () {
+function DataContainer () {
 
     const { filteredResults } = useContext(resultsContext)
 
@@ -15,16 +15,16 @@ function DataCard () {
     return (
         <div>
             <div className="dataSnapshotDiv">
-                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Reponses')}} title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
-                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Average')}} title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
-                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Positive')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
-                <DataSnapshot selectedChart={selectedChart} onClick={() => {setSelectedChart('Negative')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
+                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Reponses')}} title={'Reponses'} data={responseNumber} change={'2%'} trend={'positive'}/>
+                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Average')}} title={'Average'} data={averageRating + '%'} change={'14%'} trend={'negative'}/>
+                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Positive')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
+                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Negative')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
             </div>
             <div className='graphContainer'>
-            <DataGraph results={filteredResults} selectedChart={selectedChart}/>
+                <DataGraphCard results={filteredResults} selectedChart={selectedChart}/>
             </div>
         </div>
     )
 }
 
-export default DataCard;
+export default DataContainer;

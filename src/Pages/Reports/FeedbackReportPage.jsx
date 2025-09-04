@@ -1,4 +1,4 @@
-function FeedbackReports () {
+function FeedbackReportPage () {
     return (
         <>
             <p>Each Questions Average Score Table Graph</p>
@@ -8,4 +8,4 @@ function FeedbackReports () {
     )
 }
 
-export default FeedbackReports;
+export default FeedbackReportPage;
