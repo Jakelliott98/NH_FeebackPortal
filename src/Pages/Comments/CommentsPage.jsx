@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo } from 'react';
+import { useContext, useState, useMemo, useEffect } from 'react';
 import CommentCard from '../../Components/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
@@ -13,25 +13,34 @@ function CommentsPage () {
     const ClinicianTitle = 'All Doctors';
     const ratingsTitle = 'Satisfaction Rating';
 
-    // Remove any responses whithout a comment
+    // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
 
-    // Collect the Dr's who have had a response for the Clinician dropdown filter
+    // Collect the clinicians who have had a response (Used for the Clinician dropdown filter)
     let cliniciansWithFeedback =  useMemo(() => {
-        return getCliniciansWithFeedback(filteredFeedback)
-    }, [filteredFeedback])
+        return getCliniciansWithFeedback(feedbacksWithComment)
+    }, [feedbacksWithComment])
 
     const [sortOption, setSortOption] = useState('Sort By')
     const [rating, setRating] = useState('')
     const [selectedClinicians, setSelectedClinicians] = useState([]);
+    const [activeFilters, setActiveFilters] = useState({byClinician: false, byRating: false,})
     
+    useEffect(() => {
+        if (rating == '') {
+            setActiveFilters((prev) => {return {...prev, byRating: false,}})
+        } else {
+            setActiveFilters((prev) => {return {...prev, byRating: true,}})
+        }
+        if (selectedClinicians.length == 0) {
+            setActiveFilters((prev) => {return {...prev, byClinician: false,}})
+        } else {
+            setActiveFilters((prev) => {return {...prev, byClinician: true,}})
+        }
+    }, [rating, selectedClinicians])
+
     // List returning the data in a sorted manner (First state is regular list)
-    let sortedFeedback = getSortedFeedback(sortOption, feedbacksWithComment)
-
-    // List of results filtered by anything below the set Rating filter
-    let filteredFeedbackByRating = filteredFeedback.filter(item => Math.round(item.averageScore) == rating)
-
-    let filteredByClinician = filteredFeedback.filter(item =>  selectedClinicians.includes(item.clinician));
+    let sortedFeedback = getSortedFeedback(sortOption, filterFeedback(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
     function addSelectedClinician (clinician) {
         setSelectedClinicians((prev) => {
@@ -54,13 +63,32 @@ function CommentsPage () {
             </div>
             <div className='commentContainer'>
             {
-                filteredByClinician.map((item) => {return (
+                sortedFeedback.map((item) => {return (
                     <CommentCard key={item.id} client={item} anonymous={false}/>
                 )})
             }
             </div>
         </div>
     )
+}
+
+function filterFeedback (feedbackList, state, rating, selectedClinicians) {
+
+    if (state.byRating == false && state.byClinician == false) {
+        return feedbackList;
+    } else {
+        let list = feedbackList;
+        if (state.byRating == true) {
+            // Filter the list by rating
+            list = list.filter(item => Math.round(item.averageScore) == rating)
+        }
+        if (state.byClinician === true) {
+            // Filter the list by selected clinician
+            list = list.filter(item =>  selectedClinicians.includes(item.clinician));
+        }
+        return list;
+    }
+
 }
 
 export default CommentsPage;
