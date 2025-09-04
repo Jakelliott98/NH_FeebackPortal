@@ -10,7 +10,7 @@ let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Re
 function CommentsPage () {
 
     const { filteredFeedback } = useContext(resultsContext)
-    const turnToState = 'All Doctors';
+    const ClinicianTitle = 'All Doctors';
     const ratingsTitle = 'Satisfaction Rating';
 
     // Remove any responses whithout a comment
@@ -23,12 +23,25 @@ function CommentsPage () {
 
     const [sortOption, setSortOption] = useState('Sort By')
     const [rating, setRating] = useState('')
-
+    const [selectedClinicians, setSelectedClinicians] = useState([]);
+    
     // List returning the data in a sorted manner (First state is regular list)
     let sortedFeedback = getSortedFeedback(sortOption, feedbacksWithComment)
 
     // List of results filtered by anything below the set Rating filter
-    let sortedFeedbackByRating = filteredFeedback.filter(item => Math.round(item.averageScore) == rating)
+    let filteredFeedbackByRating = filteredFeedback.filter(item => Math.round(item.averageScore) == rating)
+
+    let filteredByClinician = filteredFeedback.filter(item =>  selectedClinicians.includes(item.clinician));
+
+    function addSelectedClinician (clinician) {
+        setSelectedClinicians((prev) => {
+            if (prev.includes(clinician)) {
+                return prev.filter(item => item !== clinician)
+            } else {
+                return [...prev, clinician]
+            }
+        })
+    }
 
     return (
         <div className='commentLayout'>
@@ -36,12 +49,12 @@ function CommentsPage () {
                 <DropdownFilter dataSet={true} resultFilter={sortOption} arrayData={sortByOptions} filterbyFunction={setSortOption}/>
                 <div className='commentDropdowns'>
                     <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating}/>
-                    <DropdownFilter dataSet={true} resultFilter={turnToState} arrayData={cliniciansWithFeedback} />
+                    <DropdownFilter dataSet={true} filterbyFunction={addSelectedClinician} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback}/>
                 </div>
             </div>
             <div className='commentContainer'>
             {
-                sortedFeedback.map((item) => {return (
+                filteredByClinician.map((item) => {return (
                     <CommentCard key={item.id} client={item} anonymous={false}/>
                 )})
             }
