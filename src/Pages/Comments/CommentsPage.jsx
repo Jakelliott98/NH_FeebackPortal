@@ -21,13 +21,13 @@ function CommentsPage () {
     // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
 
-    // Collect the clinicians who have had a response (Used for the Clinician dropdown filter)
-    let cliniciansWithFeedback =  useMemo(() => {
-        return getCliniciansWithFeedback(feedbacksWithComment)
-    }, [feedbacksWithComment])
-
     // List returning the data in a sorted manner (First state is regular list)
     let sortedFeedback = getSortedFeedback(sortOption, filterFeedback(feedbacksWithComment, activeFilters, rating, selectedClinicians))
+
+    // Collect the clinicians who have had a response (Used for the Clinician dropdown filter)
+    let cliniciansWithFeedback =  useMemo(() => {
+        return getCliniciansWithFeedback(sortedFeedback)
+    }, [sortedFeedback])
 
     return (
         <div className='commentLayout'>
