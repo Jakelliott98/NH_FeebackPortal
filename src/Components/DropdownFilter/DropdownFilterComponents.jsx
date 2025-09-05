@@ -4,7 +4,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
-import { useState } from 'react'
 import { useContext } from 'react'
 import resultsContext from '../../Context/resultsContext'
 
@@ -36,7 +35,6 @@ function DropdownListCard ({array, onClick, dropdownType, type}) {
 
 function RatingFilterCard ({filterbyFunction, rating}) {
 
-
     let isStared = [false, false, false, false, false]
     
     for (let i = 0; i < 6; i++) {
@@ -46,22 +44,7 @@ function RatingFilterCard ({filterbyFunction, rating}) {
                 isStared[i -1] = false;
             }
         }
-/*
-    function filterByRating (rating) {
 
-        let newArr = [false, false, false, false, false]
-        for (let i = 0; i < 5; i++) {
-            if (i <= rating) {
-                newArr[i] = true;
-            } else {
-                newArr[i] = false;
-            }
-        }
-
-        setIsStared(newArr)
-
-    }
-*/
     return (
         <div className='dropdownOptionComponent'>
             <FontAwesomeIcon icon={isStared[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[0] ? 'starIcon' : ''} onClick={() => {filterbyFunction(1)}}/>

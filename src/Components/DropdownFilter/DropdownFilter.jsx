@@ -17,7 +17,7 @@ function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet, dr
         setIsFilterOpen(false)
     }
 
-    let dropdownList = dataSet ? <DropdownListCard dropdownType={dropdownType} array={arrayData} onClick={handleFilterClick} type={type}/> : <RatingFilterCard filterbyFunction={filterbyFunction} rating={rating}/>;
+    let dropdownList = dataSet ? <DropdownListCard dropdownType={dropdownType} array={arrayData} onClick={handleFilterClick} type={type}/> : <RatingFilterCard filterbyFunction={handleFilterClick} rating={rating}/>;
 
     return (
         <div className='filterComponent'>
