@@ -35,7 +35,7 @@ function RatingStars ({ averageRating }) {
 
         let ratingsArray = [false, false, false, false, false];
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 5; i++) {
             if (i < Math.round(rating)) {
                 ratingsArray[i] = true;
             } else if (i > Math.round(rating)) {

@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo, useEffect } from 'react';
+import { useContext, useMemo } from 'react';
 import CommentCard from '../../Components/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
@@ -13,7 +13,9 @@ function CommentsPage () {
     const { filteredFeedback } = useContext(resultsContext)
     const ClinicianTitle = 'All Doctors';
     const ratingsTitle = 'Satisfaction Rating';
-    let { changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters } = useCommentFilters();
+    const { changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters } = useCommentFilters();
+    const { sortOption, rating, selectedClinicians, activeFilters } = commentFilters;
+
 
     // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
@@ -24,16 +26,15 @@ function CommentsPage () {
     }, [feedbacksWithComment])
 
     // List returning the data in a sorted manner (First state is regular list)
-    let sortedFeedback = getSortedFeedback(commentFilters.sortOption, filterFeedback(feedbacksWithComment, commentFilters.activeFilters, commentFilters.rating, commentFilters.selectedClinicians))
-
+    let sortedFeedback = getSortedFeedback(sortOption, filterFeedback(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
-                <DropdownFilter dataSet={true} resultFilter={commentFilters.sortOption} arrayData={sortByOptions} filterbyFunction={changeSortOption}/>
+                <DropdownFilter dataSet={true} resultFilter={sortOption} arrayData={sortByOptions} filterbyFunction={changeSortOption}/>
                 <div className='commentDropdowns'>
-                    <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={changeRatingFilter} />
-                    <DropdownFilter dataSet={true} filterbyFunction={addClinicianFilter} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback} type={'array'} dropdownType={commentFilters.selectedClinicians}/>
+                    <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={changeRatingFilter} rating={rating} />
+                    <DropdownFilter dataSet={true} filterbyFunction={addClinicianFilter} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback} type={'array'} dropdownType={selectedClinicians}/>
                     <button onClick={() => {resetFilters()}}>Reset</button>
                 </div>
             </div>

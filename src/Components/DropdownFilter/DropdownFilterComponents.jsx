@@ -34,10 +34,19 @@ function DropdownListCard ({array, onClick, dropdownType, type}) {
     
 }
 
-function RatingFilterCard ({filterbyFunction}) {
+function RatingFilterCard ({filterbyFunction, rating}) {
 
-    const [isStared, setIsStared] = useState([false, false, false, false, false])
 
+    let isStared = [false, false, false, false, false]
+    
+    for (let i = 0; i < 6; i++) {
+            if (i <= rating) {
+                isStared[i - 1] = true;
+            } else {
+                isStared[i -1] = false;
+            }
+        }
+/*
     function filterByRating (rating) {
 
         let newArr = [false, false, false, false, false]
@@ -49,18 +58,17 @@ function RatingFilterCard ({filterbyFunction}) {
             }
         }
 
-        filterbyFunction(rating + 1)
         setIsStared(newArr)
 
     }
-
+*/
     return (
         <div className='dropdownOptionComponent'>
-            <FontAwesomeIcon icon={isStared[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[0] ? 'starIcon' : ''} onClick={() => {filterByRating(0)}}/>
-            <FontAwesomeIcon icon={isStared[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[1] ? 'starIcon' : ''} onClick={() => {filterByRating(1)}}/>
-            <FontAwesomeIcon icon={isStared[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[2] ? 'starIcon' : ''} onClick={() => {filterByRating(2)}}/>
-            <FontAwesomeIcon icon={isStared[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[3] ? 'starIcon' : ''} onClick={() => {filterByRating(3)}}/>
-            <FontAwesomeIcon icon={isStared[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[4] ? 'starIcon' : ''} onClick={() => {filterByRating(4)}}/>
+            <FontAwesomeIcon icon={isStared[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[0] ? 'starIcon' : ''} onClick={() => {filterbyFunction(1)}}/>
+            <FontAwesomeIcon icon={isStared[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[1] ? 'starIcon' : ''} onClick={() => {filterbyFunction(2)}}/>
+            <FontAwesomeIcon icon={isStared[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[2] ? 'starIcon' : ''} onClick={() => {filterbyFunction(3)}}/>
+            <FontAwesomeIcon icon={isStared[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[3] ? 'starIcon' : ''} onClick={() => {filterbyFunction(4)}}/>
+            <FontAwesomeIcon icon={isStared[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[4] ? 'starIcon' : ''} onClick={() => {filterbyFunction(5)}}/>
         </div>
     )
 }
