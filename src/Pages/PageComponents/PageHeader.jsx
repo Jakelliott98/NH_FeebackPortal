@@ -3,7 +3,7 @@ import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter'
 import '../../CSS/PageHeader.css'
 import resultsContext from '../../Context/resultsContext'
 
-let durationOptions = ['Week', 'Month', '6 Months', 'Year']
+let durationOptions = ['July', 'August', 'September', 'October']
 let assessmentOptions = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
 let satisfactionOptions = ['All', 'Positive', 'Negative'];
 
@@ -23,12 +23,12 @@ function DropdownFiltersComponent ({title}) {
 
     const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
 
-    let satisfactionDropdownFilter = <DropdownFilter resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} />
+    let satisfactionDropdownFilter = <DropdownFilter resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} dropdownType={'responseFilter'} type={'variable'}/>
 
     return (
         <div className='filterContainer'>
-            <DropdownFilter dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationOptions} />
-            <DropdownFilter dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentOptions} />
+            <DropdownFilter dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={durationOptions} dropdownType={'durationFilter'} type={'variable'}/>
+            <DropdownFilter dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentOptions} dropdownType={'assessmentFilter'} type={'variable'}/>
             {title === 'Comments' ? satisfactionDropdownFilter : null}
             <button onClick={() => {resetFilter()}}>
                 Reset

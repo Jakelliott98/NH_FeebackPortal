@@ -8,7 +8,7 @@ import { useState } from "react"
 import '../../CSS/DropdownFilter.css'
 import { DropdownListCard, RatingFilterCard } from './DropdownFilterComponents'
 
-function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet}) {
+function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet, dropdownType, type}) {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     
@@ -17,7 +17,7 @@ function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet}) {
         setIsFilterOpen(false)
     }
 
-    let dropdownList = dataSet ? <DropdownListCard array={arrayData} onClick={handleFilterClick}/> : <RatingFilterCard filterbyFunction={filterbyFunction}/>;
+    let dropdownList = dataSet ? <DropdownListCard dropdownType={dropdownType} array={arrayData} onClick={handleFilterClick} type={type}/> : <RatingFilterCard filterbyFunction={filterbyFunction}/>;
 
     return (
         <div className='filterComponent'>

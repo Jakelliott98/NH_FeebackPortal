@@ -83,3 +83,7 @@
 .dropdownOption:hover {
     background-color: var(--positive-background-colour);
 }
+
+.active {
+    background-color: var(--positive-background-colour);
+}

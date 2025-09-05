@@ -57,8 +57,8 @@ function CommentsPage () {
             <div className='CommentFilters'>
                 <DropdownFilter dataSet={true} resultFilter={sortOption} arrayData={sortByOptions} filterbyFunction={setSortOption}/>
                 <div className='commentDropdowns'>
-                    <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating}/>
-                    <DropdownFilter dataSet={true} filterbyFunction={addSelectedClinician} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback}/>
+                    <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating} />
+                    <DropdownFilter dataSet={true} filterbyFunction={addSelectedClinician} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback} type={'array'} dropdownType={selectedClinicians}/>
                 </div>
             </div>
             <div className='commentContainer'>
