@@ -52,6 +52,12 @@ function CommentsPage () {
         })
     }
 
+    function resetCommentFilters () {
+        setSelectedClinicians([]);
+        setRating('');
+        setSortOption('Sort By')
+    }
+
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
@@ -59,6 +65,7 @@ function CommentsPage () {
                 <div className='commentDropdowns'>
                     <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={setRating} />
                     <DropdownFilter dataSet={true} filterbyFunction={addSelectedClinician} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback} type={'array'} dropdownType={selectedClinicians}/>
+                    <button onClick={() => {resetCommentFilters()}}>Reset</button>
                 </div>
             </div>
             <div className='commentContainer'>
