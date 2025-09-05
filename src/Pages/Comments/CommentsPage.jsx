@@ -10,12 +10,13 @@ let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Re
 
 function CommentsPage () {
 
-    const { filteredFeedback } = useContext(resultsContext)
+    const { filteredFeedback, setCurrentPage } = useContext(resultsContext)
     const ClinicianTitle = 'All Doctors';
     const ratingsTitle = 'Satisfaction Rating';
     const { changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters } = useCommentFilters();
     const { sortOption, rating, selectedClinicians, activeFilters } = commentFilters;
 
+    setCurrentPage('Comments');
 
     // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')

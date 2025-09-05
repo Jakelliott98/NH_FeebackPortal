@@ -5,8 +5,10 @@ import resultsContext from '../../Context/resultsContext';
 
 function Homepage () {
 
-    const { filteredFeedback } = useContext(resultsContext)
+    const { filteredFeedback, setCurrentPage } = useContext(resultsContext)
     
+    setCurrentPage('Home');
+
     return (
         <div className="home">
             <DataContainer />

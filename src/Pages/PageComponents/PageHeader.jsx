@@ -23,7 +23,7 @@ function DropdownFiltersComponent ({title}) {
 
     const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
 
-    let satisfactionDropdownFilter = <DropdownFilter resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} dropdownType={'responseFilter'} type={'variable'}/>
+    let satisfactionDropdownFilter = <DropdownFilter dataSet={true} resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} dropdownType={'responseFilter'} type={'variable'}/>
 
     return (
         <div className='filterContainer'>

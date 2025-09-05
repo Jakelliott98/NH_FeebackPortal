@@ -1,4 +1,12 @@
+import { useContext } from "react";
+import resultsContext from "../../Context/resultsContext";
+
 function FeedbackReportPage () {
+
+    const { setCurrentPage } = useContext(resultsContext)
+
+    setCurrentPage('Feedback Reports')
+
     return (
         <>
             <p>Each Questions Average Score Table Graph</p>

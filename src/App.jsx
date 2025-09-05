@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import logo from './SVG/NuffieldLogoWhite.png'
 import resultsContext from './Context/resultsContext'
 import ResultsObject from './Hooks/useResultsReducer'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import './CSS/DataCards.css'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import { filterByAssessmentType, filterByResponseType } from './DataCalculations/helperFunctions'
@@ -22,15 +22,17 @@ function App() {
       
     }, [results])
 
+    const [currentPage, setCurrentPage] = useState('Home')
+
   return (
-    <resultsContext.Provider value={{filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+    <resultsContext.Provider value={{setCurrentPage, filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portalLayout'>
         <div className='sidebarDiv'>
           <div className='imageContainer'><img className='nuffieldLogo' src={logo}/></div>  
           <DropdownNav />
         </div>
         <div className='contentDiv'>
-          <PageHeader title={'Home'}/>
+          <PageHeader title={currentPage}/>
           <div className='contentArea'>
             <Outlet />
           </div>
