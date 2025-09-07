@@ -11,8 +11,10 @@
 
 .contentDiv {
     flex: 1;
-    height: 100%;
     background-color: var(--content-background-colour);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 .imageContainer {
@@ -27,6 +29,7 @@
 }
 
 .contentArea {
+    height: 100%;
     background-color: var(--content-background-colour);
     padding: var(--500-spacing) var(--1000-spacing);
 }

@@ -10,7 +10,7 @@ function Homepage () {
     setCurrentPage('Home');
 
     return (
-        <div className="home">
+        <div>
             <DataContainer />
             <div className="commentsDiv">
                 <CommentCard client={filteredFeedback[1]} anonymous={true}/>
