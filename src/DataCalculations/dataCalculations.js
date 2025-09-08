@@ -1,3 +1,4 @@
+import { getCliniciansWithFeedback } from "./helperFunctions";
 
 
 function getDataTrends (data) {
@@ -12,6 +13,28 @@ function getDataTrends (data) {
     
 }
 
+function getClinicianResponses (feedback) {
+
+    let clinicianCount = feedback.map(item => item.clinician)
+    let clinicianCountObj = [];
+
+    for (let i = 0; i < clinicianCount.length; i++) {
+        
+        if (clinicianCountObj.some(e => e.name == clinicianCount[i])) {
+            let index = clinicianCountObj.findIndex(e => e.name === clinicianCount[i]);
+            clinicianCountObj[index].count += 1;
+        } else {
+        let clinicianObject = {
+            name: clinicianCount[i],
+            count: 0,
+        }
+        clinicianCountObj.push(clinicianObject)
+    }}
+
+    return clinicianCountObj.sort((a, b) => b.count - a.count);
+
+}
+
 function getAverageRating (data) {
 
     let totalScore = data
@@ -21,4 +44,4 @@ function getAverageRating (data) {
 
 }
 
-export { getDataTrends }
+export { getDataTrends, getClinicianResponses }

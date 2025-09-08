@@ -37,8 +37,6 @@ function useCommentFilters () {
 
     function resetFilters () {dispatch({type:'resetFilters'})}
 
-    console.log(commentFilters.activeFilters)
-
     return {changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters};
 
 }

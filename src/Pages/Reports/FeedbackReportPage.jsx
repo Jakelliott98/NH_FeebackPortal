@@ -1,14 +1,16 @@
-import { useContext } from "react";
-import resultsContext from "../../Context/resultsContext";
 import DataSnapshotCard from "../../Components/DataSnapshotCard"
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
+import { getClinicianResponses } from "../../DataCalculations/dataCalculations";
+import { useContext } from "react";
+import resultsContext from "../../Context/resultsContext";
 
 function FeedbackReportPage () {
 
-    const { setCurrentPage } = useContext(resultsContext)
+    const { results } = useContext(resultsContext)
+    let resultArray = results.results;
 
-    setCurrentPage('Feedback Reports')
+    let clinicianResponse = getClinicianResponses(resultArray);
 
     return (
         <div className='reportPageSection'>
@@ -43,7 +45,7 @@ function FeedbackReportPage () {
                 <div className='bottomCentre feedbackCard'>
                     <h1>Monthly Top Performers</h1>
                     <div className='graphDiv'>
-                        <ClinicianLeaderBoard />
+                        <ClinicianLeaderBoard results={clinicianResponse}/>
                     </div>
                 </div>
                 <div className='bottomRight feedbackCard'>
@@ -64,28 +66,29 @@ export default FeedbackReportPage;
 
 
 
-function ClinicianLeaderBoard () {
+function ClinicianLeaderBoard ({results}) {
+    console.log(results[0])
     return (
         <ul className='clinicianLeaderboard'>
             <li className='leaderboardItem'>
-                <p>Dr. Lee</p>
-                <p>3.4 Avg</p>
+                <p>{results[0].name}</p>
+                <p>{results[0].count}</p>
             </li>
             <li className='leaderboardItem'>
-                <p>Dr. Lee</p>
-                <p>3.4 Avg</p>
+                <p>{results[1].name}</p>
+                <p>{results[1].count}</p>
             </li>
             <li className='leaderboardItem'>
-                <p>Dr. Lee</p>
-                <p>3.4 Avg</p>
+                <p>{results[2].name}</p>
+                <p>{results[2].count}</p>
             </li>
             <li className='leaderboardItem'>
-                <p>Dr. Lee</p>
-                <p>3.4 Avg</p>
+                <p>{results[3].name}</p>
+                <p>{results[3].count}</p>
             </li>
             <li className='leaderboardItem'>
-                <p>Dr. Lee</p>
-                <p>3.4 Avg</p>
+                <p>{results[4].name}</p>
+                <p>{results[4].count}</p>
             </li>
         </ul>
     )
