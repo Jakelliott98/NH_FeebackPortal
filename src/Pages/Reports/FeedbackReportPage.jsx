@@ -45,7 +45,7 @@ function FeedbackReportPage () {
                 <div className='bottomCentre feedbackCard'>
                     <h1>Monthly Top Performers</h1>
                     <div className='graphDiv'>
-                        <ClinicianLeaderBoard results={report} value={''}/>
+                        <ClinicianLeaderBoard results={report} value={'average'}/>
                     </div>
                 </div>
                 <div className='bottomRight feedbackCard'>
@@ -64,9 +64,8 @@ function FeedbackReportPage () {
 
 export default FeedbackReportPage;
 
-
-
 function ClinicianLeaderBoard ({results, value}) {
+
     let topFiveClinicians = results.slice(0 , 5)
     let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 
@@ -76,15 +75,13 @@ function ClinicianLeaderBoard ({results, value}) {
                 return (
                 <li className='leaderboardItem' key={item.name}>
                     <p>{item.name}</p>
-                    <p>{value === 'average' ? item.average : item.count}</p>
+                    <p>
+                        {value === 'average' ? item.average : item.count} 
+                        {value === 'average' ? <span>avg</span> : null}
+                    </p>
                 </li>
                 )
             })}
         </ul>
     )
 }
-
-<li>
-    <p>Dr. Lee</p>
-    <p>3.4 Avg</p>
-</li>
