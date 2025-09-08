@@ -1,4 +1,4 @@
-import returnDateFormat from "../DataCalculations/formatDate";
+import {formatDate} from "../DataCalculations/formatDate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
@@ -18,7 +18,7 @@ function CommentCard ({ client, anonymous }) {
                 <p className='commentsRating'>Rating: <RatingStars averageRating={averageScore}/></p>
                 <p>{assessmentType}</p>
                 { anonymous ? null : <p className='commentClinician' >{clinician}</p>}
-                <p className='commentTime'>{returnDateFormat(timestamp)}</p>
+                <p className='commentTime'>{formatDate(timestamp)}</p>
             </div>
         </div>
     )

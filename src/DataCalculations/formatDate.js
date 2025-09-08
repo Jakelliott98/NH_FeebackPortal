@@ -26,4 +26,9 @@ function formatDate (date) {
   
 }
 
-export default formatDate;
+function getDateMonth (date) {
+  let formattedDate = new Date(date);
+  return formattedDate.getMonth();
+}
+
+export { formatDate, getDateMonth, months };

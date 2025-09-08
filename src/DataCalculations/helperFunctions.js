@@ -1,3 +1,5 @@
+import { getDateMonth, months } from './formatDate'
+
 
 const getCliniciansWithFeedback = (results) => { return Array.from(new Set(results.map(item => item.clinician)))}
 
@@ -50,4 +52,15 @@ function getSortedFeedback (sortBy, results) {
   }
 }
 
-export { getSortedFeedback, getCliniciansWithFeedback, filterByAssessmentType, filterByResponseType }
+function getActiveMonths (data) {
+  let numberedMonths = Array.from(new Set(data.map(item => getDateMonth(item.timestamp))));
+  numberedMonths.sort((a, b) => a - b)
+  let labeledMonths = numberedMonths.map(item => months[item])
+  return labeledMonths;
+}
+
+function filterByMonth (data) {
+
+}
+
+export { getSortedFeedback, getCliniciansWithFeedback, filterByAssessmentType, filterByResponseType, getActiveMonths }
