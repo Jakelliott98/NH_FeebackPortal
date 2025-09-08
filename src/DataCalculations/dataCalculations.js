@@ -13,25 +13,27 @@ function getDataTrends (data) {
     
 }
 
-function getClinicianResponses (feedback) {
+function getClinicianReport (feedback) {
 
-    let clinicianCount = feedback.map(item => item.clinician)
-    let clinicianCountObj = [];
+    let clinicianCount = getCliniciansWithFeedback(feedback)
+    let finalReport = clinicianCount.map(item => getCliniciansAverageRating(feedback, item));
 
-    for (let i = 0; i < clinicianCount.length; i++) {
-        
-        if (clinicianCountObj.some(e => e.name == clinicianCount[i])) {
-            let index = clinicianCountObj.findIndex(e => e.name === clinicianCount[i]);
-            clinicianCountObj[index].count += 1;
-        } else {
-        let clinicianObject = {
-            name: clinicianCount[i],
-            count: 0,
-        }
-        clinicianCountObj.push(clinicianObject)
-    }}
+    return finalReport;
 
-    return clinicianCountObj.sort((a, b) => b.count - a.count);
+}
+
+function getCliniciansAverageRating (feedback, clinician) {
+
+    let totalResponses = feedback.filter(item => item.clinician == clinician);
+    let averageScore = totalResponses.map(item => item.averageScore).reduce((accumulator, current) => accumulator + current, 0) / totalResponses.length
+    let roundedAverage = Math.round(averageScore);
+    let clinicianPortal = {
+        name: clinician,
+        count: totalResponses.length,
+        average: roundedAverage,
+    }
+
+    return clinicianPortal;
 
 }
 
@@ -44,4 +46,4 @@ function getAverageRating (data) {
 
 }
 
-export { getDataTrends, getClinicianResponses }
+export { getDataTrends, getClinicianReport }

@@ -1,7 +1,7 @@
 import DataSnapshotCard from "../../Components/DataSnapshotCard"
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
-import { getClinicianResponses } from "../../DataCalculations/dataCalculations";
+import { getClinicianReport } from "../../DataCalculations/dataCalculations";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
 
@@ -10,7 +10,7 @@ function FeedbackReportPage () {
     const { results } = useContext(resultsContext)
     let resultArray = results.results;
 
-    let clinicianResponse = getClinicianResponses(resultArray);
+    let report = getClinicianReport(resultArray)
 
     return (
         <div className='reportPageSection'>
@@ -45,7 +45,7 @@ function FeedbackReportPage () {
                 <div className='bottomCentre feedbackCard'>
                     <h1>Monthly Top Performers</h1>
                     <div className='graphDiv'>
-                        <ClinicianLeaderBoard results={clinicianResponse}/>
+                        <ClinicianLeaderBoard results={report} value={''}/>
                     </div>
                 </div>
                 <div className='bottomRight feedbackCard'>
@@ -66,30 +66,20 @@ export default FeedbackReportPage;
 
 
 
-function ClinicianLeaderBoard ({results}) {
-    console.log(results[0])
+function ClinicianLeaderBoard ({results, value}) {
+    let topFiveClinicians = results.slice(0 , 5)
+    let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
+
     return (
         <ul className='clinicianLeaderboard'>
-            <li className='leaderboardItem'>
-                <p>{results[0].name}</p>
-                <p>{results[0].count}</p>
-            </li>
-            <li className='leaderboardItem'>
-                <p>{results[1].name}</p>
-                <p>{results[1].count}</p>
-            </li>
-            <li className='leaderboardItem'>
-                <p>{results[2].name}</p>
-                <p>{results[2].count}</p>
-            </li>
-            <li className='leaderboardItem'>
-                <p>{results[3].name}</p>
-                <p>{results[3].count}</p>
-            </li>
-            <li className='leaderboardItem'>
-                <p>{results[4].name}</p>
-                <p>{results[4].count}</p>
-            </li>
+            {readyResults.map((item) => {
+                return (
+                <li className='leaderboardItem' key={item.name}>
+                    <p>{item.name}</p>
+                    <p>{value === 'average' ? item.average : item.count}</p>
+                </li>
+                )
+            })}
         </ul>
     )
 }
