@@ -1,18 +1,5 @@
 import { getCliniciansWithFeedback } from "./helperFunctions";
 
-
-function getDataTrends (data) {
-
-    return {
-        averageRating: getAverageRating(data),
-        positiveData: data.filter(item => item.averageScore > 2.5),
-        negativeData: data.filter(item => item.averageScore < 2.5),
-        positivePercentage: ((data.filter(item => item.averageScore > 2.5).length / data.length) * 100).toFixed(0),
-        negativePercentage: ((data.filter(item => item.averageScore < 2.5).length / data.length) * 100).toFixed(0), 
-    }
-    
-}
-
 function getClinicianReport (feedback) {
 
     let clinicianCount = getCliniciansWithFeedback(feedback)
@@ -37,13 +24,35 @@ function getCliniciansAverageRating (feedback, clinician) {
 
 }
 
-function getAverageRating (data) {
+// NEW CALCULATIONS
+
+function getNumberOfResponses (feedback) {
+    return feedback.length;
+};
+
+function calculateAverageRating (data) {
 
     let totalScore = data
-    .map((item) => {return item.averageScore})
-    .reduce((a, b) => a + b, 0);
+        .map((item) => {return item.averageScore})
+        .reduce((a, b) => a + b, 0);
     return ((totalScore / (data.length * 5)) * 100).toFixed(0)
 
 }
 
-export { getDataTrends, getClinicianReport }
+function calculateSatisfactionPercentage (data) {
+    return {
+        positiveData: data.filter(item => item.averageScore > 2.5),
+        negativeData: data.filter(item => item.averageScore < 2.5),
+        positivePercentage: ((data.filter(item => item.averageScore > 2.5).length / data.length) * 100).toFixed(0),
+        negativePercentage: ((data.filter(item => item.averageScore < 2.5).length / data.length) * 100).toFixed(0), 
+    }
+}
+
+function filterQuestionResponses (data, question) {
+    let dataArray = data.map(item => item.responses[question]);
+    let totalScore = dataArray.reduce((a, b) => a + b, 0)
+    return ((totalScore / (dataArray.length * 5)) * 100).toFixed(0);
+}
+
+
+export { getClinicianReport, getNumberOfResponses, calculateAverageRating, calculateSatisfactionPercentage, filterQuestionResponses }

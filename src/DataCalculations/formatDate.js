@@ -20,7 +20,7 @@ function formatDate (date) {
   let year = formattedDate.getFullYear();
   let month = formattedDate.getMonth()
   let monthText = months[month]
-  let day =formattedDate.getDate()
+  let day = formattedDate.getDate()
 
   return day + ' ' + monthText + ' ' + year;
   

@@ -4,22 +4,18 @@ import DataGraphCard from "../Home/DataGraphCard";
 import { getClinicianReport } from "../../DataCalculations/dataCalculations";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
+import { calculateSatisfactionPercentage, filterQuestionResponses } from "../../DataCalculations/dataCalculations";
 
 function FeedbackReportPage () {
 
-    const { results } = useContext(resultsContext)
-    let resultArray = results.results;
+    const { filteredFeedback } = useContext(resultsContext)
 
-    let report = getClinicianReport(resultArray)
+    let report = getClinicianReport(filteredFeedback)
+    let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
+    let questionAverage = filterQuestionResponses(filteredFeedback, 'q1')
 
     return (
         <div className='reportPageSection'>
-            <div className="dataSnapshotDiv">
-                <DataSnapshotCard />
-                <DataSnapshotCard />
-                <DataSnapshotCard />
-                <DataSnapshotCard />
-            </div>
             <div className="dataFeedbackSection">
                 <div className='topLeft feedbackCard'>
                     <h1>Average Satisfaction Score</h1>
@@ -37,7 +33,7 @@ function FeedbackReportPage () {
                     <h1>Satisfied Responses</h1>
                     <div className='graphDiv'>
                         <div className='graph'>
-                            <p>95%</p>
+                            <p>{positivePercentage}%</p>
                             <p>Satisfaction</p>
                         </div>
                     </div>                    
@@ -52,7 +48,7 @@ function FeedbackReportPage () {
                     <h1>Question 1</h1>
                     <div className='graphDiv'>
                         <div className='graph'>
-                            <p>95%</p>
+                            <p>{questionAverage}%</p>
                             <p>Satisfaction</p>
                         </div>
                     </div>
