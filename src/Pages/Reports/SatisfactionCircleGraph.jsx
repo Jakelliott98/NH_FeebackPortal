@@ -21,7 +21,7 @@ function SatisfactionCircleGraph ({positivePercentage}) {
 
     return (
         <div className='bottomLeft feedbackCard'>
-            <DropdownFilter className='dataTitle' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+            <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
             <div className='dataContainerFeedback'>
                 <div className='graph'>
                     <p>{responseData}%</p>

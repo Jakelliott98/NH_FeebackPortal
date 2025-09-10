@@ -17,7 +17,7 @@ function DropdownQuestionComponent () {
 
     return (
                 <div className='bottomRight feedbackCard'>
-                    <DropdownFilter className='dataTitle' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+                    <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
                     <p>Write out the question here...</p>
                     <div className='dataContainerFeedback'>
                         <div className='graph'>

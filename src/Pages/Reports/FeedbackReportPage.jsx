@@ -9,10 +9,6 @@ import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
 
-
-
-
-
 const ScatterGraph = (results, xDataPoint, yDataPoint) => (
         <ScatterChart 
             width={500}
@@ -32,8 +28,6 @@ function FeedbackReportPage () {
 
     let report = getClinicianReport(filteredFeedback)
     let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
-
-    console.log(filteredFeedback)
 
     return (
         <div className='reportPageSection'>
