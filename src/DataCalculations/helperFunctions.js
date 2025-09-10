@@ -17,6 +17,20 @@ function filterByResponseType (results, responseFilter) {
   }
 }
 
+function filterByMonth (results, selectedMonth) {
+
+  if (selectedMonth === 'Month') {
+    return results;
+  } else {
+    let filteredArray = results.filter((item) => {
+      let itemsMonth = months[getDateMonth(item.timestamp)];
+      return itemsMonth === selectedMonth;
+    })
+    return filteredArray;
+}
+
+}
+
 function getSortedFeedback (sortBy, results) {
 
   switch (sortBy) {
@@ -59,8 +73,4 @@ function getActiveMonths (data) {
   return labeledMonths;
 }
 
-function filterByMonth (data) {
-
-}
-
-export { getSortedFeedback, getCliniciansWithFeedback, filterByAssessmentType, filterByResponseType, getActiveMonths }
+export { getSortedFeedback, getCliniciansWithFeedback, filterByAssessmentType, filterByResponseType, getActiveMonths, filterByMonth }

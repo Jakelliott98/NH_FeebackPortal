@@ -7,7 +7,7 @@ import ResultsObject from './Hooks/useResultsReducer'
 import { useMemo, useState } from 'react'
 import './CSS/DataCards.css'
 import PageHeader from './Pages/PageComponents/PageHeader'
-import { filterByAssessmentType, filterByResponseType } from './DataCalculations/helperFunctions'
+import { filterByAssessmentType, filterByResponseType, filterByMonth } from './DataCalculations/helperFunctions'
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
       let filteredResults = results.results; //startingFeedback
       filteredResults= filterByResponseType(filteredResults, results.responseFilter)
       filteredResults = filterByAssessmentType(filteredResults, results.assessmentFilter)
+      filteredResults = filterByMonth(filteredResults, results.durationFilter)
       return filteredResults;
       
     }, [results])

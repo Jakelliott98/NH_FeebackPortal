@@ -4,7 +4,6 @@ import '../../CSS/PageHeader.css'
 import resultsContext from '../../Context/resultsContext'
 import { getActiveMonths } from '../../DataCalculations/helperFunctions'
 
-let durationOptions = ['July', 'August', 'September', 'October']
 let assessmentOptions = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
 let satisfactionOptions = ['All', 'Positive', 'Negative'];
 
@@ -22,8 +21,8 @@ function PageHeader ({title}) {
 
 function DropdownFiltersComponent ({title}) {
 
-    const { filteredFeedback ,resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
-    const months = getActiveMonths(filteredFeedback)
+    const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
+    const months = getActiveMonths(results.results)
     let satisfactionDropdownFilter = <DropdownFilter dataSet={true} resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} dropdownType={'responseFilter'} type={'variable'}/>
 
     return (
