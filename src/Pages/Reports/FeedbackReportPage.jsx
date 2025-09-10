@@ -1,11 +1,16 @@
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { getClinicianReport } from "../../DataCalculations/dataCalculations";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
-import { calculateSatisfactionPercentage, filterQuestionResponses } from "../../DataCalculations/dataCalculations";
-import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter";
+import { calculateSatisfactionPercentage } from "../../DataCalculations/dataCalculations";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import ClinicianLeaderboard from "./ClinicianLeaderboard";
+import DropdownQuestionComponent from "./DropdownQuestionComponent";
+import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
+
+
+
 
 
 const ScatterGraph = (results, xDataPoint, yDataPoint) => (
@@ -34,107 +39,24 @@ function FeedbackReportPage () {
         <div className='reportPageSection'>
             <div className="dataFeedbackSection">
                 <div className='topLeft feedbackCard'>
-                    <h1>Average Monthly Satisfaction Score</h1>
-                    <div className='graphDiv'>
+                    <h1 className='dataTitle'>Average Monthly Satisfaction Score</h1>
+                    <div className='dataContainerFeedback'>
                         <DataGraphCard />
                     </div>
                 </div>
                 <div className='topRight feedbackCard'>
-                    <h1>Monthly Feedback Responses</h1>
-                    <div className='graphDiv'>
+                    <h1 className='dataTitle'>Monthly Feedback Responses</h1>
+                    <div className='dataContainerFeedback'>
                     {ScatterGraph(filteredFeedback, 'id', 'averageScore')}
                     </div>                
                 </div>
                 <SatisfactionCircleGraph positivePercentage={positivePercentage}/> 
-                <ClinicianLeaderBoard results={report} value={'average'}/>
-                <QuestionsComponent />
+                <ClinicianLeaderboard results={report} value={'average'}/>
+                <DropdownQuestionComponent />
             </div>
         </div>
     )
 }
 
 export default FeedbackReportPage;
-
-const satisfactionQuestions = ['Satisfied Responses (> 50% Score)', 'Excellent Response (>80% Score)', 'Terrible Response (< 20% Score)']
-
-function SatisfactionCircleGraph ({positivePercentage}) {
-
-    const [activeQuestion, setActiveQuestion] = useState('Satisfied Responses (> 50% Score)')
-    const { filteredFeedback } = useContext(resultsContext)
-
-    let results = {
-        'Satisfied Responses (> 50% Score)': positivePercentage,
-        'Excellent Response (>80% Score)': 34,
-        'Terrible Response (< 20% Score)': 12,
-    }
-
-    let responseData = results[activeQuestion]
-
-    const changeQuestion = (newQuestion) => {setActiveQuestion(newQuestion)}
-
-    return (
-        <div className='bottomLeft feedbackCard'>
-            <DropdownFilter dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
-            <div className='graphDiv'>
-                <div className='graph'>
-                    <p>{responseData}%</p>
-                    <p>Satisfaction</p>
-                </div>
-            </div>                    
-        </div> 
-    )
-}
-
-function ClinicianLeaderBoard ({results, value}) {
-
-    let topFiveClinicians = results.slice(0 , 5)
-    let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
-
-    return (
-        <div className='bottomCentre feedbackCard'>
-            <h1>Monthly Top Performers</h1>
-            <div className='graphDiv'>
-                <ul className='clinicianLeaderboard'>
-                    {readyResults.map((item) => {
-                        return (
-                        <li className='leaderboardItem' key={item.name}>
-                            <p>{item.name}</p>
-                            <p>
-                                {value === 'average' ? item.average : item.count} 
-                                {value === 'average' ? <span>avg</span> : null}
-                            </p>
-                        </li>
-                        )
-                    })}
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
-
-function QuestionsComponent () {
-
-    const [activeQuestion, setActiveQuestion] = useState('q1')
-    const { filteredFeedback } = useContext(resultsContext)
-
-    let questionAverage = filterQuestionResponses(filteredFeedback, activeQuestion)
-
-    const changeQuestion = (newQuestion) => {setActiveQuestion(newQuestion)}
-
-    return (
-                <div className='bottomRight feedbackCard'>
-                    <DropdownFilter dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
-                    <p>Write out the question here...</p>
-                    <div className='graphDiv'>
-                        <div className='graph'>
-                            <p>{questionAverage}%</p>
-                            <p>Satisfaction</p>
-                        </div>
-                    </div>
-                </div>
-    )
-
-}
 

@@ -15,7 +15,7 @@
     background-color: var(--constrast-background-colour);
     cursor: pointer;
     max-width: 20vw;
-    padding: 0 var(--250-spacing);
+    padding: var(--125-spacing) var(--250-spacing);
     gap: var(--500-spacing);
     font-size: var(--fs-small);
 }
@@ -25,6 +25,7 @@
     flex-direction: row;
     gap: var(--125-spacing);
     align-items: center;
+    flex: 1;
 }
 
 
