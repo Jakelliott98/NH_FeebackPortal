@@ -23,12 +23,12 @@ function DropdownFiltersComponent ({title}) {
 
     const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
     const months = getActiveMonths(results.results)
-    let satisfactionDropdownFilter = <DropdownFilter dataSet={true} resultFilter={results.responseFilter} filterbyFunction={filterByResponse} arrayData={satisfactionOptions} dropdownType={'responseFilter'} type={'variable'}/>
+    let satisfactionDropdownFilter = <DropdownFilter isDropdownList={true} dropdownTitle={results.responseFilter} onSelect={filterByResponse} dropdownOptions={satisfactionOptions} currentSelectedOption={results.responseFilter} dropdownType={'variable'}/>
 
     return (
         <div className='filterContainer'>
-            <DropdownFilter dataSet={true} resultFilter={results.durationFilter} filterbyFunction={filterByDuration} arrayData={months} dropdownType={'durationFilter'} type={'variable'}/>
-            <DropdownFilter dataSet={true} resultFilter={results.assessmentFilter} filterbyFunction={filterByAssessment} arrayData={assessmentOptions} dropdownType={'assessmentFilter'} type={'variable'}/>
+            <DropdownFilter isDropdownList={true} dropdownTitle={results.durationFilter} onSelect={filterByDuration} dropdownOptions={months} currentSelectedOption={results.durationFilter} dropdownType={'variable'}/>
+            <DropdownFilter isDropdownList={true} dropdownTitle={results.assessmentFilter} onSelect={filterByAssessment} dropdownOptions={assessmentOptions} currentSelectedOption={results.assessmentFilter} dropdownType={'variable'}/>
             {title === 'Comments' ? satisfactionDropdownFilter : null}
             <button onClick={() => {resetFilter()}}>
                 Reset

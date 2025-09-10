@@ -30,10 +30,10 @@ function CommentsPage () {
     return (
         <div className='commentLayout'>
             <div className='CommentFilters'>
-                <DropdownFilter dataSet={true} resultFilter={sortOption} arrayData={sortByOptions} filterbyFunction={changeSortOption}/>
+                <DropdownFilter isDropdownList={true} dropdownTitle={sortOption} dropdownOptions={sortByOptions} onSelect={changeSortOption} dropdownType={'variable'}/>
                 <div className='commentDropdowns'>
-                    <DropdownFilter dataSet={false} resultFilter={ratingsTitle} filterbyFunction={changeRatingFilter} rating={rating} />
-                    <DropdownFilter dataSet={true} filterbyFunction={addClinicianFilter} resultFilter={ClinicianTitle} arrayData={cliniciansWithFeedback} type={'array'} dropdownType={selectedClinicians}/>
+                    <DropdownFilter isDropdownList={false} dropdownTitle={ratingsTitle} onSelect={changeRatingFilter} currentRating={rating} />
+                    <DropdownFilter isDropdownList={true} dropdownTitle={ClinicianTitle} onSelect={addClinicianFilter} dropdownOptions={cliniciansWithFeedback} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
                     <button onClick={() => {resetFilters()}}>Reset</button>
                 </div>
             </div>

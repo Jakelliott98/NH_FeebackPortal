@@ -4,26 +4,19 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
-import { useContext } from 'react'
-import resultsContext from '../../Context/resultsContext'
 
-function DropdownListCard ({array, onClick, dropdownType, type}) {
-
-    const { results } = useContext(resultsContext)
-
-    // Type prop = decides between array or variables for the active class on the dropdown
-    // dropdownType prop = gives the state of the active filter for comparison to be made
+function DropdownListCard ({dropdownOptions, onSelect, currentSelectedOption, dropdownType}) {
 
     return (
         <div className='dropdownOptionComponent'>
-            {array.map((item) => {
+            {dropdownOptions.map((item) => {
                 return (
                     <ul 
                     key={item}
                     className={
-                        type == 'variable' && results[dropdownType] == item ? 'active dropdownOption' : type == 'array' && dropdownType.includes(item) ? 'active dropdownOption' : 'dropdownOption'
+                        dropdownType == 'variable' && currentSelectedOption == item ? 'active dropdownOption' : dropdownType == 'array' && currentSelectedOption.includes(item) ? 'active dropdownOption' : 'dropdownOption'
                     }
-                    onClick={() => { onClick(item) }}
+                    onClick={() => { onSelect(item) }}
                     >
                         {item}
                     </ul>)
@@ -33,12 +26,12 @@ function DropdownListCard ({array, onClick, dropdownType, type}) {
     
 }
 
-function RatingFilterCard ({filterbyFunction, rating}) {
+function RatingFilterCard ({onSelect, currentRating}) {
 
     let isStared = [false, false, false, false, false]
     
     for (let i = 0; i < 6; i++) {
-            if (i <= rating) {
+            if (i <= currentRating) {
                 isStared[i - 1] = true;
             } else {
                 isStared[i -1] = false;
@@ -47,11 +40,11 @@ function RatingFilterCard ({filterbyFunction, rating}) {
 
     return (
         <div className='dropdownOptionComponent'>
-            <FontAwesomeIcon icon={isStared[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[0] ? 'starIcon' : ''} onClick={() => {filterbyFunction(1)}}/>
-            <FontAwesomeIcon icon={isStared[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[1] ? 'starIcon' : ''} onClick={() => {filterbyFunction(2)}}/>
-            <FontAwesomeIcon icon={isStared[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[2] ? 'starIcon' : ''} onClick={() => {filterbyFunction(3)}}/>
-            <FontAwesomeIcon icon={isStared[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[3] ? 'starIcon' : ''} onClick={() => {filterbyFunction(4)}}/>
-            <FontAwesomeIcon icon={isStared[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[4] ? 'starIcon' : ''} onClick={() => {filterbyFunction(5)}}/>
+            <FontAwesomeIcon icon={isStared[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[0] ? 'starIcon' : ''} onClick={() => {onSelect(1)}}/>
+            <FontAwesomeIcon icon={isStared[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[1] ? 'starIcon' : ''} onClick={() => {onSelect(2)}}/>
+            <FontAwesomeIcon icon={isStared[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[2] ? 'starIcon' : ''} onClick={() => {onSelect(3)}}/>
+            <FontAwesomeIcon icon={isStared[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[3] ? 'starIcon' : ''} onClick={() => {onSelect(4)}}/>
+            <FontAwesomeIcon icon={isStared[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[4] ? 'starIcon' : ''} onClick={() => {onSelect(5)}}/>
         </div>
     )
 }

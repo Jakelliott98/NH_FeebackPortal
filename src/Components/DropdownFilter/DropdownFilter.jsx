@@ -8,29 +8,32 @@ import { useState } from "react"
 import '../../CSS/DropdownFilter.css'
 import { DropdownListCard, RatingFilterCard } from './DropdownFilterComponents'
 
-function DropdownFilter ({resultFilter, filterbyFunction, arrayData, dataSet, dropdownType, type, rating}) {
+function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownList, currentSelectedOption, dropdownType, currentRating}) {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     
-    function handleFilterClick (item) {
-        filterbyFunction(item)
+    function handleOptionSelect (item) {
+        onSelect(item)
         setIsFilterOpen(false)
     }
 
-    let dropdownList = dataSet ? <DropdownListCard dropdownType={dropdownType} array={arrayData} onClick={handleFilterClick} type={type}/> : <RatingFilterCard filterbyFunction={handleFilterClick} rating={rating}/>;
+    let dropdownCard = isDropdownList ? <DropdownListCard currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType}/> : <RatingFilterCard onSelect={handleOptionSelect} currentRating={currentRating}/>;
 
     return (
         <div className='filterComponent'>
+
             <div className='filterTitleCard' onClick={() => {setIsFilterOpen(prev => !prev)}}>
                 <div className='titleIconDiv'>
                     <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-calendar"/>
-                    <p>{resultFilter}</p>
+                    <p>{dropdownTitle}</p>
                 </div>
                 <FontAwesomeIcon className='dropdownIcon' icon={isFilterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down"} />
             </div >
+
             <div className={isFilterOpen ? '' : 'hide'}>
-                {isFilterOpen ? dropdownList : null}
+                {isFilterOpen ? dropdownCard : null}
             </div>
+            
          </ div>
     )
 

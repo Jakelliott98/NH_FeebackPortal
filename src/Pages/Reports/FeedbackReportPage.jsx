@@ -2,9 +2,11 @@ import DataSnapshotCard from "../../Components/DataSnapshotCard"
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { getClinicianReport } from "../../DataCalculations/dataCalculations";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { calculateSatisfactionPercentage, filterQuestionResponses } from "../../DataCalculations/dataCalculations";
+import { DropdownListCard } from "../../Components/DropdownFilter/DropdownFilterComponents";
+import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter";
 
 function FeedbackReportPage () {
 
@@ -12,7 +14,6 @@ function FeedbackReportPage () {
 
     let report = getClinicianReport(filteredFeedback)
     let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
-    let questionAverage = filterQuestionResponses(filteredFeedback, 'q1')
 
     return (
         <div className='reportPageSection'>
@@ -44,15 +45,7 @@ function FeedbackReportPage () {
                         <ClinicianLeaderBoard results={report} value={'average'}/>
                     </div>
                 </div>
-                <div className='bottomRight feedbackCard'>
-                    <h1>Question 1</h1>
-                    <div className='graphDiv'>
-                        <div className='graph'>
-                            <p>{questionAverage}%</p>
-                            <p>Satisfaction</p>
-                        </div>
-                    </div>
-                </div>            
+                <QuestionsComponent />
             </div>
         </div>
     )
@@ -81,3 +74,30 @@ function ClinicianLeaderBoard ({results, value}) {
         </ul>
     )
 }
+
+const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+
+function QuestionsComponent () {
+
+    const [activeQuestion, setActiveQuestion] = useState('q1')
+    const { filteredFeedback } = useContext(resultsContext)
+
+    let questionAverage = filterQuestionResponses(filteredFeedback, activeQuestion)
+
+    const changeQuestion = (newQuestion) => {setActiveQuestion(newQuestion)}
+
+    return (
+                <div className='bottomRight feedbackCard'>
+                    <DropdownFilter dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+                    <p>Write out the question here...</p>
+                    <div className='graphDiv'>
+                        <div className='graph'>
+                            <p>{questionAverage}%</p>
+                            <p>Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+    )
+
+}
+
