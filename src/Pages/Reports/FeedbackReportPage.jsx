@@ -1,12 +1,25 @@
-import DataSnapshotCard from "../../Components/DataSnapshotCard"
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { getClinicianReport } from "../../DataCalculations/dataCalculations";
 import { useContext, useState } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { calculateSatisfactionPercentage, filterQuestionResponses } from "../../DataCalculations/dataCalculations";
-import { DropdownListCard } from "../../Components/DropdownFilter/DropdownFilterComponents";
 import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter";
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+
+
+const ScatterGraph = (results, xDataPoint, yDataPoint) => (
+        <ScatterChart 
+            width={500}
+            height={300}
+        >
+            <CartesianGrid />
+                <XAxis type="number" dataKey={`${xDataPoint}`} name="stature"/>
+                <YAxis type="number" dataKey={`${yDataPoint}`} name="Results"/>
+                <Scatter name="A school" data={results} fill="#8884d8"/>
+        </ScatterChart>
+    )
+
 
 function FeedbackReportPage () {
 
@@ -15,36 +28,25 @@ function FeedbackReportPage () {
     let report = getClinicianReport(filteredFeedback)
     let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
 
+    console.log(filteredFeedback)
+
     return (
         <div className='reportPageSection'>
             <div className="dataFeedbackSection">
                 <div className='topLeft feedbackCard'>
-                    <h1>Average Satisfaction Score</h1>
+                    <h1>Average Monthly Satisfaction Score</h1>
                     <div className='graphDiv'>
                         <DataGraphCard />
                     </div>
                 </div>
                 <div className='topRight feedbackCard'>
-                    <h1>Average Scores by Assessment Type</h1>
+                    <h1>Monthly Feedback Responses</h1>
                     <div className='graphDiv'>
-                        <DataGraphCard />
+                    {ScatterGraph(filteredFeedback, 'id', 'averageScore')}
                     </div>                
                 </div>
-                <div className='bottomLeft feedbackCard'>
-                    <h1>Satisfied Responses</h1>
-                    <div className='graphDiv'>
-                        <div className='graph'>
-                            <p>{positivePercentage}%</p>
-                            <p>Satisfaction</p>
-                        </div>
-                    </div>                    
-                </div>            
-                <div className='bottomCentre feedbackCard'>
-                    <h1>Monthly Top Performers</h1>
-                    <div className='graphDiv'>
-                        <ClinicianLeaderBoard results={report} value={'average'}/>
-                    </div>
-                </div>
+                <SatisfactionCircleGraph positivePercentage={positivePercentage}/> 
+                <ClinicianLeaderBoard results={report} value={'average'}/>
                 <QuestionsComponent />
             </div>
         </div>
@@ -53,25 +55,60 @@ function FeedbackReportPage () {
 
 export default FeedbackReportPage;
 
+const satisfactionQuestions = ['Satisfied Responses (> 50% Score)', 'Excellent Response (>80% Score)', 'Terrible Response (< 20% Score)']
+
+function SatisfactionCircleGraph ({positivePercentage}) {
+
+    const [activeQuestion, setActiveQuestion] = useState('Satisfied Responses (> 50% Score)')
+    const { filteredFeedback } = useContext(resultsContext)
+
+    let results = {
+        'Satisfied Responses (> 50% Score)': positivePercentage,
+        'Excellent Response (>80% Score)': 34,
+        'Terrible Response (< 20% Score)': 12,
+    }
+
+    let responseData = results[activeQuestion]
+
+    const changeQuestion = (newQuestion) => {setActiveQuestion(newQuestion)}
+
+    return (
+        <div className='bottomLeft feedbackCard'>
+            <DropdownFilter dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+            <div className='graphDiv'>
+                <div className='graph'>
+                    <p>{responseData}%</p>
+                    <p>Satisfaction</p>
+                </div>
+            </div>                    
+        </div> 
+    )
+}
+
 function ClinicianLeaderBoard ({results, value}) {
 
     let topFiveClinicians = results.slice(0 , 5)
     let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 
     return (
-        <ul className='clinicianLeaderboard'>
-            {readyResults.map((item) => {
-                return (
-                <li className='leaderboardItem' key={item.name}>
-                    <p>{item.name}</p>
-                    <p>
-                        {value === 'average' ? item.average : item.count} 
-                        {value === 'average' ? <span>avg</span> : null}
-                    </p>
-                </li>
-                )
-            })}
-        </ul>
+        <div className='bottomCentre feedbackCard'>
+            <h1>Monthly Top Performers</h1>
+            <div className='graphDiv'>
+                <ul className='clinicianLeaderboard'>
+                    {readyResults.map((item) => {
+                        return (
+                        <li className='leaderboardItem' key={item.name}>
+                            <p>{item.name}</p>
+                            <p>
+                                {value === 'average' ? item.average : item.count} 
+                                {value === 'average' ? <span>avg</span> : null}
+                            </p>
+                        </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        </div>
     )
 }
 
