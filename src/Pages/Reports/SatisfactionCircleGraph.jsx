@@ -4,16 +4,18 @@ import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter"
 
 const satisfactionQuestions = ['Satisfied Responses (> 50% Score)', 'Excellent Response (>80% Score)', 'Terrible Response (< 20% Score)']
 
-function SatisfactionCircleGraph ({positivePercentage}) {
+function SatisfactionCircleGraph () {
 
     const [activeQuestion, setActiveQuestion] = useState('Satisfied Responses (> 50% Score)')
     const { filteredFeedback } = useContext(resultsContext) // Going to be used for getting the results
 
     let results = {
-        'Satisfied Responses (> 50% Score)': positivePercentage,
-        'Excellent Response (>80% Score)': 34,
-        'Terrible Response (< 20% Score)': 12,
+        'Satisfied Responses (> 50% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore > 2.5)).length / filteredFeedback.length) * 100),
+        'Excellent Response (>80% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore >= 4)).length / filteredFeedback.length) * 100),
+        'Terrible Response (< 20% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore === 1)).length / filteredFeedback.length) * 100),
     }
+
+    console.log(filteredFeedback.filter(item => item.averageScore >= 4))
 
     let responseData = results[activeQuestion]
 
@@ -24,8 +26,7 @@ function SatisfactionCircleGraph ({positivePercentage}) {
             <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
             <div className='dataContainerFeedback'>
                 <div className='graph'>
-                    <p>{responseData}%</p>
-                    <p>Satisfaction</p>
+                    <p className='circleGraphPercent'>{responseData}%</p>
                 </div>
             </div>                    
         </div> 

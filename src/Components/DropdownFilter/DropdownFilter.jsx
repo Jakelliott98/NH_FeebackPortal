@@ -17,8 +17,6 @@ function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownLi
         setIsFilterOpen(false)
     }
 
-    console.log(cssClass ? true : false)
-
     let filterClass = cssClass ? 'titleFilter' : 'filterTitleCard';
 
     let dropdownCard = isDropdownList ? <DropdownListCard currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType}/> : <RatingFilterCard onSelect={handleOptionSelect} currentRating={currentRating}/>;

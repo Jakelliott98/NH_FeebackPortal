@@ -15,7 +15,6 @@ const ScatterGraph = (results, xDataPoint, yDataPoint) => (
             height={300}
         >
             <CartesianGrid />
-                <XAxis type="number" dataKey={`${xDataPoint}`} name="stature"/>
                 <YAxis type="number" dataKey={`${yDataPoint}`} name="Results"/>
                 <Scatter name="A school" data={results} fill="#8884d8"/>
         </ScatterChart>

@@ -18,11 +18,10 @@ function DropdownQuestionComponent () {
     return (
                 <div className='bottomRight feedbackCard'>
                     <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
-                    <p>Write out the question here...</p>
                     <div className='dataContainerFeedback'>
                         <div className='graph'>
-                            <p>{questionAverage}%</p>
-                            <p>Satisfaction</p>
+                            <p className='circleGraphPercent'>{questionAverage}%</p>
+                            <p className='circleGraphText'>Satisfaction</p>
                         </div>
                     </div>
                 </div>
