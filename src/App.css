@@ -47,3 +47,38 @@
     justify-content: center;
     cursor: pointer;
 }
+
+.tooltipContainer {
+    padding: 20px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.tooltipTitle {
+    font-weight: 700;
+}
+
+.positiveTooltipScore, .negativeTooltipScore {
+    font-weight: 600;
+    align-self: center;
+    font-size: 18px;
+}
+
+.positiveTooltipScore {
+    color: green;
+}
+
+.negativeTooltipScore {
+    color: red;
+}
+
+.tooltipMiniContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 14px;
+}

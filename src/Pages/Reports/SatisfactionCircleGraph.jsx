@@ -15,8 +15,6 @@ function SatisfactionCircleGraph () {
         'Terrible Response (< 20% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore === 1)).length / filteredFeedback.length) * 100),
     }
 
-    console.log(filteredFeedback.filter(item => item.averageScore >= 4))
-
     let responseData = results[activeQuestion]
 
     const changeQuestion = (newQuestion) => {setActiveQuestion(newQuestion)}

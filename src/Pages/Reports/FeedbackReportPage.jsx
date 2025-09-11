@@ -9,19 +9,40 @@ import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
 
-const ScatterGraph = (results, xDataPoint, yDataPoint) => (
-        <ScatterChart 
-            width={500}
-            height={300}
-        >
-            <CartesianGrid />
-                <YAxis type="number" dataKey={`${yDataPoint}`} name="Results"/>
-                <Scatter name="A school" data={results} fill="#8884d8"/>
+    function ScatterGraph ({ results }) {
+
+    function CustomTooltip ({ payload, active }) {
+        if (active) {
+            let client = payload[0].payload;
+            let tooltipScore = client.averageScore > 2.5 ? 'positiveTooltipScore' : 'negativeTooltipScore';
+            return (
+                <div className='tooltipContainer'>
+                    <p className='tooltipTitle'>{client.name}</p>
+                    <p className={tooltipScore}>{client.averageScore} Avg</p>
+                    <div className='tooltipMiniContainer'>
+                    <p>{client.clinician}</p>
+                    <p>{client.assessmentType}</p>
+                </div>
+            </div>
+            )
+        }
+    }
+
+        return (
+        <ScatterChart width={500} height={300}>
+            <Tooltip content={CustomTooltip} />
+            <YAxis domain={[0, 6]} />
+            <XAxis dataKey='id' padding={{ left: 30, right: 30 }} />
+            <Scatter dataKey="averageScore" data={results} fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
         </ScatterChart>
-    )
+        )
+        
+    } 
+
 
 
 function FeedbackReportPage () {
+
 
     const { filteredFeedback } = useContext(resultsContext)
 
@@ -40,7 +61,7 @@ function FeedbackReportPage () {
                 <div className='topRight feedbackCard'>
                     <h1 className='dataTitle'>Monthly Feedback Responses</h1>
                     <div className='dataContainerFeedback'>
-                    {ScatterGraph(filteredFeedback, 'id', 'averageScore')}
+                    <ScatterGraph results={filteredFeedback} yDataPoint='averageScore' xDataPoint='id' />
                     </div>                
                 </div>
                 <SatisfactionCircleGraph positivePercentage={positivePercentage}/> 
