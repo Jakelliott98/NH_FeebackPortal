@@ -35,3 +35,15 @@
     min-height: 0;
 }
 
+.resetButton {
+    background-color: #F5F5F5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: #E0E0E0 solid 2px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

@@ -6,6 +6,13 @@ import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter';
 import { getCliniciansWithFeedback, getSortedFeedback } from '../../DataCalculations/helperFunctions';
 import useCommentFilters from '../../Hooks/useCommentFilters';
 
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+library.add(fas, far, fab)
+
 let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Recent', 'Oldest First']
 
 function CommentsPage () {
@@ -34,7 +41,10 @@ function CommentsPage () {
                 <div className='commentDropdowns'>
                     <DropdownFilter isDropdownList={false} dropdownTitle={ratingsTitle} onSelect={changeRatingFilter} currentRating={rating} />
                     <DropdownFilter isDropdownList={true} dropdownTitle={ClinicianTitle} onSelect={addClinicianFilter} dropdownOptions={cliniciansWithFeedback} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
-                    <button onClick={() => {resetFilters()}}>Reset</button>
+                    <button className='resetButton' onClick={() => {resetFilters()}}>
+                        <FontAwesomeIcon icon="fa-solid fa-rotate-right" />
+                        Reset
+                    </button>
                 </div>
             </div>
             <div className='commentContainer'>
