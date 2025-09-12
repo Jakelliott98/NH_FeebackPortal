@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 
-function DropdownListCard ({dropdownOptions, onSelect, currentSelectedOption, dropdownType}) {
+function DropdownListCard ({dropdownOptions, onSelect, currentSelectedOption, dropdownType, cssClass}) {
+
+    let divClass = cssClass == 'titleFilter' ? 'QuestionDropdown dropdownOptionComponent' : 'dropdownOptionComponent' ;
 
     return (
-        <div className='dropdownOptionComponent'>
+        <div className={divClass}>
             {dropdownOptions.map((item) => {
                 return (
                     <ul 

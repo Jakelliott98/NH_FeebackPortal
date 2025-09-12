@@ -49,6 +49,8 @@
     border-radius: var(--125-spacing);
     border: solid 1px var(--primary-colour);
     width: 100%;
+    max-height: 350px;
+    overflow: scroll;
 }
 
 .dropdownOption {
@@ -77,4 +79,9 @@
 
 .titleFilter .dropdownIcon {
     color: white;
+}
+
+.QuestionDropdown {
+    max-height: 200px;
+    overflow: scroll;
 }

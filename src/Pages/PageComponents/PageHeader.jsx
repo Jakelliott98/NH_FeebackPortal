@@ -34,8 +34,8 @@ function DropdownFiltersComponent ({title}) {
 
     return (
         <div className='filterContainer'>
-            <DropdownFilter isDropdownList={true} dropdownTitle={results.durationFilter} onSelect={filterByDuration} dropdownOptions={months} currentSelectedOption={results.durationFilter} dropdownType={'variable'}/>
-            <DropdownFilter isDropdownList={true} dropdownTitle={results.assessmentFilter} onSelect={filterByAssessment} dropdownOptions={assessmentOptions} currentSelectedOption={results.assessmentFilter} dropdownType={'variable'}/>
+            <DropdownFilter iconTag="fa-solid fa-calendar" isDropdownList={true} dropdownTitle={results.durationFilter} onSelect={filterByDuration} dropdownOptions={months} currentSelectedOption={results.durationFilter} dropdownType={'variable'}/>
+            <DropdownFilter iconTag="fa-solid fa-stethoscope" isDropdownList={true} dropdownTitle={results.assessmentFilter} onSelect={filterByAssessment} dropdownOptions={assessmentOptions} currentSelectedOption={results.assessmentFilter} dropdownType={'variable'}/>
             {title === 'Comments' ? satisfactionDropdownFilter : null}
             <button className='resetButton' onClick={() => {resetFilter()}}>
                 <FontAwesomeIcon icon="fa-solid fa-rotate-right" />

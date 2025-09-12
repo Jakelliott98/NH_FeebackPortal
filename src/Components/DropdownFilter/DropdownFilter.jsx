@@ -8,7 +8,7 @@ import { useState } from "react"
 import '../../CSS/DropdownFilter.css'
 import { DropdownListCard, RatingFilterCard } from './DropdownFilterComponents'
 
-function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownList, currentSelectedOption, dropdownType, currentRating, cssClass}) {
+function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownList, currentSelectedOption, dropdownType, currentRating, cssClass, iconTag}) {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     
@@ -19,14 +19,14 @@ function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownLi
 
     let filterClass = cssClass ? 'titleFilter' : 'filterTitleCard';
 
-    let dropdownCard = isDropdownList ? <DropdownListCard currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType}/> : <RatingFilterCard onSelect={handleOptionSelect} currentRating={currentRating}/>;
+    let dropdownCard = isDropdownList ? <DropdownListCard currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType} cssClass={cssClass}/> : <RatingFilterCard onSelect={handleOptionSelect} currentRating={currentRating}/>;
 
     return (
         <div className='filterComponent'>
 
             <div className={filterClass} onClick={() => {setIsFilterOpen(prev => !prev)}}>
                 <div className='titleIconDiv'>
-                    <FontAwesomeIcon className='dropdownIcon' icon="fa-solid fa-calendar"/>
+                    <FontAwesomeIcon className='dropdownIcon' icon={iconTag}/>
                     <p>{dropdownTitle}</p>
                 </div>
                 <FontAwesomeIcon className='dropdownIcon' icon={isFilterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down"} />
