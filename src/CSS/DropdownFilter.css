@@ -26,6 +26,7 @@
     gap: var(--125-spacing);
     align-items: center;
     flex: 1;
+    min-width: 75px;
 }
 
 
@@ -51,6 +52,13 @@
     width: 100%;
     max-height: 350px;
     overflow: scroll;
+}
+
+.ratingContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .dropdownOption {
@@ -84,4 +92,12 @@
 .QuestionDropdown {
     max-height: 200px;
     overflow: scroll;
+}
+
+.ratingIcon {
+    cursor: pointer;
+}
+
+.ratingIcon:hover {
+    color: #F8DE7E;
 }
