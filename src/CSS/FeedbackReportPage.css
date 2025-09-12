@@ -91,12 +91,14 @@
 
 .units {
     margin-left: 5px;
+    font-weight: normal;
+    font-size: 14px;
 }
 
 .clinicianScore {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
-    color: gray;
+    color: #333333;
 }
 
 .medalIcon {
@@ -121,4 +123,16 @@
 
 .circleGraphText {
     font-size: 14px;
+}
+
+.gold {
+    color: #FFD700;
+}
+
+.silver {
+    color: #C0C0C0;
+}
+
+.bronze {
+    color: #CD7F32;
 }

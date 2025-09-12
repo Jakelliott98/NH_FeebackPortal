@@ -12,15 +12,19 @@ function ClinicianLeaderboard ({results, value}) {
     let topFiveClinicians = results.slice(0 , 3)
     let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 
+    function returnIndexClass (index) {
+        return index == 0 ? 'medalIcon gold' : index == 1 ? 'medalIcon silver' : 'medalIcon bronze';
+    }
+    
     return (
         <div className='bottomCentre feedbackCard'>
             <h1 className='dataTitle'>Monthly Top Performers</h1>
             <ul className='clinicianLeaderboard'>
-                {readyResults.map((item) => {
+                {readyResults.map((item, index) => {
                     return (
                     <li className='leaderboardItem' key={item.name}>
                         <div className='clinicianTitle'>
-                            <FontAwesomeIcon className='medalIcon' icon="fa-solid fa-medal" />
+                            <FontAwesomeIcon className={returnIndexClass(index)} icon="fa-solid fa-medal" />
                             <p>{item.name}</p>
                         </div>
                         <p className='clinicianScore'>
