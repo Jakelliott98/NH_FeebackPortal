@@ -9,7 +9,7 @@ library.add(fas, far, fab)
 
 function ClinicianLeaderboard ({results, value}) {
 
-    let topFiveClinicians = results.slice(0 , 5)
+    let topFiveClinicians = results.slice(0 , 3)
     let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 
     return (
