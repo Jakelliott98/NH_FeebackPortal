@@ -49,11 +49,11 @@ function RatingStars ({ averageRating }) {
 
     return (
         <>
-            <FontAwesomeIcon icon={ratingScore[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[0] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={ratingScore[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[1] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={ratingScore[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[2] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={ratingScore[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[3] ? 'starIcon' : ''}/>
-            <FontAwesomeIcon icon={ratingScore[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={ratingScore[4] ? 'starIcon' : ''}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[0] ? 'starIcon' : 'unStaredIcon'}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[1] ? 'starIcon' : 'unStaredIcon'}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[2] ? 'starIcon' : 'unStaredIcon'}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[3] ? 'starIcon' : 'unStaredIcon'}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[4] ? 'starIcon' : 'unStaredIcon'}/>
         </>
     )
 }

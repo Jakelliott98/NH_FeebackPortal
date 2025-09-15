@@ -42,11 +42,11 @@ function RatingFilterCard ({onSelect, currentRating}) {
 
     return (
         <div className='dropdownOptionComponent ratingContainer'>
-            <FontAwesomeIcon icon={isStared[0] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[0] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(1)}}/>
-            <FontAwesomeIcon icon={isStared[1] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[1] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(2)}}/>
-            <FontAwesomeIcon icon={isStared[2] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[2] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(3)}}/>
-            <FontAwesomeIcon icon={isStared[3] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[3] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(4)}}/>
-            <FontAwesomeIcon icon={isStared[4] ? 'fa-star fa-solid' : 'fa-regular fa-star'} className={isStared[4] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(5)}}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[0] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(1)}}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[1] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(2)}}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[2] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(3)}}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[3] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(4)}}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[4] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(5)}}/>
         </div>
     )
 }

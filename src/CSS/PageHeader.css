@@ -5,10 +5,17 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--constrast-background-colour);
+    margin: var(--500-spacing) var(--1000-spacing) 0 var(--1000-spacing);
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .filterContainer {
     display: flex;
     flex-direction: row;
     gap: var(--125-spacing);
+}
+
+.pageTitle {
+    font-size: 25px;
 }

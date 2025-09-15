@@ -69,7 +69,7 @@
 }
 
 .starIcon {
-    color: #F8DE7E;
+  color: #F8DE7E;
 }
 
 .CommentFilters {
@@ -91,4 +91,8 @@
   align-items: center;
   font-size: var(--fs-small);
   color: grey;
+}
+
+.unStaredIcon {
+  color: lightgrey;
 }

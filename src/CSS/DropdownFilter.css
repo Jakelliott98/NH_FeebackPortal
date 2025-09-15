@@ -96,6 +96,7 @@
 
 .ratingIcon {
     cursor: pointer;
+    color: lightgray;
 }
 
 .ratingIcon:hover {
