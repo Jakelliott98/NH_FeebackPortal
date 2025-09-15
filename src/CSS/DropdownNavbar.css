@@ -4,33 +4,33 @@
     align-items: baseline;
     gap: var(--750-spacing);
     padding: var(--375-spacing) 0;
-    width: 200px; 
+    width: 100%; 
+    padding: 0 10px;
 }
 
 .navbarOption, .activeNav{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--250-spacing);
     padding: 2px;
     border-radius: var(--125-spacing);
     width: 100%;
-    color: var(--light-text-colour);
+    color: #757575;
     text-decoration: none;
     font-size: var(--fs-small);
 }
 
 .navbarIcon {
     padding: 7px;
-    color: var(--light-text-colour);
+    color: #757575;
 }
 
 .activeNav {
-    background-color: var(--constrast-background-colour);
+    background-color: var(--positive-background-colour);
     box-shadow: 0 2px 2px #d9d9d9;
-    color: var(--dark-text-colour);
+    color: var(--primary-colour);
 }
 
 .activeNav .navbarIcon {
-    color: var(--dark-text-colour);
+    color: var(--primary-colour);
 }

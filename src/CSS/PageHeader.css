@@ -1,10 +1,10 @@
 .headerDiv {
+    height: 10vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     background-color: var(--constrast-background-colour);
-    padding: var(--250-spacing) var(--1000-spacing);
 }
 
 .filterContainer {

@@ -5,8 +5,8 @@
 }
 
 .sidebarDiv {
-    padding: var(--500-spacing) var(--250-spacing);
-    background-color: var(--primary-colour);
+    width: 10vw;
+    background-color: var(--constrast-background-colour);
 }
 
 .contentDiv {
@@ -18,8 +18,9 @@
 }
 
 .imageContainer {
-    width: 200px;
-    padding: 0 var(--750-spacing);
+    height: 10vh;
+    width: 100%;
+    padding: 10px;
 }
 
 .nuffieldLogo {

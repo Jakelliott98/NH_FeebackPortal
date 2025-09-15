@@ -1,7 +1,7 @@
 import './App.css'
 import { DropdownNav } from './Navbar/DropdownNavbar'
 import { Outlet } from 'react-router-dom'
-import logo from './SVG/NuffieldLogoWhite.png'
+import logo from './SVG/NuffieldLogo.png'
 import resultsContext from './Context/resultsContext'
 import ResultsObject from './Hooks/useResultsReducer'
 import { useMemo, useState } from 'react'
