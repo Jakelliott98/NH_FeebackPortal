@@ -12,14 +12,62 @@ function DataSnapshotDiv ({ selectedChart, setSelectedChart }) {
     let feedbackAverageRating = calculateAverageRating(filteredFeedback) 
     let {positivePercentage, negativePercentage} = calculateSatisfactionPercentage(filteredFeedback)
 
+    let datacards = returnDataCards(numberOfResponses, feedbackAverageRating, positivePercentage, negativePercentage)
+
     return (
             <div className="dataSnapshotDiv">
-                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Reponses')}} title={'Reponses'} data={numberOfResponses} change={'2%'} trend={'positive'}/>
-                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Average')}} title={'Average'} data={feedbackAverageRating + '%'} change={'14%'} trend={'negative'}/>
-                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Positive')}} title={'Positive'} data={positivePercentage + '%'} change={'25%'} trend={'positive'}/>
-                <DataSnapshotCard selectedChart={selectedChart} onClick={() => {setSelectedChart('Negative')}} title={'Negative'} data={negativePercentage + '%'} change={'3%'} trend={'negative'}/>
+                {
+                    datacards.map((item) => {
+                        return (
+                            <DataSnapshotCard 
+                                selectedChart={selectedChart} 
+                                onClick={() => {setSelectedChart(item.title)}}
+                                title={item.title}
+                                data={item.data}
+                                change={item.change}
+                                trend={item.trend}
+                                icon={item.icon}
+                                text={item.text}
+                            /> 
+                        )
+                    })
+                }
             </div>
     )
+}
+
+function returnDataCards (numberOfResponses, feedbackAverageRating, positivePercentage, negativePercentage) {
+    return [
+        {
+            title: 'Responses',
+            icon: 'fa-solid fa-people-group',
+            data: numberOfResponses,
+            trend: 'positive',
+            change: 2,
+            text: 'Number of feedback responses this month',
+        },        {
+            title: 'Average',
+            icon: 'fa-solid fa-star',
+            data: feedbackAverageRating,
+            trend: 'positive',
+            change: 7,
+            text: 'Average feedback response score this month',
+        },        {
+            title: 'Positive',
+            icon: 'fa-solid fa-face-smile',
+            data: positivePercentage,
+            trend: 'negative',
+            change: 12,
+            text: 'Percentage of positive feedbaxck (> 2.5 score) this month',
+        },        {
+            title: 'Negative',
+            icon: 'fa-solid fa-face-frown',
+            data: negativePercentage,
+            trend: 'negative',
+            change: 23,
+            text: 'Percentage of negative feedbaxck (< 2.5 score) this month',
+        }
+    ]
 }
 
 function DataGraphContainer ({ selectedChart }) {

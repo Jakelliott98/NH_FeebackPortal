@@ -15,6 +15,7 @@
   background-color: var(--constrast-background-colour);
   cursor: pointer;
   border-radius: var(--125-spacing);
+  position: relative;
 }
 
 .activeDataSnap {
@@ -55,10 +56,42 @@
 
 .iconContainer {
   border-radius: 50%;
-  background-color: lightpink;
+  background-color: lightsalmon;
   width: 30px;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.infoIcon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 1.5px solid lightgrey;
+  color: lightgrey;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardDefinition {
+  position: absolute;
+  z-index: 2;
+  background-color: lightgray;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  display: none;
+  font-size: 12px;
+}
+
+.showDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

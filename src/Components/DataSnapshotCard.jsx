@@ -6,23 +6,29 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
-function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart}) {
+import { useState } from 'react'
+
+function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart, icon, text}) {
 
     let trendIcon = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
     let trendClass = `snapshotDataCard ${trend} `
     let activeClass = selectedChart === title ? 'activeDataSnap' : '';
+    let [descriptionHidden, setDescriptionHidden] = useState(true)
+    let hiddenDescription =  descriptionHidden ? 'cardDefinition' : 'cardDefinition showDescription';
 
     return (
         <div className={`${activeClass} snapshotCard` } onClick={onClick}>
+            <div className='infoIcon'><FontAwesomeIcon icon="fa-solid fa-question" /></div>
             <div className='iconContainer'>
-                <FontAwesomeIcon icon="fa-solid fa-face-smile" />
+                <FontAwesomeIcon icon={icon} />
             </div>
             <p className='snapshotData'>{data}</p>
             <p className='snapshotTitle'>{title}</p>
             <div className={trendClass}>
-                <FontAwesomeIcon className='snapshotDataIcon' icon={trendIcon} />
-                <p className='snapshotChange'>{change}</p>
+                <FontAwesomeIcon onmouseenter={() => {setDescriptionHidden(prev => !prev)}} className='snapshotDataIcon' icon={trendIcon} />
+                <p className='snapshotChange'>{change}%</p>
             </div>
+            <p className={hiddenDescription}>{text}</p>
         </div>
     )
     
