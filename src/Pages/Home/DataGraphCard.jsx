@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
 import { useContext } from 'react';
 import resultsContext from '../../Context/resultsContext';
@@ -31,46 +31,48 @@ function DataGraphCard ({results, selectedChart}) {
 
     const responseChart = (
         <>
-        <LineChart width={600} height={300} data={results}>
+        <ResponsiveContainer width="100%"height="100%" >
+        <LineChart data={results} >
             <Tooltip content={CustomTooltip}/>
             <YAxis domain={[0, 6]}/>
             <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
             <Line dataKey="averageScore" fill="#00a200"stroke='#00a200' activeDot={{ r: 8 }} />
         </LineChart>
+        </ResponsiveContainer>
         </>
     );
 
     const averageChart = (
-        <>
-        <LineChart width={600} height={300} data={monthlyResponse}>
+        <ResponsiveContainer width="100%"height="100%" >
+        <LineChart data={monthlyResponse}>
             <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
             <Tooltip/>
             <YAxis />
             <Line dataKey="numberOfResponses" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
         </LineChart>
-        </>
+        </ResponsiveContainer>
     )
 
     const postiveResponsesChart = (
-        <>
+        <ResponsiveContainer width="100%"height="100%" >
         <LineChart width={600} height={300} data={positiveResponse}>
             <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
             <Tooltip />
             <YAxis />
             <Line dataKey="data" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
         </LineChart>
-        </>
+        </ResponsiveContainer>
     )
 
     const negativeResponsesChart = (
-        <>
+        <ResponsiveContainer width="100%"height="100%" >
         <LineChart width={600} height={300} data={negativeResponse}>
             <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
             <Tooltip />
             <YAxis />
             <Line dataKey="data" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
         </LineChart>
-        </>
+        </ResponsiveContainer>
     )
 
     function selectChart () {

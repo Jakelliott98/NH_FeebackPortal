@@ -20,6 +20,7 @@
   padding: var(--500-spacing);
   background-color: var(--constrast-background-colour);
   border-radius: var(--125-spacing);
+  grid-area: 10 / 3 / 13 / 13;
 }
 
 .positiveComment, .negativeComment {

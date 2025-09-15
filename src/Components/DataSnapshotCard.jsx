@@ -14,8 +14,11 @@ function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart})
 
     return (
         <div className={`${activeClass} snapshotCard` } onClick={onClick}>
-            <p className='snapshotTitle'>{title}</p>
+            <div className='iconContainer'>
+                <FontAwesomeIcon icon="fa-solid fa-face-smile" />
+            </div>
             <p className='snapshotData'>{data}</p>
+            <p className='snapshotTitle'>{title}</p>
             <div className={trendClass}>
                 <FontAwesomeIcon className='snapshotDataIcon' icon={trendIcon} />
                 <p className='snapshotChange'>{change}</p>

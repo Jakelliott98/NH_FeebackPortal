@@ -1,5 +1,5 @@
 .headerDiv {
-    height: 10vh;
+    grid-area: 1 / 1 / 2 / 13 ;
     display: flex;
     flex-direction: row;
     align-items: center;

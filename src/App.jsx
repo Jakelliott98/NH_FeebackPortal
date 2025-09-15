@@ -23,7 +23,7 @@ function App() {
       
     }, [results])
 
-    const [currentPage, setCurrentPage] = useState('Home')
+    const [currentPage, setCurrentPage] = useState('')
 
   return (
     <resultsContext.Provider value={{setCurrentPage, filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
