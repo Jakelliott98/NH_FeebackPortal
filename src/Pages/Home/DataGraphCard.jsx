@@ -35,7 +35,7 @@ function DataGraphCard ({results, selectedChart}) {
                 <Tooltip content={CustomTooltip}/>
                 <YAxis domain={[0, 6]}/>
                 <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
-                <Line dataKey="averageScore" fill="#00a200"stroke='#00a200' activeDot={{ r: 8 }} />
+                <Line dataKey="averageScore" fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
             </LineChart>
         </ResponsiveContainer>
     );
@@ -45,7 +45,7 @@ function DataGraphCard ({results, selectedChart}) {
         <ResponsiveContainer width="100%"height="100%" >
             <BarChart data={monthlyResponse}>
                 <Tooltip />
-                 <Bar dataKey="numberOfResponses" fill="#00a200" activeBar={<Rectangle fill="pink" stroke="blue" />}/>
+                 <Bar dataKey="numberOfResponses" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                  <XAxis dataKey='month'/>
                  <YAxis dataKey='numberOfResponses'/>
             </BarChart>
@@ -54,23 +54,23 @@ function DataGraphCard ({results, selectedChart}) {
 
     const postiveResponsesChart = (
         <ResponsiveContainer width="100%"height="100%" >
-        <LineChart width={600} height={300} data={positiveResponse}>
-            <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
-            <Tooltip />
-            <YAxis />
-            <Line dataKey="data" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
-        </LineChart>
+            <BarChart data={positiveResponse}>
+                    <Tooltip />
+                    <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
+                    <XAxis dataKey='month' />
+                    <YAxis />
+            </BarChart>
         </ResponsiveContainer>
     )
 
     const negativeResponsesChart = (
         <ResponsiveContainer width="100%"height="100%" >
-        <LineChart width={600} height={300} data={negativeResponse}>
-            <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
-            <Tooltip />
-            <YAxis />
-            <Line dataKey="data" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
-        </LineChart>
+            <BarChart data={negativeResponse}>
+                <Tooltip />
+                <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
+                <XAxis dataKey='month' />
+                <YAxis />
+            </BarChart>
         </ResponsiveContainer>
     )
 

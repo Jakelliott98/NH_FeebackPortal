@@ -8,6 +8,7 @@
     margin: var(--500-spacing) var(--1000-spacing) 0 var(--1000-spacing);
     padding: 10px 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .filterContainer {

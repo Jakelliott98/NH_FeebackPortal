@@ -14,10 +14,12 @@ function DataSnapshotDiv ({ selectedChart, setSelectedChart }) {
 
     let datacards = returnDataCards(numberOfResponses, feedbackAverageRating, positivePercentage, negativePercentage)
 
+    let colours = ['#8e44ad', '#ffd600', '#cddc39', '#E94984']
+
     return (
             <div className="dataSnapshotDiv">
                 {
-                    datacards.map((item) => {
+                    datacards.map((item, index) => {
                         return (
                             <DataSnapshotCard 
                                 selectedChart={selectedChart} 
@@ -28,6 +30,7 @@ function DataSnapshotDiv ({ selectedChart, setSelectedChart }) {
                                 trend={item.trend}
                                 icon={item.icon}
                                 text={item.text}
+                                colour={colours[index]}
                             /> 
                         )
                     })

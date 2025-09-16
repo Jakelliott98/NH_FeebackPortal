@@ -8,7 +8,7 @@ library.add(fas, far, fab)
 
 import { useState } from 'react'
 
-function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart, icon, text}) {
+function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart, icon, text, colour}) {
 
     let trendIcon = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
     let trendClass = `snapshotDataCard ${trend} `
@@ -19,7 +19,7 @@ function DataSnapshotCard ({title, data, change, trend, onClick, selectedChart, 
     return (
         <div className={`${activeClass} snapshotCard` } onClick={onClick}>
             <div className='infoIcon'><FontAwesomeIcon icon="fa-solid fa-question" /></div>
-            <div className='iconContainer'>
+            <div className='iconContainer' style={{backgroundColor: colour}}>
                 <FontAwesomeIcon icon={icon} />
             </div>
             <p className='snapshotData'>{data}</p>

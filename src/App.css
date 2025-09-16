@@ -7,6 +7,7 @@
 .sidebarDiv {
     width: 10vw;
     background-color: var(--constrast-background-colour);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
 }
 
 .contentDiv {
@@ -60,6 +61,19 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.resetButton:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.resetButton:active {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) inset, 
+              0 1px 2px rgba(0, 0, 0, 0.12);
+  transform: translateY(0);
 }
 
 .tooltipContainer {

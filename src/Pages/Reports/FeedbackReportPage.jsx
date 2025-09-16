@@ -1,7 +1,7 @@
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { getClinicianReport } from "../../DataCalculations/dataCalculations";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { calculateSatisfactionPercentage } from "../../DataCalculations/dataCalculations";
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
@@ -68,7 +68,7 @@ function ScatterGraph ({ results }) {
             <Tooltip content={CustomTooltip} />
             <YAxis domain={[0, 6]} />
             <XAxis dataKey='id' padding={{ left: 30, right: 30 }} />
-            <Scatter dataKey="averageScore" data={results} fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
+            <Scatter dataKey="averageScore" data={results} fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
         </ScatterChart>
         )
         
