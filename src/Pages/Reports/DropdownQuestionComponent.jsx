@@ -3,6 +3,7 @@ import { filterQuestionResponses } from "../../DataCalculations/dataCalculations
 import { useState, useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter";
+import PercentageChart from "./PercentageChart";
 
 const questions = ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'];
 
@@ -54,10 +55,7 @@ function DropdownQuestionComponent () {
                 <div className='bottomRight feedbackCard' >
                     <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion.title} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
                     <div className='dataContainerFeedback'>
-                        <div className='graph'>
-                            <p className='circleGraphPercent'>{questionAverage}%</p>
-                            <p className='circleGraphText'>Satisfaction</p>
-                        </div>
+                        <PercentageChart percentage={questionAverage}/>
                     </div>
                     <p className='questionTitle'>{activeQuestion.text}</p>
                 </div>

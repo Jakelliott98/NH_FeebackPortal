@@ -50,8 +50,8 @@ function calculateSatisfactionPercentage (data) {
 
 function filterQuestionResponses (data, question) {
     let dataArray = data.map(item => item.responses[question]);
-    let totalScore = dataArray.reduce((a, b) => a + b, 0)
-    return ((totalScore / (dataArray.length * 5)) * 100).toFixed(0);
+    let totalScore = dataArray.reduce((a, b) => a + b, 0);
+    return (Math.round((totalScore / (dataArray.length * 5)) * 100));
 }
 
 
