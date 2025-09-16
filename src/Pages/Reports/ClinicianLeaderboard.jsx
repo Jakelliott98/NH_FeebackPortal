@@ -23,6 +23,7 @@ function ClinicianLeaderboard ({ results }) {
     return (
         <div className='bottomCentre feedbackCard'>
             <h1 className='dataTitle'>Monthly Top Performers</h1>
+            <div className='clinicianContainer'>
             <div className='clinicianFilterContainer'>
                 <button className={clinicianFilter === 'average' ? 'averageButton activeButton' : 'averageButton'} onClick={() => {setClinicianFilter('average')}}>Top Performers</button>
                 <button className={clinicianFilter === 'count' ? 'countButton activeButton' : 'countButton'} onClick={() => {setClinicianFilter('count')}}>Most Responses</button>
@@ -44,6 +45,7 @@ function ClinicianLeaderboard ({ results }) {
                 })}
             </ul>
             </div>
+        </div>
     )
 }
 

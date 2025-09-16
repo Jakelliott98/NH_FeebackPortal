@@ -23,8 +23,10 @@ function SatisfactionCircleGraph () {
     return (
         <div className='bottomLeft feedbackCard'>
             <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+            <div className='pieChartContainer'>
             <PercentageChart percentage={responseData}/>   
-            <p>This is text to go along with the</p>       
+            <p className='questionTitle'>Percentage of clients who were satisfied with their assessments</p>       
+            </div>
         </div> 
     )
 }
