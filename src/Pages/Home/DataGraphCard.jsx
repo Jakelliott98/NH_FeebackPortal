@@ -30,26 +30,24 @@ function DataGraphCard ({results, selectedChart}) {
     }}
 
     const responseChart = (
-        <>
         <ResponsiveContainer width="100%"height="100%" >
-        <LineChart data={results} >
-            <Tooltip content={CustomTooltip}/>
-            <YAxis domain={[0, 6]}/>
-            <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
-            <Line dataKey="averageScore" fill="#00a200"stroke='#00a200' activeDot={{ r: 8 }} />
-        </LineChart>
+            <LineChart data={results} >
+                <Tooltip content={CustomTooltip}/>
+                <YAxis domain={[0, 6]}/>
+                <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
+                <Line dataKey="averageScore" fill="#00a200"stroke='#00a200' activeDot={{ r: 8 }} />
+            </LineChart>
         </ResponsiveContainer>
-        </>
     );
 
     const averageChart = (
         <ResponsiveContainer width="100%"height="100%" >
-        <LineChart data={monthlyResponse}>
-            <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
-            <Tooltip/>
-            <YAxis />
-            <Line dataKey="numberOfResponses" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
-        </LineChart>
+            <LineChart data={monthlyResponse}>
+                <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
+                <Tooltip/>
+                <YAxis />
+                <Line dataKey="numberOfResponses" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
+            </LineChart>
         </ResponsiveContainer>
     )
 
@@ -75,12 +73,12 @@ function DataGraphCard ({results, selectedChart}) {
         </ResponsiveContainer>
     )
 
-    function selectChart () {
+    function selectChart (selectedChart) {
 
         switch (selectedChart) {
 
             case 'Average': return averageChart;
-            case 'Reponses': return responseChart;
+            case 'Responses': return responseChart;
             case 'Positive': return postiveResponsesChart;
             case 'Negative': return negativeResponsesChart;
             default: return averageChart;
@@ -89,7 +87,7 @@ function DataGraphCard ({results, selectedChart}) {
 
     return (
             <div className='graphDiv'>
-                {selectChart()}
+                {selectChart(selectedChart)}
             </div>
     )
 }

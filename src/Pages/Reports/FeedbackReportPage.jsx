@@ -4,12 +4,12 @@ import { getClinicianReport } from "../../DataCalculations/dataCalculations";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { calculateSatisfactionPercentage } from "../../DataCalculations/dataCalculations";
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
 
-    function ScatterGraph ({ results }) {
+function ScatterGraph ({ results }) {
 
     function CustomTooltip ({ payload, active }) {
         if (active) {

@@ -6,7 +6,7 @@ import { DataSnapshotDiv, DataGraphContainer } from './DataCard'
 function Homepage () {
 
     const { filteredFeedback } = useContext(resultsContext);
-    const [selectedChart, setSelectedChart] = useState('Average')
+    const [selectedChart, setSelectedChart] = useState('Responses')
 
     
     return (

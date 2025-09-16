@@ -29,7 +29,7 @@ function ClinicianLeaderboard ({results, value}) {
                         </div>
                         <p className='clinicianScore'>
                             {value === 'average' ? item.average : item.count} 
-                            {value === 'average' ? <span className='units'>avg</span> : null}
+                            {value === 'average' ? <span className='units'>%</span> : null}
                         </p>
                     </li>
                     )
