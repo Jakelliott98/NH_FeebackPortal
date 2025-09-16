@@ -59,6 +59,7 @@ function DropdownQuestionComponent () {
                             <p className='circleGraphText'>Satisfaction</p>
                         </div>
                     </div>
+                    <p className='questionTitle'>{activeQuestion.text}</p>
                 </div>
     )
 

@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Rectangle } from 'recharts';
 import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
 import { useContext } from 'react';
 import resultsContext from '../../Context/resultsContext';
@@ -40,14 +40,15 @@ function DataGraphCard ({results, selectedChart}) {
         </ResponsiveContainer>
     );
 
+    // CHANGE TOOLTIP TO PERCENTAGE
     const averageChart = (
         <ResponsiveContainer width="100%"height="100%" >
-            <LineChart data={monthlyResponse}>
-                <XAxis dataKey="month" padding={{ left: 30, right: 30 }}/>
-                <Tooltip/>
-                <YAxis />
-                <Line dataKey="numberOfResponses" fill="#00a200" stroke='#00a200' activeDot={{ r: 8 }} />
-            </LineChart>
+            <BarChart data={monthlyResponse}>
+                <Tooltip />
+                 <Bar dataKey="numberOfResponses" fill="#00a200" activeBar={<Rectangle fill="pink" stroke="blue" />}/>
+                 <XAxis dataKey='month'/>
+                 <YAxis dataKey='numberOfResponses'/>
+            </BarChart>
         </ResponsiveContainer>
     )
 
