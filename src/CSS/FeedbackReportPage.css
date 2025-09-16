@@ -136,3 +136,29 @@
 .bronze {
     color: #CD7F32;
 }
+
+.clinicianFilterContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.averageButton, .countButton {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: transparent;
+}
+
+.activeButton {
+    background-color: lightgreen;
+}
+
+.averageButton {
+    border-radius: 5px 0 0 5px;
+}
+
+.countButton {
+    border-radius: 0 5px 5px 0;
+}

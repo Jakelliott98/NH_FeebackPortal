@@ -5,20 +5,28 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
+import { useState } from 'react'
 
 
-function ClinicianLeaderboard ({results, value}) {
+function ClinicianLeaderboard ({ results }) {
+
+    const [clinicianFilter, setClinicianFilter] = useState('average');
+
 
     let topFiveClinicians = results.slice(0 , 3)
-    let readyResults = value == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
+    let readyResults = clinicianFilter == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 
     function returnIndexClass (index) {
         return index == 0 ? 'medalIcon gold' : index == 1 ? 'medalIcon silver' : 'medalIcon bronze';
     }
-    
+
     return (
         <div className='bottomCentre feedbackCard'>
             <h1 className='dataTitle'>Monthly Top Performers</h1>
+            <div className='clinicianFilterContainer'>
+                <button className={clinicianFilter === 'average' ? 'averageButton activeButton' : 'averageButton'} onClick={() => {setClinicianFilter('average')}}>Top Performers</button>
+                <button className={clinicianFilter === 'count' ? 'countButton activeButton' : 'countButton'} onClick={() => {setClinicianFilter('count')}}>Most Responses</button>
+            </div>
             <ul className='clinicianLeaderboard'>
                 {readyResults.map((item, index) => {
                     return (
@@ -28,14 +36,14 @@ function ClinicianLeaderboard ({results, value}) {
                             <p>{item.name}</p>
                         </div>
                         <p className='clinicianScore'>
-                            {value === 'average' ? item.average : item.count} 
-                            {value === 'average' ? <span className='units'>%</span> : null}
+                            {clinicianFilter === 'average' ? item.average : item.count} 
+                            {clinicianFilter === 'average' ? <span className='units'>%</span> : null}
                         </p>
                     </li>
                     )
                 })}
             </ul>
-        </div>
+            </div>
     )
 }
 

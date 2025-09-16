@@ -1,13 +1,48 @@
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { getClinicianReport } from "../../DataCalculations/dataCalculations";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { calculateSatisfactionPercentage } from "../../DataCalculations/dataCalculations";
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
+
+function FeedbackReportPage () {
+
+
+    const { filteredFeedback } = useContext(resultsContext)
+
+    let report = getClinicianReport(filteredFeedback)
+    let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
+
+    return (
+        <div className='reportPageSection'>
+            <div className="dataFeedbackSection">
+                <div className='topLeft feedbackCard'>
+                    <h1 className='dataTitle'>Average Monthly Satisfaction Score</h1>
+                    <div className='dataContainerFeedback'>
+                        <DataGraphCard />
+                    </div>
+                </div>
+                <div className='topRight feedbackCard'>
+                    <h1 className='dataTitle'>Monthly Feedback Responses</h1>
+                    <div className='dataContainerFeedback'>
+                    <ScatterGraph results={filteredFeedback} yDataPoint='averageScore' xDataPoint='id' />
+                    </div>                
+                </div>
+                <SatisfactionCircleGraph positivePercentage={positivePercentage}/> 
+                <ClinicianLeaderboard results={report}/>
+                <DropdownQuestionComponent />
+            </div>
+        </div>
+    )
+}
+
+export default FeedbackReportPage;
+
+
 
 function ScatterGraph ({ results }) {
 
@@ -38,39 +73,4 @@ function ScatterGraph ({ results }) {
         )
         
     } 
-
-
-
-function FeedbackReportPage () {
-
-
-    const { filteredFeedback } = useContext(resultsContext)
-
-    let report = getClinicianReport(filteredFeedback)
-    let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
-
-    return (
-        <div className='reportPageSection'>
-            <div className="dataFeedbackSection">
-                <div className='topLeft feedbackCard'>
-                    <h1 className='dataTitle'>Average Monthly Satisfaction Score</h1>
-                    <div className='dataContainerFeedback'>
-                        <DataGraphCard />
-                    </div>
-                </div>
-                <div className='topRight feedbackCard'>
-                    <h1 className='dataTitle'>Monthly Feedback Responses</h1>
-                    <div className='dataContainerFeedback'>
-                    <ScatterGraph results={filteredFeedback} yDataPoint='averageScore' xDataPoint='id' />
-                    </div>                
-                </div>
-                <SatisfactionCircleGraph positivePercentage={positivePercentage}/> 
-                <ClinicianLeaderboard results={report} value={'average'}/>
-                <DropdownQuestionComponent />
-            </div>
-        </div>
-    )
-}
-
-export default FeedbackReportPage;
 
