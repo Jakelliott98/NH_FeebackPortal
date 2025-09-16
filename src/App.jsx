@@ -13,9 +13,9 @@ function App() {
 
     const { results, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
 
-    const filteredFeedback = useMemo(() => { //filteredFeedback
+    const filteredFeedback = useMemo(() => { 
 
-      let filteredResults = results.results; //startingFeedback
+      let filteredResults = results.results;
       filteredResults= filterByResponseType(filteredResults, results.responseFilter)
       filteredResults = filterByAssessmentType(filteredResults, results.assessmentFilter)
       filteredResults = filterByMonth(filteredResults, results.durationFilter)
