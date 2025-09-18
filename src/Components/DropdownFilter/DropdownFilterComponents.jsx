@@ -5,30 +5,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 
-function DropdownListCard ({dropdownOptions, onSelect, currentSelectedOption, dropdownType, cssClass}) {
+function DropdownListCard ({dropdownOptions, onSelect, currentSelectedOption, dropdownType, cssClass, closeDropdown}) {
 
     let divClass = cssClass == 'titleFilter' ? 'QuestionDropdown dropdownOptionComponent' : 'dropdownOptionComponent' ;
 
     return (
-        <div className={divClass}>
-            {dropdownOptions.map((item) => {
-                return (
-                    <ul 
-                    key={item}
-                    className={
-                        dropdownType == 'variable' && currentSelectedOption == item ? 'active dropdownOption' : dropdownType == 'array' && currentSelectedOption.includes(item) ? 'active dropdownOption' : 'dropdownOption'
-                    }
-                    onClick={() => { onSelect(item) }}
-                    >
-                        {item}
-                    </ul>)
-            })}
-        </div>
+        <>
+            <div className='backgroundDropdown' onClick={() => {closeDropdown()}}></div>
+            <div className={divClass}>
+                {dropdownOptions.map((item) => {
+                    return (
+                        <ul 
+                        key={item}
+                        className={
+                            dropdownType == 'variable' && currentSelectedOption == item ? 'active dropdownOption' : dropdownType == 'array' && currentSelectedOption.includes(item) ? 'active dropdownOption' : 'dropdownOption'
+                        }
+                        onClick={() => { onSelect(item) }}
+                        >
+                            {item}
+                        </ul>)
+                })}
+            </div>
+        </>
     )
     
 }
 
-function RatingFilterCard ({onSelect, currentRating}) {
+function RatingFilterCard ({onSelect, currentRating, closeDropdown}) {
 
     let isStared = [false, false, false, false, false]
     
@@ -41,13 +44,16 @@ function RatingFilterCard ({onSelect, currentRating}) {
         }
 
     return (
-        <div className='dropdownOptionComponent ratingContainer'>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[0] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(1)}}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[1] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(2)}}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[2] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(3)}}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[3] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(4)}}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[4] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(5)}}/>
-        </div>
+        <>
+            <div className='backgroundDropdown' onClick={() => {closeDropdown()}}></div>
+            <div className='dropdownOptionComponent ratingContainer'>
+                <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[0] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(1)}}/>
+                <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[1] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(2)}}/>
+                <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[2] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(3)}}/>
+                <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[3] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(4)}}/>
+                <FontAwesomeIcon icon='fa-star fa-solid' className={isStared[4] ? 'starIcon ratingIcon' : 'ratingIcon'} onClick={() => {onSelect(5)}}/>
+            </div>
+        </>
     )
 }
 

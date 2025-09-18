@@ -17,9 +17,11 @@ function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownLi
         setIsFilterOpen(false)
     }
 
+    function closeDropdown () {setIsFilterOpen(false)};
+
     let filterClass = cssClass ? 'titleFilter' : 'filterTitleCard';
 
-    let dropdownCard = isDropdownList ? <DropdownListCard currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType} cssClass={cssClass}/> : <RatingFilterCard onSelect={handleOptionSelect} currentRating={currentRating}/>;
+    let dropdownCard = isDropdownList ? <DropdownListCard closeDropdown={closeDropdown} currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType} cssClass={cssClass}/> : <RatingFilterCard closeDropdown={() => {closeDropdown()}} onSelect={handleOptionSelect} currentRating={currentRating}/>;
 
     return (
         <div className='filterComponent'>
