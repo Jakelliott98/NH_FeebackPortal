@@ -93,13 +93,17 @@
   left: 20px;
   background-color: rgb(248, 246, 246);
   border-radius: 5px;
-  padding: 2px;
+  padding: 5px;
   font-size: 12px;
   color: darkgray;
-  opacity: 0;
+  opacity: 1;
   width: 80%;
 }
 
-.textAppear {
+.showText {
   opacity: 1;
+}
+
+.hideText {
+  opacity: 0;
 }
