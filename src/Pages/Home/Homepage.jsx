@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import CommentCard from '../../Components/CommentCard/CommentCard';
 import resultsContext from '../../Context/resultsContext';
-import { DataSnapshotDiv } from './DataCard'
+import { DataCardSection } from './DataCardSection'
 import GraphSection from './HomeGraphSection'
 
 function Homepage () {
@@ -11,7 +11,7 @@ function Homepage () {
 
     return (
         <div className='homepage'>
-            <DataSnapshotDiv selectedChart={selectedChart} setSelectedChart={setSelectedChart}/>
+            <DataCardSection selectedChart={selectedChart} setSelectedChart={setSelectedChart}/>
             <GraphSection selectedChart={selectedChart}/>
             <div className="commentsDiv">
                 <CommentCard client={filteredFeedback[1]} anonymous={true}/>

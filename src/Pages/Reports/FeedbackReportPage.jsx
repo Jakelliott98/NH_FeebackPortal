@@ -1,13 +1,13 @@
 import "../../CSS/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
-import { getClinicianReport } from "../../DataCalculations/dataCalculations";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
-import { calculateSatisfactionPercentage } from "../../DataCalculations/dataCalculations";
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
+import calculateSatisfactionPercentage from "../../Utils/Calculations/calculateSatisfactionPercentage";
+import {getClinicianReport} from '../../Utils/Helpers/dataCalculations'
 
 function FeedbackReportPage () {
 

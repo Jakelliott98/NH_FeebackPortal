@@ -1,5 +1,5 @@
 
-import { filterQuestionResponses } from "../../DataCalculations/dataCalculations";
+import { filterQuestionResponses } from "../../Utils/Filters/FilterCalcs";
 import { useState, useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter";

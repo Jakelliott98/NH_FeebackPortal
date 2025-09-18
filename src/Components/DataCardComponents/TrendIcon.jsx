@@ -13,7 +13,7 @@ function TrendIcon ({trend, change, setDescriptionHidden}) {
 
     return (
         <div className={trendClass}>
-            <FontAwesomeIcon onmouseenter={() => {setDescriptionHidden(prev => !prev)}} className='snapshotDataIcon' icon={trendIcon} />
+            <FontAwesomeIcon onMouseEnter={() => {setDescriptionHidden(prev => !prev)}} className='snapshotDataIcon' icon={trendIcon} />
             <p className='snapshotChange'>{change}%</p>
         </div>
     )

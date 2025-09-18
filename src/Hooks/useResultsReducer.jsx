@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import rawdataReturned from "../DataCalculations/rawData";
+import rawdataReturned from "../Utils/Data/rawData";
 
 let initializer = {
     results: rawdataReturned,

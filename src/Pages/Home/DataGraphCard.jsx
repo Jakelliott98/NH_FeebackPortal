@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Rectangle } from 'recharts';
-import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
+import { negativeResponse, positiveResponse, monthlyResponse } from '../../Utils/Data/graphData';
 import {CustomTooltip, CustomMonthlyTooltip} from '../../Components/Graphs/CustomTooltip';
 
 

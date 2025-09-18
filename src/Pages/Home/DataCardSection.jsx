@@ -1,14 +1,15 @@
 import DataCard from '../../Components/DataCardComponents/DataCard'
-import { calculateAverageRating, getNumberOfResponses, calculateSatisfactionPercentage } from '../../DataCalculations/dataCalculations';
 import { useContext } from 'react';
 import resultsContext from '../../Context/resultsContext';
+import { calculateAverageScore } from '../../Utils/Calculations/calculateAverageScore'
+import calculateSatisfactionPercentage from '../../Utils/Calculations/calculateSatisfactionPercentage';
 
-function DataSnapshotDiv ({ selectedChart, setSelectedChart }) {
+function DataCardSection ({ selectedChart, setSelectedChart }) {
 
     const { filteredFeedback } = useContext(resultsContext)
 
-    let numberOfResponses = getNumberOfResponses(filteredFeedback);
-    let feedbackAverageRating = calculateAverageRating(filteredFeedback) 
+    let numberOfResponses = filteredFeedback.length;
+    let feedbackAverageRating = calculateAverageScore(filteredFeedback) 
     let {positivePercentage, negativePercentage} = calculateSatisfactionPercentage(filteredFeedback)
 
     let datacards = returnDataCards(numberOfResponses, feedbackAverageRating, positivePercentage, negativePercentage)
@@ -72,4 +73,4 @@ function returnDataCards (numberOfResponses, feedbackAverageRating, positivePerc
     ]
 }
 
-export { DataSnapshotDiv }
+export { DataCardSection }

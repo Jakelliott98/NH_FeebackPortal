@@ -1,4 +1,4 @@
-import {formatDate} from '../../DataCalculations/formatDate'
+import {formatDate} from '../../Utils/Formatters/formatDate'
 import { useContext } from 'react';
 import resultsContext from '../../Context/resultsContext';
 

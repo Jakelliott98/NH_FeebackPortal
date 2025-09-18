@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter'
 import '../../CSS/PageHeader.css'
 import resultsContext from '../../Context/resultsContext'
-import { getActiveMonths } from '../../DataCalculations/helperFunctions'
+import { getActiveMonths } from '../../Utils/Helpers/helperFunctions'
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'

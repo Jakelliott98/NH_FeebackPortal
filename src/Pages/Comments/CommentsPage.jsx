@@ -3,7 +3,8 @@ import CommentCard from '../../Components/CommentCard/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
 import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter';
-import { getCliniciansWithFeedback, getSortedFeedback } from '../../DataCalculations/helperFunctions';
+import { getCliniciansWithFeedback } from '../../Utils/Helpers/helperFunctions'
+import { getSortedFeedback } from '../../Utils/Filters/FilterCalcs'
 import useCommentFilters from '../../Hooks/useCommentFilters';
 
 import { fas } from '@fortawesome/free-solid-svg-icons'

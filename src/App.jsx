@@ -7,7 +7,7 @@ import ResultsObject from './Hooks/useResultsReducer'
 import { useMemo, useState } from 'react'
 import './CSS/DataCards.css'
 import PageHeader from './Pages/PageComponents/PageHeader'
-import { filterByAssessmentType, filterByResponseType, filterByMonth } from './DataCalculations/helperFunctions'
+import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
 
 function App() {
 

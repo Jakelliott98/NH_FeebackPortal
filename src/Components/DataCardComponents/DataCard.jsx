@@ -30,7 +30,3 @@ function DataCard ({title, data, change, trend, onClick, selectedChart, icon, te
 }
 
 export default DataCard;
-
-// i Icon for information
-// trend icon / component
-// 
