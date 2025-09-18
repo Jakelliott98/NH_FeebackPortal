@@ -1,5 +1,7 @@
 import {formatDate} from "../../Utils/Formatters/formatDate";
 import RatingStarsSection from "./RatingStarsSection";
+import '../../CSS/components/DataCards.css'
+
 
 function CommentCard ({ response, anonymous }) {
     

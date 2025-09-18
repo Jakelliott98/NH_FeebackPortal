@@ -7,7 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
 import { NavLink } from 'react-router-dom'
-import '../CSS/DropdownNavbar.css'
+import '../CSS/pageLayouts/DropdownNavbar.css'
 import { useContext } from 'react'
 import resultsContext from '../Context/resultsContext'
 

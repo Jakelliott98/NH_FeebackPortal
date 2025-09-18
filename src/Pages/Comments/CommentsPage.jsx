@@ -1,19 +1,12 @@
 import { useContext, useMemo } from 'react';
 import CommentCard from '../../Components/CommentCard/CommentCard';
 import resultsContext from '../../Context/resultsContext';
-import '../../CSS/CommentsPage.css'
+import '../../CSS/pageLayouts/CommentsPage.css'
 import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter';
 import { getCliniciansWithFeedback } from '../../Utils/Helpers/helperFunctions'
 import { getSortedFeedback } from '../../Utils/Filters/sortData'
 import useCommentFilters from '../../Hooks/useCommentFilters';
-
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import ResetButton from '../../Components/DropdownFilter/ResetButton';
-library.add(fas, far, fab)
 
 let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Recent', 'Oldest First']
 

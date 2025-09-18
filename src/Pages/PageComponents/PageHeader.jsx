@@ -1,4 +1,4 @@
-import '../../CSS/PageHeader.css'
+import '../../CSS/pageLayouts/PageHeader.css'
 import { DropdownFiltersComponent } from './HeaderDropdowns';
 
 function PageHeader ({title}) {

@@ -1,4 +1,4 @@
-import "../../CSS/FeedbackReportPage.css"
+import "../../CSS/pageLayouts/FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";

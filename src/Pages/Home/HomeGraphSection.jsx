@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import resultsContext from "../../Context/resultsContext"
 import DataGraphCard from "./DataGraphCard"
-
+import '../../CSS/components/GraphCard.css'
 
 export default function GraphSection ({selectedChart}) {
     const { filteredFeedback } = useContext(resultsContext)
