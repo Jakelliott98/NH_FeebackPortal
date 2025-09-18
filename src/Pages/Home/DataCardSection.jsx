@@ -18,12 +18,6 @@ function DataCardSection ({ selectedChart, setSelectedChart }) {
                                 selectedChart={selectedChart} 
                                 onClick={() => {setSelectedChart(item.title)}}
                                 item={item}
-                                title={item.title}
-                                data={item.data}
-                                change={item.change}
-                                trend={item.trend}
-                                icon={item.icon}
-                                text={item.text}
                                 colour={colours[index]}
                             /> 
                         )
@@ -43,7 +37,7 @@ function returnDataCards (filteredFeedback) {
             icon: 'fa-solid fa-people-group',
             data: filteredFeedback.length,
             trend: 'positive',
-            change: 2,
+            change: 2, // Add the change function
             text: 'Number of feedback responses this month',
         },        {
             title: 'Average',

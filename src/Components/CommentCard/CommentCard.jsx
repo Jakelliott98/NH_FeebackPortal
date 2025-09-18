@@ -1,9 +1,9 @@
 import {formatDate} from "../../Utils/Formatters/formatDate";
 import RatingStarsSection from "./RatingStarsSection";
 
-function CommentCard ({ client, anonymous }) {
+function CommentCard ({ response, anonymous }) {
     
-    const { comments, averageScore, assessmentType, clinician, timestamp } = client;
+    const { comments, averageScore, assessmentType, clinician, timestamp } = response;
 
     return (
         <div className={averageScore > 2.5 ? 'positiveComment' : 'negativeComment'}>

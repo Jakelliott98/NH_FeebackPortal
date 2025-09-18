@@ -14,8 +14,8 @@ function Homepage () {
             <DataCardSection selectedChart={selectedChart} setSelectedChart={setSelectedChart}/>
             <GraphSection selectedChart={selectedChart}/>
             <div className="commentsDiv">
-                <CommentCard client={filteredFeedback[1]} anonymous={true}/>
-                <CommentCard client={filteredFeedback[2]} anonymous={true}/>
+                <CommentCard response={filteredFeedback[1]} anonymous={true}/>
+                <CommentCard response={filteredFeedback[2]} anonymous={true}/>
             </div>
         </div>
     )

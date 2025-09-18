@@ -13,18 +13,21 @@ import { useState } from 'react'
 function DataCard ({ onClick, selectedChart, colour, item}) {
     
     const {title, data, change, trend, icon, text} = item;
-    let activeClass = selectedChart === title ? 'activeDataSnap' : '';
     let [descriptionHidden, setDescriptionHidden] = useState(true)
-    let hiddenDescription =  descriptionHidden ? 'cardDefinition' : 'cardDefinition showDescription';
 
     return (
-        <div className={`${activeClass} snapshotCard` } onClick={onClick}>
+        <div 
+        className={`${selectedChart === title ? 'activeDataSnap' : ''} snapshotCard` } 
+        onClick={onClick}
+        >
             <InfoIcon />
-            <div className='iconContainer' style={{backgroundColor: colour}}><FontAwesomeIcon icon={icon} /></div>
+            <div className='iconContainer' style={{backgroundColor: colour}}>
+                <FontAwesomeIcon icon={icon} />
+            </div>
             <p className='snapshotData'>{data}</p>
             <p className='snapshotTitle'>{title}</p>
             <TrendIcon change={change} trend={trend} setDescriptionHidden={setDescriptionHidden}/>
-            <p className={hiddenDescription}>{text}</p>
+            <p className={descriptionHidden ? 'cardDefinition' : 'cardDefinition showDescription'}>{text}</p>
         </div>
     )
     
