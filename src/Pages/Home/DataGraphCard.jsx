@@ -2,6 +2,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, 
 import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
 import { useContext } from 'react';
 import resultsContext from '../../Context/resultsContext';
+import { formatDate } from '../../DataCalculations/formatDate';
 
 function DataGraphCard ({results, selectedChart}) {
 
@@ -19,15 +20,32 @@ function DataGraphCard ({results, selectedChart}) {
         let tooltipScore = readyItem.averageScore > 2.5 ? 'positiveTooltipScore' : 'negativeTooltipScore';
         return (
             <div className='tooltipContainer'>
-                <p className='tooltipTitle'>{readyItem.name}</p>
-                <p className={tooltipScore}>{readyItem.averageScore} Avg</p>
-                <div className='tooltipMiniContainer'>
-                <p>{readyItem.clinician}</p>
-                <p>{readyItem.assessmentType}</p>
+                <div className='tooltipTitleSection'>
+                <h1 className='tooltipTitle'>{readyItem.name}</h1>
+                <p className='tooltipDate'>{formatDate(readyItem.timestamp)}</p>
+                </div>
+                <div className='tooltipScoreSection'>
+                        <p className='satisfactionTitle'>Satisfaction Score</p>
+                        <p className={tooltipScore}>75%</p>
+                </div>
+                <div className='tooltipExtraInfo'>
+                    <p className='tooltipAssessmentType'>{readyItem.assessmentType}</p>
+                    <p className='tooltipClinician'>{readyItem.clinician}</p>
                 </div>
             </div>
         ) 
     }}
+
+    function CustomMonthlyTooltip ({label}) {
+        return (
+            <div className='tooltipContainer'>
+                <h1>{label}</h1>
+                <div className='metricSection'><p className='metricTitle'>Total Responses: </p><span className='metricData'>50</span></div>
+                <div className='metricSection'><p className='metricTitle'>Positive Responses: </p><span className='metricData'>50%</span></div>
+                <div className='metricSection'><p className='metricTitle'>Negative Responses: </p><span className='metricData'>50%</span></div>
+            </div>
+        )
+    }
 
     const responseChart = (
         <ResponsiveContainer width="100%"height="100%" >
@@ -44,7 +62,7 @@ function DataGraphCard ({results, selectedChart}) {
     const averageChart = (
         <ResponsiveContainer width="100%"height="100%" >
             <BarChart data={monthlyResponse}>
-                <Tooltip />
+                <Tooltip content={CustomMonthlyTooltip}/>
                  <Bar dataKey="numberOfResponses" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                  <XAxis dataKey='month'/>
                  <YAxis dataKey='numberOfResponses'/>
@@ -55,10 +73,10 @@ function DataGraphCard ({results, selectedChart}) {
     const postiveResponsesChart = (
         <ResponsiveContainer width="100%"height="100%" >
             <BarChart data={positiveResponse}>
-                    <Tooltip />
-                    <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
-                    <XAxis dataKey='month' />
-                    <YAxis />
+                <Tooltip content={CustomMonthlyTooltip}/>
+                <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
+                <XAxis dataKey='month' />
+                <YAxis />
             </BarChart>
         </ResponsiveContainer>
     )
@@ -66,7 +84,7 @@ function DataGraphCard ({results, selectedChart}) {
     const negativeResponsesChart = (
         <ResponsiveContainer width="100%"height="100%" >
             <BarChart data={negativeResponse}>
-                <Tooltip />
+                <Tooltip content={CustomMonthlyTooltip}/>
                 <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                 <XAxis dataKey='month' />
                 <YAxis />

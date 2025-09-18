@@ -75,24 +75,75 @@
   transform: translateY(0);
 }
 
+
+/* Tooltip */
+
 .tooltipContainer {
-    padding: 20px;
-    background-color: #F5F5F5;
+    padding: 10px 20px;
+    background-color: #343a40;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     font-size: 14px;
+    color: #fff;
+    min-width: 250px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+.tooltipTitleSection {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .tooltipTitle {
     font-weight: 700;
+    font-size: 20px;
+}
+
+.tooltipDate {
+    font-size: 12px;
+    justify-self: flex-end;
+}
+
+.tooltipScoreSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.satisfactionTitle {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tooltipExtraInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+
+.tooltipClinician, .tooltipAssessmentType {
+    font-size: 14px;
+    color: grey;
+}
+
+.tooltipClinician {
+    align-self: flex-end;
 }
 
 .positiveTooltipScore, .negativeTooltipScore {
-    font-weight: 600;
-    align-self: center;
-    font-size: 18px;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .positiveTooltipScore {
@@ -108,4 +159,20 @@
     flex-direction: row;
     gap: 10px;
     font-size: 14px;
+}
+
+.metricTitle {
+    font-size: 12px;
+    color: grey;
+}
+
+.metricData {
+    color: #fff;
+}
+
+.metricSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
