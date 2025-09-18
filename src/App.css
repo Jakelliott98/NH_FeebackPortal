@@ -8,6 +8,7 @@
     width: 10vw;
     background-color: var(--constrast-background-colour);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+    height: 100vh;
 }
 
 .contentDiv {
