@@ -7,23 +7,17 @@ import calculateSatisfactionPercentage from '../../Utils/Calculations/calculateS
 function DataCardSection ({ selectedChart, setSelectedChart }) {
 
     const { filteredFeedback } = useContext(resultsContext)
-
-    let numberOfResponses = filteredFeedback.length;
-    let feedbackAverageRating = calculateAverageScore(filteredFeedback) 
-    let {positivePercentage, negativePercentage} = calculateSatisfactionPercentage(filteredFeedback)
-
-    let datacards = returnDataCards(numberOfResponses, feedbackAverageRating, positivePercentage, negativePercentage)
-
     let colours = ['#8e44ad', '#ffd600', '#cddc39', '#E94984']
 
     return (
             <div className="dataSnapshotDiv">
                 {
-                    datacards.map((item, index) => {
+                    returnDataCards(filteredFeedback).map((item, index) => {
                         return (
                             <DataCard 
                                 selectedChart={selectedChart} 
                                 onClick={() => {setSelectedChart(item.title)}}
+                                item={item}
                                 title={item.title}
                                 data={item.data}
                                 change={item.change}
@@ -39,19 +33,22 @@ function DataCardSection ({ selectedChart, setSelectedChart }) {
     )
 }
 
-function returnDataCards (numberOfResponses, feedbackAverageRating, positivePercentage, negativePercentage) {
+function returnDataCards (filteredFeedback) {
+
+    const {positivePercentage, negativePercentage} = calculateSatisfactionPercentage(filteredFeedback)
+
     return [
         {
             title: 'Responses',
             icon: 'fa-solid fa-people-group',
-            data: numberOfResponses,
+            data: filteredFeedback.length,
             trend: 'positive',
             change: 2,
             text: 'Number of feedback responses this month',
         },        {
             title: 'Average',
             icon: 'fa-solid fa-star',
-            data: feedbackAverageRating,
+            data: calculateAverageScore(filteredFeedback),
             trend: 'positive',
             change: 7,
             text: 'Average feedback response score this month',

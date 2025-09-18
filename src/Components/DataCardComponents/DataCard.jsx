@@ -10,8 +10,9 @@ import InfoIcon from './InfoIcon'
 
 import { useState } from 'react'
 
-function DataCard ({title, data, change, trend, onClick, selectedChart, icon, text, colour}) {
-
+function DataCard ({ onClick, selectedChart, colour, item}) {
+    
+    const {title, data, change, trend, icon, text} = item;
     let activeClass = selectedChart === title ? 'activeDataSnap' : '';
     let [descriptionHidden, setDescriptionHidden] = useState(true)
     let hiddenDescription =  descriptionHidden ? 'cardDefinition' : 'cardDefinition showDescription';

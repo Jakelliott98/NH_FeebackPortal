@@ -4,7 +4,7 @@ import resultsContext from '../../Context/resultsContext';
 import '../../CSS/CommentsPage.css'
 import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter';
 import { getCliniciansWithFeedback } from '../../Utils/Helpers/helperFunctions'
-import { getSortedFeedback } from '../../Utils/Filters/FilterCalcs'
+import { getSortedFeedback } from '../../Utils/Filters/sortData'
 import useCommentFilters from '../../Hooks/useCommentFilters';
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +27,6 @@ function CommentsPage () {
     // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
 
-    // List returning the data in a sorted manner (First state is regular list)
     let sortedFeedback = getSortedFeedback(sortOption, filterFeedback(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
     // Collect the clinicians who have had a response (Used for the Clinician dropdown filter)
