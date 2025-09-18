@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import CommentCard from '../../Components/CommentCard';
+import CommentCard from '../../Components/CommentCard/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import { DataSnapshotDiv } from './DataCard'
 import GraphSection from './HomeGraphSection'

@@ -1,7 +1,6 @@
-import DataSnapshotCard from '../../Components/DataSnapshotCard'
+import DataCard from '../../Components/DataCardComponents/DataCard'
 import { calculateAverageRating, getNumberOfResponses, calculateSatisfactionPercentage } from '../../DataCalculations/dataCalculations';
 import { useContext } from 'react';
-import DataGraphCard from './DataGraphCard';
 import resultsContext from '../../Context/resultsContext';
 
 function DataSnapshotDiv ({ selectedChart, setSelectedChart }) {
@@ -21,7 +20,7 @@ function DataSnapshotDiv ({ selectedChart, setSelectedChart }) {
                 {
                     datacards.map((item, index) => {
                         return (
-                            <DataSnapshotCard 
+                            <DataCard 
                                 selectedChart={selectedChart} 
                                 onClick={() => {setSelectedChart(item.title)}}
                                 title={item.title}
