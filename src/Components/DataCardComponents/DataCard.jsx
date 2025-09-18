@@ -8,26 +8,22 @@ library.add(fas, far, fab)
 import TrendIcon from './TrendIcon'
 import InfoIcon from './InfoIcon'
 
-import { useState } from 'react'
-
 function DataCard ({ onClick, selectedChart, colour, item}) {
     
     const {title, data, change, trend, icon, text} = item;
-    let [descriptionHidden, setDescriptionHidden] = useState(true)
 
     return (
         <div 
         className={`${selectedChart === title ? 'activeDataSnap' : ''} snapshotCard` } 
         onClick={onClick}
         >
-            <InfoIcon />
+            <InfoIcon text={text}/>
             <div className='iconContainer' style={{backgroundColor: colour}}>
                 <FontAwesomeIcon icon={icon} />
             </div>
             <p className='snapshotData'>{data}</p>
             <p className='snapshotTitle'>{title}</p>
-            <TrendIcon change={change} trend={trend} setDescriptionHidden={setDescriptionHidden}/>
-            <p className={descriptionHidden ? 'cardDefinition' : 'cardDefinition showDescription'}>{text}</p>
+            <TrendIcon change={change} trend={trend} />
         </div>
     )
     

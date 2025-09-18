@@ -87,19 +87,19 @@
   align-items: center;
 }
 
-.cardDefinition {
+.hiddenText {
   position: absolute;
-  z-index: 2;
-  background-color: lightgray;
-  height: 100%;
-  width: 100%;
+  top: 25px;
+  left: 20px;
+  background-color: rgb(248, 246, 246);
   border-radius: 5px;
-  display: none;
+  padding: 2px;
   font-size: 12px;
+  color: darkgray;
+  opacity: 0;
+  width: 80%;
 }
 
-.showDescription {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.textAppear {
+  opacity: 1;
 }

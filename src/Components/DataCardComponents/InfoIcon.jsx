@@ -6,13 +6,15 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
-function InfoIcon () {
+function InfoIcon ({text}) {
     
     return (
+        <>
         <div className='infoIcon'>
             <FontAwesomeIcon icon="fa-solid fa-question" />
         </div>
-
+        <div className='hiddenText'>{text}</div>
+        </>
     )
 }
 

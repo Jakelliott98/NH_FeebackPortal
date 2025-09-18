@@ -6,14 +6,14 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
-function TrendIcon ({trend, change, setDescriptionHidden}) {
+function TrendIcon ({trend, change}) {
 
     let trendIcon = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
     let trendClass = `snapshotDataCard ${trend} `
 
     return (
         <div className={trendClass}>
-            <FontAwesomeIcon onMouseEnter={() => {setDescriptionHidden(prev => !prev)}} className='snapshotDataIcon' icon={trendIcon} />
+            <FontAwesomeIcon className='snapshotDataIcon' icon={trendIcon} />
             <p className='snapshotChange'>{change}%</p>
         </div>
     )
