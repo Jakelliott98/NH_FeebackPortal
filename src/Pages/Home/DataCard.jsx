@@ -73,15 +73,4 @@ function returnDataCards (numberOfResponses, feedbackAverageRating, positivePerc
     ]
 }
 
-function DataGraphContainer ({ selectedChart }) {
-
-    const { filteredFeedback } = useContext(resultsContext)
-
-    return (
-            <div className='graphContainer'>
-                <DataGraphCard results={filteredFeedback} selectedChart={selectedChart}/>
-            </div>
-    )
-}
-
-export { DataGraphContainer, DataSnapshotDiv }
+export { DataSnapshotDiv }

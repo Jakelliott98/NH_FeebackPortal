@@ -1,51 +1,9 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Rectangle } from 'recharts';
 import { negativeResponse, positiveResponse, monthlyResponse } from '../../DataCalculations/graphData';
-import { useContext } from 'react';
-import resultsContext from '../../Context/resultsContext';
-import { formatDate } from '../../DataCalculations/formatDate';
+import {CustomTooltip, CustomMonthlyTooltip} from '../../Components/Graphs/CustomTooltip';
+
 
 function DataGraphCard ({results, selectedChart}) {
-
-    let { filteredFeedback } = useContext(resultsContext)
-
-    function findTooltipClient (label) {
-        let item =  filteredFeedback.filter(item => item.id === label)
-        return item;
-    }
-
-    function CustomTooltip ({ label, active }) {
-        if (active) {
-        let item = findTooltipClient(label)
-        let readyItem = item[0];
-        let tooltipScore = readyItem.averageScore > 2.5 ? 'positiveTooltipScore' : 'negativeTooltipScore';
-        return (
-            <div className='tooltipContainer'>
-                <div className='tooltipTitleSection'>
-                <h1 className='tooltipTitle'>{readyItem.name}</h1>
-                <p className='tooltipDate'>{formatDate(readyItem.timestamp)}</p>
-                </div>
-                <div className='tooltipScoreSection'>
-                        <p className='satisfactionTitle'>Satisfaction Score</p>
-                        <p className={tooltipScore}>75%</p>
-                </div>
-                <div className='tooltipExtraInfo'>
-                    <p className='tooltipAssessmentType'>{readyItem.assessmentType}</p>
-                    <p className='tooltipClinician'>{readyItem.clinician}</p>
-                </div>
-            </div>
-        ) 
-    }}
-
-    function CustomMonthlyTooltip ({label}) {
-        return (
-            <div className='tooltipContainer'>
-                <h1>{label}</h1>
-                <div className='metricSection'><p className='metricTitle'>Total Responses: </p><span className='metricData'>50</span></div>
-                <div className='metricSection'><p className='metricTitle'>Positive Responses: </p><span className='metricData'>50%</span></div>
-                <div className='metricSection'><p className='metricTitle'>Negative Responses: </p><span className='metricData'>50%</span></div>
-            </div>
-        )
-    }
 
     const responseChart = (
         <ResponsiveContainer width="100%"height="100%" >
@@ -92,7 +50,7 @@ function DataGraphCard ({results, selectedChart}) {
         </ResponsiveContainer>
     )
 
-    function selectChart (selectedChart) {
+    function selectChart () {
 
         switch (selectedChart) {
 
@@ -103,12 +61,9 @@ function DataGraphCard ({results, selectedChart}) {
             default: return averageChart;
 
     }}
+    
+    return selectChart();
 
-    return (
-            <div className='graphDiv'>
-                {selectChart(selectedChart)}
-            </div>
-    )
 }
 
 export default DataGraphCard;

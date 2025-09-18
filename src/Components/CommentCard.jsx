@@ -15,7 +15,7 @@ function CommentCard ({ client, anonymous }) {
         <div className={averageScore > 2.5 ? 'positiveComment' : 'negativeComment'}>
             <p className="commentText">"{comments}"</p>
             <div className={anonymous ? 'commentInfoThree' : 'commentInfo'}>
-                <p className='commentsRating'>Rating: <RatingStars averageRating={averageScore}/></p>
+                <p className='commentsRating'><RatingStars averageRating={averageScore}/></p>
                 <p>{assessmentType}</p>
                 { anonymous ? null : <p className='commentClinician' >{clinician}</p>}
                 <p className='commentTime'>{formatDate(timestamp)}</p>
