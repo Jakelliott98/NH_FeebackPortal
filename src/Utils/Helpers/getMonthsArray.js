@@ -7,7 +7,8 @@ function calculateMonthlyData (responses) {
     let monthlyResponses = {};
 
     responses.forEach((item) => {
-        let itemsMonth = months[getDateMonth(item.timestamp)];
+        let itemsMonthNumber = getDateMonth(item.timestamp);
+        let itemsMonth = months[itemsMonthNumber];
 
         if (monthlyResponses[itemsMonth]) {
             monthlyResponses[itemsMonth].responses.push(item);
@@ -15,6 +16,7 @@ function calculateMonthlyData (responses) {
             monthlyResponses[itemsMonth] = {
                 month: itemsMonth,
                 responses: [item],
+                monthKey: itemsMonthNumber,
             };
         }
     })
@@ -27,6 +29,7 @@ function calculateMonthlyData (responses) {
 
         return {
             month: monthlyResponses[key].month,
+            monthKey: monthlyResponses[key].monthKey,
             responses: monthlyResponses[key].responses,
             numberOfResponses: numberResponses,
             average: averageScore,
@@ -35,7 +38,9 @@ function calculateMonthlyData (responses) {
         }
     })
 
-    return monthArr
+
+
+    return monthArr.sort((a, b) => a.monthKey - b.monthKey);
 
 }
 
