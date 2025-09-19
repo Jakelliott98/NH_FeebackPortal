@@ -30,7 +30,8 @@ function filterByMonth (results, selectedMonth) {
       let itemsMonth = months[getDateMonth(item.timestamp)];
       return itemsMonth === selectedMonth;
     })
-    return filteredArray;
+
+  return filteredArray;
 }
 
 }

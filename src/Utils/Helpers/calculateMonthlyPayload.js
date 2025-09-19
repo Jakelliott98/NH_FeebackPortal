@@ -2,11 +2,12 @@ import { calculateAverageScore } from "../Calculations/calculateAverageScore";
 import calculateSatisfactionPercentage from "../Calculations/calculateSatisfactionPercentage";
 import { getDateMonth, months } from "../Formatters/formatDate";
 
-function calculateMonthlyData (responses) {
+function calculateMonthlyPayload (responses) {
 
     let monthlyResponses = {};
 
     responses.forEach((item) => {
+        let monthIndex = getDateMonth(item.timestamp);
         let itemsMonthNumber = getDateMonth(item.timestamp);
         let itemsMonth = months[itemsMonthNumber];
 
@@ -16,39 +17,31 @@ function calculateMonthlyData (responses) {
             monthlyResponses[itemsMonth] = {
                 month: itemsMonth,
                 responses: [item],
-                monthKey: itemsMonthNumber,
+                monthIndex,
             };
         }
     })
 
-    let monthArr = Object.keys(monthlyResponses).map((key) => {
+    let monthlyPayload = Object.keys(monthlyResponses).map((key) => {
 
-        let numberResponses = monthlyResponses[key].responses.length;
+        let numberOfResponses = monthlyResponses[key].responses.length;
         let {positivePercentage, negativePercentage} = calculateSatisfactionPercentage(monthlyResponses[key].responses);
         let averageScore = calculateAverageScore(monthlyResponses[key].responses)
 
         return {
-            month: monthlyResponses[key].month,
-            monthKey: monthlyResponses[key].monthKey,
-            responses: monthlyResponses[key].responses,
-            numberOfResponses: numberResponses,
-            average: averageScore,
-            positive: positivePercentage,
-            negative: negativePercentage,
+            ...monthlyResponses[key],
+            numberOfResponses,
+            averageScore,
+            positivePercentage,
+            negativePercentage,
         }
+
     })
 
-
-
-    return monthArr.sort((a, b) => a.monthKey - b.monthKey);
+    return monthlyPayload.sort((a, b) => a.monthKey - b.monthKey);
 
 }
 
 
 
-export default calculateMonthlyData;
-
-
-// Function where it takes last 3 amount of months --> and draws the graphs
-
-// {Month, responses}
+export default calculateMonthlyPayload;
