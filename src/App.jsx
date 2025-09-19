@@ -20,7 +20,7 @@ function App() {
     filteredResults = filterByMonth(filteredResults, results.durationFilter)
     return filteredResults;
     
-  }, [results])
+  }, [results]) // Add into a custom hook
 
   const [currentPage, setCurrentPage] = useState('Home')
 

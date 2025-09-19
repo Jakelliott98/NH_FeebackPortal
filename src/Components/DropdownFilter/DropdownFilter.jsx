@@ -6,7 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 import { useState } from "react"
 import '../../CSS/components/DropdownFilter.css'
-import { DropdownListCard, RatingFilterCard } from './DropdownFilterComponents'
+import { DropdownListCard } from './DropdownFilterComponents'
+import RatingFilterCard from './RatingFilterCard'
 
 function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownList, currentSelectedOption, dropdownType, currentRating, cssClass, iconTag}) {
 

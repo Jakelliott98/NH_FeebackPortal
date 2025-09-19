@@ -8,23 +8,22 @@ library.add(fas, far, fab)
 
 function RatingStarsSection ({ averageRating }) {
 
-    let ratingScore = getRatingArray(averageRating)
+    let ratingsArray = [false, false, false, false, false];
 
-    function getRatingArray (rating) { //Change naming here
-
-        let ratingsArray = [false, false, false, false, false];
-
-        for (let i = 0; i < 5; i++) {
-            if (i < Math.round(rating)) {
-                ratingsArray[i] = true;
-            } else if (i > Math.round(rating)) {
-                ratingsArray[i] = false;
-            }
-        }  
-
-        return ratingsArray ; 
+    for (let i = 0; i < 5; i++) {
+        if (i < Math.round(averageRating)) {
+            ratingsArray[i] = true;
+        } else if (i > Math.round(averageRating)) {
+            ratingsArray[i] = false;
+        }
+    }  
         
-    }
+    return (
+        <RatingStarsList ratingScore={ratingsArray}/>
+    )
+}
+
+function RatingStarsList ({ratingScore}) {
 
     return (
         <>
@@ -35,6 +34,7 @@ function RatingStarsSection ({ averageRating }) {
             <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[4] ? 'starIcon' : 'unStaredIcon'}/>
         </>
     )
+
 }
 
 export default RatingStarsSection;
