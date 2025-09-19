@@ -6,7 +6,6 @@ import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
-import calculateSatisfactionPercentage from "../../Utils/Calculations/calculateSatisfactionPercentage";
 import {getClinicianReport} from '../../Utils/Helpers/dataCalculations'
 
 function FeedbackReportPage () {
@@ -15,7 +14,6 @@ function FeedbackReportPage () {
     const { filteredFeedback } = useContext(resultsContext)
 
     let report = getClinicianReport(filteredFeedback)
-    let { positivePercentage } = calculateSatisfactionPercentage(filteredFeedback)
 
     return (
         <div className='reportPageSection'>
@@ -32,7 +30,7 @@ function FeedbackReportPage () {
                     <ScatterGraph results={filteredFeedback} yDataPoint='averageScore' xDataPoint='id' />
                     </div>                
                 </div>
-                <SatisfactionCircleGraph positivePercentage={positivePercentage}/> 
+                <SatisfactionCircleGraph /> 
                 <ClinicianLeaderboard results={report}/>
                 <DropdownQuestionComponent />
             </div>
