@@ -18,8 +18,7 @@ function formatDate (date) {
   let formattedDate = new Date(date);
   
   let year = formattedDate.getFullYear();
-  let month = formattedDate.getMonth()
-  let monthText = months[month]
+  let monthText = months[formattedDate.getMonth()]
   let day = formattedDate.getDate()
 
   return day + ' ' + monthText + ' ' + year;

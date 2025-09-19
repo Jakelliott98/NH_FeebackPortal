@@ -1,13 +1,19 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Rectangle } from 'recharts';
-import { negativeResponse, positiveResponse, monthlyResponse } from '../../Utils/Data/graphData';
 import {CustomTooltip, CustomMonthlyTooltip} from '../../Components/Graphs/CustomTooltip';
+import calculateMonthlyData from '../../Utils/Helpers/getMonthsArray';
+import { useContext } from 'react';
+import resultsContext from '../../Context/resultsContext';
 
 
-function DataGraphCard ({results, selectedChart}) {
+function DataGraphCard ({ selectedChart }) {
+
+    let { filteredFeedback } = useContext(resultsContext);
+
+    let monthlyData = calculateMonthlyData(filteredFeedback)
 
     const responseChart = (
         <ResponsiveContainer width="100%"height="100%" >
-            <LineChart data={results} >
+            <LineChart data={filteredFeedback} >
                 <Tooltip content={CustomTooltip}/>
                 <YAxis domain={[0, 6]}/>
                 <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
@@ -19,7 +25,7 @@ function DataGraphCard ({results, selectedChart}) {
     // CHANGE TOOLTIP TO PERCENTAGE
     const averageChart = (
         <ResponsiveContainer width="100%"height="100%" >
-            <BarChart data={monthlyResponse}>
+            <BarChart data={monthlyData}>
                 <Tooltip content={CustomMonthlyTooltip}/>
                  <Bar dataKey="numberOfResponses" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                  <XAxis dataKey='month'/>
@@ -30,9 +36,9 @@ function DataGraphCard ({results, selectedChart}) {
 
     const postiveResponsesChart = (
         <ResponsiveContainer width="100%"height="100%" >
-            <BarChart data={positiveResponse}>
+            <BarChart data={monthlyData}>
                 <Tooltip content={CustomMonthlyTooltip}/>
-                <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
+                <Bar dataKey="positive" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                 <XAxis dataKey='month' />
                 <YAxis />
             </BarChart>
@@ -41,9 +47,9 @@ function DataGraphCard ({results, selectedChart}) {
 
     const negativeResponsesChart = (
         <ResponsiveContainer width="100%"height="100%" >
-            <BarChart data={negativeResponse}>
+            <BarChart data={monthlyData}>
                 <Tooltip content={CustomMonthlyTooltip}/>
-                <Bar dataKey="data" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
+                <Bar dataKey="negative" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                 <XAxis dataKey='month' />
                 <YAxis />
             </BarChart>
