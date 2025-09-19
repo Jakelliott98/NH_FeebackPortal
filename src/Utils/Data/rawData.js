@@ -445,3 +445,29 @@ let rawdataReturned = [
 
 
 export default rawdataReturned;
+
+
+
+
+let ha = {
+  "id": 0,
+  "name": '',
+  "doctor": '',
+  "physiologist": '',
+  "responses": { "q1": 0, "q2": 0, "q3": 0, "q4": 0, "q5": 0 },
+  "averageScore": 0,
+  "comments": "",
+  "timestamp": "",
+  "assessmentType": "Health Assessment" //preset from form
+}
+
+let physiotherapy = {
+  "id": 0,
+  "name": '',
+  "physiotherapist": '',
+  "responses": { "q1": 0, "q2": 0, "q3": 0, "q4": 0, "q5": 0 },
+  "averageScore": 0,
+  "comments": "",
+  "timestamp": "",
+  "assessmentType": "Physiotherapy" //preset from form
+}

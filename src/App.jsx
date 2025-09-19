@@ -7,7 +7,6 @@ import ResultsObject from './Hooks/useResultsReducer'
 import { useMemo, useState } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
-import { getSortedFeedback } from './Utils/Filters/sortData'
 
 function App() {
 
@@ -19,7 +18,6 @@ function App() {
     filteredResults= filterByResponseType(filteredResults, results.responseFilter)
     filteredResults = filterByAssessmentType(filteredResults, results.assessmentFilter)
     filteredResults = filterByMonth(filteredResults, results.durationFilter)
-    getSortedFeedback('Most Recent', filteredResults)
     return filteredResults;
     
   }, [results])

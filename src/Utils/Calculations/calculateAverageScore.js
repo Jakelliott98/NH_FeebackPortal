@@ -18,4 +18,8 @@ function calculateClinicianScore (feedback, clinician) {
 
 }
 
-export { calculateAverageScore, calculateClinicianScore }
+function averageScoreAsPercentage (score) {
+    return Math.floor((score / 5) * 100)
+}
+
+export { calculateAverageScore, calculateClinicianScore, averageScoreAsPercentage }
