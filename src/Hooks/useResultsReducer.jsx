@@ -3,7 +3,7 @@ import rawdataReturned from "../Utils/Data/rawData";
 import newRawData from "../Utils/Data/newDataFormat";
 
 let initializer = {
-    results: rawdataReturned,
+    results: newRawData,
     assessmentFilter: 'All Assessments',
     responseFilter: 'All',
     durationFilter: 'Month',

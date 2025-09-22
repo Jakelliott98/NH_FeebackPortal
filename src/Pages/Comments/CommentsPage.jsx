@@ -13,31 +13,22 @@ let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Re
 function CommentsPage () {
 
     const { filteredFeedback } = useContext(resultsContext)
-    const ClinicianTitle = 'All Doctors';
-    const ratingsTitle = 'Satisfaction Rating';
     const { changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters } = useCommentFilters();
     const { sortOption, rating, selectedClinicians, activeFilters } = commentFilters;
 
     // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
-
     let sortedFeedback = getSortedFeedback(sortOption, filterFeedback(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
     // Collect the clinicians who have had a response (Used for the Clinician dropdown filter)
     let cliniciansWithFeedback =  useMemo(() => {
         return getCliniciansWithFeedback(sortedFeedback)
     }, [sortedFeedback])
+    console.log(cliniciansWithFeedback)
 
     return (
         <div className='commentLayout'>
-            <div className='CommentFilters'>
-                <DropdownFilter isDropdownList={true} dropdownTitle={sortOption} dropdownOptions={sortByOptions} onSelect={changeSortOption} dropdownType={'variable'}/>
-                <div className='commentDropdowns'>
-                    <DropdownFilter isDropdownList={false} dropdownTitle={ratingsTitle} onSelect={changeRatingFilter} currentRating={rating} />
-                    <DropdownFilter isDropdownList={true} dropdownTitle={ClinicianTitle} onSelect={addClinicianFilter} dropdownOptions={cliniciansWithFeedback} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
-                    <ResetButton onClick={resetFilters} />
-                </div>
-            </div>
+            <CommentFilterContainer sortOption={sortOption} changeSortOption={changeSortOption} changeRatingFilter={changeRatingFilter} addClinicianFilter={addClinicianFilter} resetFilters={resetFilters} rating={rating} cliniciansWithFeedback={cliniciansWithFeedback} selectedClinicians={selectedClinicians}/>
             <div className='commentContainer'>
             {
                 sortedFeedback.map((item) => {return (
@@ -46,6 +37,23 @@ function CommentsPage () {
             }
             </div>
         </div>
+    )
+}
+
+function CommentFilterContainer ({sortOption, changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, rating, cliniciansWithFeedback, selectedClinicians}) {
+
+    const ClinicianTitle = 'All Doctors';
+    const ratingsTitle = 'Satisfaction Rating';
+
+    return (
+            <div className='CommentFilters'>
+                <DropdownFilter isDropdownList={true} dropdownTitle={sortOption} dropdownOptions={sortByOptions} onSelect={changeSortOption} dropdownType={'variable'}/>
+                <div className='commentDropdowns'>
+                    <DropdownFilter isDropdownList={false} dropdownTitle={ratingsTitle} onSelect={changeRatingFilter} currentRating={rating} />
+                    <DropdownFilter isDropdownList={true} dropdownTitle={ClinicianTitle} onSelect={addClinicianFilter} dropdownOptions={cliniciansWithFeedback.physiotherapist} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
+                    <ResetButton onClick={resetFilters} />
+                </div>
+            </div>
     )
 }
 
