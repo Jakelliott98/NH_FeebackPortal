@@ -5,7 +5,6 @@ function CustomTooltip ({ active, payload }) {
 
 
     if (active) {
-    console.log(payload[0].payload)
     let response = payload[0].payload
     let tooltipScore = response.averageScore > 2.5 ? 'positiveTooltipScore' : 'negativeTooltipScore';
     return (
@@ -29,7 +28,6 @@ function CustomTooltip ({ active, payload }) {
 function CustomMonthlyTooltip ({label, payload, active}) {
     if (active) {
     let item= payload[0].payload;
-    console.log(item)
     return (
         <div className='tooltipContainer'>
             <h1>{label}</h1>

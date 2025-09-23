@@ -20,7 +20,7 @@ function CommentsPageLogic () {
 
     return (
         <commentsContext.Provider value={{ commentFilters, changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, sortedFeedback }}>
-        <CommentsPage />
+            <CommentsPage />
         </commentsContext.Provider>
     )
 }

@@ -5,7 +5,6 @@ import '../../CSS/components/DataCards.css'
 
 function CommentCard ({ response, anonymous }) {
     
-    console.log(response)
     const { comments, averageScore, assessmentType, doctor, physiotherapist, physiologist, timestamp } = response;
 
     return (

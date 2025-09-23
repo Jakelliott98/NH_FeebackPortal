@@ -35,8 +35,6 @@ const questions1 = [
     },
 ]
 
-
-
 function DropdownQuestionComponent () {
 
     const [activeQuestion, setActiveQuestion] = useState({number:'q1', title: 'Question 1', text: 'How would you rate the friendliness and helpfulness of the doctor?'});

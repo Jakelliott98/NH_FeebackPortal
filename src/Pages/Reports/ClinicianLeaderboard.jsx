@@ -16,7 +16,6 @@ function ClinicianLeaderboard () {
     const [clinicianFilter, setClinicianFilter] = useState('average');
     let results = getClinicianReport(filteredFeedback)
 
-
     let topFiveClinicians = results.slice(0 , 3)
     let readyResults = clinicianFilter == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 

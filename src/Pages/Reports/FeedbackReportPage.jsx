@@ -6,7 +6,6 @@ import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import ClinicianLeaderboard from "./ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
-import {getClinicianReport} from '../../Utils/Helpers/dataCalculations'
 
 function FeedbackReportPage () {
 
@@ -36,8 +35,6 @@ function FeedbackReportPage () {
 }
 
 export default FeedbackReportPage;
-
-
 
 function ScatterGraph ({ results }) {
 
