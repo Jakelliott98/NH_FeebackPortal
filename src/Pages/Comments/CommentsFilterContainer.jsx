@@ -15,12 +15,14 @@ function CommentFilterContainer () {
         return getCliniciansWithFeedback(sortedFeedback)
     }, [sortedFeedback])
 
+    let clinicianDropdown = cliniciansWithFeedback.doctors.concat(cliniciansWithFeedback.physiologist).concat(cliniciansWithFeedback.physiotherapist)
+
     return (
             <div className='CommentFilters'>
                 <DropdownFilter isDropdownList={true} dropdownTitle={sortOption} dropdownOptions={sortByOptions} onSelect={changeSortOption} dropdownType={'variable'}/>
                 <div className='commentDropdowns'>
                     <DropdownFilter isDropdownList={false} dropdownTitle={'Satisfaction Rating'} onSelect={changeRatingFilter} currentRating={rating} />
-                    <DropdownFilter isDropdownList={true} dropdownTitle={'All Doctors'} onSelect={addClinicianFilter} dropdownOptions={cliniciansWithFeedback.physiotherapist} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
+                    <DropdownFilter isDropdownList={true} dropdownTitle={'All Doctors'} onSelect={addClinicianFilter} dropdownOptions={clinicianDropdown} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
                     <ResetButton onClick={resetFilters} />
                 </div>
             </div>
