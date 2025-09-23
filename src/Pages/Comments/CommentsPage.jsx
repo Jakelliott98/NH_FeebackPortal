@@ -18,11 +18,10 @@ function CommentsPageLogic () {
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
     let sortedFeedback = getSortedFeedback(sortOption, filterComments(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
-
     return (
         <commentsContext.Provider value={{ commentFilters, changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, sortedFeedback }}>
-        <CommentsPage         />
-        </ commentsContext.Provider>
+        <CommentsPage />
+        </commentsContext.Provider>
     )
 }
 
@@ -35,8 +34,9 @@ function CommentsPage () {
             <CommentFilterContainer />
             <div className='commentContainer'>
             {
-                sortedFeedback.map((item) => {return (
-                    <CommentCard key={item.id} response={item} anonymous={false}/>
+                sortedFeedback.map((item) => {
+                    return (
+                        <CommentCard key={item.id} response={item} anonymous={false}/>
                 )})
             }
             </div>
