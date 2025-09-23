@@ -22,8 +22,6 @@ function App() {
     
   }, [results]) // Add into a custom hook
 
-  console.log(filteredFeedback)
-
   const [currentPage, setCurrentPage] = useState('Home')
 
   return (

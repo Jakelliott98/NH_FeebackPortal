@@ -1,16 +1,14 @@
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import CommentCard from '../../Components/CommentCard/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/pageLayouts/CommentsPage.css'
-import { DropdownFilter } from '../../Components/DropdownFilter/DropdownFilter';
-import { getCliniciansWithFeedback } from '../../Utils/Helpers/helperFunctions'
 import { getSortedFeedback } from '../../Utils/Filters/sortData'
 import useCommentFilters from '../../Hooks/useCommentFilters';
-import ResetButton from '../../Components/DropdownFilter/ResetButton';
+import CommentFilterContainer from './CommentsFilterContainer';
+import filterComments from './filterComments';
+import commentsContext from '../../Context/commentsContext';
 
-let sortByOptions = ['Clinician (A-Z)', 'Highest Rated','Lowest Rated', 'Most Recent', 'Oldest First']
-
-function CommentsPage () {
+function CommentsPageLogic () {
 
     const { filteredFeedback } = useContext(resultsContext)
     const { changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters } = useCommentFilters();
@@ -18,17 +16,23 @@ function CommentsPage () {
 
     // Remove any feedback whithout a comment
     let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '')
-    let sortedFeedback = getSortedFeedback(sortOption, filterFeedback(feedbacksWithComment, activeFilters, rating, selectedClinicians))
+    let sortedFeedback = getSortedFeedback(sortOption, filterComments(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
-    // Collect the clinicians who have had a response (Used for the Clinician dropdown filter)
-    let cliniciansWithFeedback =  useMemo(() => {
-        return getCliniciansWithFeedback(sortedFeedback)
-    }, [sortedFeedback])
-    console.log(cliniciansWithFeedback)
+
+    return (
+        <commentsContext.Provider value={{ commentFilters, changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, sortedFeedback }}>
+        <CommentsPage         />
+        </ commentsContext.Provider>
+    )
+}
+
+function CommentsPage () {
+
+    const { sortedFeedback } = useContext(commentsContext)
 
     return (
         <div className='commentLayout'>
-            <CommentFilterContainer sortOption={sortOption} changeSortOption={changeSortOption} changeRatingFilter={changeRatingFilter} addClinicianFilter={addClinicianFilter} resetFilters={resetFilters} rating={rating} cliniciansWithFeedback={cliniciansWithFeedback} selectedClinicians={selectedClinicians}/>
+            <CommentFilterContainer />
             <div className='commentContainer'>
             {
                 sortedFeedback.map((item) => {return (
@@ -40,40 +44,6 @@ function CommentsPage () {
     )
 }
 
-function CommentFilterContainer ({sortOption, changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, rating, cliniciansWithFeedback, selectedClinicians}) {
 
-    const ClinicianTitle = 'All Doctors';
-    const ratingsTitle = 'Satisfaction Rating';
 
-    return (
-            <div className='CommentFilters'>
-                <DropdownFilter isDropdownList={true} dropdownTitle={sortOption} dropdownOptions={sortByOptions} onSelect={changeSortOption} dropdownType={'variable'}/>
-                <div className='commentDropdowns'>
-                    <DropdownFilter isDropdownList={false} dropdownTitle={ratingsTitle} onSelect={changeRatingFilter} currentRating={rating} />
-                    <DropdownFilter isDropdownList={true} dropdownTitle={ClinicianTitle} onSelect={addClinicianFilter} dropdownOptions={cliniciansWithFeedback.physiotherapist} dropdownType={'array'} currentSelectedOption={selectedClinicians}/>
-                    <ResetButton onClick={resetFilters} />
-                </div>
-            </div>
-    )
-}
-
-function filterFeedback (feedbackList, state, rating, selectedClinicians) {
-
-    if (state.byRating == false && state.byClinician == false) {
-        return feedbackList;
-    } else {
-        let list = feedbackList;
-        if (state.byRating == true) {
-            // Filter the list by rating
-            list = list.filter(item => Math.round(item.averageScore) == rating)
-        }
-        if (state.byClinician === true) {
-            // Filter the list by selected clinician
-            list = list.filter(item =>  selectedClinicians.includes(item.clinician));
-        }
-        return list;
-    }
-
-}
-
-export default CommentsPage;
+export default CommentsPageLogic;

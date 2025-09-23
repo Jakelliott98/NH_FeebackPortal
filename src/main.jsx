@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Homepage from './Pages/Home/Homepage.jsx'
 import FeedbackReportPage from './Pages/Reports/FeedbackReportPage.jsx'
-import CommentsPage from './Pages/Comments/CommentsPage.jsx'
+import CommentsPageLogic from './Pages/Comments/CommentsPage.jsx'
 import SettingsPage from './Pages/Settings/SettingsPage.jsx'
 
 const router = createBrowserRouter([
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'Comments',
-        element: <CommentsPage />
+        element: <CommentsPageLogic />
       },
       {
         path: 'Settings',
