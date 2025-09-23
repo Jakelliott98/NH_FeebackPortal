@@ -5,10 +5,21 @@ function calculateAverageScore (data) {
     return Math.floor(((totalScore / (data.length * 5)) * 100))
 }
 
-function calculateClinicianScore (feedback, clinician) {
+function calculateClinicianScore (feedback, clinician, clinicianType) {
 
-    const cliniciansResponses = feedback.filter(item => item.clinician == clinician);
-    const averagePercentage = calculateAverageScore(cliniciansResponses)
+    let cliniciansResponses = '';
+    let averagePercentage = '';
+
+    if (clinicianType === 'doctor') {
+        cliniciansResponses = feedback.filter(item => item.doctor == clinician);
+        averagePercentage = calculateAverageScore(cliniciansResponses)
+    } else if (clinicianType === 'physiologist') {
+        cliniciansResponses = feedback.filter(item => item.physiologist == clinician);
+        averagePercentage = calculateAverageScore(cliniciansResponses)
+    } else if (clinicianType === 'physiotherapist') {
+        cliniciansResponses = feedback.filter(item => item.physiotherapist == clinician);
+        averagePercentage = calculateAverageScore(cliniciansResponses)
+    }
     
     return {
         name: clinician,

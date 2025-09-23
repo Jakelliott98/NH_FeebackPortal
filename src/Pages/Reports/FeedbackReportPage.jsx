@@ -10,10 +10,7 @@ import {getClinicianReport} from '../../Utils/Helpers/dataCalculations'
 
 function FeedbackReportPage () {
 
-
     const { filteredFeedback } = useContext(resultsContext)
-
-    let report = getClinicianReport(filteredFeedback)
 
     return (
         <div className='reportPageSection'>
@@ -31,7 +28,7 @@ function FeedbackReportPage () {
                     </div>                
                 </div>
                 <SatisfactionCircleGraph /> 
-                <ClinicianLeaderboard results={report}/>
+                <ClinicianLeaderboard />
                 <DropdownQuestionComponent />
             </div>
         </div>

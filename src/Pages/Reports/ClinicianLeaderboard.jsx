@@ -5,12 +5,16 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { getClinicianReport } from '../../Utils/Helpers/dataCalculations'
+import resultsContext from '../../Context/resultsContext'
 
 
-function ClinicianLeaderboard ({ results }) {
+function ClinicianLeaderboard () {
 
+    const { filteredFeedback } = useContext(resultsContext)
     const [clinicianFilter, setClinicianFilter] = useState('average');
+    let results = getClinicianReport(filteredFeedback)
 
 
     let topFiveClinicians = results.slice(0 , 3)

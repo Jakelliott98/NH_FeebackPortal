@@ -6,11 +6,13 @@ const getCliniciansWithFeedback = (results) => {
   let physiologist = Array.from(new Set(results.map(item => item.physiologist))).filter(item => item)
   let doctors = Array.from(new Set(results.map(item => item.doctor))).filter(item => item)
   let physiotherapist = Array.from(new Set(results.map(item => item.physiotherapist))).filter(item => item)
+  let allClinicians = physiologist.concat(doctors).concat(physiotherapist)
 
   return {
     physiologist, 
     doctors, 
     physiotherapist,
+    allClinicians
   }
 
 }
