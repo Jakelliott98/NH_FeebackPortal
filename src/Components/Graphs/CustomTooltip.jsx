@@ -3,7 +3,6 @@ import { averageScoreAsPercentage } from '../../Utils/Calculations/calculateAver
 
 function CustomTooltip ({ active, payload }) {
 
-
     if (active) {
     let response = payload[0].payload
     let tooltipScore = response.averageScore > 2.5 ? 'positiveTooltipScore' : 'negativeTooltipScore';
@@ -19,7 +18,7 @@ function CustomTooltip ({ active, payload }) {
             </div>
             <div className='tooltipExtraInfo'>
                 <p className='tooltipAssessmentType'>{response.assessmentType}</p>
-                <p className='tooltipClinician'>{response.clinician}</p>
+                <p className='tooltipClinician'>{response.doctor ? `${response.doctor} & ${response.physiologist}` : response.physiotherapist}</p>
             </div>
         </div>
     ) 
