@@ -13,7 +13,7 @@ function CommentFilterContainer () {
 
     let cliniciansWithFeedback =  useMemo(() => {
         return getCliniciansWithFeedback(sortedFeedback)
-    }, [sortedFeedback])
+    }, [])
 
     return (
             <div className='CommentFilters'>
