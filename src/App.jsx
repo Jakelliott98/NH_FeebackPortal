@@ -7,6 +7,7 @@ import ResultsObject from './Hooks/useResultsReducer'
 import { useMemo, useState } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
+import supabase from './Utils/Data/fetchAPIData'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
   }, [results]) // Add into a custom hook
 
   const [currentPage, setCurrentPage] = useState('Home')
+  console.log(supabase)
 
   return (
     <resultsContext.Provider value={{setCurrentPage, filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
