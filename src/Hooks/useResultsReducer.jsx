@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import rawdataReturned from "../Utils/Data/rawData";
 import newRawData from "../Utils/Data/newDataFormat";
 
+
 let initializer = {
     results: newRawData,
     assessmentFilter: 'All Assessments',
