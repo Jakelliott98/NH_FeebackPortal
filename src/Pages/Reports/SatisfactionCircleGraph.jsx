@@ -11,9 +11,9 @@ function SatisfactionCircleGraph () {
     const { filteredFeedback } = useContext(resultsContext) // Going to be used for getting the results
 
     let results = {
-        'Satisfied Responses (> 50% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore > 2.5)).length / filteredFeedback.length) * 100),
-        'Excellent Response (>80% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore >= 4)).length / filteredFeedback.length) * 100),
-        'Terrible Response (< 20% Score)': Math.round(((filteredFeedback.filter(item => item.averageScore === 1)).length / filteredFeedback.length) * 100),
+        'Satisfied Responses (> 50% Score)': Math.round(((filteredFeedback.filter(item => item.average_score > 2.5)).length / filteredFeedback.length) * 100),
+        'Excellent Response (>80% Score)': Math.round(((filteredFeedback.filter(item => item.average_score >= 4)).length / filteredFeedback.length) * 100),
+        'Terrible Response (< 20% Score)': Math.round(((filteredFeedback.filter(item => item.average_score === 1)).length / filteredFeedback.length) * 100),
     }
 
     let responseData = results[activeQuestion]

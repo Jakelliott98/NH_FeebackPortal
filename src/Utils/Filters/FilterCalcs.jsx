@@ -7,14 +7,14 @@ function filterQuestionResponses (data, question) {
     return (Math.round((totalScore / (dataArray.length * 5)) * 100));
 }
 
-const filterByAssessmentType = (results, assessmentFilter) => {return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessmentType == assessmentFilter)}
+const filterByAssessmentType = (results, assessmentFilter) => {return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessment_type == assessmentFilter)}
 
 function filterByResponseType (results, responseFilter) {
   if (responseFilter !== 'All') {
     if (responseFilter == 'Positive') {
-      return results.filter(item => item.averageScore > 2.5)
+      return results.filter(item => item.average_score > 2.5)
     } else if (responseFilter == 'Negative') {
-      return results.filter(item => item.averageScore < 2.5)
+      return results.filter(item => item.average_score < 2.5)
     }
   } else {
     return results;
@@ -27,7 +27,7 @@ function filterByMonth (results, selectedMonth) {
     return results;
   } else {
     let filteredArray = results.filter((item) => {
-      let itemsMonth = months[getDateMonth(item.timestamp)];
+      let itemsMonth = months[getDateMonth(item.created_at)];
       return itemsMonth === selectedMonth;
     })
 

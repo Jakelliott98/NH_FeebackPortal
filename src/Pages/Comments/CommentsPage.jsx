@@ -14,7 +14,7 @@ function CommentsPageLogic () {
     const { changeSortOption, changeRatingFilter, addClinicianFilter, resetFilters, commentFilters } = useCommentFilters();
     const { sortOption, rating, selectedClinicians, activeFilters } = commentFilters;
 
-    let feedbacksWithComment = filteredFeedback.filter(item => item.comments !== '') // Remove any feedback whithout a comment
+    let feedbacksWithComment = filteredFeedback.filter(item => item.comment !== '') // Remove any feedback whithout a comment
     let sortedFeedback = getSortedFeedback(sortOption, filterComments(feedbacksWithComment, activeFilters, rating, selectedClinicians))
 
     return (

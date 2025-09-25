@@ -4,57 +4,54 @@ const newRawData = [
 { 
     "id": 1,
     "name": "Sophia Green",
-    "doctor": "Dr. Patel",
-    "physiologist": "Alice Carter",
+    "clinicians": {"doctor": "Dr. Patel", "physiologist": "Alice Carter"},
     "responses": { "q1": 4, "q2": 5, "q3": 4, "q4": 5, "q5": 4 },
-    "averageScore": 4.4,
-    "comments": "Very clear explanation of results and next steps.",
-    "timestamp": "2025-06-05T10:15:00.000Z",
-    "assessmentType": "Health Assessment"
+    "average_score": 4.4,
+    "comment": "Very clear explanation of results and next steps.",
+    "created_at": "2025-06-05T10:15:00.000Z",
+    "assessment_type": "Health Assessment"
   },
   {
     "id": 2,
     "name": "Liam Taylor",
-    "doctor": "Dr. Brown",
-    "physiologist": "Daniel Evans",
+    "clinicians": {"doctor": "Dr. Brown","physiologist": "Daniel Evans"},
     "responses": { "q1": 3, "q2": 3, "q3": 4, "q4": 3, "q5": 4 },
-    "averageScore": 3.4,
-    "comments": "Helpful advice but appointment felt a bit rushed.",
-    "timestamp": "2025-07-02T14:32:00.000Z",
-    "assessmentType": "Health Assessment"
+    "average_score": 3.4,
+    "comment": "Helpful advice but appointment felt a bit rushed.",
+    "created_at": "2025-07-02T14:32:00.000Z",
+    "assessment_type": "Health Assessment"
   },
   {
     "id": 3,
     "name": "Ava Wilson",
-    "physiotherapist": "Mark Johnson",
+    "clinicians": {"physiotherapist": "Mark Johnson"},
     "responses": { "q1": 5, "q2": 4, "q3": 5, "q4": 4, "q5": 5 },
-    "averageScore": 4.6,
-    "comments": "Exercises were well explained and already helping.",
-    "timestamp": "2025-08-15T09:44:00.000Z",
-    "assessmentType": "Physiotherapy"
+    "average_score": 4.6,
+    "comment": "Exercises were well explained and already helping.",
+    "created_at": "2025-08-15T09:44:00.000Z",
+    "assessment_type": "Physiotherapy"
   },
   {
     "id": 4,
     "name": null,
-    "doctor": "Dr. Lee",
-    "physiologist": "Sarah Miller",
+    "clinicians": {"doctor": "Dr. Lee", "physiologist": "Sarah Miller",},
     "responses": { "q1": 2, "q2": 2, "q3": 3, "q4": 2, "q5": 2 },
-    "averageScore": 2.2,
-    "comments": "Anonymous feedback: would prefer more time for questions.",
-    "timestamp": "2025-06-20T11:11:00.000Z",
-    "assessmentType": "Health Assessment"
+    "average_score": 2.2,
+    "comment": "Anonymous feedback: would prefer more time for questions.",
+    "created_at": "2025-06-20T11:11:00.000Z",
+    "assessment_type": "Health Assessment"
   },
   {
     "id": 5,
     "name": "Noah Johnson",
-    "doctor": "Dr. Smith",
-    "physiologist": "Emma Lewis",
+    "clinicians": {"doctor": "Dr. Smith", "physiologist": "Emma Lewis",},
     "responses": { "q1": 4, "q2": 4, "q3": 4, "q4": 3, "q5": 4 },
-    "averageScore": 3.8,
-    "comments": "Friendly and efficient. Appreciated the follow-up advice.",
-    "timestamp": "2025-07-28T15:23:00.000Z",
-    "assessmentType": "Health Assessment"
-  },
+    "average_score": 3.8,
+    "comment": "Friendly and efficient. Appreciated the follow-up advice.",
+    "created_at": "2025-07-28T15:23:00.000Z",
+    "assessment_type": "Health Assessment"
+  }]
+  /*
   {
     "id": 6,
     "name": "Emma Davis",
@@ -537,6 +534,6 @@ const newRawData = [
     "timestamp": "2025-07-12T12:30:00.000Z",
     "assessmentType": "Health Assessment"
   }
-]
+]*/
 
 export default newRawData;

@@ -3,10 +3,10 @@ function getSortedFeedback (sortBy, results) {
   switch (sortBy) {
 
     case 'Highest Rated': {
-      return results.toSorted((a ,b) => b.averageScore - a.averageScore)
+      return results.toSorted((a ,b) => b.average_score - a.average_score)
     }
     case 'Lowest Rated': {
-      return results.toSorted((a,b) => a.averageScore - b.averageScore)
+      return results.toSorted((a,b) => a.average_score - b.average_score)
     }
     case 'Clinician (A-Z)': {
       return results.toSorted((a, b) => {
@@ -21,12 +21,12 @@ function getSortedFeedback (sortBy, results) {
     }
     case 'Most Recent': {
       return results.sort((a, b) => {
-        return new Date(b.timestamp) - new Date(a.timestamp)
+        return new Date(b.created_at) - new Date(a.created_at)
     })
     }
     case 'Oldest First': {
       return results.sort((a, b) => {
-        return new Date(a.timestamp) - new Date(b.timestamp)
+        return new Date(a.created_at) - new Date(b.created_at)
     })
     }
     default: return results;

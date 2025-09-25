@@ -17,7 +17,7 @@ function DataGraphCard ({ selectedChart }) {
                 <Tooltip content={CustomTooltip}/>
                 <YAxis domain={[0, 6]}/>
                 <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
-                <Line dataKey="averageScore" fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
+                <Line dataKey="average_score" fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
             </LineChart>
         </ResponsiveContainer>
     );

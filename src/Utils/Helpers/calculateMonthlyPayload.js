@@ -7,8 +7,8 @@ function calculateMonthlyPayload (responses) {
     let monthlyResponses = {};
 
     responses.forEach((item) => {
-        let monthIndex = getDateMonth(item.timestamp);
-        let itemsMonthNumber = getDateMonth(item.timestamp);
+        let monthIndex = getDateMonth(item.created_at);
+        let itemsMonthNumber = getDateMonth(item.created_at);
         let itemsMonth = months[itemsMonthNumber];
 
         if (monthlyResponses[itemsMonth]) {

@@ -5,16 +5,16 @@ import '../../CSS/components/DataCards.css'
 
 function CommentCard ({ response, anonymous }) {
     
-    const { comments, averageScore, assessmentType, doctor, physiotherapist, physiologist, timestamp } = response;
+    const { comment, average_score, assessment_type, clinicians, created_at } = response;
 
     return (
-        <div className={averageScore > 2.5 ? 'positiveComment' : 'negativeComment'}>
-            <p className="commentText">"{comments}"</p>
+        <div className={average_score > 2.5 ? 'positiveComment' : 'negativeComment'}>
+            <p className="commentText">"{comment}"</p>
             <div className={anonymous ? 'commentInfoThree' : 'commentInfo'}>
-                <p className='commentsRating'><RatingStarsSection averageRating={averageScore}/></p>
-                <p>{assessmentType}</p>
-                { anonymous ? null : <p className='commentClinician' >{ physiotherapist ? physiotherapist : `${doctor} & ${physiologist}` }</p> }
-                <p className='commentTime'>{formatDate(timestamp)}</p>
+                <p className='commentsRating'><RatingStarsSection averageRating={average_score}/></p>
+                <p>{assessment_type}</p>
+                { anonymous ? null : <p className='commentClinician' >{ clinicians.physiotherapist ? clinicians.physiotherapist : `${clinicians.doctor} & ${clinicians.physiologist}` }</p> }
+                <p className='commentTime'>{formatDate(created_at)}</p>
             </div>
         </div>
     )
