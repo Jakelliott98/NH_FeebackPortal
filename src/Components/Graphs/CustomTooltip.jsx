@@ -30,7 +30,7 @@ function CustomMonthlyTooltip ({label, payload, active}) {
     return (
         <div className='tooltipContainer'>
             <h1>{label}</h1>
-            <div className='metricSection'><p className='metricTitle'>Total Responses: </p><span className='metricData'>{item.average_score}</span></div>
+            <div className='metricSection'><p className='metricTitle'>Total Responses: </p><span className='metricData'>{item.numberOfResponses}</span></div>
             <div className='metricSection'><p className='metricTitle'>Positive Responses: </p><span className='metricData'>{item.positivePercentage}%</span></div>
             <div className='metricSection'><p className='metricTitle'>Negative Responses: </p><span className='metricData'>{item.negativePercentage}%</span></div>
         </div>
