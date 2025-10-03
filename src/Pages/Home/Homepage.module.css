@@ -1,0 +1,20 @@
+.homepage {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+    height: 100%;
+}
+
+.comments-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--500-spacing);
+  background-color: var(--constrast-background-colour);
+  border-radius: var(--125-spacing);
+  grid-area: 10 / 3 / 13 / 13;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}

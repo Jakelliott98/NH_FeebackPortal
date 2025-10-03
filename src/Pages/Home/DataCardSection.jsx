@@ -2,7 +2,7 @@ import DataCard from '../../Components/DataCardComponents/DataCard'
 import { useContext } from 'react';
 import resultsContext from '../../Context/resultsContext';
 import dataCardObjects from './dataCardObjects';
-
+import styles from './DataCardSection.module.css'
 
 function DataCardSection ({ selectedChart, setSelectedChart }) {
 
@@ -11,7 +11,7 @@ function DataCardSection ({ selectedChart, setSelectedChart }) {
     let colours = ['#8e44ad', '#ffd600', '#cddc39', '#E94984'];
 
     return (
-            <div className="dataSnapshotDiv">
+            <div className={styles["data-snapshot-div"]}>
                 {
                     dataCardObjects(filteredFeedback).map((item, index) => {
                         return (

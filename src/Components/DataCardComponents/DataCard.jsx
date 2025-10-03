@@ -7,6 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 import TrendIcon from './TrendIcon'
 import InfoIcon from './InfoIcon'
+import styles from './DataCards.module.css'
 
 function DataCard ({ onClick, selectedChart, colour, item}) {
     
@@ -14,15 +15,15 @@ function DataCard ({ onClick, selectedChart, colour, item}) {
 
     return (
         <div 
-        className={`${selectedChart === title ? 'activeDataSnap' : ''} snapshotCard` } 
+        className={selectedChart === title ? `${styles['active-data-snap']} ${styles['snapshot-card']}` : `${styles['snapshot-card']}`} 
         onClick={onClick}
         >
             <InfoIcon text={text}/>
-            <div className='iconContainer' style={{backgroundColor: colour}}>
+            <div className={styles['icon-container']} style={{backgroundColor: colour}}>
                 <FontAwesomeIcon icon={icon} />
             </div>
-            <p className='snapshotData'>{data}</p>
-            <p className='snapshotTitle'>{title}</p>
+            <p className={styles['snapshot-data']}>{data}</p>
+            <p className={styles['snapshot-title']}>{title}</p>
             <TrendIcon change={change} trend={trend} />
         </div>
     )

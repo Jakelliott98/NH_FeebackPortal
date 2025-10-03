@@ -49,16 +49,16 @@ function App() {
 
   return (
     <resultsContext.Provider value={{setCurrentPage, filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
-      <div className='portalLayout'>
-        <div className='sidebarDiv'>
-          <div className='imageContainer'>
-            <img className='nuffieldLogo' src={logo}/>
+      <div className='portal-layout'>
+        <div className='sidebar-div'>
+          <div className='image-container'>
+            <img className='nuffield-logo' src={logo}/>
           </div>  
           <DropdownNav />
         </div>
-        <div className='contentDiv'>
+        <div className='content-div'>
           <PageHeader title={currentPage}/>
-          <div className='contentArea'>
+          <div className='content-area'>
             <Outlet />
           </div>
         </div>

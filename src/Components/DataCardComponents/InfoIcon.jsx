@@ -6,6 +6,9 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
+import styles from './DataCards.module.css'
+
+
 import { useState } from 'react'
 
 function InfoIcon ({text}) {
@@ -16,10 +19,10 @@ function InfoIcon ({text}) {
 
     return (
         <>
-        <div className='infoIcon' onMouseEnter={() => {activateHover()}} onMouseLeave={() => {deactivateHover()}}>
+        <div className={styles['info-icon']} onMouseEnter={() => {activateHover()}} onMouseLeave={() => {deactivateHover()}}>
             <FontAwesomeIcon icon="fa-solid fa-question" />
         </div>
-        <div className={activeHover ? 'hiddenText showText' : 'hiddenText hideText'}>{text}</div>
+        <div className={activeHover ? `${styles['hidden-text']} ${styles['show-text']}` : `${styles['hidden-text']} ${styles['hide-text']}`}>{text}</div>
         </>
     )
 }

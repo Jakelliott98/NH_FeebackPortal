@@ -5,16 +5,18 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
+import styles from './DataCards.module.css'
+
 
 function TrendIcon ({trend, change}) {
 
     let trendIcon = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
-    let trendClass = `snapshotDataCard ${trend} `
+    let trendClass = `${styles['snapshot-data-card']} ${styles[`${trend}`]} `
 
     return (
         <div className={trendClass}>
-            <FontAwesomeIcon className='snapshotDataIcon' icon={trendIcon} />
-            <p className='snapshotChange'>{change}%</p>
+            <FontAwesomeIcon icon={trendIcon} />
+            <p>{change}%</p>
         </div>
     )
 }

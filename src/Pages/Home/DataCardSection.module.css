@@ -1,0 +1,8 @@
+.data-snapshot-div {
+  background-color: var(--content-background-colour);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-area: 1 / 1 / 13 / 3;
+}
+

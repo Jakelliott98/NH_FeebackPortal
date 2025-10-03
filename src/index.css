@@ -41,14 +41,3 @@
   color: var(--negative-colour);
 }
 
-/**/ 
-.graphDiv {
-  width: 100%;
-  padding: var(--500-spacing);
-  background-color: var(--constrast-background-colour);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-}
