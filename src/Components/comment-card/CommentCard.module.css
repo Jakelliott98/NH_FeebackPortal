@@ -1,0 +1,70 @@
+
+.positive-comment, .negative-comment {
+  padding: var(--500-spacing);
+  border-radius: var(--125-spacing);
+  display: flex;
+  flex-direction: column;
+  gap: var(--125-spacing);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.positive-comment, .negative-comment {
+    display: flex;
+    flex-direction: column;
+    gap: var(--500-spacing);
+}
+
+.positive-comment {
+  background-color: var(--positive-background-colour);
+}
+
+.negative-comment { 
+  background-color: var(--negative-background-colour);
+}
+
+
+.comment-text {
+  font-style: italic;
+  font-size: var(--fs-small);
+}
+
+.comments-rating {
+    justify-self: baseline;
+}
+
+.comment-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  font-size: var(--fs-small);
+  color: grey;
+}
+
+.comment-time {
+    justify-self: end;
+}
+
+
+.commentsDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--500-spacing);
+  background-color: var(--constrast-background-colour);
+  border-radius: var(--125-spacing);
+  grid-area: 10 / 3 / 13 / 13;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* HOMEPAGE CSS */
+
+.comment-info-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  font-size: var(--fs-small);
+  color: grey;
+}

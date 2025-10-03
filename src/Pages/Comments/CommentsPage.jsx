@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import CommentCard from '../../Components/CommentCard/CommentCard';
+import CommentCard from '../../Components/comment-card/CommentCard';
 import resultsContext from '../../Context/resultsContext';
 import '../../CSS/pageLayouts/CommentsPage.css'
 import { getSortedFeedback } from '../../Utils/Filters/sortData'
@@ -7,6 +7,7 @@ import useCommentFilters from '../../Hooks/useCommentFilters';
 import CommentFilterContainer from './CommentsFilterContainer';
 import filterComments from './filterComments';
 import commentsContext from '../../Context/commentsContext';
+import styles from './CommentsPage.module.css'
 
 function CommentsPageLogic () {
 
@@ -29,9 +30,9 @@ function CommentsPage () {
     const { sortedFeedback } = useContext(commentsContext)
 
     return (
-        <div className='commentLayout'>
+        <div className={styles['comment-layout']}>
             <CommentFilterContainer />
-            <div className='commentContainer'>
+            <div className={styles['comment-container']}>
             {
                 sortedFeedback.map((item) => {
                     return (
