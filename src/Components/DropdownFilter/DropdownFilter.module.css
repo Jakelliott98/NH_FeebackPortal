@@ -1,4 +1,4 @@
-.filterComponent {
+.filter-component {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -6,12 +6,12 @@
     cursor: pointer;
 }
 
-.filterComponent:hover {
+.filter-component:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.2s ease;
 }
 
-.filterTitleCard {
+.filter-title-card {
     flex: 1;
     border: solid 1px var(--primary-colour);
     border-radius: var(--125-spacing);
@@ -27,7 +27,7 @@
     font-size: var(--fs-small);
 }
 
-.titleIconDiv {
+.title-icon-div {
     display: flex;
     flex-direction: row;
     gap: var(--125-spacing);
@@ -37,7 +37,7 @@
 }
 
 
-.dropdownIcon {
+.dropdown-icon {
     color: var(--primary-colour);
 }
 
@@ -45,7 +45,7 @@
     display: none;
 }
 
-.dropdownOptionComponent {
+.dropdown-option-component {
     margin-top: var(--250-spacing);
     position: absolute;
     z-index: 3;
@@ -61,7 +61,7 @@
     overflow: scroll;
 }
 
-.ratingContainer {
+.rating-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -90,27 +90,27 @@
     padding: 10px 20px;
     align-items: center;
     color: white;
-}
+} /* UNSURE WHERE USED */
 
-.titleFilter .dropdownIcon {
+.titleFilter .dropdown-icon {
     color: white;
 }
 
-.QuestionDropdown {
+.question-dropdown {
     max-height: 200px;
     overflow: scroll;
 }
 
-.ratingIcon {
+.rating-icon {
     cursor: pointer;
     color: lightgray;
 }
 
-.ratingIcon:hover {
+.rating-icon:hover {
     color: #F8DE7E;
 }
 
-.backgroundDropdown {
+.background-dropdown {
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -118,4 +118,33 @@
     z-index: 2;
     top: 0;
     left: 0;
+}
+
+.star-icon {
+  color: #F8DE7E;
+}
+
+.reset-button {
+    background-color: #F5F5F5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: #E0E0E0 solid 2px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.reset-button:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.reset-button:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transform: translateY(0);
 }

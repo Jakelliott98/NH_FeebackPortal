@@ -51,27 +51,3 @@
     height: 100%;
 }
 
-.resetButton {
-    background-color: #F5F5F5;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: #E0E0E0 solid 2px;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-}
-
-.resetButton:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.resetButton:active {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-  transform: translateY(0);
-}
