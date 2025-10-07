@@ -1,0 +1,5 @@
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--125-spacing);
+}

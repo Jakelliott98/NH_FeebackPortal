@@ -1,4 +1,4 @@
-.navbarDropdown {
+.navbar-dropdown {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -8,7 +8,7 @@
     padding: 0 10px;
 }
 
-.navbarOption, .activeNav{
+.navbar-option, .active-nav{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,17 +20,17 @@
     font-size: var(--fs-small);
 }
 
-.navbarIcon {
+.navbar-icon {
     padding: 7px;
     color: #757575;
 }
 
-.activeNav {
+.active-nav {
     background-color: var(--positive-background-colour);
     box-shadow: 0 2px 2px #d9d9d9;
     color: var(--primary-colour);
 }
 
-.activeNav .navbarIcon {
+.active-nav .navbar-icon {
     color: var(--primary-colour);
 }

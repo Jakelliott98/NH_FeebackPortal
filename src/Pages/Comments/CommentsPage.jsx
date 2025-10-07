@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import CommentCard from '../../Components/comment-card/CommentCard';
 import resultsContext from '../../Context/resultsContext';
-import '../../CSS/pageLayouts/CommentsPage.css'
 import { getSortedFeedback } from '../../Utils/Filters/sortData'
 import useCommentFilters from '../../Hooks/useCommentFilters';
 import CommentFilterContainer from './CommentsFilterContainer';

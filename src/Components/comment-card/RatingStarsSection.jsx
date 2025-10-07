@@ -5,6 +5,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
+import styles from './CommentCard.module.css'
+
 
 function RatingStarsSection ({ averageRating }) {
 
@@ -27,11 +29,11 @@ function RatingStarsList ({ratingScore}) {
 
     return (
         <>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[0] ? 'starIcon' : 'unStaredIcon'}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[1] ? 'starIcon' : 'unStaredIcon'}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[2] ? 'starIcon' : 'unStaredIcon'}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[3] ? 'starIcon' : 'unStaredIcon'}/>
-            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[4] ? 'starIcon' : 'unStaredIcon'}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[0] ? `${styles['starIcon']}` : `${styles['unStaredIcon']}`}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[1] ? `${styles['starIcon']}` : `${styles['unStaredIcon']}`}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[2] ? `${styles['starIcon']}` : `${styles['unStaredIcon']}`}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[3] ? `${styles['starIcon']}` : `${styles['unStaredIcon']}`}/>
+            <FontAwesomeIcon icon='fa-star fa-solid' className={ratingScore[4] ? `${styles['starIcon']}` : `${styles['unStaredIcon']}`}/>
         </>
     )
 
