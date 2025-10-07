@@ -32,12 +32,3 @@
   padding: 0;
   font-family: 'poppins';
 }
-
-.positive {
-  color: var(--positive-colour);
-}
-
-.negative {
-  color: var(--negative-colour);
-}
-

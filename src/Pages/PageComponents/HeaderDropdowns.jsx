@@ -25,5 +25,3 @@ function DropdownFiltersComponent ({title}) {
 }
 
 export { DropdownFiltersComponent }
-
-// Remove Button into own component

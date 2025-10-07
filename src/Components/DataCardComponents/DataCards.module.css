@@ -89,3 +89,11 @@
 .hide-text {
   opacity: 0;
 }
+
+.positive {
+  color: var(--positive-colour);
+}
+
+.negative {
+  color: var(--negative-colour);
+}
