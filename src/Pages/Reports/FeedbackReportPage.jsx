@@ -1,4 +1,4 @@
-import "../../CSS/pageLayouts/FeedbackReportPage.css"
+import "./FeedbackReportPage.css"
 import DataGraphCard from "../Home/DataGraphCard";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
@@ -23,7 +23,7 @@ function FeedbackReportPage () {
                 <div className='topRight feedbackCard'>
                     <h1 className='dataTitle'>Monthly Feedback Responses</h1>
                     <div className='dataContainerFeedback'>
-                    <ScatterGraph results={filteredFeedback} yDataPoint='average_score' xDataPoint='id' />
+                        <ScatterGraph results={filteredFeedback} yDataPoint='average_score' xDataPoint='id' />
                     </div>                
                 </div>
                 <SatisfactionCircleGraph /> 
@@ -47,10 +47,10 @@ function ScatterGraph ({ results }) {
                     <p className='tooltipTitle'>{client.name}</p>
                     <p className={tooltipScore}>{client.average_score} Avg</p>
                     <div className='tooltipMiniContainer'>
-                    <p>{client.clinician}</p>
-                    <p>{client.assessment_type}</p>
+                        <p>{client.clinician}</p>
+                        <p>{client.assessment_type}</p>
+                    </div>
                 </div>
-            </div>
             )
         }
     }

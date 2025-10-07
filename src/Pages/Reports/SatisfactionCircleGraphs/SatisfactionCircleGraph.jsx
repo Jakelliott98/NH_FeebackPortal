@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import resultsContext from "../../../Context/resultsContext"
 import { DropdownFilter } from "../../../Components/DropdownFilter/DropdownFilter"
 import PercentageChart from "../PercentageChart"
+import styles from './SatisfactionCircleGraph.module.css'
 
 const satisfactionQuestions = ['Satisfied Responses (> 50% Score)', 'Excellent Response (>80% Score)', 'Terrible Response (< 20% Score)']
 
@@ -22,10 +23,10 @@ function SatisfactionCircleGraph () {
 
     return (
         <div className='bottomLeft feedbackCard'>
-            <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
-            <div className='pieChartContainer'>
+            <DropdownFilter className={styles['dataTitle']} cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+            <div className={styles['pieChartContainer']}>
             <PercentageChart percentage={responseData}/>   
-            <p className='questionTitle'>Percentage of clients who were satisfied with their assessments</p>       
+            <p className={styles['questionTitle']}>Percentage of clients who were satisfied with their assessments</p>       
             </div>
         </div> 
     )

@@ -1,9 +1,9 @@
-
 import { filterQuestionResponses } from "../../../Utils/Filters/FilterCalcs";
 import { useState, useContext } from "react";
 import resultsContext from "../../../Context/resultsContext";
 import { DropdownFilter } from "../../../Components/DropdownFilter/DropdownFilter";
 import PercentageChart from "../PercentageChart";
+import styles from './DropdownQuestionComponent.module.css'
 
 const questions = ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'];
 
@@ -51,10 +51,10 @@ function DropdownQuestionComponent () {
 
     return (
                 <div className='bottomRight feedbackCard' >
-                    <DropdownFilter className='dataTitle' cssClass='titleFilter' dropdownTitle={activeQuestion.title} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
-                    <div className='pieChartContainer'>
+                    <DropdownFilter className={styles['dataTitle']} cssClass='titleFilter' dropdownTitle={activeQuestion.title} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+                    <div className={styles['pieChartContainer']}>
                         <PercentageChart percentage={questionAverage}/>
-                        <p className='questionTitle'>{activeQuestion.text}</p>
+                        <p className={['questionTitle']}>{activeQuestion.text}</p>
                     </div>
                 </div>
     )

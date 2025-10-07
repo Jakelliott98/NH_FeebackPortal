@@ -79,22 +79,6 @@
     font-size: 14px;
 }
 
-.questionTitle {
-    font-size: 14px;
-    text-align: center;
-    color: #757575;
-    font-style: italic;
-}
-
-.pieChartContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 30px;
-}
-
 .dataContainerFeedback {
     flex: 1;
     display: flex;
