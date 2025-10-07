@@ -1,5 +1,5 @@
-import { calculateAverageScore } from '../../Utils/Calculations/calculateAverageScore'
-import calculateSatisfactionPercentage from '../../Utils/Calculations/calculateSatisfactionPercentage';
+import { calculateAverageScore } from '../../../Utils/Calculations/calculateAverageScore'
+import calculateSatisfactionPercentage from '../../../Utils/Calculations/calculateSatisfactionPercentage';
 
 function dataCardObjects (filteredFeedback) {
 

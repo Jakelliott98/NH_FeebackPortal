@@ -22,11 +22,11 @@ function SatisfactionCircleGraph () {
     const changeQuestion = (newQuestion) => {setActiveQuestion(newQuestion)}
 
     return (
-        <div className='bottomLeft feedbackCard'>
-            <DropdownFilter className={styles['dataTitle']} cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
-            <div className={styles['pieChartContainer']}>
+        <div className={`bottom-left ${styles['feedback-card']}`}>
+            <DropdownFilter className={styles['data-title']} cssClass='titleFilter' dropdownTitle={activeQuestion} onSelect={changeQuestion} dropdownOptions={satisfactionQuestions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+            <div className={styles['pie-chart-container']}>
             <PercentageChart percentage={responseData}/>   
-            <p className={styles['questionTitle']}>Percentage of clients who were satisfied with their assessments</p>       
+            <p className={styles['question-title']}>Percentage of clients who were satisfied with their assessments</p>       
             </div>
         </div> 
     )

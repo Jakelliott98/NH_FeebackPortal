@@ -1,8 +1,8 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Rectangle } from 'recharts';
-import {CustomTooltip, CustomMonthlyTooltip} from '../../Components/Graphs/CustomTooltip';
-import calculateMonthlyPayload from '../../Utils/Helpers/calculateMonthlyPayload';
+import {CustomTooltip, CustomMonthlyTooltip} from '../../../Components/Graphs/CustomTooltip';
+import calculateMonthlyPayload from '../../../Utils/Helpers/calculateMonthlyPayload';
 import { useContext } from 'react';
-import resultsContext from '../../Context/resultsContext';
+import resultsContext from '../../../Context/resultsContext';
 
 
 function DataGraphCard ({ selectedChart }) {

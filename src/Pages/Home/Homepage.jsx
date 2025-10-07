@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import CommentCard from '../../Components/comment-card/CommentCard';
 import resultsContext from '../../Context/resultsContext';
-import { DataCardSection } from './DataCardSection';
-import GraphSection from './HomeGraphSection';
+import { DataCardSection } from './data-card-section/DataCardSection';
+import GraphSection from './home-graph-section/HomeGraphSection';
 import styles from './Homepage.module.css'
 
 function Homepage () {

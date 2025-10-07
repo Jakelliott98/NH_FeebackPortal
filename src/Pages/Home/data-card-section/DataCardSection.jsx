@@ -1,6 +1,6 @@
-import DataCard from '../../Components/DataCardComponents/DataCard'
+import DataCard from '../../../Components/DataCardComponents/DataCard'
 import { useContext } from 'react';
-import resultsContext from '../../Context/resultsContext';
+import resultsContext from '../../../Context/resultsContext';
 import dataCardObjects from './dataCardObjects';
 import styles from './DataCardSection.module.css'
 

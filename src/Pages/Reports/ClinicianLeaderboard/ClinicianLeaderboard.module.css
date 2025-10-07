@@ -1,10 +1,10 @@
-.clinicianLeaderboard {
+.clinician-leaderboard {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.leaderboardItem {
+.leaderboard-item {
     flex: 1;
     display: flex;
     flex-direction: row;
@@ -13,18 +13,11 @@
     align-items: center;
 }
 
-.clinicianTitle {
+.clinician-title {
     display: flex;
     flex-direction: row;
     gap: 5px;
     align-items: center;
-}
-
-.dataTitle {
-    padding: 10px 20px;
-    background-color: #00a200;
-    border-radius: 5px 5px 0 0;
-    color: white;
 }
 
 .units {
@@ -33,18 +26,17 @@
     font-size: 14px;
 }
 
-.clinicianScore {
+.clinician-score {
     font-size: 20px;
     font-weight: 700;
     color: #333333;
 }
 
-.medalIcon {
+.medal-icon {
     color: gold;
 }
 
-
-.feedbackCard {
+.feedback-card {
     border-radius: 5px;
     background-color: #fff;
     display: flex;
@@ -53,13 +45,11 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-
-
-.feedbackCard h1 {
+.feedback-card h1 {
     font-size: 16px;
 }
 
-.clinicianContainer {
+.clinician-container {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -67,19 +57,19 @@
     gap: 10px;
 }
 
-.activeButton {
+.active-button {
     background-color: #7CDF7C;
 }
 
-.averageButton {
+.average-button {
     border-radius: 5px 0 0 5px;
 }
 
-.countButton {
+.count-button {
     border-radius: 0 5px 5px 0;
 }
 
-.averageButton, .countButton {
+.average-button, .count-button {
     cursor: pointer;
     padding: 5px 10px;
     border: transparent;
@@ -87,17 +77,17 @@
     transition: all 0.2s ease;
 }
 
-.averageButton:hover, .countButton:hover {
+.average-button:hover, .count-button:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
 }
 
-.averageButton:active, .countButton:active {
+.average-button:active, .count-button:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
   transform: translateY(0);
 }
 
-.clinicianFilterContainer {
+.clinician-filter-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,4 +104,11 @@
 
 .bronze {
     color: #CD7F32;
+}
+
+.data-title {
+    padding: 10px 20px;
+    background-color: #00a200;
+    border-radius: 5px 5px 0 0;
+    color: white;
 }
