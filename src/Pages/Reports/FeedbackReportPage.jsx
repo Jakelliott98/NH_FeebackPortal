@@ -6,6 +6,7 @@ import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import ClinicianLeaderboard from "./ClinicianLeaderboard/ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent/DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraphs/SatisfactionCircleGraph";
+import style from '../../Components/Graphs/CustomTooltip.module.css'
 
 function FeedbackReportPage () {
 
@@ -41,12 +42,12 @@ function ScatterGraph ({ results }) {
     function CustomTooltip ({ payload, active }) {
         if (active) {
             let client = payload[0].payload;
-            let tooltipScore = client.average_score > 2.5 ? 'positiveTooltipScore' : 'negativeTooltipScore';
+            let tooltipScore = client.average_score > 2.5 ? `${style['positive-tooltip-score']}` : `${style['negative-tooltip-score']}`;
             return (
-                <div className='tooltipContainer'>
-                    <p className='tooltipTitle'>{client.name}</p>
+                <div className={style['tooltip-container']}>
+                    <p className={style['tooltip-title']}>{client.name}</p>
                     <p className={tooltipScore}>{client.average_score} Avg</p>
-                    <div className='tooltipMiniContainer'>
+                    <div className={style['tooltip-mini-container']}>
                         <p>{client.clinician}</p>
                         <p>{client.assessment_type}</p>
                     </div>

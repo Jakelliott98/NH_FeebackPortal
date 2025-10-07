@@ -1,4 +1,3 @@
-import '../../CSS/pageLayouts/PageHeader.css'
 import { DropdownFiltersComponent } from './HeaderDropdowns';
 import styles from './PageHeader.module.css'
 

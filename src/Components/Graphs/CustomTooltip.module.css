@@ -1,4 +1,4 @@
-.tooltipContainer {
+.tooltip-container {
     padding: 10px 20px;
     background-color: #343a40;
     border-radius: 5px;
@@ -12,7 +12,7 @@
 }
 
 
-.tooltipTitleSection {
+.tooltip-title-section {
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -20,29 +20,29 @@
     gap: 15px;
 }
 
-.tooltipTitle {
+.tooltip-title {
     font-weight: 700;
     font-size: 20px;
 }
 
-.tooltipDate {
+.tooltip-date {
     font-size: 12px;
     justify-self: flex-end;
 }
 
-.tooltipScoreSection {
+.tooltip-score-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.satisfactionTitle {
+.satisfaction-title {
     font-size: 12px;
     font-weight: 600;
 }
 
-.tooltipExtraInfo {
+.tooltip-extra-info {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,27 +51,27 @@
 
 }
 
-.tooltipClinician, .tooltipAssessmentType {
+.tooltip-clinician, .tooltip-assessment-type {
     font-size: 14px;
     color: grey;
 }
 
 
-.tooltipClinician {
+.tooltip-clinician {
     align-self: flex-end;
 }
 
-.positiveTooltipScore, .negativeTooltipScore {
+.positive-tooltip-score, .negative-tooltip-score {
     font-size: 25px;
     font-weight: 700;
     text-align: center;
 }
 
-.positiveTooltipScore {
+.positive-tooltip-score {
     color: green;
 }
 
-.negativeTooltipScore {
+.negative-tooltip-score {
     color: red;
 }
 
@@ -82,16 +82,16 @@
     font-size: 14px;
 }
 
-.metricTitle {
+.metric-title {
     font-size: 12px;
     color: grey;
 }
 
-.metricData {
+.metric-data {
     color: #fff;
 }
 
-.metricSection {
+.metric-section {
     display: flex;
     flex-direction: row;
     align-items: center;
