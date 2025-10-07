@@ -1,0 +1,117 @@
+.clinicianLeaderboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.leaderboardItem {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.clinicianTitle {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.dataTitle {
+    padding: 10px 20px;
+    background-color: #00a200;
+    border-radius: 5px 5px 0 0;
+    color: white;
+}
+
+.units {
+    margin-left: 5px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.clinicianScore {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.medalIcon {
+    color: gold;
+}
+
+
+.feedbackCard {
+    border-radius: 5px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+
+.feedbackCard h1 {
+    font-size: 16px;
+}
+
+.clinicianContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 10px;
+}
+
+.activeButton {
+    background-color: #7CDF7C;
+}
+
+.averageButton {
+    border-radius: 5px 0 0 5px;
+}
+
+.countButton {
+    border-radius: 0 5px 5px 0;
+}
+
+.averageButton, .countButton {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.averageButton:hover, .countButton:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.averageButton:active, .countButton:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transform: translateY(0);
+}
+
+.clinicianFilterContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.gold {
+    color: #FFD700;
+}
+
+.silver {
+    color: #C0C0C0;
+}
+
+.bronze {
+    color: #CD7F32;
+}

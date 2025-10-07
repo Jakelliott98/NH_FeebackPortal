@@ -3,9 +3,9 @@ import DataGraphCard from "../Home/DataGraphCard";
 import { useContext } from "react";
 import resultsContext from "../../Context/resultsContext";
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
-import ClinicianLeaderboard from "./ClinicianLeaderboard";
-import DropdownQuestionComponent from "./DropdownQuestionComponent";
-import SatisfactionCircleGraph from "./SatisfactionCircleGraph";
+import ClinicianLeaderboard from "./ClinicianLeaderboard/ClinicianLeaderboard";
+import DropdownQuestionComponent from "./DropdownQuestionComponent/DropdownQuestionComponent";
+import SatisfactionCircleGraph from "./SatisfactionCircleGraphs/SatisfactionCircleGraph";
 
 function FeedbackReportPage () {
 

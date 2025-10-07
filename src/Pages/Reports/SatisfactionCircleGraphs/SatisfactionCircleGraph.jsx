@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
-import resultsContext from "../../Context/resultsContext"
-import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter"
-import PercentageChart from "./PercentageChart"
+import resultsContext from "../../../Context/resultsContext"
+import { DropdownFilter } from "../../../Components/DropdownFilter/DropdownFilter"
+import PercentageChart from "../PercentageChart"
 
 const satisfactionQuestions = ['Satisfied Responses (> 50% Score)', 'Excellent Response (>80% Score)', 'Terrible Response (< 20% Score)']
 

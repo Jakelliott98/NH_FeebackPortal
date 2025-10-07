@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 import { useContext, useState } from 'react'
-import { getClinicianReport } from '../../Utils/Helpers/dataCalculations'
-import resultsContext from '../../Context/resultsContext'
-
+import { getClinicianReport } from '../../../Utils/Helpers/dataCalculations'
+import resultsContext from '../../../Context/resultsContext'
+import styles from './ClinicianLeaderboard.module.css'
 
 function ClinicianLeaderboard () {
 
@@ -20,28 +20,28 @@ function ClinicianLeaderboard () {
     let readyResults = clinicianFilter == 'average' ? topFiveClinicians.sort((a, b) => b.average - a.average) : topFiveClinicians.sort((a, b) => b.count - a.count);
 
     function returnIndexClass (index) {
-        return index == 0 ? 'medalIcon gold' : index == 1 ? 'medalIcon silver' : 'medalIcon bronze';
+        return index == 0 ? `${styles['medalIcon']} ${styles['gold']}` : index == 1 ? `${styles['medalIcon']} ${styles['silver']}` : `${styles['medalIcon']} ${styles['bronze']}`;
     }
 
     return (
-        <div className='bottomCentre feedbackCard'>
-            <h1 className='dataTitle'>Monthly Top Performers</h1>
-            <div className='clinicianContainer'>
-            <div className='clinicianFilterContainer'>
-                <button className={clinicianFilter === 'average' ? 'averageButton activeButton' : 'averageButton'} onClick={() => {setClinicianFilter('average')}}>Top Performers</button>
-                <button className={clinicianFilter === 'count' ? 'countButton activeButton' : 'countButton'} onClick={() => {setClinicianFilter('count')}}>Most Responses</button>
+        <div className={`bottomCentre feedbackCard`}>
+            <h1 className={styles['dataTitle']}>Monthly Top Performers</h1>
+            <div className={styles['clinicianContainer']}>
+            <div className={styles['clinicianFilterContainer']}>
+                <button className={clinicianFilter === 'average' ? `${styles['averageButton']} ${styles['activeButton']}` : `${styles['averageButton']}`} onClick={() => {setClinicianFilter('average')}}>Top Performers</button>
+                <button className={clinicianFilter === 'count' ? `${styles['countButton']} ${styles['activeButton']}` : `${styles['countButton']}`} onClick={() => {setClinicianFilter('count')}}>Most Responses</button>
             </div>
-            <ul className='clinicianLeaderboard'>
+            <ul className={styles['clinicianLeaderboard']}>
                 {readyResults.map((item, index) => {
                     return (
-                    <li className='leaderboardItem' key={item.name}>
+                    <li className={styles['leaderboardItem']} key={item.name}>
                         <div className='clinicianTitle'>
                             <FontAwesomeIcon className={returnIndexClass(index)} icon="fa-solid fa-medal" />
                             <p>{item.name}</p>
                         </div>
-                        <p className='clinicianScore'>
+                        <p className={styles['clinicianScore']}>
                             {clinicianFilter === 'average' ? item.average : item.count} 
-                            {clinicianFilter === 'average' ? <span className='units'>%</span> : null}
+                            {clinicianFilter === 'average' ? <span className={styles['units']}>%</span> : null}
                         </p>
                     </li>
                     )

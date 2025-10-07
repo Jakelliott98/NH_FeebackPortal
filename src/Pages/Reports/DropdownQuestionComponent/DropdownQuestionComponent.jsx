@@ -1,9 +1,9 @@
 
-import { filterQuestionResponses } from "../../Utils/Filters/FilterCalcs";
+import { filterQuestionResponses } from "../../../Utils/Filters/FilterCalcs";
 import { useState, useContext } from "react";
-import resultsContext from "../../Context/resultsContext";
-import { DropdownFilter } from "../../Components/DropdownFilter/DropdownFilter";
-import PercentageChart from "./PercentageChart";
+import resultsContext from "../../../Context/resultsContext";
+import { DropdownFilter } from "../../../Components/DropdownFilter/DropdownFilter";
+import PercentageChart from "../PercentageChart";
 
 const questions = ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'];
 
