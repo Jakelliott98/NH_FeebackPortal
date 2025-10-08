@@ -1,5 +1,6 @@
 import supabase from "../../Utils/Data/fetchAPIData"
 import { useState, useEffect } from "react"
+import CliniciansDropdownList from "./CliniciansDropdownList/ClinicianDropdownList"
 
 function SettingsPage () {
 
@@ -20,7 +21,6 @@ function SettingsPage () {
         getClinicians();
     }, [])
 
-    console.log(clinicians)
 
     async function addClinician (name, role) {
 
@@ -37,14 +37,9 @@ function SettingsPage () {
     }
 
     return (
-        <>
-            <DoctorsDropdown doctorsList={clinicians}/>
-            <AddClinician onSubmit={addClinician}/>
-            <h1>Questions List</h1>
-            <p>Export Mode</p>
-            <p>REMOVE DROPDOWN LISTS</p>
-        </>
+        <CliniciansDropdownList list={clinicians} addClinician={addClinician}/>
     )
+
 }
 
 export default SettingsPage;

@@ -1,0 +1,81 @@
+.settings-clinician-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.clinician-card-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.clinician-card-section div {
+    flex: 1;
+}
+
+.clinician-holder {
+    display: flex;
+    flex-direction: column;
+}
+
+.clinician-card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 50px;
+    padding: 10px;
+}
+
+.clinician-role-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    width: fit-content;
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+.role-icon {
+    font-size: 10px;
+}
+
+.active-dot {
+    font-size: 8px;
+    color: green;
+}
+
+.status-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.dot-icons, .rating-section, .status-section {
+    align-self: center;
+    justify-self: center;
+}
+
+.status-header, .rating-header {
+    align-self: center;
+    justify-self: center;
+}
+
+.new-clinician-button {
+    padding: 10px 15px;
+}
+
+.physiotherapist {
+    background-color: lightgreen;
+}
+
+.physiologist {
+    background-color: lightblue;
+}
+
+.doctor {
+    background-color: lightcoral;
+}
