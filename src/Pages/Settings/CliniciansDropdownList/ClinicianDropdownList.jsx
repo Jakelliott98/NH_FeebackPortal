@@ -10,31 +10,51 @@ export default function CliniciansDropdownList ({ list }) {
 
     return (
         <div className={styles['settings-clinician-section']}>
-            <div className={styles['clinician-card-section']}>
-                <div>
-                    <button className={styles['new-clinician-button']}>+ Add Clinician</button>
-                    <div className={styles['clinician-holder']}>
-                        <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
-                            <p>Clinician</p>
-                            <p>Role</p>
-                            <p className={styles['status-header']}>Status</p>
-                            <p className={styles['rating-header']}>Rating</p>
-                        </div>
-                        {
-                            list.map((item) => {
-                                return (
-                                    <ClinicianCard item={item}/>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-                </div>
+            <div className={styles['clinician-section-header']}>
+                <p className={styles['clinician-count']}>
+                    Number of clinicians: 
+                    <span> {list.length}</span>
+                </p>
+                <button className={styles['clinician-dropdown']}>
+                    All Clinicians
+                    <FontAwesomeIcon icon="fa-solid fa-caret-down" />
+                </button>
             </div>
+            <div className={styles['clinician-card-section']}>
+                <button className={styles['new-clinician-button']}>
+                    + Add Clinician
+                </button>
+                <AddClinician/>
+                <div className={styles['clinician-holder']}>
+                    <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
+                        <p>Clinician</p>
+                        <p>Role</p>
+                    </div>
+                    {
+                        list.map((item) => {
+                            return (
+                                <ClinicianCard item={item}/>
+                            )
+                        })
+                    }
+                </div>            
+            </div>
+        </div>
     )
 
 }
 
+function AddClinician () {
+    return (
+        <div>
+            <p></p>
+            <input placeholder='Clinicians Full Name'/>
+            <select/>
+            <select></select>
+            <button>Add Clinician</button>
+        </div>
+    )
+}
 
 function ClinicianCard ({item}) {
 
@@ -49,12 +69,8 @@ function ClinicianCard ({item}) {
                     <p>{item.clinicians_role}</p>
                 </div>
             </div>
-            <p className={styles['status-section']}>
-                <FontAwesomeIcon className={styles['active-dot']} icon="fa-solid fa-circle" />
-                Active
-            </p>
-            <p className={styles['rating-section']}>4.5</p>
             <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" />
         </div>
     )
 }
+
