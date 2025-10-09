@@ -38,7 +38,7 @@ function SettingsPage () {
             }
         }
         getClinicians();
-    }, [])
+    }, [clinicians])
 
 
     async function addClinician (name, role) {

@@ -73,3 +73,15 @@
     flex-direction: column;
     flex: 1;
 }
+
+.add-question-section {
+    position: absolute;
+    z-index: 2;
+    transform: translateY(10px);
+    width: 30%;
+    padding: 30px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
