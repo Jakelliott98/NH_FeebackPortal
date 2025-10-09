@@ -18,18 +18,8 @@ export default function CliniciansDropdownList ({ list, addClinician, deleteClin
     }
 
     return (
-        <div className={styles['settings-clinician-section']}>
-            <div className={styles['clinician-section-header']}>
-                <p className={styles['clinician-count']}>
-                    Number of clinicians: 
-                    <span> {list.length}</span>
-                </p>
-                <button className={styles['clinician-dropdown']}>
-                    All Clinicians
-                    <FontAwesomeIcon icon="fa-solid fa-caret-down" />
-                </button>
-            </div>
-            <div className={styles['clinician-card-section']}>
+        <div className={styles['clinician-card-section']}>
+            <div className={styles['button-container']}>
                 <button 
                     className={styles['new-clinician-button']} 
                     onClick={() => {setIsClinicianOpen((prev) => {return !prev})}}
@@ -37,21 +27,24 @@ export default function CliniciansDropdownList ({ list, addClinician, deleteClin
                     + Add Clinician
                 </button>
                 { isClinicianOpen ? <AddClinician addClinician={addNewClinician}/> : null}
-                <div className={styles['clinician-holder']}>
-                    <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
-                        <p>Clinician</p>
-                        <p>Role</p>
-                    </div>
-                    {
-                        list.map((item) => {
-                            return (
-                                <ClinicianCard item={item} key={item.id} deleteClinician={deleteClinician}/>
-                            )
-                        })
-                    }
-                </div>            
+                <button className={styles['clinician-dropdown']}>
+                    All Clinicians
+                    <FontAwesomeIcon icon="fa-solid fa-caret-down" />
+                </button>
             </div>
-
+            <div className={styles['clinician-holder']}>
+                <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
+                    <p>Clinician</p>
+                    <p>Role</p>
+                </div>
+                {
+                    list.map((item) => {
+                        return (
+                            <ClinicianCard item={item} key={item.id} deleteClinician={deleteClinician}/>
+                        )
+                    })
+                }
+            </div>            
         </div>
     )
 

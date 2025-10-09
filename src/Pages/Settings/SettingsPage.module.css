@@ -1,0 +1,40 @@
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.setting-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: 2px solid #E0E0E0;
+    margin-bottom: 10px;
+
+}
+
+.settings-tag {
+    padding: 5px 10px;
+    background-color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.active-tag {
+    background-color: lightgray;
+}
+
+.clinicians-tag {
+    border-top-left-radius: 5px;
+}
+
+.questions-tag {
+    border-top-right-radius: 5px;
+}
+
+.settings-content-container {
+    
+}

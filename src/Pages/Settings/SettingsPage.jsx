@@ -1,10 +1,13 @@
 import supabase from "../../Utils/Data/fetchAPIData"
 import { useState, useEffect } from "react"
-import CliniciansDropdownList from "./CliniciansDropdownList/ClinicianDropdownList"
+import CliniciansDropdownList from "./clinicians-page/CliniciansDropdownList/ClinicianDropdownList"
+import QuestionsPage from "./questions-page/QuestionsPage"
+import styles from './SettingsPage.module.css'
 
 function SettingsPage () {
 
     const [clinicians, setClinicians] = useState([])
+    const [currentPage, setCurrentPage] = useState('clinicians');
 
     useEffect(() => {
         async function getClinicians () {
@@ -50,8 +53,41 @@ function SettingsPage () {
 
     }
 
+    let cliniciansPage = (
+        <CliniciansDropdownList 
+            list={clinicians} 
+            addClinician={addClinician} 
+            deleteClinician={deleteClinician}
+        />
+    )
+
+    let questionsPage = (
+        <QuestionsPage />
+    )
+    
+    let activeClinicians = currentPage == 'clinicians' ? `${styles['active-tag']}` : null;
+    let activeQuestions = currentPage == 'questions' ? `${styles['active-tag']}` : null;
+
     return (
-        <CliniciansDropdownList list={clinicians} addClinician={addClinician} deleteClinician={deleteClinician}/>
+        <div className={styles['settings-page']}>
+            <div className={styles['setting-header']}>
+                <p 
+                    className={`${styles['settings-tag']} ${styles['clinicians-tag']} ${activeClinicians}`}
+                    onClick={() => {setCurrentPage('clinicians')}}
+                >
+                    Clinicians
+                </p>
+                <p 
+                    className={`${styles['settings-tag']} ${styles['questions-tag']} ${activeQuestions}`}
+                    onClick={() => {setCurrentPage('questions')}}
+                >
+                    Questions
+                </p>
+            </div>
+            <div className={styles['settings-content-container']}>
+                {currentPage == 'clinicians' ? cliniciansPage : currentPage == 'questions' ? questionsPage : null}
+            </div>
+        </div>
     )
 
 }
