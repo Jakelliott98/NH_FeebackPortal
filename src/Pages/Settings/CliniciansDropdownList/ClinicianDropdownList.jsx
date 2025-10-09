@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 import styles from './CliniciansDropdownList.module.css'
+import Select from 'react-select'
 
 export default function CliniciansDropdownList ({ list }) {
 
@@ -24,7 +25,6 @@ export default function CliniciansDropdownList ({ list }) {
                 <button className={styles['new-clinician-button']}>
                     + Add Clinician
                 </button>
-                <AddClinician/>
                 <div className={styles['clinician-holder']}>
                     <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
                         <p>Clinician</p>
@@ -39,19 +39,38 @@ export default function CliniciansDropdownList ({ list }) {
                     }
                 </div>            
             </div>
+                            <AddClinician/>
+
         </div>
     )
 
 }
 
 function AddClinician () {
+
+    const roles = [
+        {value: 'physiotherapist', label: 'Physiotherapist'},
+        {value: 'physiologist', label: 'Physiologist'},
+        {value: 'doctor', label: 'Doctor'},
+    ];
+    const titles = [
+        {value: 'Mr', label: 'Mr'},
+        {value: 'Mrs', label: 'Mrs'},
+        {value: 'Ms', label: 'Ms'},
+        {value: 'Miss', label: 'Miss'},
+        {value: 'Dr', label: 'Dr'},
+        {value: '', label: 'None'},
+    ];
+
     return (
-        <div>
-            <p></p>
-            <input placeholder='Clinicians Full Name'/>
-            <select/>
-            <select></select>
-            <button>Add Clinician</button>
+        <div className={styles['add-clinician-container']}>
+            <p>Clinician Box</p>
+            <div className={styles['clinician-input-section']}>
+                <Select options={titles}/>
+                <input className={styles['clinician-input']} placeholder='Clinicians Full Name'/>
+            </div>
+            <Select options={roles}/>
+            <button className={styles['add-clinician-button']}>Add Clinician</button>
         </div>
     )
 }

@@ -94,3 +94,15 @@
 .clinician-dropdown {
     padding: 2px 5px;
 }
+
+.add-clinician-container {
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.clinician-input-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
