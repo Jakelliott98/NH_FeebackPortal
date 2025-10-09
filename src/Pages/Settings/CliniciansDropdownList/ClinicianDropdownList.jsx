@@ -8,7 +8,7 @@ import styles from './CliniciansDropdownList.module.css'
 import Select from 'react-select'
 import { useState } from 'react'
 
-export default function CliniciansDropdownList ({ list, addClinician }) {
+export default function CliniciansDropdownList ({ list, addClinician, deleteClinician }) {
 
     const [isClinicianOpen, setIsClinicianOpen] = useState(false)
 
@@ -45,7 +45,7 @@ export default function CliniciansDropdownList ({ list, addClinician }) {
                     {
                         list.map((item) => {
                             return (
-                                <ClinicianCard item={item} key={item.id}/>
+                                <ClinicianCard item={item} key={item.id} deleteClinician={deleteClinician}/>
                             )
                         })
                     }
@@ -105,7 +105,20 @@ function AddClinician ({ addClinician }) {
     )
 }
 
-function ClinicianCard ({item}) {
+function ClinicianOptions ({ deleteClinician, id }) {
+
+    return (
+        <div>
+            <p onClick={() => {deleteClinician(id)}}>
+                Delete
+            </p>
+        </div>
+    )
+}
+
+function ClinicianCard ({item, deleteClinician}) {
+
+    const [isOptionsOpen, setIsOptionsOpen] = useState(false)
 
     return (
         <div className={styles['clinician-card-container']}>
@@ -118,7 +131,10 @@ function ClinicianCard ({item}) {
                     <p>{item.clinicians_role}</p>
                 </div>
             </div>
-            <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" />
+            <div>
+            <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" onClick={() => {setIsOptionsOpen(prev => !prev)}} />
+            { isOptionsOpen ? <ClinicianOptions deleteClinician={deleteClinician} id={item.id}/> : null}
+            </div>
         </div>
     )
 }

@@ -36,48 +36,24 @@ function SettingsPage () {
             }
     }
 
+    async function deleteClinician (id) {
+        const { error } = await supabase 
+        .from('Clinicians')
+        .delete()
+        .eq('id', id)
+
+        if (error) {
+            console.log('Error deleting clinician id: ', id)
+        } else {
+            console.log('Clinician deleted. id:', id)
+        }
+
+    }
+
     return (
-        <CliniciansDropdownList list={clinicians} addClinician={addClinician}/>
+        <CliniciansDropdownList list={clinicians} addClinician={addClinician} deleteClinician={deleteClinician}/>
     )
 
 }
 
 export default SettingsPage;
-
-function DoctorsDropdown ({doctorsList}) {
-    return (
-        <>
-        <h1>Clinician Dropdown</h1>
-        <ul>
-        {doctorsList.map((item, index) => {
-            return (<p key={index}>{item.clinicians_name}</p>)
-        })}
-        </ul>
-        </>
-    )
-}
-
-function AddClinician ({onSubmit}) {
-
-    const [clinician, setClinician] = useState({name: '', role: ''})
-
-    function setName (name) {
-        setClinician((prev) => {return {...prev, name: name}})
-    }
-
-    function setRole (role) {
-        setClinician((prev) => { return {...prev, role:role}})
-    }
-
-    function resetClinician () {
-        setClinician({name: '', role: ''})
-    }
-
-    return (
-        <div>
-            <input placeholder='Clinicians Name' onChange={(e) => {setName(e.target.value)}} value={clinician.name}/>
-            <input placeholder='role' onChange={(e) => {setRole(e.target.value)}} value={clinician.role}/>
-            <button type='submit' onClick={() => {onSubmit(clinician.name, clinician.role), resetClinician()}}>Add</button>
-        </div>
-    )
-}
