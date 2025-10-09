@@ -6,8 +6,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 import styles from './CliniciansDropdownList.module.css'
 import Select from 'react-select'
+import { useState } from 'react'
 
-export default function CliniciansDropdownList ({ list }) {
+export default function CliniciansDropdownList ({ list, addClinician }) {
+
+    const [isClinicianOpen, setIsClinicianOpen] = useState(false)
+
+    function addNewClinician (name, role) {
+        addClinician(name, role)
+        setIsClinicianOpen(prev => !prev)
+    }
 
     return (
         <div className={styles['settings-clinician-section']}>
@@ -22,9 +30,13 @@ export default function CliniciansDropdownList ({ list }) {
                 </button>
             </div>
             <div className={styles['clinician-card-section']}>
-                <button className={styles['new-clinician-button']}>
+                <button 
+                    className={styles['new-clinician-button']} 
+                    onClick={() => {setIsClinicianOpen((prev) => {return !prev})}}
+                >
                     + Add Clinician
                 </button>
+                { isClinicianOpen ? <AddClinician addClinician={addNewClinician}/> : null}
                 <div className={styles['clinician-holder']}>
                     <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
                         <p>Clinician</p>
@@ -33,20 +45,19 @@ export default function CliniciansDropdownList ({ list }) {
                     {
                         list.map((item) => {
                             return (
-                                <ClinicianCard item={item}/>
+                                <ClinicianCard item={item} key={item.id}/>
                             )
                         })
                     }
                 </div>            
             </div>
-                            <AddClinician/>
 
         </div>
     )
 
 }
 
-function AddClinician () {
+function AddClinician ({ addClinician }) {
 
     const roles = [
         {value: 'physiotherapist', label: 'Physiotherapist'},
@@ -62,15 +73,34 @@ function AddClinician () {
         {value: '', label: 'None'},
     ];
 
+    const [clinicianDetails, setClinicianDetails] = useState({
+        title: '',
+        name: '',
+        role: '',
+    })
+
     return (
         <div className={styles['add-clinician-container']}>
             <p>Clinician Box</p>
             <div className={styles['clinician-input-section']}>
-                <Select options={titles}/>
-                <input className={styles['clinician-input']} placeholder='Clinicians Full Name'/>
+                <Select 
+                    options={titles} 
+                    onChange={(e) => {setClinicianDetails((prev) => {return {...prev, title: e.value}})}}
+                />
+                <input 
+                    className={styles['clinician-input']} 
+                    placeholder='Clinicians Full Name' 
+                    value={clinicianDetails.name}
+                    onChange={(e) => {setClinicianDetails((prev) => {return {...prev, name: e.target.value}})}}
+                />
             </div>
-            <Select options={roles}/>
-            <button className={styles['add-clinician-button']}>Add Clinician</button>
+            <Select 
+                options={roles}
+                onChange={(e) => {setClinicianDetails((prev) => {return {...prev, role: e.value}})}}
+            />
+            <button className={styles['add-clinician-button']} onClick={() => {addClinician(clinicianDetails.name, clinicianDetails.role)}}>
+                Add Clinician
+            </button>
         </div>
     )
 }
