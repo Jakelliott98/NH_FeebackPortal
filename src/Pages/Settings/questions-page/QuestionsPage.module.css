@@ -1,0 +1,75 @@
+.questions-page-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: transparent;
+    background-color: green;
+    color: #fff;
+}
+
+.physio-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 5px 0 0 5px;
+    background-color: lightgreen;
+}
+
+.ha-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0 5px 5px 0;
+}
+
+.question-container {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.questions-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.questions-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #858585;
+
+}
+
+.question-items {
+    composes: question-container;
+    flex: 1;
+    font-style: italic;
+    align-items: center;
+}
+
+.ellipsis-container {
+    justify-self: center;
+}
+
+.questions-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

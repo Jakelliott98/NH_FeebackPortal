@@ -6,7 +6,7 @@ function PageHeader ({title}) {
     return (
         <div className={styles['header-div']}>
             <h1 className={styles['page-title']}>{title}</h1>
-            <DropdownFiltersComponent title={title} />
+            { title == 'Settings' ? null : <DropdownFiltersComponent title={title} /> }
         </div>
     )
 

@@ -1,13 +1,29 @@
 import supabase from "../../Utils/Data/fetchAPIData"
 import { useState, useEffect } from "react"
-import CliniciansDropdownList from "./clinicians-page/CliniciansDropdownList/ClinicianDropdownList"
+import CliniciansDropdownList from "./clinicians-page/ClinicianDropdownList"
 import QuestionsPage from "./questions-page/QuestionsPage"
 import styles from './SettingsPage.module.css'
 
 function SettingsPage () {
 
-    const [clinicians, setClinicians] = useState([])
+    const [clinicians, setClinicians] = useState([]);
+    const [questions, setQuestions] = useState([]);
     const [currentPage, setCurrentPage] = useState('clinicians');
+
+    useEffect(() => {
+        async function getQuestion () {
+            let { data: Feedback_Form_Questions, error } = await supabase
+            .from('Feedback_Form_Questions')
+            .select('*')
+
+            if (error) {
+                console.log('Error fetching questions')
+            } else {
+                setQuestions(Feedback_Form_Questions)
+            }
+        }
+        getQuestion()
+    }, [questions])
 
     useEffect(() => {
         async function getClinicians () {
@@ -26,7 +42,6 @@ function SettingsPage () {
 
 
     async function addClinician (name, role) {
-
         const { data, error } = await supabase
             .from('Clinicians')
             .insert([{clinicians_name: name, clinicians_role: role}])
@@ -62,7 +77,7 @@ function SettingsPage () {
     )
 
     let questionsPage = (
-        <QuestionsPage />
+        <QuestionsPage questions={questions}/>
     )
     
     let activeClinicians = currentPage == 'clinicians' ? `${styles['active-tag']}` : null;

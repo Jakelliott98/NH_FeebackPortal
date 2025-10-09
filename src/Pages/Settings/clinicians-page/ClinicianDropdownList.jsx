@@ -124,7 +124,7 @@ function ClinicianCard ({item, deleteClinician}) {
                     <p>{item.clinicians_role}</p>
                 </div>
             </div>
-            <div>
+            <div className={styles['dot-icons-container']}>
             <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" onClick={() => {setIsOptionsOpen(prev => !prev)}} />
             { isOptionsOpen ? <ClinicianOptions deleteClinician={deleteClinician} id={item.id}/> : null}
             </div>
