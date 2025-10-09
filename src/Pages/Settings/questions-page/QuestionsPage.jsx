@@ -28,6 +28,33 @@ function QuestionsPage ({ questions }) {
         }
     }
 
+    async function deleteQuestion (id) {
+        const { error } = await supabase
+        .from('Feedback_Form_Questions')
+        .delete()
+        .eq('id', id)
+
+        if (error) {
+            console.log('Error deleting question id:', id)
+        } else {
+            console.log('Question deleted id:', id)
+        }
+    }
+
+    async function editQuestion (id, newQuestion) {
+        const { data, error } = await supabase
+        .from('Feedback_Form_Questions')
+        .update({ question: newQuestion })
+        .eq('id', id)
+        .select()
+
+        if (error) {
+            console.log('Error editing question. id:', id)
+        } else {
+            console.log('Question has been edited. New Question:', data)
+        }
+    }
+
     function addNewQuestion (question, type) {
         addQuestion(question, type)
         setIsQuestionAddOpen(prev => !prev)
@@ -55,7 +82,7 @@ function QuestionsPage ({ questions }) {
                     {
                         questions.map((item) => {
                             return (
-                                <QuestionContainer item={item} key={item.id}/>
+                                <QuestionContainer item={item} key={item.id} deleteQuestion={deleteQuestion} editQuestion={editQuestion}/>
                             )
                         })
                     }
@@ -93,11 +120,54 @@ function AddQuestion ({ onSubmit }) {
     )
 }
 
-function QuestionContainer ({item}) {
+function EllipsisMenu ({ deleteQuestion, editQuestion, item }) {
+
+    const [isEditOpen, setIsEditOpen] = useState(false)
+
+    function submitEditQuestion (newQuestion, id) {
+        editQuestion(id, newQuestion)
+        setIsEditOpen(false)
+    }
+
+    return (
+        <div className={styles['ellipsis-content']}>
+            <p onClick={() => {setIsEditOpen(prev => !prev)}}>
+                Edit
+            </p>
+            <p onClick={() => {deleteQuestion(item.id)}}>
+                Delete
+            </p>
+            { isEditOpen ? <EditBox item={item} submitEditQuestion={submitEditQuestion}/> : null }
+        </div>
+    )
+}
+
+function EditBox ({ item, submitEditQuestion }) {
+
+    const [newQuestion, setNewQuestion] = useState(item.question)
+
+    return (
+        <div className={styles['edit-container']}>
+            <p>Edit the question</p>
+            <textarea value={newQuestion} onChange={(e) => {setNewQuestion(e.target.value)}}/>
+            <button onClick={() => {submitEditQuestion(newQuestion, item.id)}} >
+                Add new edit
+            </button>
+        </div>
+    )
+}
+
+function QuestionContainer ({item, deleteQuestion, editQuestion}) {
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <div className={styles['question-items']}>
             <p>{item.question}</p>
-                <FontAwesomeIcon className={styles['ellipsis-container']} icon="fa-solid fa-ellipsis" />
+            <div className={styles['ellipsis-container']}>
+                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => {setIsOpen(prev => !prev)}}/>
+                { isOpen ? <EllipsisMenu deleteQuestion={deleteQuestion} item={item} editQuestion={editQuestion} /> : null }
+            </div>
         </div>
     )
 }

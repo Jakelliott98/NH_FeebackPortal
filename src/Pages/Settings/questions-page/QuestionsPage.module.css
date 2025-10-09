@@ -85,3 +85,21 @@
     flex-direction: column;
     background-color: #fff;
 }
+
+.ellipsis-content {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.ellipsis-content p {
+    cursor: pointer;
+}
+
+.edit-container {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    transform: translateY(-100px) translateX(-300px);
+    padding: 20px;
+}
