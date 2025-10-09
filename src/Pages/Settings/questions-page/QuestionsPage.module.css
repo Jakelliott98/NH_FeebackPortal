@@ -25,15 +25,18 @@
     padding: 5px 10px;
     cursor: pointer;
     border: transparent;
-    border-radius: 5px 0 0 5px;
-    background-color: lightgreen;
+    border-radius: 0 5px 5px 0;
 }
 
 .ha-button {
     padding: 5px 10px;
     cursor: pointer;
     border: transparent;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.active-assessment {
+    background-color: lightgreen;
 }
 
 .question-container {

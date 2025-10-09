@@ -12,12 +12,15 @@ import supabase from '../../../Utils/Data/fetchAPIData'
 function QuestionsPage ({ questions }) {
 
     const [isQuestionAddOpen, setIsQuestionAddOpen] = useState(false)
-    
+    const [assessmentType, setAssessmentType] = useState('healthAssessment')
+
+    console.log(assessmentType)
+
     async function addQuestion (question, type) {
         const { data, error } = await supabase
         .from('Feedback_Form_Questions')
         .insert([
-            { question: question, type: type },
+            { question: question, type: type, assessment_type: assessmentType},
         ])
         .select()
 
@@ -60,6 +63,13 @@ function QuestionsPage ({ questions }) {
         setIsQuestionAddOpen(prev => !prev)
     }
 
+    let assessmentClass = assessmentType == 'healthAssessment' ? `${styles['active-assessment']}` : null;
+    let physioClass = assessmentType == 'physiotherapy' ? `${styles['active-assessment']}` : null;
+
+    let healthAssessmentQuestions = questions.filter(item => item.assessment_type == 'healthAssessment');
+    let physioQuestions = questions.filter(item => item.assessment_type == 'physiotherapy');;
+    let currentQuestions = assessmentType == 'healthAssessment' ? healthAssessmentQuestions : physioQuestions;
+
     return (
         <div className={styles['questions-page-container']}>
             <div className={styles['buttons-container']}>
@@ -70,8 +80,8 @@ function QuestionsPage ({ questions }) {
                     { isQuestionAddOpen ? <AddQuestion onSubmit={addNewQuestion} /> : null }
                 </div>
                 <div className={styles['assessment-buttons']}>
-                    <button className={styles['physio-button']}>Physiotherapy</button>
-                    <button className={styles['ha-button']}>Health Assessments</button>
+                    <button className={`${styles['ha-button']} ${assessmentClass}`} onClick={() => {setAssessmentType('healthAssessment')}} >Health Assessments</button>
+                    <button className={`${styles['physio-button']} ${physioClass}`} onClick={() => {setAssessmentType('physiotherapy')}} >Physiotherapy</button>
                 </div>
             </div>
             <div className={styles['questions-container']}>
@@ -80,7 +90,7 @@ function QuestionsPage ({ questions }) {
                 </div>
                 <div className={styles['questions-section']}>
                     {
-                        questions.map((item) => {
+                        currentQuestions.map((item) => {
                             return (
                                 <QuestionContainer item={item} key={item.id} deleteQuestion={deleteQuestion} editQuestion={editQuestion}/>
                             )
