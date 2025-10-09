@@ -7,7 +7,7 @@ function ScatterGraph ({ results }) {
     function CustomTooltip ({ payload, active }) {
         if (active) {
             let client = payload[0].payload;
-            let tooltipScore = client.average_score > 2.5 ? `${styles['positive-tooltip-score']}` : `${style['negative-tooltip-score']}`;
+            let tooltipScore = client.average_score > 2.5 ? `${styles['positive-tooltip-score']}` : `${styles['negative-tooltip-score']}`;
             return (
                 <div className={styles['tooltip-container']}>
                     <p className={styles['tooltip-title']}>{client.name}</p>
