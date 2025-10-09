@@ -1,13 +1,8 @@
-import styles from './QuestionsPage.module.css'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-library.add(fas, far, fab)
-import Select from 'react-select'
 import { useState } from 'react'
 import supabase from '../../../Utils/Data/fetchAPIData'
+import QuestionCard from './QuestionCard'
+import AddQuestion from './AddQuestion'
+import styles from './QuestionsPage.module.css'
 
 function QuestionsPage ({ questions }) {
 
@@ -92,7 +87,7 @@ function QuestionsPage ({ questions }) {
                     {
                         currentQuestions.map((item) => {
                             return (
-                                <QuestionContainer item={item} key={item.id} deleteQuestion={deleteQuestion} editQuestion={editQuestion}/>
+                                <QuestionCard item={item} key={item.id} deleteQuestion={deleteQuestion} editQuestion={editQuestion}/>
                             )
                         })
                     }
@@ -102,84 +97,6 @@ function QuestionsPage ({ questions }) {
     )
 }
 
-function AddQuestion ({ onSubmit }) {
 
-    const [newQuestion, setNewQuestion] = useState({
-        question: '',
-        type: '',
-    })
-
-    const questionType = [
-        {value: 'rating', label: 'Rating'},
-        {value: 'textarea', label: 'Textarea'}
-    ]
-
-    return (
-        <div className={styles['add-question-section']}>
-            <textarea 
-                value={newQuestion.question} 
-                onChange={(e) => {setNewQuestion((prev) => {return {...prev, question: e.target.value}})}}
-                placeholder='Add your question' 
-                className={styles['question-textarea']}
-            />
-            <Select options={questionType} onChange={(e) => {setNewQuestion((prev) => {return {...prev, type: e.value}})}}/>
-            <button className={styles['add-question-button']} onClick={() => {onSubmit(newQuestion.question, newQuestion.type)}}>
-                + Add
-            </button>
-        </div>
-    )
-}
-
-function EllipsisMenu ({ deleteQuestion, editQuestion, item }) {
-
-    const [isEditOpen, setIsEditOpen] = useState(false)
-
-    function submitEditQuestion (newQuestion, id) {
-        editQuestion(id, newQuestion)
-        setIsEditOpen(false)
-    }
-
-    return (
-        <div className={styles['ellipsis-content']}>
-            <p onClick={() => {setIsEditOpen(prev => !prev)}}>
-                Edit
-            </p>
-            <p onClick={() => {deleteQuestion(item.id)}}>
-                Delete
-            </p>
-            { isEditOpen ? <EditBox item={item} submitEditQuestion={submitEditQuestion}/> : null }
-        </div>
-    )
-}
-
-function EditBox ({ item, submitEditQuestion }) {
-
-    const [newQuestion, setNewQuestion] = useState(item.question)
-
-    return (
-        <div className={styles['edit-container']}>
-            <p>Edit the question</p>
-            <textarea value={newQuestion} onChange={(e) => {setNewQuestion(e.target.value)}}/>
-            <button onClick={() => {submitEditQuestion(newQuestion, item.id)}} >
-                Add new edit
-            </button>
-        </div>
-    )
-}
-
-function QuestionContainer ({item, deleteQuestion, editQuestion}) {
-
-    const [isOpen, setIsOpen] = useState(false)
-
-    return (
-        <div className={styles['question-items']}>
-            <p>{item.question}</p>
-            <div className={styles['ellipsis-container']}>
-                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => {setIsOpen(prev => !prev)}}/>
-                { isOpen ? <EllipsisMenu deleteQuestion={deleteQuestion} item={item} editQuestion={editQuestion} /> : null }
-            </div>
-        </div>
-    )
-}
 
 export default QuestionsPage;
