@@ -8,10 +8,38 @@ import styles from './ClinicianDropdownList.module.css'
 import { useState } from 'react'
 import ClinicianCard from './ClinicianCard'
 import AddClinician from './AddClinicianCard'
+import supabase from '../../../Utils/Data/fetchAPIData'
 
-function CliniciansDropdownList ({ list, addClinician, deleteClinician }) {
+function CliniciansPage ({ list }) {
 
     const [isClinicianOpen, setIsClinicianOpen] = useState(false)
+
+    async function addClinician (name, role) {
+        const { data, error } = await supabase
+            .from('Clinicians')
+            .insert([{clinicians_name: name, clinicians_role: role}])
+            .select()
+
+            if (error) {
+                console.log('Error occured at')
+            } else {
+                console.log('All addedd succesfully:', data)
+            }
+    }
+
+    async function deleteClinician (id) {
+        const { error } = await supabase 
+        .from('Clinicians')
+        .delete()
+        .eq('id', id)
+
+        if (error) {
+            console.log('Error deleting clinician id: ', id)
+        } else {
+            console.log('Clinician deleted. id:', id)
+        }
+
+    }
 
     function addNewClinician (name, role) {
         addClinician(name, role)
@@ -51,4 +79,4 @@ function CliniciansDropdownList ({ list, addClinician, deleteClinician }) {
 
 }
 
-export default CliniciansDropdownList;
+export default CliniciansPage;

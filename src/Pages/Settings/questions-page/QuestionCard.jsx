@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from './QuestionsPage.module.css'
-import { QuestionsEllipsisMenu } from '../components/EllipsisMenu'
+import { EllipsisMenu } from '../components/EllipsisMenu/EllipsisMenu'
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -19,7 +19,7 @@ function QuestionCard ({item, deleteQuestion, editQuestion}) {
             <p>{item.question}</p>
             <div className={styles['ellipsis-container']}>
                 <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => {setIsOpen(prev => !prev)}}/>
-                { isOpen ? <QuestionsEllipsisMenu deleteQuestion={deleteQuestion} item={item} editQuestion={editQuestion} /> : null }
+                { isOpen ? <EllipsisMenu onDelete={deleteQuestion} item={item} onEdit={editQuestion} edit /> : null }
             </div>
         </div>
     )

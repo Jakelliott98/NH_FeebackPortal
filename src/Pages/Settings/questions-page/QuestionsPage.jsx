@@ -9,8 +9,6 @@ function QuestionsPage ({ questions }) {
     const [isQuestionAddOpen, setIsQuestionAddOpen] = useState(false)
     const [assessmentType, setAssessmentType] = useState('healthAssessment')
 
-    console.log(assessmentType)
-
     async function addQuestion (question, type) {
         const { data, error } = await supabase
         .from('Feedback_Form_Questions')

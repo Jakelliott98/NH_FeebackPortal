@@ -6,7 +6,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
-import {EllipsisMenu} from '../components/EllipsisMenu'
+import {EllipsisMenu} from '../components/EllipsisMenu/EllipsisMenu'
 
 function ClinicianCard ({item, deleteClinician}) {
 
@@ -25,7 +25,7 @@ function ClinicianCard ({item, deleteClinician}) {
             </div>
             <div className={styles['dot-icons-container']}>
             <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" onClick={() => {setIsOptionsOpen(prev => !prev)}} />
-            { isOptionsOpen ? <EllipsisMenu deleteClinician={deleteClinician} id={item.id}/> : null}
+            { isOptionsOpen ? <EllipsisMenu onDelete={deleteClinician} item={item} edit={false}/> : null}
             </div>
         </div>
     )
