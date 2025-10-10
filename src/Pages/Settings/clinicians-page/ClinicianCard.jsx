@@ -10,7 +10,7 @@ import {EllipsisMenu} from '../components/EllipsisMenu/EllipsisMenu'
 
 function ClinicianCard ({item, deleteClinician}) {
 
-    const [isOptionsOpen, setIsOptionsOpen] = useState(false)
+    const [isEllipsisOpen, setIsEllipsisOpen] = useState(false)
 
     return (
         <div className={styles['clinician-card-container']}>
@@ -24,8 +24,8 @@ function ClinicianCard ({item, deleteClinician}) {
                 </div>
             </div>
             <div className={styles['dot-icons-container']}>
-            <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" onClick={() => {setIsOptionsOpen(prev => !prev)}} />
-            { isOptionsOpen ? <EllipsisMenu onDelete={deleteClinician} item={item} edit={false}/> : null}
+            <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" onClick={() => {setIsEllipsisOpen(prev => !prev)}} />
+            { isEllipsisOpen ? <EllipsisMenu onDelete={deleteClinician} item={item} edit={false} onClose={setIsEllipsisOpen}/> : null}
             </div>
         </div>
     )

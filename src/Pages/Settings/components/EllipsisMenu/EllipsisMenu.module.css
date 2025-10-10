@@ -1,0 +1,27 @@
+
+.ellipsis-section {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.ellipsis-close {
+    cursor: pointer;
+}
+
+.ellipsis-tag {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.ellipsis-tag:hover {
+    background-color: lightgreen;
+}
+
+.edit-container {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    transform: translateY(-100px) translateX(-300px);
+    padding: 20px;
+}

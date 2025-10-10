@@ -12,14 +12,14 @@ library.add(fas, far, fab)
 
 function QuestionCard ({item, deleteQuestion, editQuestion}) {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isEllipsisOpen, setIsEllipsisOpen] = useState(false)
 
     return (
         <div className={styles['question-items']}>
             <p>{item.question}</p>
             <div className={styles['ellipsis-container']}>
-                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => {setIsOpen(prev => !prev)}}/>
-                { isOpen ? <EllipsisMenu onDelete={deleteQuestion} item={item} onEdit={editQuestion} edit /> : null }
+                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => {setIsEllipsisOpen(prev => !prev)}}/>
+                { isEllipsisOpen ? <EllipsisMenu onDelete={deleteQuestion} item={item} onEdit={editQuestion} edit onClose={setIsEllipsisOpen}/> : null }
             </div>
         </div>
     )
