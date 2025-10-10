@@ -7,7 +7,7 @@ library.add(fas, far, fab)
 import styles from './ClinicianDropdownList.module.css'
 import { useState } from 'react'
 import ClinicianCard from './ClinicianCard'
-import AddClinician from './AddClinicianCard'
+import AddClinician from './AddClinician'
 import supabase from '../../../Utils/Data/fetchAPIData'
 
 function CliniciansPage ({ list }) {
@@ -55,7 +55,7 @@ function CliniciansPage ({ list }) {
                 >
                     + Add Clinician
                 </button>
-                { isClinicianOpen ? <AddClinician addClinician={addNewClinician}/> : null}
+                { isClinicianOpen ? <AddClinician addClinician={addNewClinician} onClose={setIsClinicianOpen}/> : null}
                 <button className={styles['clinician-dropdown']}>
                     All Clinicians
                     <FontAwesomeIcon icon="fa-solid fa-caret-down" />

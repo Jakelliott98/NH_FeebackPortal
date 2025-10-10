@@ -70,7 +70,7 @@ function QuestionsPage ({ questions }) {
                     <button onClick={() => {setIsQuestionAddOpen(prev => !prev)}} className={styles['add-button']}>
                         + Add Question
                     </button>
-                    { isQuestionAddOpen ? <AddQuestion onSubmit={addNewQuestion} /> : null }
+                    { isQuestionAddOpen ? <AddQuestion onSubmit={addNewQuestion} onClose={setIsQuestionAddOpen} /> : null }
                 </div>
                 <div className={styles['assessment-buttons']}>
                     <button className={`${styles['ha-button']} ${assessmentClass}`} onClick={() => {setAssessmentType('healthAssessment')}} >Health Assessments</button>
