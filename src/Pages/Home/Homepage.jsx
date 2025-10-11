@@ -10,13 +10,17 @@ function Homepage () {
     const { filteredFeedback } = useContext(resultsContext);
     const [selectedChart, setSelectedChart] = useState('Responses')
 
+    const displayComments = filteredFeedback.length <= 1 ? [filteredFeedback[0]] : [filteredFeedback[0], filteredFeedback[1]];
+
+    let commentDiv = displayComments.map((item) => { return (<CommentCard response={item} anonymous={true}/>) });
+    let noComments = ( <p> There are no comments </p> );
+
     return (
         <div className={styles['homepage']}>
             <DataCardSection selectedChart={selectedChart} setSelectedChart={setSelectedChart}/>
             <GraphSection selectedChart={selectedChart}/>
             <div className={styles["comments-div"]}>
-                <CommentCard response={filteredFeedback[1]} anonymous={true}/>
-                <CommentCard response={filteredFeedback[2]} anonymous={true}/>
+                { filteredFeedback.length == 0 ? noComments : commentDiv }
             </div>
         </div>
     )

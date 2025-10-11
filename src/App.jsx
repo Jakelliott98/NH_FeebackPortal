@@ -33,8 +33,6 @@ function App() {
     
   }, [])
 
-  console.log(responses)
-
   const filteredFeedback = useMemo(() => { 
 
     let filteredResults = results.results;

@@ -15,7 +15,7 @@ export function DropdownNav () {
         <nav className={styles['navbar-dropdown']}>
             <NavLink 
                 className={({isActive}) => {return isActive ? `${styles['active-nav']}` : `${styles['navbar-option']}`}} 
-                to='Home'
+                to=''
             >
                 <FontAwesomeIcon className={styles['navbar-icon']} icon="fa-solid fa-house" />
                 Home
