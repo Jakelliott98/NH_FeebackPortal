@@ -8,17 +8,12 @@ library.add(fas, far, fab)
 
 import { NavLink } from 'react-router-dom'
 import styles from './DropdownNavbar.module.css'
-import { useContext } from 'react'
-import resultsContext from '../Context/resultsContext'
 
 export function DropdownNav () {
-
-    const { setCurrentPage } = useContext(resultsContext);
 
     return (
         <nav className={styles['navbar-dropdown']}>
             <NavLink 
-                onClick={() => {setCurrentPage('Home')}} 
                 className={({isActive}) => {return isActive ? `${styles['active-nav']}` : `${styles['navbar-option']}`}} 
                 to='Home'
             >
@@ -26,7 +21,6 @@ export function DropdownNav () {
                 Home
             </NavLink>
             <NavLink 
-                onClick={() => {setCurrentPage('Reports')}} 
                 className={({isActive}) => {return isActive ? `${styles['active-nav']}` : `${styles['navbar-option']}`}} 
                 to='FeedbackReports'
             >
@@ -34,7 +28,6 @@ export function DropdownNav () {
                 Reports
             </NavLink>
             <NavLink 
-                onClick={() => {setCurrentPage('Comments')}} 
                 className={({isActive}) => {return isActive ? `${styles['active-nav']}` : `${styles['navbar-option']}`}} 
                 to='Comments'
             >
@@ -42,7 +35,6 @@ export function DropdownNav () {
                 Comments
             </NavLink>
             <NavLink 
-                onClick={() => {setCurrentPage('Settings')}} 
                 className={({isActive}) => {return isActive ? `${styles['active-nav']}` : `${styles['navbar-option']}`}} 
                 to='Settings'
             >

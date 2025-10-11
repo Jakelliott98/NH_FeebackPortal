@@ -45,10 +45,8 @@ function App() {
     
   }, [results])
 
-  const [currentPage, setCurrentPage] = useState('Home')
-
   return (
-    <resultsContext.Provider value={{setCurrentPage, filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+    <resultsContext.Provider value={{ filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portal-layout'>
         <div className='sidebar-div'>
           <div className='image-container'>
@@ -57,7 +55,7 @@ function App() {
           <DropdownNav />
         </div>
         <div className='content-div'>
-          <PageHeader title={currentPage}/>
+          <PageHeader />
           <div className='content-area'>
             <Outlet />
           </div>

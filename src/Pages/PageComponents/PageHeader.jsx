@@ -1,7 +1,11 @@
 import { DropdownFiltersComponent } from './HeaderDropdowns';
 import styles from './PageHeader.module.css'
+import { useMatches } from 'react-router-dom';
 
-function PageHeader ({title}) {
+function PageHeader () {
+
+    const titleMatch = useMatches().find(item => item.handle?.title);
+    let title = titleMatch ? titleMatch.handle.title : '';
 
     return (
         <div className={styles['header-div']}>

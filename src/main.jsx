@@ -15,19 +15,24 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'Home',
-        element: <Homepage />
+        element: <Homepage />,
+        handle: {title: 'Home'},
       },
       {
         path: 'FeedbackReports',
-        element: <FeedbackReportPage />
+        element: <FeedbackReportPage />,
+        handle: {title: 'Reports'},
+
       },
       {
         path: 'Comments',
-        element: <CommentsPageLogic />
+        element: <CommentsPageLogic />,
+        handle: {title: 'Comments'},
       },
       {
         path: 'Settings',
-        element: <SettingsPage />
+        element: <SettingsPage />,
+        handle: {title: 'Settings'},
       }
     ]
   }
