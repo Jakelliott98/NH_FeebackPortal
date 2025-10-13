@@ -24,8 +24,6 @@ function AddClinician ({ addClinician, onClose }) {
         role: '',
     })
 
-    console.log(clinicianDetails)
-
     return (
         <AddElement stateTitle='role' buttonSelectTitle='Clinician Type' clinicianInput title='Add a clinician' onClose={onClose} titlesSelect={titles} stateHolder={clinicianDetails}  mainSelect={roles}  onChange={setClinicianDetails} addElement={addClinician} />
     )

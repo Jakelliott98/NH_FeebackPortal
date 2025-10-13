@@ -23,7 +23,6 @@ function calculateTrendChange ( responses, filters ) {
         negativeScore: calculateSatisfactionPercentage(thisMonthsData).negativePercentage,
     } 
 
-    console.log(thisMonthsResults)
 
     let lastMonthsResults = {
         averageScore: calculateAverageScore(lastMonthsData),
@@ -31,21 +30,25 @@ function calculateTrendChange ( responses, filters ) {
         negativeScore: calculateSatisfactionPercentage(lastMonthsData).negativePercentage,    
     }
 
-    console.log(lastMonthsResults)
 
     function returnDifference (oldNumber, newNumber) {
         return (( newNumber - oldNumber ) / oldNumber) * 100
     }
 
     let differenceOfScores = {
+        numberResponses: returnDifference(lastMonthsData.length, thisMonthsData.length),
         averageScore: returnDifference(lastMonthsResults.averageScore, thisMonthsResults.averageScore),
         positiveScore: returnDifference(lastMonthsResults.positiveScore, thisMonthsResults.positiveScore),
         negativeScore: returnDifference(lastMonthsResults.negativeScore, thisMonthsResults.negativeScore),
     }
+    let positiveTrend = {
+        numberResponses: differenceOfScores.numberResponses > 0 ? 'positive' : 'negative',
+        averageScore: differenceOfScores.averageScore > 0 ? 'positive' : 'negative',
+        positiveScore: differenceOfScores.positiveScore > 0 ? 'positive' : 'negative',
+        negativeScore: differenceOfScores.negativeScore < 0 ? 'positive' : 'negative',
+    }
 
-    console.log(differenceOfScores)
-
-    return differenceOfScores;
+    return {differenceOfScores, positiveTrend};
 
 }
 
