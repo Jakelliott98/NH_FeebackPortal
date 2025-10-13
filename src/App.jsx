@@ -11,7 +11,7 @@ import supabase from './Utils/Data/fetchAPIData'
 
 function App() {
 
-  const { results, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
+  const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
   let [responses, setResponses] = useState([]);
 
   useEffect(() => {
@@ -36,15 +36,15 @@ function App() {
   const filteredFeedback = useMemo(() => { 
 
     let filteredResults = responses;
-    filteredResults= filterByResponseType(filteredResults, results.responseFilter)
-    filteredResults = filterByAssessmentType(filteredResults, results.assessmentFilter)
-    filteredResults = filterByMonth(filteredResults, results.durationFilter)
+    filteredResults= filterByResponseType(filteredResults, filters.responseFilter)
+    filteredResults = filterByAssessmentType(filteredResults, filters.assessmentFilter)
+    filteredResults = filterByMonth(filteredResults, filters.durationFilter)
     return filteredResults;
     
-  }, [results])
+  }, [responses, filters])
 
   return (
-    <resultsContext.Provider value={{ filteredFeedback, results, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+    <resultsContext.Provider value={{ filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portal-layout'>
         <div className='sidebar-div'>
           <div className='image-container'>

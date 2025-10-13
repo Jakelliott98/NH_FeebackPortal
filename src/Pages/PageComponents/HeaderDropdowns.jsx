@@ -10,14 +10,14 @@ let satisfactionOptions = ['All', 'Positive', 'Negative'];
 
 function DropdownFiltersComponent ({title}) {
 
-    const { resetFilter, results, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
-    const months = getActiveMonths(results.results)
-    let satisfactionDropdownFilter = <DropdownFilter isDropdownList={true} dropdownTitle={results.responseFilter} onSelect={filterByResponse} dropdownOptions={satisfactionOptions} currentSelectedOption={results.responseFilter} dropdownType={'variable'}/>
+    const { resetFilter, filters, filteredFeedback, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
+    const months = getActiveMonths(filteredFeedback)
+    let satisfactionDropdownFilter = <DropdownFilter isDropdownList={true} dropdownTitle={filters.responseFilter} onSelect={filterByResponse} dropdownOptions={satisfactionOptions} currentSelectedOption={filters.responseFilter} dropdownType={'variable'}/>
 
     return (
         <div className={styles['filter-container']}>
-            <DropdownFilter iconTag="fa-solid fa-calendar" isDropdownList={true} dropdownTitle={results.durationFilter} onSelect={filterByDuration} dropdownOptions={months} currentSelectedOption={results.durationFilter} dropdownType={'variable'}/>
-            <DropdownFilter iconTag="fa-solid fa-stethoscope" isDropdownList={true} dropdownTitle={results.assessmentFilter} onSelect={filterByAssessment} dropdownOptions={assessmentOptions} currentSelectedOption={results.assessmentFilter} dropdownType={'variable'}/>
+            <DropdownFilter iconTag="fa-solid fa-calendar" isDropdownList={true} dropdownTitle={filters.durationFilter} onSelect={filterByDuration} dropdownOptions={months} currentSelectedOption={filters.durationFilter} dropdownType={'variable'}/>
+            <DropdownFilter iconTag="fa-solid fa-stethoscope" isDropdownList={true} dropdownTitle={filters.assessmentFilter} onSelect={filterByAssessment} dropdownOptions={assessmentOptions} currentSelectedOption={filters.assessmentFilter} dropdownType={'variable'}/>
             {title === 'Comments' ? satisfactionDropdownFilter : null}
             <ResetButton onClick={resetFilter}/>
         </div>

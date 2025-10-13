@@ -11,7 +11,7 @@ let initializer = {
 
 function ResultsObject () {
 
-    const [results, dispatch] = useReducer(resultsReducer, initializer)
+    const [filters, dispatch] = useReducer(resultsReducer, initializer)
 
     let filterByAssessment = (assessment) => {
         dispatch({
@@ -40,7 +40,7 @@ function ResultsObject () {
         })
     }
 
-    return { results, filterByAssessment, filterByResponse, filterByDuration, resetFilter }
+    return { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter }
 
 }
 
