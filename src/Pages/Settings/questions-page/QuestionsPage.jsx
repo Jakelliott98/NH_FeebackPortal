@@ -13,7 +13,7 @@ function QuestionsPage ({ questions }) {
         const { data, error } = await supabase
         .from('Feedback_Form_Questions')
         .insert([
-            { question: question, type: type, assessment_type: assessmentType},
+            { question: question, type: type, assessment_type: assessmentType, id: Date.now() + (Math.floor(Math.random() * 100))},
         ])
         .select()
 

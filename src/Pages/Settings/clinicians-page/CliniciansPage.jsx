@@ -17,7 +17,7 @@ function CliniciansPage ({ list }) {
     async function addClinician (name, role) {
         const { data, error } = await supabase
             .from('Clinicians')
-            .insert([{clinicians_name: name, clinicians_role: role}])
+            .insert([{clinicians_name: name, clinicians_role: role, id: Date.now() + (Math.floor(Math.random() * 100))}])
             .select()
 
             if (error) {
