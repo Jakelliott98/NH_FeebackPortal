@@ -3,9 +3,6 @@ import AddElement from "../components/AddCard/AddElement";
 
 function AddClinician ({ addClinician, onClose }) {
 
-        const [selectedButton, setSelectedButton] = useState('physiologist');
-
-
     const roles = [
         {value: 'physiologist', label: 'Physiologist'},
         {value: 'doctor', label: 'Doctor'},
@@ -27,8 +24,10 @@ function AddClinician ({ addClinician, onClose }) {
         role: '',
     })
 
+    console.log(clinicianDetails)
+
     return (
-        <AddElement selectedButton={selectedButton} setSelectedButton={setSelectedButton} buttonSelectTitle='Clinician Type' clinicianInput title='Add a clinician' onClose={onClose} titlesSelect={titles} stateHolder={clinicianDetails}  mainSelect={roles}  onChange={setClinicianDetails} addElement={addClinician} />
+        <AddElement stateTitle='role' buttonSelectTitle='Clinician Type' clinicianInput title='Add a clinician' onClose={onClose} titlesSelect={titles} stateHolder={clinicianDetails}  mainSelect={roles}  onChange={setClinicianDetails} addElement={addClinician} />
     )
 }
 

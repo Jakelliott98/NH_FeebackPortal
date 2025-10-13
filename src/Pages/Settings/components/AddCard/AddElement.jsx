@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 
-function AddElement ({ selectedButton, setSelectedButton, buttonSelectTitle, clinicianInput, title, onClose, titlesSelect, stateHolder, mainSelect, onChange, addElement }) {
+function AddElement ({ stateTitle, buttonSelectTitle, clinicianInput, title, onClose, titlesSelect, stateHolder, mainSelect, onChange, addElement }) {
 
     let clinicianAdd = (
         <div>
@@ -40,8 +40,6 @@ function AddElement ({ selectedButton, setSelectedButton, buttonSelectTitle, cli
         </div>
     )
 
-    let activeButtonClass = selectedButton == ''
-
     return (
         <div className={styles['add-element-container']}>
             <FontAwesomeIcon className={styles['close-button']} icon="fa-solid fa-xmark" onClick={() => {onClose(false)}}/>
@@ -51,7 +49,12 @@ function AddElement ({ selectedButton, setSelectedButton, buttonSelectTitle, cli
                 <div className={styles['button-span']}>
                     {mainSelect.map((item) => {
                         return (
-                            <button className={`${styles['select-buttons']} ${selectedButton == item.value && styles['active-select-button']}`} onClick={() => {setSelectedButton(item.value)}}> {item.label} </button>
+                            <button 
+                                className={`${styles['select-buttons']} ${stateHolder[stateTitle] == item.value && styles['active-select-button']}`} 
+                                onClick={() => {onChange((prev) => {return {...prev, [stateTitle]: item.value}})}}
+                            > 
+                                {item.label} 
+                            </button>
                         )
                     })}
                 </div>
