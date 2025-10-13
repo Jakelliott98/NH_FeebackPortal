@@ -1,12 +1,10 @@
 
 .ellipsis-section {
-    position: absolute;
+    position: relative;
     z-index: 2;
     background-color: #fff;
-}
-
-.ellipsis-close {
-    cursor: pointer;
+    border: 1px solid lightgray;
+    border-radius: 5px;
 }
 
 .ellipsis-tag {

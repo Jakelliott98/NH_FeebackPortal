@@ -50,16 +50,25 @@
     font-size: 10px;
 }
 
-.dot-icons-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.ellipsis:hover {
+    background-color: lightgray;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.dot-icons {
+.ellipsis-wrapper {
+    position: absolute;
     justify-self: center;
 }
+
+.ellipsis {
+    position: relative;
+}
+
+.ellipsis-dropdown {
+    position: absolute;
+}
+
 
 .new-clinician-button {
     padding: 5px 10px;

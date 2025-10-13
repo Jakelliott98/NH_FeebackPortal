@@ -25,7 +25,6 @@ function EllipsisMenu ({ onDelete, onEdit, item, edit, onClose }) {
 
     return (
         <div className={styles['ellipsis-section']}>
-            <FontAwesomeIcon className={styles['ellipsis-close']}  icon="fa-solid fa-xmark" onClick={() => {onClose(false)}}/>
             <p className={styles['ellipsis-tag']} onClick={() => {setIsDeleteOpen(prev => !prev)}}> Delete </p>
             { isDeleteOpen ? <DeleteConfirmation onClose={setIsDeleteOpen} item={item} onSubmit={submitDeleteQuestion}/> : null}
             { edit ? <p className={styles['ellipsis-tag']} onClick={() => {setIsEditOpen(prev => !prev)}}> Edit </p> : null }

@@ -23,9 +23,13 @@ function ClinicianCard ({item, deleteClinician}) {
                     <p>{item.clinicians_role}</p>
                 </div>
             </div>
-            <div className={styles['dot-icons-container']}>
-            <FontAwesomeIcon className={styles['dot-icons']} icon="fa-solid fa-ellipsis" onClick={() => {setIsEllipsisOpen(prev => !prev)}} />
-            { isEllipsisOpen ? <EllipsisMenu onDelete={deleteClinician} item={item} edit={false} onClose={setIsEllipsisOpen}/> : null}
+            <div className={styles['ellipsis-container']}>
+                <div className={styles['ellipsis-wrapper']}>
+                    <FontAwesomeIcon className={styles['ellipsis']} icon="fa-solid fa-ellipsis" onClick={() => {setIsEllipsisOpen(prev => !prev)}} />
+                    <div className={styles['ellipsis-dropdown']} >
+                        { isEllipsisOpen && <EllipsisMenu onDelete={deleteClinician} item={item} edit={false} onClose={setIsEllipsisOpen}/> }
+                    </div>
+                </div>
             </div>
         </div>
     )

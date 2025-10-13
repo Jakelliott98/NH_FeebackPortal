@@ -18,8 +18,12 @@ function QuestionCard ({item, deleteQuestion, editQuestion}) {
         <div className={styles['question-items']}>
             <p>{item.question}</p>
             <div className={styles['ellipsis-container']}>
-                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => {setIsEllipsisOpen(prev => !prev)}}/>
-                { isEllipsisOpen ? <EllipsisMenu onDelete={deleteQuestion} item={item} onEdit={editQuestion} edit onClose={setIsEllipsisOpen}/> : null }
+                <div className={styles['ellipsis-wrapper']}>
+                    <FontAwesomeIcon className={styles['ellipsis']} icon="fa-solid fa-ellipsis" onClick={() => {setIsEllipsisOpen(prev => !prev)}} />
+                    <div className={styles['ellipsis-dropdown']} >
+                        { isEllipsisOpen ? <EllipsisMenu onDelete={deleteQuestion} item={item} onEdit={editQuestion} edit onClose={setIsEllipsisOpen}/> : null }
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -67,9 +67,27 @@
     align-items: center;
 }
 
-.ellipsis-container {
-    justify-self: center;
+
+.ellipsis:hover {
+    background-color: lightgray;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+.ellipsis-wrapper {
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+}
+
+.ellipsis {
+    position: relative;
+}
+
+.ellipsis-dropdown {
+    position: absolute;
+}
+
 
 .questions-section {
     display: flex;
