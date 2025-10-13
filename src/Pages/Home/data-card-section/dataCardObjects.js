@@ -1,9 +1,12 @@
 import { calculateAverageScore } from '../../../Utils/Calculations/calculateAverageScore'
 import calculateSatisfactionPercentage from '../../../Utils/Calculations/calculateSatisfactionPercentage';
+import calculateTrendChange from '../../../Utils/Calculations/calculateTrendChange';
 
-function dataCardObjects (filteredFeedback) {
+function dataCardObjects (filteredFeedback, responses, filters) {
 
     const {positivePercentage, negativePercentage} = calculateSatisfactionPercentage(filteredFeedback)
+
+    let trendChange = calculateTrendChange(responses, filters)
 
     return [
         {
@@ -18,21 +21,21 @@ function dataCardObjects (filteredFeedback) {
             icon: 'fa-solid fa-star',
             data: `${calculateAverageScore(filteredFeedback)}%`,
             trend: 'positive',
-            change: 7,
+            change: trendChange.averageScore,
             text: 'The overall average score of all responses, shown as a percentage.',
         },        {
             title: 'Positive Responses',
             icon: 'fa-solid fa-face-smile',
             data: `${positivePercentage}%`,
             trend: 'positive', //function checkTrend
-            change: 12, //function calculateTrendChange
+            change: trendChange.positiveScore, //function calculateTrendChange
             text: 'The number of responses marked as satisfied or above the positive threshold.',
         },        {
             title: 'Negative Responses',
             icon: 'fa-solid fa-face-frown',
             data: `${negativePercentage}%`,
             trend: 'negative',
-            change: 23,
+            change: trendChange.negativeScore,
             text: 'The number of responses marked as dissatisfied or below the negative threshold.',
         }
     ]

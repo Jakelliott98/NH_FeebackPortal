@@ -44,7 +44,7 @@ function App() {
   }, [responses, filters])
 
   return (
-    <resultsContext.Provider value={{ filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+    <resultsContext.Provider value={{ responses, filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portal-layout'>
         <div className='sidebar-div'>
           <div className='image-container'>

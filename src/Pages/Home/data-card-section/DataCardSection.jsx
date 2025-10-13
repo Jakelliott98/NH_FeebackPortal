@@ -6,14 +6,14 @@ import styles from './DataCardSection.module.css'
 
 function DataCardSection ({ selectedChart, setSelectedChart }) {
 
-    const { filteredFeedback } = useContext(resultsContext);
+    const { filteredFeedback, responses, filters } = useContext(resultsContext);
 
     let colours = ['#8e44ad', '#ffd600', '#cddc39', '#E94984'];
 
     return (
             <div className={styles["data-snapshot-div"]}>
                 {
-                    dataCardObjects(filteredFeedback).map((item, index) => {
+                    dataCardObjects(filteredFeedback, responses, filters).map((item, index) => {
                         return (
                             <DataCard 
                                 selectedChart={selectedChart} 
