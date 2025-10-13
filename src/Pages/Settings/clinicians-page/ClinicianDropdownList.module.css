@@ -103,23 +103,7 @@
     padding: 2px 5px;
 }
 
-.add-clinician-container {
-    position: absolute;
-    z-index: 2;
-    transform: translateY(10px);
-    width: 30%;
-    padding: 30px 20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-}
 
-.clinician-input-section {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
 
 .button-container {
     display: flex;

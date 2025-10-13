@@ -1,0 +1,84 @@
+
+.add-element-container {
+    position: absolute;
+    z-index: 2;
+    transform: translateY(10px);
+    width: 30%;
+    padding: 30px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.clinician-input {
+    flex: 1;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
+.button-span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.select-buttons {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: transparent;
+    font-size: 16px;
+    color: grey;
+    cursor: pointer;
+}
+
+.active-select-button {
+    background-color: lightgray;
+    color: black;
+}
+
+.submit-button {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: green;
+    color: #fff;
+    font-size: 16px;
+    border: transparent;
+}
+
+.question-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    min-height: 100px;
+    margin-top: 5px;
+}
+
+.close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-button:hover {
+    color: red;
+    transform: rotate(180deg);
+    transition: ease-in-out 1s;
+}

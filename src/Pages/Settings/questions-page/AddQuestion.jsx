@@ -1,15 +1,9 @@
 import { useState } from "react"
-import styles from './QuestionsPage.module.css'
-import Select from 'react-select'
-
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-library.add(fas, far, fab)
+import AddElement from "../components/AddCard/AddElement"
 
 function AddQuestion ({ onSubmit, onClose }) {
+
+    const [selectedButton, setSelectedButton] = useState('rating');
 
     const [newQuestion, setNewQuestion] = useState({
         question: '',
@@ -22,20 +16,9 @@ function AddQuestion ({ onSubmit, onClose }) {
     ]
 
     return (
-        <div className={styles['add-question-section']}>
-            <FontAwesomeIcon icon="fa-solid fa-xmark" onClick={() =>{onClose(false)}}/>
-            <textarea 
-                value={newQuestion.question} 
-                onChange={(e) => {setNewQuestion((prev) => {return {...prev, question: e.target.value}})}}
-                placeholder='Add your question' 
-                className={styles['question-textarea']}
-            />
-            <Select options={questionType} onChange={(e) => {setNewQuestion((prev) => {return {...prev, type: e.value}})}}/>
-            <button className={styles['add-question-button']} onClick={() => {onSubmit(newQuestion.question, newQuestion.type)}}>
-                + Add
-            </button>
-        </div>
+        <AddElement selectedButton={selectedButton} setSelectedButton={setSelectedButton} buttonSelectTitle='What type of question do you want to add?' clinicianInput={false} title='Add Question' onClose={onClose} stateHolder={newQuestion}  mainSelect={questionType}  onChange={setNewQuestion} addElement={onSubmit} />
     )
+    
 }
 
 
