@@ -103,11 +103,33 @@
     padding: 2px 5px;
 }
 
-
-
 .button-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.physiotherapist-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0 5px 5px 0;
+}
+
+.physiologist-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 5px 0 0 5px;
+}
+
+.doctor-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: transparent;
+}
+
+.active-filter-button {
+    background-color: lightgreen;
 }

@@ -1,18 +1,18 @@
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-library.add(fas, far, fab)
+
 import styles from './ClinicianDropdownList.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ClinicianCard from './ClinicianCard'
 import AddClinician from './AddClinician'
 import supabase from '../../../Utils/Data/fetchAPIData'
 
 function CliniciansPage ({ list }) {
 
-    const [isClinicianOpen, setIsClinicianOpen] = useState(false)
+    const [isClinicianOpen, setIsClinicianOpen] = useState(false);
+    const [clinicianFilter, setClinicianFilter] = useState({
+        doctors: false,
+        physiologists: false,
+        physiotherapists: false,
+    });
 
     async function addClinician (name, role) {
         const { data, error } = await supabase
@@ -56,10 +56,12 @@ function CliniciansPage ({ list }) {
                     + Add Clinician
                 </button>
                 { isClinicianOpen ? <AddClinician addClinician={addNewClinician} onClose={setIsClinicianOpen}/> : null}
-                <button className={styles['clinician-dropdown']}>
-                    All Clinicians
-                    <FontAwesomeIcon icon="fa-solid fa-caret-down" />
-                </button>
+                <div className={styles['assessment-buttons']}>
+                    <button className={`${styles['physiologist-button']} ${clinicianFilter.physiologists && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiologists: !prev.physiologists}})}} >Physiologists</button>
+                    <button className={`${styles['doctor-button']} ${clinicianFilter.doctors && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, doctors: !prev.doctors}})}} >Doctors</button>
+                    <button className={`${styles['physiotherapist-button']} ${clinicianFilter.physiotherapists && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiotherapists: !prev.physiotherapists}})}} >Physiotherapists</button>
+
+                </div>
             </div>
             <div className={styles['clinician-holder']}>
                 <div className={`${styles['clinician-card-container']} ${styles['grid-header']}`}>
