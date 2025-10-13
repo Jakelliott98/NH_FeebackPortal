@@ -14,23 +14,23 @@ function dataCardObjects (filteredFeedback) {
             change: 2, // Add the change function
             text: 'The total number of responses collected during the selected time period.',
         },        {
-            title: 'Average',
+            title: 'Average Satisfaction',
             icon: 'fa-solid fa-star',
-            data: calculateAverageScore(filteredFeedback),
+            data: `${calculateAverageScore(filteredFeedback)}%`,
             trend: 'positive',
             change: 7,
             text: 'The overall average score of all responses, shown as a percentage.',
         },        {
-            title: 'Positive',
+            title: 'Positive Responses',
             icon: 'fa-solid fa-face-smile',
-            data: positivePercentage,
-            trend: 'negative',
-            change: 12,
+            data: `${positivePercentage}%`,
+            trend: 'positive', //function checkTrend
+            change: 12, //function calculateTrendChange
             text: 'The number of responses marked as satisfied or above the positive threshold.',
         },        {
-            title: 'Negative',
+            title: 'Negative Responses',
             icon: 'fa-solid fa-face-frown',
-            data: negativePercentage,
+            data: `${negativePercentage}%`,
             trend: 'negative',
             change: 23,
             text: 'The number of responses marked as dissatisfied or below the negative threshold.',
