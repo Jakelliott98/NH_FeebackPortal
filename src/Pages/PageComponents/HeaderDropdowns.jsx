@@ -10,8 +10,8 @@ let satisfactionOptions = ['All', 'Positive', 'Negative'];
 
 function DropdownFiltersComponent ({title}) {
 
-    const { resetFilter, filters, filteredFeedback, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
-    const months = getActiveMonths(filteredFeedback)
+    const { responses, resetFilter, filters, filterByDuration, filterByAssessment, filterByResponse } = useContext(resultsContext)
+    const months = getActiveMonths(responses)
     let satisfactionDropdownFilter = <DropdownFilter isDropdownList={true} dropdownTitle={filters.responseFilter} onSelect={filterByResponse} dropdownOptions={satisfactionOptions} currentSelectedOption={filters.responseFilter} dropdownType={'variable'}/>
 
     return (

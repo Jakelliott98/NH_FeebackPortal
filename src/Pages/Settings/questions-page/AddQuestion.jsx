@@ -8,8 +8,6 @@ function AddQuestion ({ onSubmit, onClose }) {
         type: '',
     })
 
-    console.log(newQuestion)
-
     const questionType = [
         {value: 'rating', label: 'Rating'},
         {value: 'textarea', label: 'Textarea'}
