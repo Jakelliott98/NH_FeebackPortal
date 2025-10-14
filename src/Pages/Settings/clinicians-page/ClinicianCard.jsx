@@ -15,7 +15,7 @@ function ClinicianCard ({item, deleteClinician}) {
     return (
         <div className={styles['clinician-card-container']}>
             <p>
-                {item.clinicians_name}
+                {item.title} {item.clinicians_name}
             </p>
             <div>
                 <div className={`${styles['clinician-role-section']} ${styles[`${item.clinicians_role}`]}`}>
