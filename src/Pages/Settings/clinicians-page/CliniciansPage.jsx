@@ -1,6 +1,6 @@
 
 import styles from './ClinicianDropdownList.module.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import ClinicianCard from './ClinicianCard'
 import AddClinician from './AddClinician'
 import supabase from '../../../Utils/Data/fetchAPIData'
@@ -9,9 +9,9 @@ function CliniciansPage ({ list }) {
 
     const [isClinicianOpen, setIsClinicianOpen] = useState(false);
     const [clinicianFilter, setClinicianFilter] = useState({
-        doctors: false,
-        physiologists: false,
-        physiotherapists: false,
+        doctor: false,
+        physiologist: false,
+        physiotherapist: false,
     });
 
     async function addClinician (name, role) {
@@ -46,6 +46,16 @@ function CliniciansPage ({ list }) {
         setIsClinicianOpen(prev => !prev)
     }
 
+    const filteredClinicians = useMemo(() => {
+            let filteredList = list.filter((item) => {
+                // Check if their role is truthy
+                return clinicianFilter[item.clinicians_role];
+            })
+            return filteredList.length == 0 ? list : filteredList;
+    }, [list, clinicianFilter])
+
+    console.log(filteredClinicians) 
+
     return (
         <div className={styles['clinician-card-section']}>
             <div className={styles['button-container']}>
@@ -57,9 +67,9 @@ function CliniciansPage ({ list }) {
                 </button>
                 { isClinicianOpen ? <AddClinician addClinician={addNewClinician} onClose={setIsClinicianOpen}/> : null}
                 <div className={styles['assessment-buttons']}>
-                    <button className={`${styles['physiologist-button']} ${clinicianFilter.physiologists && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiologists: !prev.physiologists}})}} >Physiologists</button>
-                    <button className={`${styles['doctor-button']} ${clinicianFilter.doctors && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, doctors: !prev.doctors}})}} >Doctors</button>
-                    <button className={`${styles['physiotherapist-button']} ${clinicianFilter.physiotherapists && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiotherapists: !prev.physiotherapists}})}} >Physiotherapists</button>
+                    <button className={`${styles['physiologist-button']} ${clinicianFilter.physiologist && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiologist: !prev.physiologist}})}} >Physiologists</button>
+                    <button className={`${styles['doctor-button']} ${clinicianFilter.doctor && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, doctor: !prev.doctor}})}} >Doctors</button>
+                    <button className={`${styles['physiotherapist-button']} ${clinicianFilter.physiotherapist && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiotherapist: !prev.physiotherapist}})}} >Physiotherapists</button>
 
                 </div>
             </div>
@@ -69,7 +79,7 @@ function CliniciansPage ({ list }) {
                     <p>Role</p>
                 </div>
                 {
-                    list.map((item) => {
+                    filteredClinicians.map((item) => {
                         return (
                             <ClinicianCard item={item} key={item.id} deleteClinician={deleteClinician}/>
                         )

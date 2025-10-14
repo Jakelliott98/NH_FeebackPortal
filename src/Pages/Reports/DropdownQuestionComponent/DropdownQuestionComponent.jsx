@@ -51,10 +51,21 @@ function DropdownQuestionComponent () {
 
     return (
                 <div className={`bottom-right ${styles['feedback-card']}`} >
-                    <DropdownFilter className={styles['data-title']} cssClass='titleFilter' dropdownTitle={activeQuestion.title} onSelect={changeQuestion} dropdownOptions={questions} isDropdownList={true} currentSelectedOption={activeQuestion} dropdownType={'variable'} />
+                    <DropdownFilter 
+                        className={styles['data-title']} 
+                        cssClass='titleFilter' 
+                        dropdownTitle={activeQuestion.title} 
+                        onSelect={changeQuestion} 
+                        dropdownOptions={questions} 
+                        isDropdownList={true} 
+                        currentSelectedOption={activeQuestion} 
+                        dropdownType={'variable'} 
+                    />
                     <div className={styles['pie-chart-container']}>
                         <PercentageChart percentage={questionAverage}/>
-                        <p className={['question-title']}>{activeQuestion.text}</p>
+                        <p className={['question-title']}>
+                            {activeQuestion.text}
+                        </p>
                     </div>
                 </div>
     )

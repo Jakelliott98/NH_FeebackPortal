@@ -23,7 +23,7 @@ function SettingsPage () {
             }
         }
         getQuestion()
-    }, [questions])
+    }, [])
 
     useEffect(() => {
         async function getClinicians () {
@@ -38,7 +38,7 @@ function SettingsPage () {
             }
         }
         getClinicians();
-    }, [clinicians])
+    }, [])
 
     let cliniciansPage = (
         <CliniciansPage list={clinicians} />
