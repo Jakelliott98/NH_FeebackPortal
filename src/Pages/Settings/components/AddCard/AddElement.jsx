@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 
-function AddElement ({ stateTitle, buttonSelectTitle, clinicianInput, title, onClose, titlesSelect, stateHolder, mainSelect, onChange, addElement }) {
+function AddElement ({ stateKey, title, stateTitle, buttonSelectTitle, clinicianInput, onClose, titlesSelect, stateHolder, mainSelect, onChange, addElement }) {
 
     let clinicianAdd = (
         <div>
@@ -16,7 +16,7 @@ function AddElement ({ stateTitle, buttonSelectTitle, clinicianInput, title, onC
             <div className={styles['input-section']}>
                 <Select 
                     options={titlesSelect} 
-                    onChange={(e) => {onChange((prev) => {return {...prev, title: e.value}})}}
+                    onChange={(e) => {onChange((prev) => {return {...prev, [stateKey]: e.value}})}}
                 />
                 <input 
                     className={styles['clinician-input']} 

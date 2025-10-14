@@ -1,13 +1,13 @@
 
 import styles from './ClinicianDropdownList.module.css'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import ClinicianCard from './ClinicianCard'
 import AddClinician from './AddClinician'
 import supabase from '../../../Utils/Data/fetchAPIData'
 
-function CliniciansPage ({ list }) {
+function CliniciansPage ({ clinicians }) {
 
-    const [isClinicianOpen, setIsClinicianOpen] = useState(false);
+    const [isAddOpen, setIsAddOpen] = useState(false);
     const [clinicianFilter, setClinicianFilter] = useState({
         doctor: false,
         physiologist: false,
@@ -43,29 +43,26 @@ function CliniciansPage ({ list }) {
 
     function addNewClinician (name, role) {
         addClinician(name, role)
-        setIsClinicianOpen(prev => !prev)
+        setIsAddOpen(prev => !prev)
     }
 
     const filteredClinicians = useMemo(() => {
-            let filteredList = list.filter((item) => {
-                // Check if their role is truthy
+            let filteredList = clinicians.filter((item) => {
                 return clinicianFilter[item.clinicians_role];
             })
-            return filteredList.length == 0 ? list : filteredList;
-    }, [list, clinicianFilter])
-
-    console.log(filteredClinicians) 
+            return filteredList.length == 0 ? clinicians : filteredList;
+    }, [clinicians, clinicianFilter])
 
     return (
         <div className={styles['clinician-card-section']}>
             <div className={styles['button-container']}>
                 <button 
                     className={styles['new-clinician-button']} 
-                    onClick={() => {setIsClinicianOpen((prev) => {return !prev})}}
+                    onClick={() => {setIsAddOpen((prev) => {return !prev})}}
                 >
                     + Add Clinician
                 </button>
-                { isClinicianOpen ? <AddClinician addClinician={addNewClinician} onClose={setIsClinicianOpen}/> : null}
+                { isAddOpen ? <AddClinician onSubmit={addNewClinician} onClose={setIsAddOpen}/> : null}
                 <div className={styles['assessment-buttons']}>
                     <button className={`${styles['physiologist-button']} ${clinicianFilter.physiologist && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiologist: !prev.physiologist}})}} >Physiologists</button>
                     <button className={`${styles['doctor-button']} ${clinicianFilter.doctor && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, doctor: !prev.doctor}})}} >Doctors</button>

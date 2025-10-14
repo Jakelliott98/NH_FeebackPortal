@@ -6,7 +6,7 @@ import styles from './QuestionsPage.module.css'
 
 function QuestionsPage ({ questions }) {
 
-    const [isQuestionAddOpen, setIsQuestionAddOpen] = useState(false)
+    const [isAddOpen, setIsAddOpen] = useState(false)
     const [assessmentType, setAssessmentType] = useState('healthAssessment')
 
     async function addQuestion (question, type) {
@@ -53,7 +53,7 @@ function QuestionsPage ({ questions }) {
 
     function addNewQuestion (question, type) {
         addQuestion(question, type)
-        setIsQuestionAddOpen(prev => !prev)
+        setIsAddOpen(prev => !prev)
     }
 
     let assessmentClass = assessmentType == 'healthAssessment' ? `${styles['active-assessment']}` : null;
@@ -67,10 +67,10 @@ function QuestionsPage ({ questions }) {
         <div className={styles['questions-page-container']}>
             <div className={styles['buttons-container']}>
                 <div>
-                    <button onClick={() => {setIsQuestionAddOpen(prev => !prev)}} className={styles['add-button']}>
+                    <button onClick={() => {setIsAddOpen(prev => !prev)}} className={styles['add-button']}>
                         + Add Question
                     </button>
-                    { isQuestionAddOpen ? <AddQuestion onSubmit={addNewQuestion} onClose={setIsQuestionAddOpen} /> : null }
+                    { isAddOpen ? <AddQuestion onSubmit={addNewQuestion} onClose={setIsAddOpen} /> : null }
                 </div>
                 <div className={styles['assessment-buttons']}>
                     <button className={`${styles['ha-button']} ${assessmentClass}`} onClick={() => {setAssessmentType('healthAssessment')}} >Health Assessments</button>

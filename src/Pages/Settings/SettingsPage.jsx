@@ -41,7 +41,7 @@ function SettingsPage () {
     }, [])
 
     let cliniciansPage = (
-        <CliniciansPage list={clinicians} />
+        <CliniciansPage clinicians={clinicians} />
     )
 
     let questionsPage = (

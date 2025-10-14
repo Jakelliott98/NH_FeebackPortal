@@ -1,7 +1,13 @@
 import { useState } from "react";
 import AddElement from "../components/AddCard/AddElement";
 
-function AddClinician ({ addClinician, onClose }) {
+function AddClinician ({ onSubmit, onClose }) {
+
+    const [clinicianDetails, setClinicianDetails] = useState({
+        title: '',
+        name: '',
+        role: '',
+    })
 
     const roles = [
         {value: 'physiologist', label: 'Physiologist'},
@@ -18,14 +24,20 @@ function AddClinician ({ addClinician, onClose }) {
         {value: '', label: 'None'},
     ];
 
-    const [clinicianDetails, setClinicianDetails] = useState({
-        title: '',
-        name: '',
-        role: '',
-    })
-
     return (
-        <AddElement stateTitle='role' buttonSelectTitle='Clinician Type' clinicianInput title='Add a clinician' onClose={onClose} titlesSelect={titles} stateHolder={clinicianDetails}  mainSelect={roles}  onChange={setClinicianDetails} addElement={addClinician} />
+        <AddElement
+            stateKey='title'
+            title='Add a clinician' 
+            stateTitle='role' 
+            buttonSelectTitle='Clinician Type' 
+            clinicianInput 
+            onClose={onClose} 
+            stateHolder={clinicianDetails}  
+            mainSelect={roles}  
+            onChange={setClinicianDetails} 
+            addElement={onSubmit} 
+            titlesSelect={titles} // Independent
+        />
     )
 }
 

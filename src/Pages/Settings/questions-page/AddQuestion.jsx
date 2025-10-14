@@ -3,12 +3,12 @@ import AddElement from "../components/AddCard/AddElement"
 
 function AddQuestion ({ onSubmit, onClose }) {
 
-    const [selectedButton, setSelectedButton] = useState('rating');
-
     const [newQuestion, setNewQuestion] = useState({
         question: '',
         type: '',
     })
+
+    console.log(newQuestion)
 
     const questionType = [
         {value: 'rating', label: 'Rating'},
@@ -16,7 +16,18 @@ function AddQuestion ({ onSubmit, onClose }) {
     ]
 
     return (
-        <AddElement stateTitle='type' selectedButton={selectedButton} setSelectedButton={setSelectedButton} buttonSelectTitle='What type of question do you want to add?' clinicianInput={false} title='Add Question' onClose={onClose} stateHolder={newQuestion}  mainSelect={questionType}  onChange={setNewQuestion} addElement={onSubmit} />
+        <AddElement 
+            stateKey='type'
+            title='Add Question' 
+            stateTitle='type' 
+            buttonSelectTitle='What type of question do you want to add?' 
+            clinicianInput={false} 
+            onClose={onClose} 
+            stateHolder={newQuestion}  
+            mainSelect={questionType} 
+            onChange={setNewQuestion} 
+            addElement={onSubmit} 
+        />
     )
     
 }
