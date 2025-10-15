@@ -1,60 +1,28 @@
 import { useState } from 'react'
-import supabase from '../../../Utils/Data/fetchAPIData'
 import QuestionCard from './QuestionCard'
 import AddQuestion from './AddQuestion'
 import styles from './QuestionsPage.module.css'
+import useFetchDatabase from '../useClinicianFetch'
+import databaseFunction from '../databaseFunctions'
 
-function QuestionsPage ({ questions }) {
+function QuestionsPage () {
 
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [assessmentType, setAssessmentType] = useState('healthAssessment')
 
-    async function addQuestion (question, type) {
-        const { data, error } = await supabase
-        .from('Feedback_Form_Questions')
-        .insert([
-            { question: question, type: type, assessment_type: assessmentType, id: Date.now() + (Math.floor(Math.random() * 100))},
-        ])
-        .select()
-
-        if (error) {
-            console.log('Error thrown when trying to add question')
-        } else {
-            console.log('Question added:', data)
-        }
-    }
-
-    async function deleteQuestion (id) {
-        const { error } = await supabase
-        .from('Feedback_Form_Questions')
-        .delete()
-        .eq('id', id)
-
-        if (error) {
-            console.log('Error deleting question id:', id)
-        } else {
-            console.log('Question deleted id:', id)
-        }
-    }
-
-    async function editQuestion (id, newQuestion) {
-        const { data, error } = await supabase
-        .from('Feedback_Form_Questions')
-        .update({ question: newQuestion })
-        .eq('id', id)
-        .select()
-
-        if (error) {
-            console.log('Error editing question. id:', id)
-        } else {
-            console.log('Question has been edited. New Question:', data)
-        }
-    }
+    const { insertDataRow, deleteDataRow, editDataRow } = databaseFunction('Feedback_Form_Questions');
 
     function addNewQuestion (question, type) {
-        addQuestion(question, type)
+        let addData = { question: question, type: type, assessment_type: assessmentType, id: Date.now() + (Math.floor(Math.random() * 100))}
+        insertDataRow(addData)
         setIsAddOpen(prev => !prev)
     }
+
+    function editTheQuestion (id, newQuestion) {
+        editDataRow(id, { question: newQuestion })
+    } // Edit check this works
+
+    const questions = useFetchDatabase('Feedback_Form_Questions')
 
     let assessmentClass = assessmentType == 'healthAssessment' ? `${styles['active-assessment']}` : null;
     let physioClass = assessmentType == 'physiotherapy' ? `${styles['active-assessment']}` : null;
@@ -85,7 +53,7 @@ function QuestionsPage ({ questions }) {
                     {
                         currentQuestions.map((item) => {
                             return (
-                                <QuestionCard item={item} key={item.id} deleteQuestion={deleteQuestion} editQuestion={editQuestion}/>
+                                <QuestionCard item={item} key={item.id} deleteQuestion={deleteDataRow} editQuestion={editTheQuestion}/>
                             )
                         })
                     }

@@ -3,9 +3,10 @@ import styles from './ClinicianDropdownList.module.css'
 import { useMemo, useState } from 'react'
 import ClinicianCard from './ClinicianCard'
 import AddClinician from './AddClinician'
-import supabase from '../../../Utils/Data/fetchAPIData'
+import useFetchDatabase from '../useClinicianFetch'
+import databaseFunction from '../databaseFunctions'
 
-function CliniciansPage ({ clinicians }) {
+function CliniciansPage () {
 
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [clinicianFilter, setClinicianFilter] = useState({
@@ -14,35 +15,12 @@ function CliniciansPage ({ clinicians }) {
         physiotherapist: false,
     });
 
-    async function addClinician (name, role) {
-        const { data, error } = await supabase
-            .from('Clinicians')
-            .insert([{clinicians_name: name, clinicians_role: role, id: Date.now() + (Math.floor(Math.random() * 100))}])
-            .select()
-
-            if (error) {
-                console.log('Error occured at')
-            } else {
-                console.log('All addedd succesfully:', data)
-            }
-    }
-
-    async function deleteClinician (id) {
-        const { error } = await supabase 
-        .from('Clinicians')
-        .delete()
-        .eq('id', id)
-
-        if (error) {
-            console.log('Error deleting clinician id: ', id)
-        } else {
-            console.log('Clinician deleted. id:', id)
-        }
-
-    }
+    const { insertDataRow, deleteDataRow } = databaseFunction('Clinicians')
+    const clinicians = useFetchDatabase('Clinicians');
 
     function addNewClinician (name, role) {
-        addClinician(name, role)
+        let addData = {clinicians_name: name, clinicians_role: role, id: Date.now() + (Math.floor(Math.random() * 100))}
+        insertDataRow(addData)
         setIsAddOpen(prev => !prev)
     }
 
@@ -78,7 +56,7 @@ function CliniciansPage ({ clinicians }) {
                 {
                     filteredClinicians.map((item) => {
                         return (
-                            <ClinicianCard item={item} key={item.id} deleteClinician={deleteClinician}/>
+                            <ClinicianCard item={item} key={item.id} deleteClinician={deleteDataRow}/>
                         )
                     })
                 }
