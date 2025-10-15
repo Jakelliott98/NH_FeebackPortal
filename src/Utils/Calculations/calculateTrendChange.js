@@ -36,10 +36,10 @@ function calculateTrendChange ( responses, filters ) {
     }
 
     let differenceOfScores = {
-        numberResponses: returnDifference(lastMonthsData.length, thisMonthsData.length),
-        averageScore: returnDifference(lastMonthsResults.averageScore, thisMonthsResults.averageScore),
-        positiveScore: returnDifference(lastMonthsResults.positiveScore, thisMonthsResults.positiveScore),
-        negativeScore: returnDifference(lastMonthsResults.negativeScore, thisMonthsResults.negativeScore),
+        numberResponses: Math.floor(returnDifference(lastMonthsData.length, thisMonthsData.length)),
+        averageScore: Math.floor(returnDifference(lastMonthsResults.averageScore, thisMonthsResults.averageScore)),
+        positiveScore: Math.floor(returnDifference(lastMonthsResults.positiveScore, thisMonthsResults.positiveScore)),
+        negativeScore: Math.floor(returnDifference(lastMonthsResults.negativeScore, thisMonthsResults.negativeScore)),
     }
     let positiveTrend = {
         numberResponses: differenceOfScores.numberResponses > 0 ? 'positive' : 'negative',

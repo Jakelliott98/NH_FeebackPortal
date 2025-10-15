@@ -10,7 +10,8 @@ function Homepage () {
     const { filteredFeedback } = useContext(resultsContext);
     const [selectedChart, setSelectedChart] = useState('Responses')
 
-    const displayComments = filteredFeedback.length <= 1 ? [filteredFeedback[0]] : [filteredFeedback[0], filteredFeedback[1]];
+    const emptyResponsesRemoved = filteredFeedback.filter(item => item.comment != '');
+    const displayComments = emptyResponsesRemoved.length <= 1 ? [emptyResponsesRemoved[0]] : [emptyResponsesRemoved[0], emptyResponsesRemoved[1]];
 
     let commentDiv = displayComments.map((item) => { return (<CommentCard response={item} anonymous={true}/>) });
     let noComments = ( <p> There are no comments </p> );
