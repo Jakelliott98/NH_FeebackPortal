@@ -7,8 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 import styles from './CommentCard.module.css'
 
-
-function RatingStarsSection ({ averageRating }) {
+function StarRatingContainer ({ averageRating }) {
 
     let ratingsArray = [false, false, false, false, false];
 
@@ -21,11 +20,11 @@ function RatingStarsSection ({ averageRating }) {
     }  
         
     return (
-        <RatingStarsList ratingScore={ratingsArray}/>
+        <StarRating ratingScore={ratingsArray}/>
     )
 }
 
-function RatingStarsList ({ratingScore}) {
+function StarRating ({ratingScore}) {
 
     return (
         <>
@@ -39,4 +38,4 @@ function RatingStarsList ({ratingScore}) {
 
 }
 
-export default RatingStarsSection;
+export default StarRatingContainer;

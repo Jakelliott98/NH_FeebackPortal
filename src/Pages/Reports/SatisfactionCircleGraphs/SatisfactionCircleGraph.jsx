@@ -9,7 +9,7 @@ const satisfactionQuestions = ['Satisfied Responses (> 50% Score)', 'Excellent R
 function SatisfactionCircleGraph () {
 
     const [activeQuestion, setActiveQuestion] = useState('Satisfied Responses (> 50% Score)')
-    const { filteredFeedback } = useContext(resultsContext) // Going to be used for getting the results
+    const { filteredFeedback } = useContext(resultsContext)
 
     let results = {
         'Satisfied Responses (> 50% Score)': Math.round(((filteredFeedback.filter(item => item.average_score > 2.5)).length / filteredFeedback.length) * 100),

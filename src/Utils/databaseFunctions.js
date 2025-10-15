@@ -1,4 +1,4 @@
-import supabase from "../../Utils/Data/fetchAPIData"
+import supabase from "./Data/fetchAPIData"
 
 function databaseFunction ( from ) {
     

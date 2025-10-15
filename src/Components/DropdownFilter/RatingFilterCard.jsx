@@ -6,17 +6,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 import styles from './DropdownFilter.module.css'
 
-function RatingFilterCard ({onSelect, currentRating, closeDropdown}) {
+function RatingFilterCard ({ onSelect, currentRating, closeDropdown }) {
 
     let isStared = [false, false, false, false, false]
-    
     for (let i = 0; i < 6; i++) {
             if (i <= currentRating) {
                 isStared[i - 1] = true;
             } else {
                 isStared[i -1] = false;
             }
-        }
+    }
 
     return (
         <RatingFilterList isStared={isStared} onSelect={onSelect} closeDropdown={closeDropdown}/>

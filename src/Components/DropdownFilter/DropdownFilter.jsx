@@ -11,34 +11,33 @@ import styles from './DropdownFilter.module.css'
 
 function DropdownFilter ({dropdownTitle, onSelect, dropdownOptions, isDropdownList, currentSelectedOption, dropdownType, currentRating, cssClass, iconTag}) {
 
-    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     
     function handleOptionSelect (item) {
         onSelect(item)
-        setIsFilterOpen(false)
+        setIsOpen(false)
     }
 
-    function closeDropdown () {setIsFilterOpen(false)};
+    function closeDropdown () {setIsOpen(false)};
 
     let filterClass = cssClass ? `${styles['titleFilter']}` : `${styles['filter-title-card']}`;
 
-    let dropdownCard = isDropdownList ? <DropdownListCard closeDropdown={closeDropdown} currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType} cssClass={cssClass}/> : <RatingFilterCard closeDropdown={() => {closeDropdown()}} onSelect={handleOptionSelect} currentRating={currentRating}/>;
+    let dropdownCard = isDropdownList ? 
+        ( <DropdownListCard closeDropdown={closeDropdown} currentSelectedOption={currentSelectedOption} dropdownOptions={dropdownOptions} onSelect={handleOptionSelect} dropdownType={dropdownType} cssClass={cssClass}/> ) 
+        : ( <RatingFilterCard closeDropdown={() => {closeDropdown()}} onSelect={handleOptionSelect} currentRating={currentRating}/> ) ;
 
     return (
         <div className={styles['filter-component']}>
-
-            <div className={filterClass} onClick={() => {setIsFilterOpen(prev => !prev)}}>
+            <div className={filterClass} onClick={() => {setIsOpen(prev => !prev)}} >
                 <div className={styles['title-icon-div']}>
-                    <FontAwesomeIcon className={styles['dropdown-icon']} icon={iconTag}/>
+                    <FontAwesomeIcon className={styles['dropdown-icon']} icon={iconTag} />
                     <p>{dropdownTitle}</p>
                 </div>
-                <FontAwesomeIcon className={styles['dropdown-icon']} icon={isFilterOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down"} />
+                <FontAwesomeIcon className={styles['dropdown-icon']} icon={isOpen ? "fa-solid fa-caret-up" : "fa-solid fa-caret-down"} />
             </div >
-
-            <div className={isFilterOpen ? null : `${styles['hide']}`}>
-                {isFilterOpen ? dropdownCard : null}
+            <div className={ isOpen ? null : `${styles['hide']}`}>
+                { isOpen ? dropdownCard : null }
             </div>
-            
          </ div>
     )
 

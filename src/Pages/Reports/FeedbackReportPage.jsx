@@ -1,7 +1,5 @@
 import "./FeedbackReportPage.css"
 import DataGraphCard from "../Home/home-graph-section/DataGraphCard";
-import { useContext } from "react";
-import resultsContext from "../../Context/resultsContext";
 import ClinicianLeaderboard from "./ClinicianLeaderboard/ClinicianLeaderboard";
 import DropdownQuestionComponent from "./DropdownQuestionComponent/DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraphs/SatisfactionCircleGraph";
@@ -9,8 +7,6 @@ import ScatterGraph from "./FeedbackScatterGraph";
 import styles from './FeedbackReportPage.module.css'
 
 function FeedbackReportPage () {
-
-    const { filteredFeedback } = useContext(resultsContext)
 
     return (
         <div className={styles['report-page-section']}>
@@ -24,7 +20,7 @@ function FeedbackReportPage () {
                 <div className={`top-right ${styles['feedback-card']}`}>
                     <h1 className={styles['data-title']}>Monthly Feedback Responses</h1>
                     <div className={styles['data-container-feedback']}>
-                        <ScatterGraph results={filteredFeedback} yDataPoint='average_score' xDataPoint='id' />
+                        <ScatterGraph />
                     </div>                
                 </div>
                 <SatisfactionCircleGraph /> 

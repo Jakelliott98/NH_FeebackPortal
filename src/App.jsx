@@ -4,34 +4,15 @@ import { Outlet } from 'react-router-dom'
 import logo from './SVG/NuffieldLogo.png'
 import resultsContext from './Context/resultsContext'
 import ResultsObject from './Hooks/useResultsReducer'
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
-import supabase from './Utils/Data/fetchAPIData'
+import useFetchResults from './Hooks/useFetchResults'
 
 function App() {
 
   const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
-  let [responses, setResponses] = useState([]);
-
-  useEffect(() => {
-
-    async function importFeedbackDatabase () {
-      let { data: Feedback_Response_Database, error } = await supabase
-      .from('Feedback_Response_Database')
-      .select('*')
-      setResponses(Feedback_Response_Database)
-
-      if (error) {
-        console.log('Error Occured:', error)
-      } else {
-        console.log('Succesful Import of Database')
-      }
-    }
-    importFeedbackDatabase();
-
-    
-  }, [])
+  const responses = useFetchResults()
 
   const filteredFeedback = useMemo(() => { 
 

@@ -1,6 +1,6 @@
 import styles from './DropdownFilter.module.css'
 
-function DropdownListCard ({dropdownOptions, onSelect, currentSelectedOption, dropdownType, cssClass, closeDropdown}) {
+function DropdownListCard ({ dropdownOptions, onSelect, currentSelectedOption, dropdownType, cssClass, closeDropdown }) {
 
     let divClass = cssClass == 'titleFilter' ? `${styles['question-dropdown']} ${styles['dropdown-option-component']}` : `${styles['dropdown-option-component']}` ;
 

@@ -10,13 +10,12 @@ import styles from './DataCards.module.css'
 
 function TrendIcon ({trend, change}) {
 
-    let trendIcon = trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down'; 
-    let trendClass = `${styles['snapshot-data-card']} ${styles[`${trend}`]} `
-
     return (
-        <div className={trendClass}>
-            <FontAwesomeIcon icon={trendIcon} />
-            <p>{change}%</p>
+        <div className={ `${styles['snapshot-data-card']} ${styles[`${trend}`]} ` }>
+            <FontAwesomeIcon 
+                icon={ trend === 'positive' ? 'fa-solid fa-arrow-trend-up' : 'fa-solid fa-arrow-trend-down' } 
+            />
+            <p> {change}% </p>
         </div>
     )
 }

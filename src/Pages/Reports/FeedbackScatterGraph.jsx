@@ -1,8 +1,11 @@
 import styles from '../../Components/Graphs/CustomTooltip.module.css'
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
+import { useContext } from 'react';
+import resultsContext from '../../Context/resultsContext';
 
+function ScatterGraph () {
 
-function ScatterGraph ({ results }) {
+    const { filteredFeedback } = useContext(resultsContext)
 
     function CustomTooltip ({ payload, active }) {
         if (active) {
@@ -20,16 +23,14 @@ function ScatterGraph ({ results }) {
             )
         }
     }
-
         return (
         <ScatterChart width={500} height={300}>
             <Tooltip content={CustomTooltip} />
             <YAxis domain={[0, 6]} />
             <XAxis dataKey='id' padding={{ left: 30, right: 30 }} />
-            <Scatter dataKey="average_score" data={results} fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
+            <Scatter dataKey="average_score" data={filteredFeedback} fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
         </ScatterChart>
         )
-        
     } 
 
 

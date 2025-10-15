@@ -3,17 +3,13 @@ import styles from './ClinicianDropdownList.module.css'
 import { useMemo, useState } from 'react'
 import ClinicianCard from './ClinicianCard'
 import AddClinician from './AddClinician'
-import useFetchDatabase from '../useClinicianFetch'
-import databaseFunction from '../databaseFunctions'
+import useFetchDatabase from '../../../Hooks/useFetchDatabase'
+import databaseFunction from '../../../Utils/databaseFunctions'
 
 function CliniciansPage () {
 
     const [isAddOpen, setIsAddOpen] = useState(false);
-    const [clinicianFilter, setClinicianFilter] = useState({
-        doctor: false,
-        physiologist: false,
-        physiotherapist: false,
-    });
+    const [clinicianFilter, setClinicianFilter] = useState({ doctor: false, physiologist: false, physiotherapist: false });
 
     const { insertDataRow, deleteDataRow } = databaseFunction('Clinicians')
     const clinicians = useFetchDatabase('Clinicians');

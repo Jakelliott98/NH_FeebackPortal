@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import supabase from "../../Utils/Data/fetchAPIData";
+import supabase from "../Utils/Data/fetchAPIData";
 
 function useFetchDatabase (from) {
 

@@ -1,5 +1,5 @@
 import { formatDate } from "../../Utils/Formatters/formatDate";
-import RatingStarsSection from "./RatingStarsSection";
+import StarRatingContainer from "./StarRatingContainer";
 import styles from './CommentCard.module.css'
 
 
@@ -14,7 +14,7 @@ function CommentCard ({ response, anonymous }) {
             </p>
             <div className={anonymous ? `${styles['comment-info-three']}` : `${styles['comment-info']}`}>
                 <p className={styles['comments-rating']}>
-                    <RatingStarsSection averageRating={average_score}/>
+                    <StarRatingContainer averageRating={average_score}/>
                 </p>
                 <p>{assessment_type}</p>
                 { anonymous ? null : <p className={styles['comment-clinician']} > { clinicians.physiotherapist ? clinicians.physiotherapist : `${clinicians.doctor} & ${clinicians.physiologist}` } </p> }

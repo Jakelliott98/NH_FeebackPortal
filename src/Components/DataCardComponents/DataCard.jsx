@@ -15,8 +15,8 @@ function DataCard ({ onClick, selectedChart, colour, item}) {
 
     return (
         <div 
-        className={selectedChart === title ? `${styles['active-data-snap']} ${styles['snapshot-card']}` : `${styles['snapshot-card']}`} 
-        onClick={onClick}
+            className={selectedChart === title ? `${styles['active-data-snap']} ${styles['snapshot-card']}` : `${styles['snapshot-card']}`} 
+            onClick={onClick}
         >
             <InfoIcon text={text}/>
             <div className={styles['icon-container']} style={{backgroundColor: colour}}>

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import QuestionCard from './QuestionCard'
 import AddQuestion from './AddQuestion'
 import styles from './QuestionsPage.module.css'
-import useFetchDatabase from '../useClinicianFetch'
-import databaseFunction from '../databaseFunctions'
+import useFetchDatabase from '../../../Hooks/useFetchDatabase'
+import databaseFunction from '../../../Utils/databaseFunctions'
 
 function QuestionsPage () {
 
@@ -11,6 +11,7 @@ function QuestionsPage () {
     const [assessmentType, setAssessmentType] = useState('healthAssessment')
 
     const { insertDataRow, deleteDataRow, editDataRow } = databaseFunction('Feedback_Form_Questions');
+    const questions = useFetchDatabase('Feedback_Form_Questions')
 
     function addNewQuestion (question, type) {
         let addData = { question: question, type: type, assessment_type: assessmentType, id: Date.now() + (Math.floor(Math.random() * 100))}
@@ -22,14 +23,7 @@ function QuestionsPage () {
         editDataRow(id, { question: newQuestion })
     } // Edit check this works
 
-    const questions = useFetchDatabase('Feedback_Form_Questions')
-
-    let assessmentClass = assessmentType == 'healthAssessment' ? `${styles['active-assessment']}` : null;
-    let physioClass = assessmentType == 'physiotherapy' ? `${styles['active-assessment']}` : null;
-
-    let healthAssessmentQuestions = questions.filter(item => item.assessment_type == 'healthAssessment');
-    let physioQuestions = questions.filter(item => item.assessment_type == 'physiotherapy');;
-    let currentQuestions = assessmentType == 'healthAssessment' ? healthAssessmentQuestions : physioQuestions;
+    let currentQuestions = assessmentType == 'healthAssessment' ? questions.filter(item => item.assessment_type == 'healthAssessment') : questions.filter(item => item.assessment_type == 'physiotherapy');
 
     return (
         <div className={styles['questions-page-container']}>
@@ -41,8 +35,8 @@ function QuestionsPage () {
                     { isAddOpen ? <AddQuestion onSubmit={addNewQuestion} onClose={setIsAddOpen} /> : null }
                 </div>
                 <div className={styles['assessment-buttons']}>
-                    <button className={`${styles['ha-button']} ${assessmentClass}`} onClick={() => {setAssessmentType('healthAssessment')}} >Health Assessments</button>
-                    <button className={`${styles['physio-button']} ${physioClass}`} onClick={() => {setAssessmentType('physiotherapy')}} >Physiotherapy</button>
+                    <button className={`${styles['ha-button']} ${assessmentType == 'healthAssessment' && `${styles['active-assessment']}`}`} onClick={() => {setAssessmentType('healthAssessment')}} >Health Assessments</button>
+                    <button className={`${styles['physio-button']} ${assessmentType == 'physiotherapy' && `${styles['active-assessment']}`}`} onClick={() => {setAssessmentType('physiotherapy')}} >Physiotherapy</button>
                 </div>
             </div>
             <div className={styles['questions-container']}>
