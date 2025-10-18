@@ -21,7 +21,7 @@ function DropdownQuestionComponent () {
 
     useEffect(() => {
 
-        let filteredQuestions = questions.filter(item => item.assessment_type == assessmentType);
+        let filteredQuestions = questions.filter(item => item.assessment_type.value == assessmentType);
         setCurrentQuestion({index: 0, value: filteredQuestions})
 
     }, [questions, assessmentType])

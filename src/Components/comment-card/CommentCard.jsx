@@ -16,8 +16,8 @@ function CommentCard ({ response, anonymous }) {
                 <p className={styles['comments-rating']}>
                     <StarRatingContainer averageRating={average_score}/>
                 </p>
-                <p>{assessment_type}</p>
-                { anonymous ? null : <p className={styles['comment-clinician']} > { assessment_type == 'physiotherapy' ? `${clinicians.physiotherapist ? clinicians.physiotherapist : ''}` : `${clinicians.doctor ? clinicians.doctor : ''} ${ clinicians.physiologist ? '&' : ''} ${clinicians.physiologist ? clinicians.physiologist : ''}` } </p> }
+                <p>{assessment_type.label}</p>
+                { anonymous ? null : <p className={styles['comment-clinician']} > { assessment_type.value == 'physiotherapy' ? `${clinicians.physiotherapist ? clinicians.physiotherapist : ''}` : `${clinicians.doctor ? clinicians.doctor : ''} ${ clinicians.physiologist ? '&' : ''} ${clinicians.physiologist ? clinicians.physiologist : ''}` } </p> }
                 <p className={styles['comment-time']}>
                     {formatDate(created_at)}
                 </p>

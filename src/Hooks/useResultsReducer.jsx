@@ -1,9 +1,7 @@
 import { useReducer } from "react";
-import newRawData from "../Utils/Data/newDataFormat";
 
 
 let initializer = {
-    results: newRawData,
     assessmentFilter: 'All Assessments',
     responseFilter: 'All',
     durationFilter: 'Month',

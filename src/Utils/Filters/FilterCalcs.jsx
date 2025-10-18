@@ -3,7 +3,7 @@ import { months, getDateMonth } from "../Formatters/formatDate";
 
 function filterQuestionResponses (data, currentQuestion, assessment) {
   const questionResponses = data
-    .filter(item => item.assessment_type == assessment) // Returns items which match the current selected assessment type ARRAY of Responses
+    .filter(item => item.assessment_type.value == assessment) // Returns items which match the current selected assessment type ARRAY of Responses
     .map(item => item.responses) // Returns those responses value in an ARRAY of ARRAYS
     .flat(1) // Flattens to a single array of all question responses
     .filter(item => item.id == currentQuestion.id) // Filters out to return only responses for this question
@@ -12,7 +12,7 @@ function filterQuestionResponses (data, currentQuestion, assessment) {
   return (Math.round((sum / (questionResponses.length * 5)) * 100));
 }
 
-const filterByAssessmentType = (results, assessmentFilter) => {return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessment_type == assessmentFilter)}
+const filterByAssessmentType = (results, assessmentFilter) => {return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessment_type.value == assessmentFilter)}
 
 function filterByResponseType (results, responseFilter) {
   if (responseFilter !== 'All') {

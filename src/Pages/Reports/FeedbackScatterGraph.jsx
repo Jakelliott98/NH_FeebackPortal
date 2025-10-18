@@ -17,7 +17,7 @@ function ScatterGraph () {
                     <p className={tooltipScore}>{client.average_score} Avg</p>
                     <div className={styles['tooltip-mini-container']}>
                         <p>{client.clinician}</p>
-                        <p>{client.assessment_type}</p>
+                        <p>{client.assessment_type.label}</p>
                     </div>
                 </div>
             )
