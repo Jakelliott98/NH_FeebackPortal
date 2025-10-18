@@ -13,7 +13,7 @@ function DataCardSection ({ selectedChart, setSelectedChart }) {
     return (
             <div className={styles["data-snapshot-div"]}>
                 {
-                    dataCardObjects(filteredFeedback, responses, filters).map((item, index) => {
+                    dataCardObjects(filteredFeedback, responses.value, filters).map((item, index) => {
                         return (
                             <DataCard 
                                 selectedChart={selectedChart} 

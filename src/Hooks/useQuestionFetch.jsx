@@ -3,7 +3,7 @@ import supabase from "../Utils/Data/fetchAPIData";
 
 function useQuestionFetch () {
 
-    const [questions, setQuestions] = useState([])
+    const [questions, setQuestions] = useState({value: [], loading: true, error: false})
 
     useEffect(() => {
         
@@ -13,9 +13,10 @@ function useQuestionFetch () {
             .select('*')
 
             if (error) {
+                setQuestions({value: [], loading: true, error: false})
                 console.log('Error thrown when fetching questions:', error)
             } else {
-                setQuestions(data)
+                setQuestions({value: data, loading: false, error: false})
             }
         }
 
@@ -23,7 +24,7 @@ function useQuestionFetch () {
 
     }, [])
 
-    return questions
+    return questions;
 
 }
 

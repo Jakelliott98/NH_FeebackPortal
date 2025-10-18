@@ -4,7 +4,11 @@ import supabase from "../Utils/Data/fetchAPIData";
 
 function useFetchResults () {
 
-    let [responses, setResponses] = useState([]);
+    let [responses, setResponses] = useState({
+        value: [], 
+        loading: true, 
+        error: false
+    });
 
     useEffect(() => {
 
@@ -12,12 +16,11 @@ function useFetchResults () {
         let { data: Feedback_Response_Database, error } = await supabase
         .from('Feedback_Response_Database')
         .select('*')
-        setResponses(Feedback_Response_Database)
 
         if (error) {
-            console.log('Error Occured:', error)
+            setResponses({value: [], loading: true, error: true})
         } else {
-            console.log('Succesful Import of Database')
+            setResponses({value: Feedback_Response_Database, loading: false, error: false})
         }
         }
 
@@ -25,7 +28,7 @@ function useFetchResults () {
 
     }, [])
 
-   return responses
+   return responses;
 
 }
 

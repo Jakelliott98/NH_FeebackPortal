@@ -8,17 +8,15 @@ import { useMemo } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
 import useFetchResults from './Hooks/useFetchResults'
-import useQuestionFetch from './Hooks/useQuestionFetch'
 
 function App() {
 
   const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
-  const responses = useFetchResults()
-  const questions = useQuestionFetch();
+  const responses = useFetchResults();
 
   const filteredFeedback = useMemo(() => { 
 
-    let filteredResults = responses;
+    let filteredResults = responses.value;
     filteredResults= filterByResponseType(filteredResults, filters.responseFilter)
     filteredResults = filterByAssessmentType(filteredResults, filters.assessmentFilter)
     filteredResults = filterByMonth(filteredResults, filters.durationFilter)
@@ -26,8 +24,12 @@ function App() {
     
   }, [responses, filters])
 
-  return (
-    <resultsContext.Provider value={{ questions, responses, filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+  let loadingPage = (
+    <p>Loading</p>
+  )
+
+  let application = (
+    <resultsContext.Provider value={{ responses, filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portal-layout'>
         <div className='sidebar-div'>
           <div className='image-container'>
@@ -44,6 +46,10 @@ function App() {
       </ div>
     </resultsContext.Provider>
   )
-}
+
+return responses.loading ? loadingPage : application;
+
+} 
+
 
 export default App;

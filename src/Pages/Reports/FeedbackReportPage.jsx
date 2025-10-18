@@ -1,7 +1,7 @@
 import "./FeedbackReportPage.css"
 import DataGraphCard from "../Home/home-graph-section/DataGraphCard";
 import ClinicianLeaderboard from "./ClinicianLeaderboard/ClinicianLeaderboard";
-import DropdownQuestionComponent from "./DropdownQuestionComponent/DropdownQuestionComponent";
+import DropdownQuestionSection from "./DropdownQuestionComponent/DropdownQuestionComponent";
 import SatisfactionCircleGraph from "./SatisfactionCircleGraphs/SatisfactionCircleGraph";
 import ScatterGraph from "./FeedbackScatterGraph";
 import styles from './FeedbackReportPage.module.css'
@@ -25,7 +25,7 @@ function FeedbackReportPage () {
                 </div>
                 <SatisfactionCircleGraph /> 
                 <ClinicianLeaderboard />
-                <DropdownQuestionComponent />
+                <DropdownQuestionSection />
             </div>
         </div>
     )

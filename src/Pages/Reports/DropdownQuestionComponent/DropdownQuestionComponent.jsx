@@ -1,8 +1,9 @@
 import { filterQuestionResponses } from "../../../Utils/Filters/FilterCalcs";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import resultsContext from "../../../Context/resultsContext";
 import PercentageChart from "../PercentageChart";
 import styles from './DropdownQuestionComponent.module.css'
+import useQuestionFetch from '../../../Hooks/useQuestionFetch'
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -11,20 +12,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 
-function DropdownQuestionComponent () {
+// Parent logic component
 
-    const { questions, filteredFeedback } = useContext(resultsContext)
+function DropdownQuestionSection () {
+
+    const questions = useQuestionFetch()
+
+    return (
+        <div className={`bottom-right ${styles['feedback-card']}`} >
+            <h1 className={styles['data-title']}>Question Results</h1>
+            {questions.loading ? <LoadingComponent /> : <QuestionDropdownContainer questions={questions}/>}
+        </div>
+    )
+}
+
+// Loading component
+
+function LoadingComponent () {
+    return (
+        <p>Loading</p>
+    )
+}
+
+// Question Componeont 
+    // Logic
+function QuestionDropdownContainer ({ questions }) { //Logic
+
     const [assessmentType, setAssessmentType] = useState('healthAssessment');
-    const [currentQuestion, setCurrentQuestion] = useState({index: 0, value: questions});
+    const {filteredFeedback} = useContext(resultsContext)
+    const filteredQuestions = questions.value.filter(item => item.assessment_type == assessmentType)
+    const [currentQuestion, setCurrentQuestion] = useState({index: 0, value: filteredQuestions});
 
     let responseValue = filterQuestionResponses(filteredFeedback, currentQuestion.value[currentQuestion.index], assessmentType)
-
-    useEffect(() => {
-
-        let filteredQuestions = questions.filter(item => item.assessment_type.value == assessmentType);
-        setCurrentQuestion({index: 0, value: filteredQuestions})
-
-    }, [questions, assessmentType])
 
     function changeIndex (increment) {
         if (increment) {
@@ -40,10 +59,16 @@ function DropdownQuestionComponent () {
                 return {...prev, index: nextIndex}        
             })
     }}
-    
+
     return (
-        <div className={`bottom-right ${styles['feedback-card']}`} >
-            <h1 className={styles['data-title']}>Question Results</h1>
+        <QuestionDropdown responseValue={responseValue} assessmentType={assessmentType} setAssessmentType={setAssessmentType} question={currentQuestion.value} index={currentQuestion.index} changeIndex={changeIndex}/>
+    )
+}
+    // UI
+function QuestionDropdown ({assessmentType, setAssessmentType, question, index, changeIndex, responseValue}) { //UI
+
+    return (
+        <div className={styles['feedback-content']}>
             <div className={styles['toggle-container']} >
                 <button 
                     onClick={() => {setAssessmentType('physiotherapy')}} 
@@ -71,14 +96,13 @@ function DropdownQuestionComponent () {
                 <div className={styles['pie-chart-container']}>
                     <PercentageChart percentage={responseValue} />
                     <p className={styles['question-title']}>
-                        {currentQuestion.value[currentQuestion.index].question}
+                        {question[index].question}
                     </p>
                 </div>
                 <FontAwesomeIcon className={styles['icon-arrow']} icon="fa-solid fa-arrow-right" onClick={() => {changeIndex(true)}}/>
             </div>
         </div>
     )
-
 }
 
-export default DropdownQuestionComponent;
+export default DropdownQuestionSection;
