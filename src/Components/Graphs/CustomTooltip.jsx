@@ -20,7 +20,9 @@ function CustomTooltip ({ active, payload }) {
             </div>
             <div className={styles['tooltip-extra-info']}>
                 <p className={styles['tooltip-assessment-type']}>{response.assessment_type}</p>
-                <p className={styles['tooltip-clinician']}>{response.clinicians.doctor ? `${response.clinicians.doctor} & ${response.clinicians.physiologist}` : response.clinicians.physiotherapist}</p>
+                <p className={styles['tooltip-clinician']}>
+                    {response.assessment_type == 'physiotherapy' ? `${response.clinicians.physiotherapist ? response.clinicians.physiotherapist : ''}` : `${response.clinicians.doctor ? response.clinicians.doctor : ''} ${ response.clinicians.physiologist ? '&' : ''} ${response.clinicians.physiologist ? response.clinicians.physiologist : ''}`}
+                </p>            
             </div>
         </div>
     ) 

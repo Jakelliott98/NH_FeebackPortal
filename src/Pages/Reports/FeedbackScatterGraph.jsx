@@ -27,7 +27,7 @@ function ScatterGraph () {
         <ScatterChart width={500} height={300}>
             <Tooltip content={CustomTooltip} />
             <YAxis domain={[0, 6]} />
-            <XAxis dataKey='id' padding={{ left: 30, right: 30 }} />
+            <XAxis padding={{ left: 30, right: 30 }} />
             <Scatter dataKey="average_score" data={filteredFeedback} fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
         </ScatterChart>
         )
