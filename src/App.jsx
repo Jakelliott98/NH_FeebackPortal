@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
 import useFetchResults from './Hooks/useFetchResults'
+import LoadingPage from './Components/loading-page/LoadingPage'
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
   }, [responses, filters])
 
   let loadingPage = (
-    <p>Loading</p>
+    <LoadingPage />
   )
 
   let application = (
@@ -50,6 +51,5 @@ function App() {
 return responses.loading ? loadingPage : application;
 
 } 
-
 
 export default App;

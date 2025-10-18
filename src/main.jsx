@@ -7,6 +7,7 @@ import Homepage from './Pages/Home/Homepage.jsx'
 import FeedbackReportPage from './Pages/Reports/FeedbackReportPage.jsx'
 import CommentsPageLogic from './Pages/Comments/CommentsPage.jsx'
 import SettingsPage from './Pages/Settings/SettingsPage.jsx'
+import LoginPage from './LoginPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         handle: {title: 'Settings'},
       }
     ]
+  },
+  {
+    path: '/Login',
+    element: <LoginPage />
   }
 ])
 
