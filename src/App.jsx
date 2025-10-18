@@ -8,11 +8,13 @@ import { useMemo } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
 import useFetchResults from './Hooks/useFetchResults'
+import useQuestionFetch from './Hooks/useQuestionFetch'
 
 function App() {
 
   const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
   const responses = useFetchResults()
+  const questions = useQuestionFetch();
 
   const filteredFeedback = useMemo(() => { 
 
@@ -25,7 +27,7 @@ function App() {
   }, [responses, filters])
 
   return (
-    <resultsContext.Provider value={{ responses, filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
+    <resultsContext.Provider value={{ questions, responses, filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portal-layout'>
         <div className='sidebar-div'>
           <div className='image-container'>

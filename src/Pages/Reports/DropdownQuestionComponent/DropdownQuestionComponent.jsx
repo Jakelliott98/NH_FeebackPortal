@@ -1,73 +1,82 @@
 import { filterQuestionResponses } from "../../../Utils/Filters/FilterCalcs";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import resultsContext from "../../../Context/resultsContext";
-import { DropdownFilter } from "../../../Components/DropdownFilter/DropdownFilter";
 import PercentageChart from "../PercentageChart";
 import styles from './DropdownQuestionComponent.module.css'
 
-const questions = ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'];
-
-const questions1 = [
-    {
-        number: 'q1',
-        title: 'Question 1',
-        text: 'How would you rate the friendliness and helpfulness of the doctor?',
-    },
-        {
-        number: 'q2',
-        title: 'Question 2',
-        text: 'To what extent did you have confidence and trust in the doctor?',
-    },
-        {
-        number: 'q3',
-        title: 'Question 3',
-        text: 'When being examined was your privacy and dignity respected?',
-    },
-        {
-        number: 'q4',
-        title: 'Question 4',
-        text: 'How clear were the answers to your questions or concerns?',
-    },
-        {
-        number: 'q5',
-        title: 'Question 5',
-        text: 'Would you recommend this doctor to your family and friends and to what extent?',
-    },
-]
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+library.add(fas, far, fab)
 
 function DropdownQuestionComponent () {
 
-    const [activeQuestion, setActiveQuestion] = useState({number:'q1', title: 'Question 1', text: 'How would you rate the friendliness and helpfulness of the doctor?'});
+    const { questions, filteredFeedback } = useContext(resultsContext)
+    const [assessmentType, setAssessmentType] = useState('healthAssessment');
+    const [currentQuestion, setCurrentQuestion] = useState({index: 0, value: questions});
 
-    const { filteredFeedback } = useContext(resultsContext)
+    let responseValue = filterQuestionResponses(filteredFeedback, currentQuestion.value[currentQuestion.index], assessmentType)
 
-    let questionAverage = filterQuestionResponses(filteredFeedback, activeQuestion.number)
+    useEffect(() => {
 
-    const changeQuestion = (newQuestion) => {
-        let newQuestionObject = questions1.filter(item => item.title == newQuestion);
-        let object = newQuestionObject[0];
-        setActiveQuestion(object)
-    }
+        let filteredQuestions = questions.filter(item => item.assessment_type == assessmentType);
+        setCurrentQuestion({index: 0, value: filteredQuestions})
 
+    }, [questions, assessmentType])
+
+    function changeIndex (increment) {
+        if (increment) {
+        setCurrentQuestion((prev) => {
+            let length = prev.value.length - 1;
+            let currentIndex = prev.index;
+            let nextIndex = currentIndex == length ? 0 : currentIndex + 1;
+            return {...prev, index: nextIndex}
+        })} else {
+            setCurrentQuestion((prev) => {
+                let currentIndex = prev.index;
+                let nextIndex = currentIndex == 4 ? 0 : currentIndex + 1;
+                return {...prev, index: nextIndex}        
+            })
+    }}
+    
     return (
-                <div className={`bottom-right ${styles['feedback-card']}`} >
-                    <DropdownFilter 
-                        className={styles['data-title']} 
-                        cssClass='titleFilter' 
-                        dropdownTitle={activeQuestion.title} 
-                        onSelect={changeQuestion} 
-                        dropdownOptions={questions} 
-                        isDropdownList={true} 
-                        currentSelectedOption={activeQuestion} 
-                        dropdownType={'variable'} 
-                    />
-                    <div className={styles['pie-chart-container']}>
-                        <PercentageChart percentage={questionAverage}/>
-                        <p className={['question-title']}>
-                            {activeQuestion.text}
-                        </p>
-                    </div>
+        <div className={`bottom-right ${styles['feedback-card']}`} >
+            <h1 className={styles['data-title']}>Question Results</h1>
+            <div className={styles['toggle-container']} >
+                <button 
+                    onClick={() => {setAssessmentType('physiotherapy')}} 
+                    className={styles['health-assessment-button']}
+                    style={{
+                        backgroundColor: assessmentType == 'physiotherapy' ? '#7CDF7C' : 'lightgray',
+                        color: assessmentType == 'physiotherapy' ? 'white' : 'black',
+                    }}
+                >
+                    Physiotherapy
+                </button>
+                <button 
+                    onClick={() => {setAssessmentType('healthAssessment')}}
+                    className={styles['physiotherapy-button']}
+                    style={{
+                        backgroundColor: assessmentType == 'healthAssessment' ? '#7CDF7C' : 'lightgray',
+                        color: assessmentType == 'healthAssessment' ? 'white' : 'black',
+                    }}
+                >
+                    Health Assessments
+                </button>
+            </div>
+            <div className={styles['question-container']}>
+                <FontAwesomeIcon className={styles['icon-arrow']} icon="fa-solid fa-arrow-left" onClick={() => {changeIndex(false)}}/>
+                <div className={styles['pie-chart-container']}>
+                    <PercentageChart percentage={responseValue} />
+                    <p className={styles['question-title']}>
+                        {currentQuestion.value[currentQuestion.index].question}
+                    </p>
                 </div>
+                <FontAwesomeIcon className={styles['icon-arrow']} icon="fa-solid fa-arrow-right" onClick={() => {changeIndex(true)}}/>
+            </div>
+        </div>
     )
 
 }
