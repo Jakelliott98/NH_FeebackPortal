@@ -12,7 +12,9 @@ function filterQuestionResponses (data, currentQuestion, assessment) {
   return (Math.round((sum / (questionResponses.length * 5)) * 100));
 }
 
-const filterByAssessmentType = (results, assessmentFilter) => {return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessment_type.value == assessmentFilter)}
+const filterByAssessmentType = (results, assessmentFilter) => {
+  return assessmentFilter == 'All Assessments' ? results : results.filter(item => item.assessment_type.label == assessmentFilter)
+}
 
 function filterByResponseType (results, responseFilter) {
   if (responseFilter !== 'All') {

@@ -11,8 +11,6 @@ function DataGraphCard ({ selectedChart }) {
 
     let monthlyData = calculateMonthlyPayload(filteredFeedback)
 
-    console.log(monthlyData)
-
     const responseChart = (
         <ResponsiveContainer width="100%"height="100%" >
             <LineChart data={filteredFeedback} >
