@@ -4,6 +4,7 @@ import AddQuestion from './AddQuestion'
 import styles from './QuestionsPage.module.css'
 import useFetchDatabase from '../../../Hooks/useFetchDatabase'
 import databaseFunction from '../../../Utils/databaseFunctions'
+import FilterToggle from '../../../Components/filter-toggle/FilterToggle'
 
 function QuestionsPage () {
 
@@ -25,6 +26,17 @@ function QuestionsPage () {
 
     let currentQuestions = assessmentType == 'healthAssessment' ? questions.filter(item => item.assessment_type == 'healthAssessment') : questions.filter(item => item.assessment_type == 'physiotherapy');
 
+    const toggleOptions = [
+        {
+            value: 'physiotherapy',
+            label: 'Physiotherapy',
+        },
+        {
+            value: 'healthAssessment',
+            label: 'Health Assessment',        
+        }
+    ]
+
     return (
         <div className={styles['questions-page-container']}>
             <div className={styles['buttons-container']}>
@@ -34,9 +46,8 @@ function QuestionsPage () {
                     </button>
                     { isAddOpen ? <AddQuestion onSubmit={addNewQuestion} onClose={setIsAddOpen} /> : null }
                 </div>
-                <div className={styles['assessment-buttons']}>
-                    <button className={`${styles['ha-button']} ${assessmentType == 'healthAssessment' && `${styles['active-assessment']}`}`} onClick={() => {setAssessmentType('healthAssessment')}} >Health Assessments</button>
-                    <button className={`${styles['physio-button']} ${assessmentType == 'physiotherapy' && `${styles['active-assessment']}`}`} onClick={() => {setAssessmentType('physiotherapy')}} >Physiotherapy</button>
+                <div>
+                    <FilterToggle options={toggleOptions} onSubmit={setAssessmentType} state={assessmentType}/>
                 </div>
             </div>
             <div className={styles['questions-container']}>

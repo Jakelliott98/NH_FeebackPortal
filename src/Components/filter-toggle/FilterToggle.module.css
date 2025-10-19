@@ -1,0 +1,27 @@
+.health-assessment-button, .physiotherapy-button {
+    background-color: lightgray;
+    border: transparent;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.health-assessment-button:hover, .physiotherapy-button:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.health-assessment-button:active, .physiotherapy-button:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transform: translateY(0);
+}
+
+.physiotherapy-button {
+    border-radius: 0 5px 5px 0;
+}
+
+.health-assessment-button {
+    border-radius: 5px 0 0 5px;
+}

@@ -10,6 +10,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import FilterToggle from "../../../Components/filter-toggle/FilterToggle";
 library.add(fas, far, fab)
 
 // Parent logic component
@@ -72,29 +73,21 @@ function QuestionDropdownContainer ({ questions }) { //Logic
     // UI
 function QuestionDropdown ({assessmentType, setAssessmentType, question, index, changeIndex, responseValue}) { //UI
 
+    const toggleOptions = [
+        {
+            value: 'physiotherapy',
+            label: 'Physiotherapy',
+        },
+        {
+            value: 'healthAssessment',
+            label: 'Health Assessment',        
+        }
+    ]
+
     return (
         <div className={styles['feedback-content']}>
-            <div className={styles['toggle-container']} >
-                <button 
-                    onClick={() => {setAssessmentType('physiotherapy')}} 
-                    className={styles['health-assessment-button']}
-                    style={{
-                        backgroundColor: assessmentType == 'physiotherapy' ? '#7CDF7C' : 'lightgray',
-                        color: assessmentType == 'physiotherapy' ? 'white' : 'black',
-                    }}
-                >
-                    Physiotherapy
-                </button>
-                <button 
-                    onClick={() => {setAssessmentType('healthAssessment')}}
-                    className={styles['physiotherapy-button']}
-                    style={{
-                        backgroundColor: assessmentType == 'healthAssessment' ? '#7CDF7C' : 'lightgray',
-                        color: assessmentType == 'healthAssessment' ? 'white' : 'black',
-                    }}
-                >
-                    Health Assessments
-                </button>
+            <div className={styles['filter-container']}>
+                <FilterToggle onSubmit={setAssessmentType} options={toggleOptions} state={assessmentType}/>
             </div>
             <div className={styles['question-container']}>
                 <FontAwesomeIcon className={styles['icon-arrow']} icon="fa-solid fa-arrow-left" onClick={() => {changeIndex(false)}}/>
