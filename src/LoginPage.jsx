@@ -14,7 +14,7 @@ function LoginPage () {
             <div className={styles['login-container']}>
             <FontAwesomeIcon className={styles['login-icon']} icon="fa-solid fa-user-astronaut" />
             <p className={styles['login-message']}>Welcome Back!</p>
-            <p className={styles['login-cta']}>Don't have an account yet? Demo </p>
+            <p className={styles['login-cta']}>Don't have an account yet? Check out the Demo </p>
             <div className={styles['input-container']}>
                 <FontAwesomeIcon icon="fa-solid fa-envelope" />
                 <input className={styles['username']} placeholder='Username'/>
