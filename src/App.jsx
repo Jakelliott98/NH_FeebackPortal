@@ -9,6 +9,7 @@ import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
 import useFetchResults from './Hooks/useFetchResults'
 import LoadingPage from './Components/loading-page/LoadingPage'
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 
 function App() {
 
@@ -48,7 +49,18 @@ function App() {
     </resultsContext.Provider>
   )
 
-return responses.loading ? loadingPage : application;
+  return (
+    <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+        { responses.loading ? loadingPage : application }
+      </SignedIn>
+    </header>
+  )
+
 
 } 
 
