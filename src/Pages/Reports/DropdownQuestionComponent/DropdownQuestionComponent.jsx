@@ -1,5 +1,5 @@
 import { filterQuestionResponses } from "../../../Utils/Filters/FilterCalcs";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import resultsContext from "../../../Context/resultsContext";
 import PercentageChart from "../PercentageChart";
 import styles from './DropdownQuestionComponent.module.css'
@@ -42,6 +42,11 @@ function QuestionDropdownContainer ({ questions }) { //Logic
     const {filteredFeedback} = useContext(resultsContext)
     const filteredQuestions = questions.value.filter(item => item.assessment_type == assessmentType)
     const [currentQuestion, setCurrentQuestion] = useState({index: 0, value: filteredQuestions});
+
+    useEffect(() => {
+        const newQuestions = questions.value.filter(item => item.assessment_type == assessmentType)
+        setCurrentQuestion((prev) => {return {...prev, value: newQuestions}})
+    }, [assessmentType, questions])
 
     let responseValue = filterQuestionResponses(filteredFeedback, currentQuestion.value[currentQuestion.index], assessmentType)
 
