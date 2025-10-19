@@ -9,7 +9,7 @@ import TrendIcon from './TrendIcon'
 import InfoIcon from './InfoIcon'
 import styles from './DataCards.module.css'
 
-function DataCard ({ onClick, selectedChart, colour, item}) {
+function DataCard ({ onClick, selectedChart, colour, item, displayTrend}) {
     
     const {title, data, change, trend, icon, text} = item;
 
@@ -24,7 +24,7 @@ function DataCard ({ onClick, selectedChart, colour, item}) {
             </div>
             <p className={styles['snapshot-data']}>{data}</p>
             <p className={styles['snapshot-title']}>{title}</p>
-            <TrendIcon change={change} trend={trend} />
+            { displayTrend ? '' : <TrendIcon change={change} trend={trend} />}
         </div>
     )
     
