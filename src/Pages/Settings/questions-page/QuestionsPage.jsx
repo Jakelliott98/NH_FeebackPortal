@@ -11,14 +11,8 @@ function QuestionsPage () {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [assessmentType, setAssessmentType] = useState('healthAssessment')
 
-    const { insertDataRow, deleteDataRow, editDataRow } = databaseFunction('Feedback_Form_Questions');
+    const { deleteDataRow, editDataRow } = databaseFunction('Feedback_Form_Questions');
     const questions = useFetchDatabase('Feedback_Form_Questions')
-
-    function addNewQuestion (question, type) {
-        let addData = { question: question, type: type, assessment_type: assessmentType, id: Date.now() + (Math.floor(Math.random() * 100))}
-        insertDataRow(addData)
-        setIsAddOpen(prev => !prev)
-    }
 
     function editTheQuestion (id, newQuestion) {
         editDataRow(id, { question: newQuestion })
@@ -44,7 +38,7 @@ function QuestionsPage () {
                     <button onClick={() => {setIsAddOpen(prev => !prev)}} className={styles['add-button']}>
                         + Add Question
                     </button>
-                    { isAddOpen ? <AddQuestion onSubmit={addNewQuestion} onClose={setIsAddOpen} /> : null }
+                    { isAddOpen ? <AddQuestion assessmentType={assessmentType} setIsAddOpen={setIsAddOpen} onClose={setIsAddOpen} /> : null }
                 </div>
                 <div>
                     <FilterToggle options={toggleOptions} onSubmit={setAssessmentType} state={assessmentType}/>

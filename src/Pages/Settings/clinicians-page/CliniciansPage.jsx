@@ -14,12 +14,6 @@ function CliniciansPage () {
     const { insertDataRow, deleteDataRow } = databaseFunction('Clinicians')
     const clinicians = useFetchDatabase('Clinicians');
 
-    function addNewClinician (name, role) {
-        let addData = {clinicians_name: name, clinicians_role: role, id: Date.now() + (Math.floor(Math.random() * 100))}
-        insertDataRow(addData)
-        setIsAddOpen(prev => !prev)
-    }
-
     const filteredClinicians = useMemo(() => {
             let filteredList = clinicians.filter((item) => {
                 return clinicianFilter[item.clinicians_role];
@@ -36,7 +30,7 @@ function CliniciansPage () {
                 >
                     + Add Clinician
                 </button>
-                { isAddOpen ? <AddClinician onSubmit={addNewClinician} onClose={setIsAddOpen}/> : null}
+                { isAddOpen ? <AddClinician setIsAddOpen={setIsAddOpen} onClose={setIsAddOpen}/> : null}
                 <div className={styles['assessment-buttons']}>
                     <button className={`${styles['physiologist-button']} ${clinicianFilter.physiologist && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, physiologist: !prev.physiologist}})}} >Physiologists</button>
                     <button className={`${styles['doctor-button']} ${clinicianFilter.doctor && styles['active-filter-button']}`} onClick={() => {setClinicianFilter((prev) => {return {...prev, doctor: !prev.doctor}})}} >Doctors</button>

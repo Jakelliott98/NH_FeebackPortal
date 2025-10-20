@@ -1,7 +1,16 @@
 import { useState } from "react";
 import AddElement from "../components/AddCard/AddElement";
+import databaseFunction from '../../../Utils/databaseFunctions'
 
-function AddClinician ({ onSubmit, onClose }) {
+function AddClinician ({ setIsAddOpen, onClose }) {
+
+    const { insertDataRow } = databaseFunction('Clinicians')
+
+    function addNewClinician () {
+        let addData = {clinicians_name: clinicianDetails.name, clinicians_role: clinicianDetails.role, title: clinicianDetails.title, id: Date.now() + (Math.floor(Math.random() * 100))}
+        insertDataRow(addData)
+        setIsAddOpen(prev => !prev)
+    }
 
     const [clinicianDetails, setClinicianDetails] = useState({
         title: '',
@@ -35,7 +44,7 @@ function AddClinician ({ onSubmit, onClose }) {
             stateHolder={clinicianDetails}  
             mainSelect={roles}  
             onChange={setClinicianDetails} 
-            addElement={onSubmit} 
+            addElement={addNewClinician} 
             titlesSelect={titles} // Independent
         />
     )

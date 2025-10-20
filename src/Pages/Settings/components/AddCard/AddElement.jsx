@@ -60,7 +60,7 @@ function AddElement ({ stateKey, title, stateTitle, buttonSelectTitle, clinician
                 </div>
             </div>
             { clinicianInput ? clinicianAdd : questionAdd }
-            <button className={styles['submit-button']} onClick={() => {addElement(stateHolder.name, stateHolder.role)}}>
+            <button className={styles['submit-button']} onClick={() => {addElement()}}>
                 <FontAwesomeIcon icon="fa-solid fa-plus" />
                 Add
             </button>
