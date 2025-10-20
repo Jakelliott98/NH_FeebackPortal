@@ -10,6 +10,7 @@ function DataGraphCard ({ selectedChart }) {
     let { filteredFeedback } = useContext(resultsContext);
 
     let monthlyData = calculateMonthlyPayload(filteredFeedback)
+    console.log(monthlyData)
 
     const responseChart = (
         <ResponsiveContainer width="100%"height="100%" >
@@ -22,14 +23,13 @@ function DataGraphCard ({ selectedChart }) {
         </ResponsiveContainer>
     );
 
-    // CHANGE TOOLTIP TO PERCENTAGE
     const averageChart = (
         <ResponsiveContainer width="100%"height="100%" >
             <BarChart data={monthlyData}>
                 <Tooltip content={CustomMonthlyTooltip}/>
                  <Bar dataKey="averageScore" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                  <XAxis dataKey='month'/>
-                 <YAxis dataKey='averageScore'/>
+                 <YAxis domain={[0, 100]}/>
             </BarChart>
         </ResponsiveContainer>
     )
@@ -40,7 +40,7 @@ function DataGraphCard ({ selectedChart }) {
                 <Tooltip content={CustomMonthlyTooltip}/>
                 <Bar dataKey="positivePercentage" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                 <XAxis dataKey='month' />
-                <YAxis />
+                <YAxis domain={[0, 100]}/>
             </BarChart>
         </ResponsiveContainer>
     )
@@ -51,7 +51,7 @@ function DataGraphCard ({ selectedChart }) {
                 <Tooltip content={CustomMonthlyTooltip}/>
                 <Bar dataKey="negativePercentage" fill="#7CDF7C" activeBar={<Rectangle fill="#00a200" />}/>
                 <XAxis dataKey='month' />
-                <YAxis />
+                <YAxis domain={[0, 100]}/>
             </BarChart>
         </ResponsiveContainer>
     )
@@ -62,8 +62,8 @@ function DataGraphCard ({ selectedChart }) {
 
             case 'Average': return averageChart;
             case 'Responses': return responseChart;
-            case 'Positive': return postiveResponsesChart;
-            case 'Negative': return negativeResponsesChart;
+            case 'Positive Responses': return postiveResponsesChart;
+            case 'Negative Responses': return negativeResponsesChart;
             default: return averageChart;
 
     }}

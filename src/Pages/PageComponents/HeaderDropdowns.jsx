@@ -4,6 +4,8 @@ import resultsContext from '../../Context/resultsContext'
 import { getActiveMonths } from '../../Utils/Helpers/helperFunctions'
 import ResetButton from '../../Components/DropdownFilter/ResetButton';
 import styles from './HeaderDropdown.module.css'
+import { UserButton } from '@clerk/clerk-react';
+
 
 let assessmentOptions = ['All Assessments', 'Health Assessment', 'Physiotherapy'];
 let satisfactionOptions = ['All', 'Positive', 'Negative'];
@@ -20,6 +22,7 @@ function DropdownFiltersComponent ({title}) {
             <DropdownFilter iconTag="fa-solid fa-stethoscope" isDropdownList={true} dropdownTitle={filters.assessmentFilter} onSelect={filterByAssessment} dropdownOptions={assessmentOptions} currentSelectedOption={filters.assessmentFilter} dropdownType={'variable'}/>
             {title === 'Comments' ? satisfactionDropdownFilter : null}
             <ResetButton onClick={resetFilter}/>
+            <UserButton />
         </div>
     )
 }

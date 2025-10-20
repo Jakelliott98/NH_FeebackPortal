@@ -55,7 +55,6 @@ function App() {
         <SignInButton />
       </SignedOut>
       <SignedIn>
-        <UserButton />
         { responses.loading ? loadingPage : application }
       </SignedIn>
     </header>
