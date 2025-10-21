@@ -13,6 +13,7 @@ function useFetchResults () {
     });
 
     function createClerkSupabaseClient () {
+
         return createClient(
             import.meta.env.VITE_SUPABASE_URL,
             import.meta.env.VITE_SUPABASE_KEY,
@@ -24,20 +25,18 @@ function useFetchResults () {
         )
     }
 
-    const { user, isLoaded: isUserLoaded } = useUser()
+    const { isLoaded: isUserLoaded, isSignedIn: isUserSignedIn } = useUser()
 
     useEffect(() => {
 
-        if (isSessionLoaded && isUserLoaded) {
+        if (isSessionLoaded && isUserLoaded && isUserSignedIn) {
 
         const client = createClerkSupabaseClient()
-        const users_site_id = user.publicMetadata.site_id;
-
+        
         async function importFeedbackDatabase () {
             let { data: Feedback_Response_Database, error } = await client
             .from('Feedback_Response_Database')
             .select('*')
-            .eq('site_id', `${users_site_id}`)
 
             if (error) {
                 setResponses({value: [], loading: true, error: true})
