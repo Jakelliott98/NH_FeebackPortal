@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from '@supabase/supabase-js'
-import { useSession } from '@clerk/clerk-react'
+import { useSession, useUser } from '@clerk/clerk-react'
 
 function useFetchResults () {
 
-    const { session, isLoaded } = useSession()
+    const { session: session, isLoaded: isSessionLoaded } = useSession()
     const [responses, setResponses] = useState({
         value: [], 
         loading: true, 
@@ -24,16 +24,20 @@ function useFetchResults () {
         )
     }
 
+    const { user, isLoaded: isUserLoaded } = useUser()
+
     useEffect(() => {
 
-        if (isLoaded) {
+        if (isSessionLoaded && isUserLoaded) {
 
         const client = createClerkSupabaseClient()
+        const users_site_id = user.publicMetadata.site_id;
 
         async function importFeedbackDatabase () {
             let { data: Feedback_Response_Database, error } = await client
             .from('Feedback_Response_Database')
             .select('*')
+            .eq('site_id', `${users_site_id}`)
 
             if (error) {
                 setResponses({value: [], loading: true, error: true})
@@ -46,7 +50,7 @@ function useFetchResults () {
         
         }
 
-    }, [ isLoaded ])
+    }, [ isSessionLoaded ])
 
    return {responses, session};
 
