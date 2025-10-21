@@ -22,8 +22,6 @@ function AddQuestion ({ setIsAddOpen, onClose, assessmentType }) {
         {value: 'textarea', label: 'Textarea'}
     ]
 
-    console.log(newQuestion)
-
     return (
         <AddElement 
             stateKey='type'

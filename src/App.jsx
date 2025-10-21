@@ -14,7 +14,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 function App() {
 
   const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
-  const responses = useFetchResults();
+  const { responses } = useFetchResults();
 
   const filteredFeedback = useMemo(() => { 
 

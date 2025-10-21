@@ -5,6 +5,7 @@ function useFetchDatabase (from) {
 
     const [data, setData] = useState([]);
 
+
     useEffect(() => {
         async function getClinicians () {
             let { data: Clinicians, error } = await supabase
