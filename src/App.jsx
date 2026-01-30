@@ -2,14 +2,13 @@ import './App.css'
 import { DropdownNav } from './Navbar/DropdownNavbar'
 import { Outlet } from 'react-router-dom'
 import logo from './SVG/NuffieldLogo.png'
-import resultsContext from './Context/resultsContext'
 import ResultsObject from './Hooks/useResultsReducer'
 import { useMemo } from 'react'
 import PageHeader from './Pages/PageComponents/PageHeader'
 import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Utils/Filters/FilterCalcs'
 import useFetchResults from './Hooks/useFetchResults'
 import LoadingPage from './Components/loading-page/LoadingPage'
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import { SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react';
 
 function App() {
 
