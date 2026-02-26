@@ -1,15 +1,61 @@
+
 .portal-layout {
     display: flex;
-    flex-direction: row;
-    height: 100vh;
+    flex-direction: column;
+    height: 5vh;
 }
 
 .sidebar-div {
-    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100;
     background-color: var(--constrast-background-colour);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
     height: 100vh;
 }
+
+.nav-button {
+    display: block;
+}
+
+.image-container {
+    height: 5vh;
+    width: fit-content;
+    padding: 10px;
+}
+
+@media (min-width: 48rem) {
+    .portal-layout {
+
+    }
+}
+
+@media (min-width: 64rem) {
+    .portal-layout {
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .sidebar-div {
+        width: 10vw;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .image-container {
+    height: 10vh;
+    width: 100%;
+    padding: 10px;
+}
+
+.nav-button {
+    display: none;
+}
+
+}
+
 
 .content-div {
     flex: 1;
@@ -20,12 +66,6 @@
     grid-template-rows: repeat(12, 1fr);
     height: 100vh;
     width: 100%;
-}
-
-.image-container {
-    height: 10vh;
-    width: 100%;
-    padding: 10px;
 }
 
 .nuffield-logo {

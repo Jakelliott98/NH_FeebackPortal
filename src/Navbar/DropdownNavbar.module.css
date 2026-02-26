@@ -1,5 +1,5 @@
 .navbar-dropdown {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: baseline;
     gap: var(--750-spacing);
@@ -33,4 +33,14 @@
 
 .active-nav .navbar-icon {
     color: var(--primary-colour);
+}
+
+@media (min-width: 48rem) {
+
+}
+
+@media (min-width: 64rem) {
+    .navbar-dropdown {
+        display: flex;
+    }
 }

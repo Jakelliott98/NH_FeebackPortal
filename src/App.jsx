@@ -11,6 +11,14 @@ import LoadingPage from './Components/loading-page/LoadingPage'
 import { SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react';
 import resultsContext from './Context/resultsContext'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+/* import all the icons in Free Solid, Free Regular, and Brands styles */
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, far, fab)
+
 function App() {
 
   const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
@@ -35,6 +43,7 @@ function App() {
     <resultsContext.Provider value={{ responses, filteredFeedback, filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter}} >
       <div className='portal-layout'>
         <div className='sidebar-div'>
+          <FontAwesomeIcon icon="fa-solid fa-bars" className="nav-button"/>
           <div className='image-container'>
             <img className='nuffield-logo' src={logo}/>
           </div>  

@@ -21,10 +21,18 @@
     justify-content: space-between;
     background-color: var(--constrast-background-colour);
     cursor: pointer;
-    max-width: 20vw;
+    max-width: 100%;
     padding: var(--125-spacing) var(--250-spacing);
     gap: var(--500-spacing);
     font-size: var(--fs-small);
+}
+
+@media (min-width:64rem) {
+
+    .filter-title-card {
+        max-width: 20vw;
+    }
+
 }
 
 .title-icon-div {
