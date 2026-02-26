@@ -9,11 +9,13 @@ import {filterByResponseType, filterByAssessmentType, filterByMonth} from './Uti
 import useFetchResults from './Hooks/useFetchResults'
 import LoadingPage from './Components/loading-page/LoadingPage'
 import { SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react';
+import resultsContext from './Context/resultsContext'
 
 function App() {
 
   const { filters, filterByAssessment, filterByResponse, filterByDuration, resetFilter } = ResultsObject();
   const { responses } = useFetchResults();
+
 
   const filteredFeedback = useMemo(() => { 
 

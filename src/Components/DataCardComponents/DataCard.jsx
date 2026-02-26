@@ -24,7 +24,6 @@ function DataCard ({ onClick, selectedChart, colour, item, displayTrend}) {
             </div>
             <p className={styles['snapshot-data']}>{data}</p>
             <p className={styles['snapshot-title']}>{title}</p>
-            { displayTrend ? '' : <TrendIcon change={change} trend={trend} />}
         </div>
     )
     
