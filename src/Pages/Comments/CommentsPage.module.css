@@ -1,10 +1,9 @@
 .comment-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--500-spacing);
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--500-spacing);
+  padding: 5px;
 }
-
 
 .comment-container {
   display: flex;
@@ -13,13 +12,24 @@
   overflow: scroll;
 }
 
-
 .comment-dropdowns {
   display: flex;
   flex-direction: row;
   gap: var(--500-spacing);
 }
 
+.comment-filters {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+
+.comment-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--500-spacing);
+  height: 100%;
+}
 
 .comment-filters {
   display: flex;
@@ -27,3 +37,4 @@
   justify-content: space-between;
 }
 
+}

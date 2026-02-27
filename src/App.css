@@ -2,8 +2,8 @@
 .portal-layout {
     display: flex;
     flex-direction: column;
+    padding: 5px;
     height: 5vh;
-    padding: 15px;
 }
 
 .sidebar-div {
@@ -11,10 +11,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100;
     background-color: var(--constrast-background-colour);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
-    height: 100vh;
     margin-bottom: 5px;
 }
 
@@ -35,8 +33,6 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    height: 100vh;
-    width: 100%;
     gap: 5px;
 }
 
@@ -66,12 +62,12 @@
 
 .portal-layout {
     flex-direction: row;
-    height: 100vh;
     padding: 0;
 }
 
 .sidebar-div {
     width: 10vw;
+    height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -92,6 +88,7 @@
 
 .content-div {
     gap: 0;
+    height: 100vh;
 }
 
 }

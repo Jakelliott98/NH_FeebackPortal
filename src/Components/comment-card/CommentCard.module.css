@@ -1,6 +1,6 @@
 
 .positive-comment, .negative-comment {
-  padding: var(--500-spacing);
+  padding-top: var(--250-spacing);
   border-radius: var(--125-spacing);
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
 
 .comment-text {
   font-style: italic;
-  font-size: var(--fs-small);
+  font-size: var(--fs-xSmall);
   text-align: center;
 }
 
@@ -34,11 +34,12 @@
 }
 
 .comment-info {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   justify-items: center;
   align-items: center;
-  font-size: var(--fs-small);
+  font-size: var(--fs-xSmall);
   color: grey;
 }
 
@@ -49,11 +50,21 @@
 @media (min-width: 64rem) {
   
 .positive-comment, .negative-comment {
+  padding: var(--500-spacing);
   gap: var(--500-spacing);
 }
 
 .comment-text {
   text-align: start;
+  font-size: var(--fs-small);
+}
+
+.comment-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  font-size: var(--fs-small);
 }
 
 
