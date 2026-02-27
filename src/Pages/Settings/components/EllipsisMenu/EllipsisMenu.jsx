@@ -36,10 +36,10 @@ function EllipsisMenu ({ onDelete, onEdit, item, edit, onClose }) {
 function DeleteConfirmation ({ item, onSubmit, onClose }) {
 
     return (
-        <div>
-            <FontAwesomeIcon className={styles['ellipsis-close']}  icon="fa-solid fa-xmark" onClick={() => {onClose(false)}}/>
+        <div className={styles['delete-container']}>
+            <FontAwesomeIcon className={styles['close-button']}  icon="fa-solid fa-xmark" onClick={() => {onClose(false)}}/>
             <p>Are you sure you want to delete?</p>
-            <button className={styles['']} onClick={() => {onSubmit(item.id)}}>Delete</button>
+            <button className={styles['submit-button']} onClick={() => {onSubmit(item.id)}}>Delete</button>
         </div>
     )
 }
@@ -50,11 +50,11 @@ function EditBox ({ item, onSubmit, onClose }) {
 
     return (
         <div className={styles['edit-container']}>
-            <FontAwesomeIcon className={styles['ellipsis-close']}  icon="fa-solid fa-xmark" onClick={() => {onClose(false)}}/>
-            <p>Edit the question</p>
-            <textarea value={newQuestion} onChange={(e) => {setNewQuestion(e.target.value)}}/>
-            <button onClick={() => {onSubmit(newQuestion, item.id)}} >
-                Add new edit
+            <FontAwesomeIcon className={styles['close-button']}  icon="fa-solid fa-xmark" onClick={() => {onClose(false)}}/>
+            <h1>Edit</h1>
+            <textarea className={styles['textArea']} value={newQuestion} onChange={(e) => {setNewQuestion(e.target.value)}}/>
+            <button className={styles['submit-button']} onClick={() => {onSubmit(newQuestion, item.id)}} >
+                Save
             </button>
         </div>
     )

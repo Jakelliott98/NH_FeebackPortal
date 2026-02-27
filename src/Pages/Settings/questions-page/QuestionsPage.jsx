@@ -34,15 +34,11 @@ function QuestionsPage () {
     return (
         <div className={styles['questions-page-container']}>
             <div className={styles['buttons-container']}>
-                <div>
                     <button onClick={() => {setIsAddOpen(prev => !prev)}} className={styles['add-button']}>
                         + Add Question
                     </button>
                     { isAddOpen ? <AddQuestion assessmentType={assessmentType} setIsAddOpen={setIsAddOpen} onClose={setIsAddOpen} /> : null }
-                </div>
-                <div>
                     <FilterToggle options={toggleOptions} onSubmit={setAssessmentType} state={assessmentType}/>
-                </div>
             </div>
             <div className={styles['questions-container']}>
                 <div className={styles['question-container']}>

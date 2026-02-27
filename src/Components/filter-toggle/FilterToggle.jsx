@@ -8,7 +8,7 @@ function FilterToggle ({ onSubmit, options, state }) {
                 onClick={() => {onSubmit(options[0].value)}} 
                 className={styles['health-assessment-button']}
                 style={{
-                    backgroundColor: state == `${options[0].value}` ? '#7CDF7C' : 'lightgray',
+                    backgroundColor: state == `${options[0].value}` ? '#7CDF7C' : '#efefef',
                     color: state == `${options[0].value}` ? 'white' : 'black',
                 }}
             >
@@ -18,7 +18,7 @@ function FilterToggle ({ onSubmit, options, state }) {
                 onClick={() => {onSubmit(options[1].value)}}
                 className={styles['physiotherapy-button']}
                 style={{
-                    backgroundColor: state == `${options[1].value}` ? '#7CDF7C' : 'lightgray',
+                    backgroundColor: state == `${options[1].value}` ? '#7CDF7C' : '#efefef',
                     color: state == `${options[1].value}` ? 'white' : 'black',
                 }}
             >

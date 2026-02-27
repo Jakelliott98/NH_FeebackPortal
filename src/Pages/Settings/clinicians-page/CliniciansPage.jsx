@@ -11,7 +11,7 @@ function CliniciansPage () {
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [clinicianFilter, setClinicianFilter] = useState({ doctor: false, physiologist: false, physiotherapist: false });
 
-    const { insertDataRow, deleteDataRow } = databaseFunction('Clinicians')
+    const { deleteDataRow } = databaseFunction('Clinicians')
     const clinicians = useFetchDatabase('Clinicians');
 
     const filteredClinicians = useMemo(() => {

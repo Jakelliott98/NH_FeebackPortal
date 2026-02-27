@@ -26,7 +26,7 @@
 }
 
 .clinician-card-container p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .grid-header p {
@@ -51,7 +51,7 @@
 }
 
 .ellipsis:hover {
-    background-color: lightgray;
+    background-color: var(--light-background-gray);
     border-radius: 5px;
     cursor: pointer;
 }
@@ -75,8 +75,9 @@
     cursor: pointer;
     border-radius: 5px;
     border: transparent;
-    background-color: green;
+    background-color: var(--primary-colour);
     color: #fff;
+    width: 100%;
 }
 
 .new-clinician-button:active {
@@ -84,7 +85,7 @@
 }
 
 .physiotherapist {
-    background-color: lightgreen;
+    background-color: var(--light-primary-colour);
 }
 
 .physiologist {
@@ -105,9 +106,11 @@
 
 .button-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    flex: 1;
+    gap: 5px;
 }
 
 .physiotherapist-button {
@@ -115,6 +118,7 @@
     cursor: pointer;
     border: transparent;
     border-radius: 0 5px 5px 0;
+    flex: 1;
 }
 
 .physiologist-button {
@@ -122,6 +126,7 @@
     cursor: pointer;
     border: transparent;
     border-radius: 5px 0 0 5px;
+    flex: 1;
 }
 
 .doctor-button {
@@ -131,5 +136,34 @@
 }
 
 .active-filter-button {
-    background-color: lightgreen;
+    background-color: var(--light-primary-colour);
+}
+
+.assessment-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+@media (min-width: 64rem) {
+
+.button-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+}
+
+.assessment-buttons {
+    width: fit-content;
+}
+
+.new-clinician-button {
+    width: fit-content;
+}
+
+.clinician-card-container p {
+    font-size: 14px;
+}
+
 }

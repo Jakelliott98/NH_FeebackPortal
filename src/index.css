@@ -3,8 +3,10 @@
 :root {
   
   --primary-colour: #00a200;
+  --light-primary-colour: #99FF99;
   --content-background-colour: #F5F5F5;
   --constrast-background-colour: #fff;
+  --light-background-gray: #efefef;
   --light-text-colour: #fff;
   --dark-text-colour: #0c0908;
   --negative-colour: #ff3b30;

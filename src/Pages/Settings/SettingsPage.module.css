@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding: 25px;
+    padding: 5px;
     border-radius: 5px;
     height: 100%;
 }
@@ -21,10 +21,12 @@
     background-color: #fff;
     font-size: 14px;
     cursor: pointer;
+    flex: 1;
+    text-align: center;
 }
 
 .active-tag {
-    background-color: lightgray;
+    background-color: var(--light-background-gray);
 }
 
 .clinicians-tag {
@@ -37,4 +39,12 @@
 
 .settings-content-container {
     flex: 1;
+}
+
+@media (min-width: 64rem) {
+    
+.settings-page {
+    padding: 25px;
+}
+
 }

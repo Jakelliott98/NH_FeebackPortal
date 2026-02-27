@@ -7,9 +7,11 @@
 
 .buttons-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    gap: 5px;
 }
 
 .add-button {
@@ -17,8 +19,9 @@
     cursor: pointer;
     border-radius: 5px;
     border: transparent;
-    background-color: green;
+    background-color: var(--primary-colour);
     color: #fff;
+    width: 100%;
 }
 
 .physio-button {
@@ -36,14 +39,14 @@
 }
 
 .active-assessment {
-    background-color: lightgreen;
+    background-color: var(--light-primary-colour);
 }
 
 .question-container {
     display: grid;
     grid-template-columns: 1fr 50px;
     padding: 10px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid var(--light-background-gray);
 }
 
 .questions-container {
@@ -67,9 +70,12 @@
     align-items: center;
 }
 
+.question-items p {
+    font-size: var(--fs-small);
+}
 
 .ellipsis:hover {
-    background-color: lightgray;
+    background-color: var(--light-background-gray);
     border-radius: 5px;
     cursor: pointer;
 }
@@ -93,4 +99,21 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+}
+
+
+@media (min-width: 64rem) {
+
+.buttons-container {
+    flex-direction: row;
+}
+
+.add-button {
+    width: fit-content;
+}
+
+.question-items p {
+    font-size: var(--fs-medium);
+}
+
 }

@@ -68,7 +68,7 @@
 }
 
 .positive-tooltip-score {
-    color: green;
+    color: var(--primary-colour);
 }
 
 .negative-tooltip-score {

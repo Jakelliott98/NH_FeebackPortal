@@ -111,7 +111,7 @@
 
 .rating-icon {
     cursor: pointer;
-    color: lightgray;
+    color: var(--light-background-gray);
 }
 
 .rating-icon:hover {
