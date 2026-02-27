@@ -7,6 +7,11 @@ import resultsContext from '../../../Context/resultsContext';
 
 function DataGraphCard ({ selectedChart }) {
 
+    const paddingValue =
+        window.innerWidth < 480 ? 10 :
+        window.innerWidth < 1024 ? 20 :
+        40; 
+
     let { filteredFeedback } = useContext(resultsContext);
 
     let monthlyData = calculateMonthlyPayload(filteredFeedback)
@@ -16,7 +21,7 @@ function DataGraphCard ({ selectedChart }) {
             <LineChart data={filteredFeedback} >
                 <Tooltip content={CustomTooltip}/>
                 <YAxis domain={[0, 6]}/>
-                <XAxis dataKey="id" padding={{ left: 30, right: 30 }} hide={true}/>
+                <XAxis dataKey="id" padding={{ left: paddingValue, right: paddingValue }} hide={true}/>
                 <Line dataKey="average_score" fill="#7CDF7C" stroke='#7CDF7C' activeDot={{ r: 8 }} />
             </LineChart>
         </ResponsiveContainer>

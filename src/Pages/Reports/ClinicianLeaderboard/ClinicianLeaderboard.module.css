@@ -41,8 +41,8 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    height: 100%;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    height: 250px;
 }
 
 .feedback-card h1 {
@@ -81,4 +81,13 @@
     background-color: #00a200;
     border-radius: 5px 5px 0 0;
     color: white;
+}
+
+
+@media (min-width: 64rem) {
+
+.feedback-card {
+    height: 100%;
+}
+
 }
