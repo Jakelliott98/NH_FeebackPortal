@@ -1,16 +1,14 @@
 .graph-container {
-  grid-area: 1 / 3 / 10 / 13;
-  height: 100%;
+  height: 500px;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .graph-div {
   width: 100%;
-  padding: var(--500-spacing);
+  padding: var(--125-spacing);
   background-color: var(--constrast-background-colour);
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
@@ -19,4 +17,19 @@
 .graph-div {
   height: 100%;
   width: 100%;
+}
+
+@media (min-width: 64rem) {
+  
+.graph-container {
+  grid-area: 1 / 3 / 10 / 13;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.graph-div {
+  padding: var(--500-spacing);
+}
+
 }

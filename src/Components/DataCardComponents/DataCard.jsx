@@ -5,13 +5,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
-import TrendIcon from './TrendIcon'
 import InfoIcon from './InfoIcon'
 import styles from './DataCards.module.css'
 
-function DataCard ({ onClick, selectedChart, colour, item, displayTrend}) {
+function DataCard ({ onClick, selectedChart, colour, item}) {
     
-    const {title, data, change, trend, icon, text} = item;
+    const {title, data, icon, text} = item;
 
     return (
         <div 
