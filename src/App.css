@@ -1,4 +1,70 @@
 
+.signIn-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+background: radial-gradient(circle,rgba(0, 162, 0, 1) 0%, rgba(194, 255, 194, 1) 100%);
+    
+}
+
+.signIn-card {
+    width: 25vw;
+    background-color: #fff;
+    padding: 30px;
+    border: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.signIn-title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.signIn-text {
+    font-size: 16px;
+    color: lightgray;
+    text-align: center;
+}
+
+.signIn-button {
+  background-color: var(--primary-colour);
+  color: white; /* or black depending on your colour */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.demo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.demo-title {
+    font-size: 18px;
+    text-align: center;
+}
+
+.demo-pass {
+    
+}
+
+.demo-user {
+
+}
+
+.signIn-button:hover {
+  background-color: rgba(0, 162, 0, 0.95);
+}
+
+
 .portal-layout {
     display: flex;
     flex-direction: column;

@@ -61,9 +61,28 @@ function App() {
 
   return (
     <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
+      <div className='signIn-page'>
+        <div className='signIn-card'>
+          <SignedOut>
+            <h1 className='signIn-title'>Welcome to the Feedback Portal!</h1>
+            <p className='signIn-text'>Login to see the responses for the Forms</p>
+            <SignInButton mode="modal">
+              <button className='signIn-button'>
+                Sign In
+              </button>
+            </SignInButton>
+            <div className='demo-card'>
+              <h2 className='demo-title'>To view the demo site use the following details</h2>
+              <p className='demo-user'>Username: </p>
+              <p className='demo-pass'>Password: </p>
+            </div>
+            <div>
+              <p>To fill out the form follow the link below:</p>
+              <button>Form</button>
+            </div>
+          </SignedOut>
+        </div>
+      </div>
       <SignedIn>
         { responses.loading ? loadingPage : application }
       </SignedIn>
