@@ -61,11 +61,11 @@ function App() {
 
   return (
     <header>
+      <SignedOut>
       <div className='signIn-page'>
         <div className='signIn-card'>
-          <SignedOut>
             <h1 className='signIn-title'>Welcome to the Feedback Portal!</h1>
-            <p className='signIn-text'>Login to see the responses for the Forms</p>
+            <p className='signIn-text'>Monitor your clinics client feedback in real time</p>
             <SignInButton mode="modal">
               <button className='signIn-button'>
                 Sign In
@@ -73,16 +73,16 @@ function App() {
             </SignInButton>
             <div className='demo-card'>
               <h2 className='demo-title'>To view the demo site use the following details</h2>
-              <p className='demo-user'>Username: </p>
-              <p className='demo-pass'>Password: </p>
+              <p className='demo-user'>Username: <span className='login-details'>DemoLogin</span></p>
+              <p className='demo-pass'>Password: <span className='login-details'>DemoLogin101</span></p>
             </div>
-            <div>
-              <p>To fill out the form follow the link below:</p>
-              <button>Form</button>
+            <div className>
+              <p className='form-text'>View the form</p>
+              <a href='https://nh-feedback-form.netlify.app/' target='_blank'><button className='form-button'>Complete Form</button></a>
             </div>
-          </SignedOut>
         </div>
       </div>
+      </SignedOut>
       <SignedIn>
         { responses.loading ? loadingPage : application }
       </SignedIn>
