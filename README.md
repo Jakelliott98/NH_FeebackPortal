@@ -1,5 +1,5 @@
 
-# Customer Feedback Form & Portal
+<h1 align="center">📊 Customer Feedback Form & Analytics Portal</h1>
 
 <p align="center">
     <a href="https://nh-feedbackportal.netlify.app/">🔗 Live Demo</a>
@@ -7,9 +7,7 @@
 
 ## 📖 About The Project
 
-![Portal Homepage Screenshot](./src/SVG/README-Images/Homepage.png)
-
-A client feedback form and analytical portal to increase client engagement and provide useful site-specific insights.
+**A client feedback form and analytical portal to increase client engagement and provide useful site-specific insights.**
 
 The project was a learning initiative at my current workplace aimed at increasing the current low engagement in feedback responses and furthering my knowledge of React and JavaScript.
 
@@ -19,8 +17,8 @@ An authentication-protected analytical portal to help managers gain insights int
 
 To make the forms site-specific, all questions and clinicians are configurable through the portal settings page. 
 
+![Portal Homepage Screenshot](./src/SVG/README-Images/Homepage.png)
 ![Portal Reports Screenshot](./src/SVG/README-Images/Reports.png)
-![Feedback Form Screenshot](./src/SVG/README-Images/Form.png)
 
 ## ✨ Features 
 
